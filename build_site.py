@@ -141,10 +141,14 @@ STORE_META = {
         ),
         "kosher_note": (
             "Aldi is a general supermarket, not a dedicated kosher grocer. "
-            "Meat and deli items are left off this page entirely (fish like "
-            "salmon is the one exception). For everything else shown here, "
-            "please check the package's own kosher certification (hechsher) "
-            "before buying — this site can't verify that automatically."
+            "This page only shows Produce, Eggs, Pantry (including canned "
+            "goods), and Beverages — meat, deli, seafood, dairy, bakery, "
+            "frozen, and snack items are left off entirely, no exceptions. "
+            "Please still check the package's own kosher certification "
+            "(hechsher) before buying — Aldi does tag a small number of "
+            "items \"Kosher\" on their own site, but far fewer than what "
+            "actually carries a hechsher in store, so this site can't rely "
+            "on that tag and can't verify certification automatically."
         ),
     },
     "shoprite": {
@@ -156,9 +160,11 @@ STORE_META = {
         ),
         "kosher_note": (
             "ShopRite is a general supermarket, not a dedicated kosher "
-            "grocer. Meat and deli items will always be left off this page "
-            "entirely. For everything else, please check the package's own "
-            "kosher certification (hechsher) before buying — this site "
+            "grocer. Once live, this page will only show Produce, Eggs, "
+            "Pantry (including canned goods), and Beverages — meat, deli, "
+            "seafood, dairy, bakery, frozen, and snack items will be left "
+            "off entirely, no exceptions. Please still check the package's "
+            "own kosher certification (hechsher) before buying — this site "
             "can't verify that automatically."
         ),
     },

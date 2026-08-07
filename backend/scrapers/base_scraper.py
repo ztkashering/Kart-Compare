@@ -120,7 +120,7 @@ CATEGORY_KEYWORDS = {
         "flanken", "london broil", "wing", "sausage", "kishka", "arayes",
         "shoulder", "fillet", "fish", "salmon", "tuna", "flounder", "sole",
         "lox", "tilapia", "gefilte", "sushi", "kielbasa", "hot dog",
-        "hotdog", "kugel", "cutlets",
+        "hotdog", "kugel", "cutlets", "ham", "bratwurst", "brisket",
     ],
     "Dairy": [
         "cheese", "yogurt", "milk", "leben", "cream cheese", "butter",
