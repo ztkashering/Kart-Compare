@@ -37,7 +37,7 @@ sys.path.append(str(Path(__file__).resolve().parents[1]))
 from scrapers.base_scraper import (
     parse_standard_price, guess_category, clean_item_name, current_wed_to_tue_window,
 )
-from db.database import get_connection, init_db, insert_deal
+from db.database import get_connection, init_db, insert_deal, clear_store_deals
 
 SAMPLE_DATA_DIR = Path(__file__).parent / "sample_data"
 
@@ -287,6 +287,7 @@ def run(
     if save_to_db:
         init_db()
         with get_connection() as conn:
+            clear_store_deals(conn, store_slug)
             for d in deals:
                 insert_deal(conn, d)
         print(f"\n[{store_slug}] Saved {len(deals)} deals to the database.")

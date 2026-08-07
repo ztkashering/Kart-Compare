@@ -142,7 +142,8 @@ STORE_META = {
         "kosher_note": (
             "Aldi is a general supermarket, not a dedicated kosher grocer. "
             "Meat and deli items are left off this page entirely (fish like "
-            "salmon is the one exception). For everything else shown here, "
+            "salmon is the one exception), and so is the whole Bakery "
+            "category, no exception. For everything else shown here, "
             "please check the package's own kosher certification (hechsher) "
             "before buying — this site can't verify that automatically."
         ),

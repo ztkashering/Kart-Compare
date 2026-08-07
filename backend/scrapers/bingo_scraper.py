@@ -26,7 +26,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 from scrapers.gourmet_glatt_scraper import parse_deals as parse_flyer_deals
-from db.database import get_connection, init_db, insert_deal
+from db.database import get_connection, init_db, insert_deal, clear_store_deals
 
 STORE_SLUG = "bingo"
 WEEKLY_DEALS_URL = "https://www.bingowholesale.com/weeklydeals"
@@ -114,6 +114,7 @@ def run(save_to_db: bool = True, limit_preview: int = 8) -> list[dict]:
     if save_to_db:
         init_db()
         with get_connection() as conn:
+            clear_store_deals(conn, STORE_SLUG)
             for d in deals:
                 insert_deal(conn, d)
         print(f"\n[{STORE_SLUG}] Saved {len(deals)} deals to the database.")

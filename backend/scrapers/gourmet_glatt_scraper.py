@@ -37,7 +37,7 @@ from scrapers.base_scraper import (
     guess_category,
     clean_item_name,
 )
-from db.database import get_connection, init_db, insert_deal
+from db.database import get_connection, init_db, insert_deal, clear_store_deals
 
 STORE_SLUG = "gourmet-glatt"
 SPECIALS_PAGE_URL = "https://gourmetglatt.com/lakewood-njersey/specials"
@@ -259,6 +259,7 @@ def run(save_to_db: bool = True, limit_preview: int = 8) -> list[dict]:
     if save_to_db:
         init_db()
         with get_connection() as conn:
+            clear_store_deals(conn, STORE_SLUG)
             for d in deals:
                 insert_deal(conn, d)
         print(f"\n[gourmet_glatt] Saved {len(deals)} deals to the database.")

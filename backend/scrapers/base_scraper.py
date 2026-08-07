@@ -134,7 +134,7 @@ CATEGORY_KEYWORDS = {
     ],
     "Beverages": [
         "juice", "soda", "seltzer", "water bottle", " tea", "coffee",
-        "cola", "gatorade", "snapple", "sprite", "lemonade", "smart water",
+        " cola", "gatorade", "snapple", "sprite", "lemonade", "smart water",
         "fresca", "grape juice",
     ],
     "Frozen": [
@@ -145,7 +145,8 @@ CATEGORY_KEYWORDS = {
         "candy", "chocolate", "gummy", "gummies", "licorice", "taffy",
         "marshmallow", "chips", "cookie", "cracker", "wafer", "popcorn",
         "bissli", "sour stick", "fruit leather", "twizzlers", "pretzel",
-        "snack", "nosh",
+        "snack", "nosh", "granola", "squeezies", "fruit snacks",
+        "applesauce",
     ],
     "Household": [
         "paper plate", "plastic cup", "napkin", "tissue", "foil",
@@ -160,6 +161,17 @@ CATEGORY_KEYWORDS = {
 }
 
 
+# Produce is checked LAST among the real categories (not in dict order).
+# Reason (found 2026-08-07 while auditing Aldi's output): fruit-flavor
+# words like "strawberr"/"berry"/"apple" show up constantly in snack,
+# bakery, and dairy product names ("Strawberry Granola Bites", "Raspberry
+# ... Cookies", "Apple ... Pouch") — those items have a more specific
+# keyword match too (e.g. "cookie", "cracker"), so that more specific
+# category should win. Only fall through to Produce if nothing more
+# specific matched, so actual fruit/vegetable items still land correctly.
+_CATEGORY_PRIORITY = [c for c in CATEGORY_KEYWORDS if c != "Produce"] + ["Produce"]
+
+
 def guess_category(item_name: str) -> str:
     """Best-effort keyword match against the item's name (see the note
     above the keyword list for why this is name-based rather than pulled
@@ -167,8 +179,8 @@ def guess_category(item_name: str) -> str:
     catch-all for shelf-stable grocery/pantry staples) when nothing
     matches."""
     name_lower = item_name.lower()
-    for category, keywords in CATEGORY_KEYWORDS.items():
-        if any(kw in name_lower for kw in keywords):
+    for category in _CATEGORY_PRIORITY:
+        if any(kw in name_lower for kw in CATEGORY_KEYWORDS[category]):
             return category
     return "Pantry"
 

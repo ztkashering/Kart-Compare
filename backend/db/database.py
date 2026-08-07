@@ -64,6 +64,21 @@ def get_category_id(conn: sqlite3.Connection, category_name: str) -> int:
     return row["id"]
 
 
+def clear_store_deals(conn: sqlite3.Connection, store_slug: str) -> None:
+    """Delete all existing deal rows for one store.
+
+    Every scraper's run() calls this right before re-inserting its fresh
+    results. Without it, re-running a scraper (which the twice-weekly
+    scheduled task does, forever) would just keep appending duplicate
+    rows on top of the previous run's, instead of replacing them —
+    found 2026-08-07 when a few manual re-runs of the Aldi scraper while
+    testing left duplicate rows sitting in the live database.
+    """
+    store_id = get_store_id(conn, store_slug)
+    conn.execute("DELETE FROM deals WHERE store_id = ?", (store_id,))
+    conn.commit()
+
+
 def insert_deal(conn: sqlite3.Connection, deal: dict) -> int:
     """Insert one deal row. `deal` must have keys:
     store_slug, item_name, sale_price, date_valid_from, date_valid_to
