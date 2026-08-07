@@ -1,120 +1,125 @@
 """
-aldi_scraper.py — Aldi (Lakewood-area store: ALDI CTV 162, 86 NJ Route 70,
-Toms River, NJ 08755 — this is the "80 NJ-70" location right on the
-Lakewood/Toms River line, the closest real Aldi to Lakewood).
+aldi_scraper.py — Aldi (Lakewood-area store: ALDI, 86 NJ Route 70, Toms
+River, NJ 08755 — the closest real Aldi to Lakewood).
 
-PLAIN-ENGLISH NOTE (updated 2026-08-07, after the founder flagged missed
-sales): the first pass of this scraper only captured the small default
-preview shown on aldi.us/en/weekly-specials/ (4-8 items per section), not
-the full lists. Two things were fixed:
-  1. LOCATION. Like the Seasons/Nutmeg/Kosher West platform, this site
-     decides which store's ad to show via a location cookie, not the URL.
-     Without confirming a store, it silently showed a Brooklyn, NY store's
-     ad. Live scraping must first set the store to ALDI CTV 162 (zip
-     08755 / "80 NJ-70") via the site's location picker before reading
-     anything — get_all_specials_live() below does this.
-  2. COVERAGE. The homepage only shows a short preview per section, each
-     with a "View all (N+)" link to the full list. Real deals live at:
-       - /store/aldi/collections/rc-weekly-ad   ("Weekly Ad Products")
-       - /store/aldi/pages/price-drops          ("Price Drops" — has two
-         sub-lists: fresh meat/seafood, and packaged snacks/drinks)
-     Both need their "Load More" button clicked until it stops adding new
-     items, not just the first page.
+PLAIN-ENGLISH HISTORY (for whoever reads this later):
+  Pass 1 scraped the small homepage preview only (4-8 items/section) — too
+  little coverage.
+  Pass 2 scraped the full "Weekly Ad Products" + "Price Drops" pages via
+  Selenium clicking "Load More" — better coverage, but while hand-copying
+  that captured text into a sample file, the "Original Price: ..." lines
+  got dropped for most items by mistake. That meant items with a real
+  markdown looked IDENTICAL to items that were just Aldi's regular
+  everyday price (e.g. Bananas $0.49/lb, Broccoli $2.09/lb — not sales at
+  all). The founder caught this directly: "these things are not the
+  things that are on sale."
 
-CATEGORY RULES (per the founder, updated 2026-08-07 — this REPLACES the
-original "no meat except salmon" rule):
-  - ONLY these are shown from Aldi: Produce, Eggs, Pantry (includes canned
-    goods), and Beverages (drinks). Everything else — meat/deli/seafood
-    (including salmon — no exception anymore), dairy, bakery, frozen,
-    candy & snacks, household, health & beauty — is left off entirely.
-  - "Eggs" isn't one of base_scraper's category buckets (it would
-    otherwise fall into the "Pantry" catch-all), so items with "egg" in
-    the name are explicitly allowed through regardless of guessed
-    category.
-  - Kosher certification: Aldi's own site DOES have a "Kosher" tagged
-    collection (aldi.us/store/aldi/collections/rc-kosher) — but checking
-    it (2026-08-07) showed only 4 items store-wide carry that tag, far
-    fewer than the pantry/beverage items Aldi actually sells with a real
-    hechsher on the physical package. That makes the tag too sparse to
-    use as a hard filter (it would wrongly exclude genuinely kosher items
-    just because Aldi's own metadata hasn't caught up). So this scraper
-    does NOT gate on it — instead, every Aldi page carries a clear
-    disclaimer (see build_site.py's STORE_META) telling shoppers to check
-    the package's own kosher symbol before buying, same as before.
+  Pass 3 (this version, 2026-08-07) switches to a completely different,
+  more reliable source: Aldi's OFFICIAL weekly ad flyer at
+  info.aldi.us/weekly-specials/weekly-ads is rendered by a third-party
+  flyer platform called Flipp. That flyer has a clean, structured JSON
+  feed behind it:
+      https://dam.flippenterprise.net/hosted/publication/{flyer_id}/products
+          ?display_type=all&locale=en&access_token={token}
+  Every item in that feed carries real fields straight from Aldi's own ad:
+    - pre_price_text: literally the string "PRICE DROPS" for genuine
+      markdowns, or "" (empty) for everything else. This is a clean,
+      unambiguous signal — far better than guessing from a name — so THIS
+      is what decides whether something is a real deal now, not a
+      before/after price comparison.
+    - categories: Aldi's own department tag (e.g. ["Fresh Produce"],
+      ["Meat & Seafood"], ["Grocery"], ["Beverage"], ["Household"],
+      ["Bread / Bakery"], ["Cheese"], ["Frozen"], ["Deli"]) — no more
+      keyword-guessing from the item name.
+    - valid_from / valid_to: the flyer's own real confirmed date range.
 
-Each product in the scraped page text looks like this (one block per
-item, always starting with "Current price:"):
-    Current price: $6.49
-    $649
-    Original Price: $7.15
-    $7.15
-    9% off
-    Lunch Buddies 12pk Apple Squeezies Varie, 3.2 oz Pouch
-    38.4 oz
-    Many in stock
-Not every item is on sale (no "Original Price"/"X% off" lines for those),
-and the very first real line after the price block is always the item
-name — parse_deals() below uses that pattern rather than relying on any
-fixed line count, since blocks vary in length.
+  IMPORTANT — the flyer_id and access_token are NOT permanent. They're
+  generated fresh for each week's flyer, and there's no plain-requests way
+  to discover them (they only show up in the page's live network traffic,
+  found the first time via Chrome's network-request inspector). So this
+  script does NOT fetch Flipp live itself. Instead, each scheduled re-scrape
+  run is expected to:
+    1. Use a live browser (Chrome MCP tools) to open
+       https://info.aldi.us/weekly-specials/weekly-ads, confirm the
+       Lakewood-area store (zip 08701, "ALDI, Toms River — 86 NJ Route 70"
+       — NOT the similarly-named "80 NJ-70" address, which has no flyer),
+       and find the current dam.flippenterprise.net/hosted/publication/
+       {flyer_id}/products?...&access_token=... URL (via the network
+       requests tool, or by reading the flyer iframe's src).
+    2. Fetch that URL directly (a simple fetch() in the browser works
+       fine) and save the raw JSON array as
+       backend/scrapers/sample_data/aldi_YYYY-MM-DD_flipp.json — no
+       trimming needed, parse_deals() below handles the full feed.
+    3. Update SAMPLE_PATH below (or just keep the latest-dated file; see
+       _find_latest_sample_path()).
+  This mirrors how every other store in this project gets its live data:
+  a human/browser step captures a fresh snapshot into sample_data/, and
+  the Python scraper just parses whatever's there — no Selenium, no
+  guessing at login/location flows in headless Python.
+
+CATEGORY RULES (per the founder, still in force):
+  ONLY Produce, Eggs, Pantry (canned goods etc.), and Beverages are shown
+  from Aldi. Meat/deli/seafood, dairy, bakery, frozen, candy & snacks,
+  household, and health & beauty are excluded entirely — no exceptions
+  (this replaced an earlier "salmon is OK" rule; salmon is excluded now
+  too). Aldi's own categories map onto this allow-list below
+  (FLIPP_CATEGORY_MAP). As a defense-in-depth safety net (found necessary
+  last time when a name-keyword bug let 3 meat items slip through under
+  "Produce"), every item's NAME is also independently checked against the
+  full Meat & Deli keyword list and excluded if it matches, regardless of
+  what category Aldi itself tagged it with.
+
+  Kosher certification: Aldi's own site tags only a handful of items
+  "Kosher" store-wide — far fewer than what actually carries a hechsher
+  on the physical package — so that tag isn't reliable enough to filter
+  on. Every Aldi page instead carries a disclaimer (see build_site.py's
+  STORE_META) telling shoppers to check the package's own kosher symbol.
+
+"LEAVE IT BLANK" RULE (explicit, founder's own words, 2026-08-07): "if
+there is a category that does not have sales leave it blank no need to
+put random stuff on it." If, in a given week, zero genuine PRICE DROPS
+items fall into an allowed category, that category simply shows nothing.
+Never pad it with regular-price items to make it look fuller.
 """
 
-import re
+import json
 import sys
 from pathlib import Path
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
-from scrapers.base_scraper import (
-    guess_category, clean_item_name, current_wed_to_tue_window, CATEGORY_KEYWORDS,
-)
+from scrapers.base_scraper import clean_item_name, CATEGORY_KEYWORDS
 from db.database import get_connection, init_db, insert_deal
 
 STORE_SLUG = "aldi"
-SPECIALS_URL = "https://www.aldi.us/en/weekly-specials/"
-WEEKLY_AD_COLLECTION_URL = "https://www.aldi.us/store/aldi/collections/rc-weekly-ad"
-PRICE_DROPS_URL = "https://www.aldi.us/store/aldi/pages/price-drops"
-STORE_ZIP = "08755"  # ALDI CTV 162, 86 NJ Route 70, Toms River (the Lakewood-area store)
-SAMPLE_PATH = Path(__file__).parent / "sample_data" / "aldi_2026-08-07_specials.txt"
+FLYER_PAGE_URL = "https://info.aldi.us/weekly-specials/weekly-ads"
+STORE_ZIP = "08701"  # Lakewood-area zip used to confirm the right Aldi store
+STORE_NAME_HINT = "ALDI, Toms River — 86 NJ Route 70"  # NOT "80 NJ-70" (no flyer there)
+SAMPLE_DIR = Path(__file__).parent / "sample_data"
 
-# Splits the page text into one chunk per product — every product block
-# starts with this exact phrase.
-BLOCK_SPLIT_RE = re.compile(r"(?=Current price:)")
+# The one signal that means "this is a genuine markdown, not just a
+# regularly-featured item in the ad." Confirmed 2026-08-07 by checking
+# every unique pre_price_text value in a live flyer feed: it's either ""
+# (regular) or exactly "PRICE DROPS" (real markdown) — nothing in between.
+GENUINE_DEAL_SIGNAL = "PRICE DROPS"
 
-PRICE_RE = re.compile(r"Current price:\s*\$(\d+(?:\.\d{2})?)")
-ORIGINAL_PRICE_RE = re.compile(r"Original Price:\s*\$(\d+(?:\.\d{2})?)")
+# Aldi's own flyer category tags -> this app's category buckets. Anything
+# not listed here (Meat & Seafood, Deli, Bread / Bakery, Cheese, Frozen,
+# Household, Health & Beauty, etc.) is excluded by omission.
+FLIPP_CATEGORY_MAP = {
+    "Fresh Produce": "Produce",
+    "Produce": "Produce",
+    "Beverage": "Beverages",
+    "Beverages": "Beverages",
+    "Grocery": "Pantry",
+}
 
-# Lines that are never the item name — used to skip past the price/
-# percent-off/label lines and land on the first real name line.
-SKIP_LINE_RE = re.compile(
-    r"^\s*("
-    r"Current price:.*|"
-    r"Original Price:.*|"
-    r"\$[\d,.]+\s*$|"
-    r"\d+%\s*off\s*$|"
-    r"per\s+(package|lb|each)\s*\(estimated\)\s*$|"
-    r"/\s*(pkg|ea)\s*\(est\.?\)\s*$|"
-    r"each\s*\(est\.?\)\s*$"
-    r")\s*$",
-    re.I,
-)
-
-# Only these categories are shown from Aldi (see docstring above for why).
-ALDI_ALLOWED_CATEGORIES = {"Produce", "Beverages", "Pantry"}
-# "Eggs" has no category bucket of its own in base_scraper.py — allow by
-# name instead of category so egg items aren't accidentally dropped.
-ALWAYS_ALLOWED_NAME_KEYWORDS = ["egg"]
-
-# HARD SAFETY NET — do not remove. guess_category() checks categories in a
-# fixed order and returns on the first keyword match, which means a meat
-# item whose name also contains a seasoning/produce word (e.g. "Salt &
-# Pepper Seasoned Brisket", "Cilantro Lime Seasoned Chicken", "Sun-Dried
-# Tomato & Basil Seasoned Chicken") can get miscategorized as "Produce"
-# BEFORE its real "Meat & Deli" keyword is ever checked — found this the
-# hard way on 2026-08-07 when three chicken/brisket items slipped through
-# under "Produce". Since the founder was explicit and repeated that meat
-# must NEVER appear on this page, this checks the item name directly
-# against the full Meat & Deli keyword list, independent of whatever
-# category guess_category() landed on, and excludes it regardless.
+# HARD SAFETY NET — do not remove. Even though Aldi's own category tag is
+# far more trustworthy than the old name-keyword guesser, this still does
+# an independent name check against the full Meat & Deli keyword list and
+# excludes on any match, regardless of Aldi's own category tag. The
+# founder was explicit and repeated that meat must never appear on this
+# page — belt and suspenders.
 _MEAT_DELI_KEYWORDS = CATEGORY_KEYWORDS["Meat & Deli"]
 
 
@@ -122,196 +127,114 @@ def _is_meat_or_deli(item_name_lower: str) -> bool:
     return any(kw in item_name_lower for kw in _MEAT_DELI_KEYWORDS)
 
 
-def get_all_specials_live() -> str | None:
-    """Fetch the full Weekly Ad Products + Price Drops lists for the
-    Lakewood-area store via a real browser (location must be confirmed
-    first — see the docstring's LOCATION note). Returns combined page
-    text, or None if live browsing isn't available in this environment
-    (falls back to the cached snapshot in that case)."""
-    try:
-        from selenium import webdriver
-        from selenium.webdriver.chrome.options import Options
-        from selenium.webdriver.common.by import By
-        import time
-    except ImportError as e:
-        print(f"[aldi] Live mode unavailable, missing package: {e}")
-        return None
-
-    options = Options()
-    options.add_argument("--headless=new")
-    options.add_argument("--no-sandbox")
-    driver = None
-    try:
-        driver = webdriver.Chrome(options=options)
-        driver.get(SPECIALS_URL)
-        time.sleep(2)
-        # Confirm the Lakewood-area store (zip 08755) via the location
-        # picker before reading anything — see docstring's LOCATION note.
-        try:
-            change_store = driver.find_element(By.XPATH, "//button[contains(text(),'Change store') or contains(text(),'Edit')]")
-            change_store.click()
-            time.sleep(1)
-            zip_input = driver.find_element(By.XPATH, "//input[@placeholder='Enter your address' or @type='text']")
-            zip_input.send_keys(STORE_ZIP)
-            time.sleep(1)
-            suggestion = driver.find_element(By.XPATH, f"//*[contains(text(),'{STORE_ZIP}')]")
-            suggestion.click()
-            time.sleep(1)
-            shop_here = driver.find_element(By.XPATH, "//button[contains(text(),'Shop this store') or contains(text(),'Select')]")
-            shop_here.click()
-            time.sleep(1)
-            confirm = driver.find_element(By.XPATH, "//button[contains(text(),'Confirm')]")
-            confirm.click()
-            time.sleep(2)
-        except Exception as e:
-            print(f"[aldi] Could not confirm store location automatically ({e}); "
-                  f"data may be for the wrong store.")
-
-        combined_text = ""
-
-        # Weekly Ad Products — click Load More until it stops adding items.
-        driver.get(WEEKLY_AD_COLLECTION_URL)
-        time.sleep(2)
-        last_len = -1
-        for _ in range(15):  # safety cap
-            body_text = driver.find_element(By.TAG_NAME, "body").text
-            if len(body_text) == last_len:
-                break
-            last_len = len(body_text)
-            try:
-                load_more = driver.find_element(By.XPATH, "//button[contains(text(),'Load More')]")
-                load_more.click()
-                time.sleep(1.5)
-            except Exception:
-                break
-        combined_text += driver.find_element(By.TAG_NAME, "body").text + "\n"
-
-        # Price Drops — a curated page (meat/seafood + packaged snacks),
-        # not paginated the same way.
-        driver.get(PRICE_DROPS_URL)
-        time.sleep(2)
-        combined_text += driver.find_element(By.TAG_NAME, "body").text + "\n"
-
-        return combined_text if "Current price:" in combined_text else None
-    except Exception as e:
-        print(f"[aldi] Live fetch failed ({e}).")
-        return None
-    finally:
-        if driver:
-            driver.quit()
+def _find_latest_sample_path() -> Path | None:
+    """Use whichever aldi_*_flipp.json snapshot in sample_data/ is newest
+    by filename (they're named aldi_YYYY-MM-DD_flipp.json, so a plain sort
+    works), rather than a hardcoded path that goes stale every week."""
+    candidates = sorted(SAMPLE_DIR.glob("aldi_*_flipp.json"))
+    return candidates[-1] if candidates else None
 
 
-def _extract_name(block_lines: list[str]) -> str | None:
-    for line in block_lines:
-        line = line.strip()
-        if not line:
-            continue
-        if SKIP_LINE_RE.match(line):
-            continue
-        return line
-    return None
-
-
-def parse_deals(raw_text: str) -> list[dict]:
-    date_from, date_to = current_wed_to_tue_window()
-
+def parse_deals(flipp_items: list[dict]) -> list[dict]:
     deals = []
     seen_names = set()
-    blocks = [b for b in BLOCK_SPLIT_RE.split(raw_text) if b.strip()]
-    for block in blocks:
-        price_match = PRICE_RE.search(block)
-        if not price_match:
-            continue
-        sale_price = float(price_match.group(1))
 
-        # HONESTY CHECK (added 2026-08-07, after the founder caught this):
-        # earlier passes included items that only ever showed a single
-        # "Current price" with no "Original Price" — those are just Aldi's
-        # regular everyday price, not a real markdown. This site is about
-        # deals, so an item only counts if there's real before/after
-        # pricing evidence. If a category ends up with zero qualifying
-        # items this week, it should show nothing rather than be padded
-        # with regular-price items.
-        original_match = ORIGINAL_PRICE_RE.search(block)
-        if not original_match:
-            continue
-        original_price = float(original_match.group(1))
-        if original_price <= sale_price:
-            continue  # not actually a markdown
-
-        lines = block.splitlines()
-        # Drop the first line (the "Current price: ..." line itself) before
-        # hunting for the name, so SKIP_LINE_RE's "Current price:" check
-        # doesn't need to special-case line 0.
-        name = _extract_name(lines[1:])
+    for item in flipp_items:
+        name = item.get("name")
         if not name:
             continue
         item_name = clean_item_name(name)
         if not item_name:
             continue
 
-        # De-dupe — the same item can legitimately appear in both the
-        # Weekly Ad Products list and the Price Drops list.
+        # GENUINE-DEAL CHECK — the whole reason this rewrite happened.
+        # Only items the flyer itself flags as a real markdown count.
+        if item.get("pre_price_text") != GENUINE_DEAL_SIGNAL:
+            continue
+
+        raw_categories = item.get("categories") or []
+        mapped_categories = {
+            FLIPP_CATEGORY_MAP[c] for c in raw_categories if c in FLIPP_CATEGORY_MAP
+        }
+        if not mapped_categories:
+            continue  # not Produce/Beverages/Pantry (or an unlabeled junk entry)
+        category = sorted(mapped_categories)[0]
+
+        name_lower = item_name.lower()
+        # Hard safety net — overrides everything else, even a category
+        # Aldi itself tagged as allowed. See comment above _is_meat_or_deli.
+        if _is_meat_or_deli(name_lower):
+            continue
+
+        price_text = item.get("price_text")
+        try:
+            sale_price = float(price_text)
+        except (TypeError, ValueError):
+            continue  # can't confirm a real number, skip rather than guess
+
         dedupe_key = (item_name.lower(), sale_price)
         if dedupe_key in seen_names:
             continue
         seen_names.add(dedupe_key)
 
-        category = guess_category(item_name)
-        name_lower = item_name.lower()
-
-        # Hard safety net first — see _is_meat_or_deli's comment above.
-        # This overrides everything else, even if guess_category() (or the
-        # "always allowed" egg check below) would otherwise have let it
-        # through.
-        if _is_meat_or_deli(name_lower):
-            continue
-
-        always_allowed = any(kw in name_lower for kw in ALWAYS_ALLOWED_NAME_KEYWORDS)
-        if category not in ALDI_ALLOWED_CATEGORIES and not always_allowed:
-            continue  # not Produce/Beverages/Pantry, and not an egg item — skip it
+        unit = item.get("post_price_text") or None
+        date_from = item.get("valid_from")
+        date_to = item.get("valid_to")
 
         deals.append(
             {
                 "store_slug": STORE_SLUG,
                 "item_name": item_name,
-                "original_price": original_price,
+                "original_price": None,  # the flyer confirms it's a markdown
+                                          # via pre_price_text, not a shown
+                                          # before-price — see note below
                 "sale_price": sale_price,
-                "unit": None,
+                "unit": unit,
                 "category": category,
                 "date_valid_from": date_from,
                 "date_valid_to": date_to,
-                "raw_text": block.strip()[:300],
+                "raw_text": json.dumps(item)[:300],
             }
         )
     return deals
 
 
 def run(save_to_db: bool = True, limit_preview: int = 8) -> list[dict]:
-    text = get_all_specials_live()
-    is_live = text is not None
-    if not is_live:
-        print(f"[{STORE_SLUG}] Using cached snapshot (dev fallback).")
-        text = SAMPLE_PATH.read_text()
+    sample_path = _find_latest_sample_path()
+    if sample_path is None:
+        print(
+            f"[{STORE_SLUG}] No cached Flipp snapshot found in sample_data/ "
+            f"(expected a file like aldi_YYYY-MM-DD_flipp.json). A live "
+            f"browser step needs to fetch the current flyer feed first — "
+            f"see this file's docstring. Skipping Aldi for this run."
+        )
+        return []
 
-    mode = "LIVE" if is_live else "CACHED SNAPSHOT (dev fallback)"
-    print(f"[{STORE_SLUG}] Source mode: {mode}")
+    print(f"[{STORE_SLUG}] Source mode: CACHED SNAPSHOT ({sample_path.name})")
+    flipp_items = json.loads(sample_path.read_text())
 
-    deals = parse_deals(text)
-    print(f"[{STORE_SLUG}] Parsed {len(deals)} candidate deals (Produce/Eggs/Pantry/Beverages only).")
+    deals = parse_deals(flipp_items)
     print(
-        f"[{STORE_SLUG}] NOTE: Aldi updates its weekly ad on Wednesdays, so dates "
-        f"shown are an ESTIMATED Wednesday-to-Tuesday sale week "
-        f"({deals[0]['date_valid_from'] if deals else 'n/a'} to "
-        f"{deals[0]['date_valid_to'] if deals else 'n/a'}). Aldi is not a "
-        f"dedicated kosher grocer — kosher certification isn't reliably "
-        f"published on this site and isn't checked by this scraper."
+        f"[{STORE_SLUG}] Parsed {len(deals)} genuine PRICE-DROPS deals "
+        f"(Produce/Beverages/Pantry only, meat/deli always excluded)."
     )
+    if deals:
+        print(
+            f"[{STORE_SLUG}] Sale window per the flyer itself: "
+            f"{deals[0]['date_valid_from']} to {deals[0]['date_valid_to']} "
+            f"(these are real confirmed dates, not an estimate)."
+        )
+    else:
+        print(
+            f"[{STORE_SLUG}] No qualifying deals this week — pages will "
+            f"show empty for any category with nothing genuine, per the "
+            f"founder's explicit rule not to pad with regular-price items."
+        )
 
     print(f"\nFirst {min(limit_preview, len(deals))} scraped items:")
     for d in deals[:limit_preview]:
         print(
-            f"  - [{d['category']:<7}] {d['item_name']:<50} ${d['sale_price']:.2f}"
+            f"  - [{d['category']:<10}] {d['item_name']:<45} ${d['sale_price']:.2f}"
         )
 
     if save_to_db:

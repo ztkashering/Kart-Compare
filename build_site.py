@@ -132,17 +132,17 @@ STORE_META = {
         ),
     },
     "aldi": {
-        "dates_confirmed": False,
+        "dates_confirmed": True,
         "note": (
             "An earlier pass showed items here that turned out to just be "
             "Aldi's regular everyday prices, not real markdowns — that's "
-            "been caught and fixed. This page now only counts an item if "
-            "there's real before/after pricing proof, which the general "
-            "product-list page doesn't reliably show. Aldi does publish a "
-            "real dated weekly sale flyer with clear \"Price Drops\" tags "
-            "(found 2026-08-07) — hooking the scraper up to that flyer "
-            "directly is the next step, so this page is honestly empty "
-            "until that's done rather than showing anything unverified."
+            "been caught and fixed (2026-08-07). This page is now built "
+            "directly from Aldi's own official weekly flyer, using its "
+            "\"Price Drops\" tag as the only signal for a genuine sale — "
+            "if the flyer doesn't mark it as a Price Drop, it isn't shown "
+            "here, even if it appears elsewhere on Aldi's site. If a "
+            "category has no genuine Price Drops this week, it's shown "
+            "empty rather than padded with regular-price items."
         ),
         "kosher_note": (
             "Aldi is a general supermarket, not a dedicated kosher grocer. "
