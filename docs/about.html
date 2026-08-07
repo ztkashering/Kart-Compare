@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>About — Kart Compare</title>
+<meta name="description" content="What Kart Compare is, how the data is gathered, and how to report a wrong price. An independent, unofficial project.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#4F46E5">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About — Kart Compare">
+<meta property="og:description" content="What Kart Compare is, how the data is gathered, and how to report a wrong price. An independent, unofficial project.">
+<meta property="og:image" content="og-image.png">
+<meta property="og:url" content="https://example.com/about.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About — Kart Compare">
+<meta name="twitter:description" content="What Kart Compare is, how the data is gathered, and how to report a wrong price. An independent, unofficial project.">
+<meta name="twitter:image" content="og-image.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.min.css">
+<style>
+:root {
+  --brand: #4F46E5;
+  --brand-dark: #383096;
+  --brand-darker: #26205e;
+  --brand-light: #EEF2FF;
+  --accent: #F97316;
+  --accent-dark: #C2410C;
+  --success: #059669;
+  --success-light: #ECFDF5;
+  --bg: #F7F7FB;
+  --card-bg: #ffffff;
+  --border: #E5E7EB;
+  --text: #111827;
+  --muted: #6B7280;
+  --amber-bg: #FFFBEB;
+  --amber-border: #FDE68A;
+  --amber-text: #92600A;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+.wrap { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+
+/* ---------- Header (NOT sticky — see build_site.py notes on why) ---------- */
+.site-header {
+  background: var(--brand);
+  color: white;
+  box-shadow: 0 2px 10px rgba(17,24,39,0.12);
+}
+.header-top {
+  max-width: 1140px; margin: 0 auto; padding: 12px 20px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+}
+.brand-row { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand-row .wordmark { font-size: 19px; font-weight: 800; letter-spacing: -0.02em; color: white; }
+.header-search {
+  flex: 1; min-width: 200px; max-width: 420px;
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 10px; padding: 8px 12px;
+}
+.header-search input {
+  border: none; background: transparent; outline: none; color: white; font-size: 16px; width: 100%;
+}
+.header-search input::placeholder { color: rgba(255,255,255,0.75); }
+.header-search svg { flex-shrink: 0; opacity: 0.85; }
+.nav-links { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; }
+.nav-links a { text-decoration: none; opacity: 0.82; padding-bottom: 2px; }
+.nav-links a.current { opacity: 1; font-weight: 700; border-bottom: 2px solid var(--accent); }
+.nav-links a:hover { opacity: 1; }
+.header-bottom {
+  border-top: 1px solid rgba(255,255,255,0.14);
+}
+.header-bottom .wrap { padding: 8px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
+.page-sub { font-size: 13px; opacity: 0.9; font-weight: 600; }
+
+/* ---------- Hero (homepage only) ---------- */
+.hero {
+  background: linear-gradient(160deg, var(--brand) 0%, var(--brand-dark) 65%, var(--brand-darker) 100%);
+  color: white;
+  padding: 40px 20px 34px;
+}
+.hero .wrap { text-align: center; }
+.hero h1 { margin: 0 0 10px; font-size: 32px; font-weight: 800; letter-spacing: -0.03em; }
+.hero p.sub { margin: 0 auto; max-width: 560px; font-size: 15px; opacity: 0.9; line-height: 1.5; }
+.stat-row { display: flex; justify-content: center; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
+.stat-chip {
+  background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 999px; padding: 8px 16px; font-size: 13px; font-weight: 600;
+}
+.stat-chip strong { font-weight: 800; }
+.stat-chip.fresh { background: var(--accent); border-color: var(--accent); }
+
+/* ---------- Page header (store pages) ---------- */
+.page-header { background: var(--card-bg); border-bottom: 1px solid var(--border); padding: 22px 20px; }
+.page-header h1 { margin: 0 0 6px; font-size: 24px; font-weight: 800; letter-spacing: -0.02em; }
+.page-header .sub { color: var(--text); font-size: 14px; font-weight: 600; }
+.page-header .sub .muted-part { color: var(--muted); font-weight: 400; }
+
+/* ---------- Date banner ---------- */
+.date-banner {
+  margin: 16px auto 0; padding: 12px 18px; border-radius: 10px; font-size: 13px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.date-banner.confirmed { background: var(--success-light); color: #036b4a; border: 1px solid #b8e6d2; }
+.date-banner.estimated { background: var(--amber-bg); color: var(--amber-text); border: 1px solid var(--amber-border); }
+.date-banner .big { font-size: 15px; font-weight: 800; }
+
+/* ---------- Sticky toolbar: filters (the ONLY sticky element on the page) ---------- */
+.toolbar {
+  position: sticky; top: 0; z-index: 30;
+  background: rgba(247,247,251,0.95); backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+}
+.toolbar-inner { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.toolbar select {
+  padding: 9px 12px; border: 1px solid var(--border); border-radius: 8px;
+  font-size: 13.5px; background: white; color: var(--text); font-family: inherit;
+}
+.pill-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.pill {
+  border: 1px solid var(--border); background: white; color: var(--text);
+  border-radius: 999px; padding: 7px 14px; font-size: 13px; font-weight: 600;
+  cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all .12s ease;
+}
+.pill:hover { border-color: var(--brand); }
+.pill.active { background: var(--brand); border-color: var(--brand); color: white; }
+.count { padding: 10px 0 0; font-size: 13px; color: var(--muted); }
+
+/* ---------- Deals grid ---------- */
+.grid {
+  margin: 14px 0 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(232px, 1fr));
+  gap: 16px;
+}
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  position: relative;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+.card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(17,24,39,0.08); border-color: #d7d9e6; }
+.card .icon-row { display: flex; align-items: center; justify-content: space-between; }
+.card .icon-badge {
+  width: 40px; height: 40px; border-radius: 10px; background: var(--brand-light);
+  display: flex; align-items: center; justify-content: center; font-size: 20px;
+}
+.card .savings-badge {
+  background: var(--success-light); color: var(--success);
+  font-size: 11px; font-weight: 800; padding: 4px 8px; border-radius: 999px;
+}
+.card .cat-tag {
+  font-size: 11px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em;
+}
+.card .name {
+  font-size: 14.5px; font-weight: 700; line-height: 1.35; min-height: 40px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.card .store-tag {
+  font-size: 12px; color: var(--brand); font-weight: 600; background: var(--brand-light);
+  display: inline-block; padding: 2px 8px; border-radius: 6px; width: fit-content;
+}
+.card .price-row { display: flex; align-items: baseline; gap: 8px; margin-top: auto; }
+.card .sale-price { font-size: 21px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; }
+.card .old-price { font-size: 13px; color: var(--muted); text-decoration: line-through; }
+.card .unit-note { font-size: 12px; color: var(--muted); margin-top: -4px; }
+.card .add-btn {
+  margin-top: 4px; border: 1.5px solid var(--brand); background: white; color: var(--brand);
+  border-radius: 8px; padding: 10px 10px; font-size: 13px; cursor: pointer; font-weight: 700;
+  font-family: inherit; transition: all .12s ease;
+}
+.card .add-btn:hover { background: var(--brand-light); }
+.card .add-btn.added { background: var(--brand); color: white; }
+.empty { max-width: 1140px; margin: 60px auto; text-align: center; color: var(--muted); padding: 0 20px; line-height: 1.6; }
+
+/* ---------- Store cards (homepage browse section) ---------- */
+.store-grid {
+  margin: 16px 0 0;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px;
+}
+.store-card {
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px;
+  padding: 18px; text-decoration: none; display: flex; flex-direction: column; gap: 8px;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.store-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(17,24,39,0.08); }
+.store-card .avatar {
+  width: 38px; height: 38px; border-radius: 10px; background: var(--brand-light); color: var(--brand);
+  display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px;
+}
+.store-card h3 { margin: 0; font-size: 16px; color: var(--text); font-weight: 700; }
+.store-card .n { font-size: 13px; color: var(--muted); }
+.store-card .d { font-size: 12px; font-weight: 600; }
+.store-card .d.confirmed { color: var(--success); }
+.store-card .d.estimated { color: var(--amber-text); }
+
+.section-title { margin: 34px 0 4px; font-size: 18px; font-weight: 800; letter-spacing: -0.01em; }
+.section-sub { margin: 0 0 4px; font-size: 13px; color: var(--muted); }
+
+.roadmap-banner {
+  margin: 28px 0 0; padding: 16px 18px;
+  background: var(--card-bg); border: 1px dashed #c7c9e0; border-radius: 12px;
+  font-size: 13px; color: var(--muted); line-height: 1.5;
+}
+.roadmap-banner strong { color: var(--text); }
+
+/* ---------- About page ---------- */
+.about-body { max-width: 720px; margin: 0 auto; padding: 36px 20px 60px; line-height: 1.7; font-size: 15px; }
+.about-body h1 { font-size: 28px; font-weight: 800; margin: 0 0 6px; letter-spacing: -0.02em; }
+.about-body h2 { font-size: 18px; font-weight: 800; margin: 32px 0 10px; }
+.about-body p { margin: 0 0 14px; color: var(--text); }
+.about-body .lead { color: var(--muted); font-size: 15px; margin-bottom: 28px; }
+.about-body a.btn {
+  display: inline-block; margin-top: 6px; background: var(--brand); color: white;
+  text-decoration: none; padding: 10px 18px; border-radius: 8px; font-weight: 700; font-size: 14px;
+}
+.disclaimer-box {
+  background: var(--amber-bg); border: 1px solid var(--amber-border); color: var(--amber-text);
+  border-radius: 10px; padding: 16px 18px; font-size: 13.5px; margin: 20px 0; line-height: 1.6;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  margin-top: 40px;
+  background: var(--brand-darker);
+  color: rgba(255,255,255,0.75);
+  padding: 30px 20px 24px;
+  font-size: 13px;
+}
+.site-footer .wrap { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+.site-footer .fb { font-weight: 800; color: white; font-size: 15px; }
+.site-footer .footer-links { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-top: 6px; }
+.site-footer .footer-links a { text-decoration: none; opacity: 0.85; }
+.site-footer .footer-links a:hover { opacity: 1; }
+.site-footer .fine-print { font-size: 11.5px; opacity: 0.6; margin-top: 10px; max-width: 560px; }
+
+/* ---------- Shopping list ---------- */
+.shopping-list-toggle {
+  position: fixed; bottom: 20px; right: 20px; z-index: 45;
+  background: var(--accent); color: white; border: none; border-radius: 999px;
+  padding: 14px 22px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit;
+  box-shadow: 0 6px 18px rgba(194,65,12,0.35);
+}
+.shopping-list-toggle:hover { background: var(--accent-dark); }
+.shopping-list-panel {
+  position: fixed; bottom: 0; right: 0; width: 380px; max-width: 94vw; max-height: 80vh;
+  background: white; border-radius: 16px 0 0 0; box-shadow: 0 -6px 24px rgba(17,24,39,0.18);
+  padding: 18px; overflow-y: auto; display: none; z-index: 46;
+}
+.shopping-list-panel.open { display: block; }
+.shopping-list-panel h3 { margin: 0 0 12px; font-size: 16px; font-weight: 800; }
+.shopping-list-panel .sl-item {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px; padding: 8px 0; border-bottom: 1px solid var(--border);
+}
+.shopping-list-panel .sl-remove {
+  border: none; background: var(--brand-light); color: var(--brand); cursor: pointer;
+  font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 6px;
+}
+.shopping-list-panel .sl-empty { color: var(--muted); font-size: 13px; }
+.compare-btn {
+  width: 100%; margin-top: 14px; padding: 11px; border: none; border-radius: 10px;
+  background: var(--accent); color: white; font-weight: 700; font-size: 13.5px; cursor: pointer;
+  font-family: inherit;
+}
+.compare-btn:hover { background: var(--accent-dark); }
+.compare-results { margin-top: 14px; border-top: 1px solid var(--border); padding-top: 10px; }
+.compare-results .store-result { display: flex; justify-content: space-between; font-size: 13px; padding: 7px 0; }
+.compare-results .store-result.best {
+  font-weight: 800; color: var(--success); background: var(--success-light);
+  margin: 0 -8px; padding: 7px 8px; border-radius: 8px;
+}
+.compare-results .coverage { color: var(--muted); font-size: 11px; font-weight: 400; }
+.compare-note { font-size: 11px; color: var(--muted); margin-top: 8px; line-height: 1.5; }
+
+/* ============================================================
+   Mobile responsive rules — the site had NONE of these before
+   the launch-readiness audit; without a viewport tag + these
+   rules, phones were rendering a shrunk-down desktop layout.
+   ============================================================ */
+@media (max-width: 720px) {
+  .header-top { padding: 10px 14px; gap: 10px; }
+  .brand-row .wordmark { font-size: 17px; }
+  .header-search { order: 3; max-width: 100%; flex-basis: 100%; }
+  .nav-links { order: 2; font-size: 12.5px; gap: 12px; }
+  .header-bottom .wrap { padding: 7px 14px; }
+
+  .hero { padding: 28px 14px 26px; }
+  .hero h1 { font-size: 25px; }
+  .hero p.sub { font-size: 13.5px; }
+  .stat-row { gap: 8px; }
+  .stat-chip { font-size: 12px; padding: 7px 12px; }
+
+  .page-header { padding: 16px 14px; }
+  .page-header h1 { font-size: 20px; }
+
+  .wrap { padding: 0 14px; }
+  .toolbar-inner { gap: 8px; }
+  .toolbar select { flex: 1; min-width: 0; }
+  .pill-row { width: 100%; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }
+  .pill { flex-shrink: 0; }
+
+  .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .card { padding: 12px; }
+  .card .name { font-size: 13.5px; min-height: 36px; }
+  .card .sale-price { font-size: 18px; }
+
+  .shopping-list-toggle { bottom: 14px; right: 14px; padding: 12px 18px; font-size: 13px; }
+  .shopping-list-panel { width: 100%; max-width: 100vw; border-radius: 16px 16px 0 0; }
+
+  .about-body { padding: 24px 16px 48px; }
+  .about-body h1 { font-size: 23px; }
+}
+</style>
+</head>
+<body>
+<div class="site-header">
+  <div class="header-top">
+    <a class="brand-row" href="index.html">
+      
+<svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="2" y="2" width="44" height="44" rx="13" fill="var(--brand)"/>
+  <path d="M12 15h3l3.2 14.5a2 2 0 0 0 2 1.6h11a2 2 0 0 0 1.95-1.55L35.5 19H18" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="21" cy="35" r="2" fill="white"/>
+  <circle cx="30" cy="35" r="2" fill="white"/>
+  <circle cx="34" cy="14" r="7" fill="var(--accent)"/>
+  <path d="M31.6 14l1.6 1.6L36.6 12" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
+
+      <span class="wordmark">Kart Compare</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a><a href="about.html" class="current">About</a><a href="bingo.html">Bingo</a><a href="gourmet-glatt.html">Gourmet Glatt</a><a href="kosher-village.html">Kosher Village</a><a href="kosher-west.html">Kosher West</a><a href="nutmeg.html">Nutmeg</a><a href="seasons.html">Seasons</a>
+    </div>
+  </div>
+</div>
+<div class="about-body">
+  <h1>About Kart Compare</h1>
+  <p class="lead">Compare grocery deals across Lakewood — all in one cart.</p>
+
+  <div class="disclaimer-box">
+    <strong>Kart Compare is an independent, unofficial project.</strong> It is not built, run, endorsed,
+    or affiliated with any of the stores listed. It exists to make it easier to compare public sale prices
+    that each store already publishes on their own website.
+  </div>
+
+  <h2>What this is</h2>
+  <p>Kart Compare collects this week's sale prices directly from each store's own public website and lays
+  them out side by side, with search, category filters, and a shopping-list tool that estimates which store
+  is cheapest for a whole list of items.</p>
+
+  <h2>How the data gets here</h2>
+  <p>Every price on this site is read directly from the store's own website or published flyer &mdash;
+  nothing is estimated or made up. Some stores publish an exact "sale valid through" date; where they
+  don't, this site shows an honest estimated window instead of guessing at a date, clearly labeled either way.</p>
+
+  <h2>How fresh is this?</h2>
+  <p>Every page shows when its prices were last checked. Sale prices can and do change without notice,
+  sometimes within just a few days &mdash; always treat the price at checkout as the real one.</p>
+
+  <h2>Something look wrong?</h2>
+  <p>If a price looks off, or a store's page seems out of date, please let us know &mdash; it helps keep
+  this useful for everyone.</p>
+  <a class="btn" href="mailto:practicer247@gmail.com?subject=Wrong%20price%20on%20Kart%20Compare">Report a wrong price</a>
+
+  <h2>Where this is headed</h2>
+  <p>Wine store deals alongside groceries, a smarter search that understands what you mean rather than just
+  matching keywords, and a more complete shopping-list price comparison across full store catalogs, not just
+  this week's specials.</p>
+</div>
+
+<div class="site-footer">
+  <div class="wrap">
+    <div class="fb">Kart Compare</div>
+    <div>Compare grocery deals across Lakewood — all in one cart.</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a><a href="about.html" class="current">About</a><a href="bingo.html">Bingo</a><a href="gourmet-glatt.html">Gourmet Glatt</a><a href="kosher-village.html">Kosher Village</a><a href="kosher-west.html">Kosher West</a><a href="nutmeg.html">Nutmeg</a><a href="seasons.html">Seasons</a>
+      <a href="mailto:practicer247@gmail.com?subject=Wrong%20price%20on%20Kart%20Compare">Report a wrong price</a>
+    </div>
+    <div class="fine-print">Prices and sale dates are scraped from each store's own site and may change without notice. Always confirm at checkout. Kart Compare is an independent, unofficial project and is not affiliated with the stores listed.</div>
+  </div>
+</div>
+<script data-goatcounter="https://YOURCODE.goatcounter.com/count"
+  async src="//gc.zgo.at/count.js"></script>
+<!-- Free, privacy-friendly analytics (no cookie banner needed). Sign up at
+     https://www.goatcounter.com and replace GOATCOUNTER_CODE in build_site.py
+     with your own site code — until then this line quietly does nothing. -->
+</body>
+</html>

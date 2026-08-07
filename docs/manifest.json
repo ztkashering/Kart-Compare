@@ -1,0 +1,22 @@
+{
+  "name": "Kart Compare",
+  "short_name": "Kart Compare",
+  "description": "Compare grocery deals across Lakewood \u2014 all in one cart.",
+  "start_url": "index.html",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#F7F7FB",
+  "theme_color": "#4F46E5",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
