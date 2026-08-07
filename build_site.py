@@ -150,9 +150,10 @@ STORE_META = {
     "shoprite": {
         "dates_confirmed": False,
         "note": (
-            "ShopRite's weekly ad setup for the Jackson, NJ location "
-            "(the closest working store to Lakewood) is in progress — this "
-            "page will fill in with real deals once that's finished."
+            "ShopRite's scraper (Jackson, NJ location — the closest working "
+            "store to Lakewood) is built and runs automatically with the "
+            "other stores, but hasn't captured a live weekly ad yet — this "
+            "page will fill in with real deals after that next run."
         ),
         "kosher_note": (
             "ShopRite is a general supermarket, not a dedicated kosher "

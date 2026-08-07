@@ -137,6 +137,8 @@ python3 -m scrapers.nutmeg_scraper
 python3 -m scrapers.kosher_west_scraper
 python3 -m scrapers.kosher_village_scraper
 python3 -m scrapers.bingo_scraper
+python3 -m scrapers.aldi_scraper
+python3 -m scrapers.shoprite_scraper
 cd ..
 python3 export_deals.py
 python3 build_site.py
