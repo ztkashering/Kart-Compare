@@ -88,6 +88,7 @@ STORE_META = {
     "gourmet-glatt": {
         "dates_confirmed": True,
         "note": "Dates confirmed directly from this week's real flyer text.",
+        "location_note": "Tracking Gourmet Glatt's own Lakewood, NJ store — a single-location retailer, so no store-locator step is needed.",
     },
     "seasons": {
         "dates_confirmed": False,
@@ -98,6 +99,7 @@ STORE_META = {
             "Wednesday-morning-to-Tuesday-night sale week, not a store-"
             "published exact date."
         ),
+        "location_note": "Tracking the Lakewood, NJ (08701) location — confirmed via this store's ZIP-code locator before reading specials, so a different branch's ad can't be shown by mistake.",
     },
     "nutmeg": {
         "dates_confirmed": False,
@@ -106,6 +108,7 @@ STORE_META = {
             "Dates below reflect this store's real Wednesday-morning-to-"
             "Tuesday-night sale week, not a store-published exact date."
         ),
+        "location_note": "Tracking the Lakewood, NJ (08701) location — confirmed via this store's ZIP-code locator before reading specials, so a different branch's ad can't be shown by mistake.",
     },
     "kosher-west": {
         "dates_confirmed": False,
@@ -114,6 +117,7 @@ STORE_META = {
             "Dates below reflect this store's real Wednesday-morning-to-"
             "Tuesday-night sale week, not a store-published exact date."
         ),
+        "location_note": "Tracking the Lakewood, NJ (08701) location — confirmed via this store's ZIP-code locator before reading specials, so a different branch's ad can't be shown by mistake.",
     },
     "kosher-village": {
         "dates_confirmed": False,
@@ -122,6 +126,7 @@ STORE_META = {
             "Dates below reflect the same Wednesday-to-Tuesday sale week as "
             "the other estimated stores, not a store-published exact date."
         ),
+        "location_note": "Tracking Kosher Village's own Lakewood, NJ store — a single-location retailer, so no store-locator step is needed.",
     },
     "bingo": {
         "dates_confirmed": False,
@@ -130,6 +135,7 @@ STORE_META = {
             "last scrape — this page will fill in automatically once they "
             "post one."
         ),
+        "location_note": "Tracking Bingo Wholesale's own Lakewood, NJ store — a single-location retailer, so no store-locator step is needed.",
     },
     "aldi": {
         "dates_confirmed": False,
@@ -147,6 +153,14 @@ STORE_META = {
             "please check the package's own kosher certification (hechsher) "
             "before buying — this site can't verify that automatically."
         ),
+        "location_note": (
+            "Aldi is a national chain, so unlike the single-location stores "
+            "above, this page targets the Lakewood, NJ (08701) area "
+            "specifically by confirming that ZIP with Aldi's store locator "
+            "before reading the weekly ad — not yet double-checked against "
+            "a live run, so treat this week's Aldi numbers as provisional "
+            "until the next scheduled refresh confirms them."
+        ),
     },
     "shoprite": {
         "dates_confirmed": False,
@@ -162,6 +176,11 @@ STORE_META = {
             "entirely. For everything else, please check the package's own "
             "kosher certification (hechsher) before buying — this site "
             "can't verify that automatically."
+        ),
+        "location_note": (
+            "Lakewood itself has no ShopRite, so this page targets the "
+            "closest working location — Jackson, NJ (08527) — confirmed via "
+            "ShopRite's store locator before reading the weekly ad."
         ),
     },
 }
@@ -1019,6 +1038,12 @@ def build_store_page(store_slug, store_name, deals, stores):
     <div class="date-banner estimated">
       <span class="big">Not a dedicated kosher grocer</span>
       <span>{meta['kosher_note']}</span>
+    </div>"""
+    if meta.get("location_note"):
+        banner += f"""
+    <div class="date-banner estimated">
+      <span class="big">Which location this tracks</span>
+      <span>{meta['location_note']}</span>
     </div>"""
     date_note = "confirmed sale dates" if meta["dates_confirmed"] else "an estimated sale window"
     page_header = f"""

@@ -3,11 +3,27 @@ aldi_scraper.py — Aldi (Lakewood, NJ — 80 NJ-70).
 
 PLAIN-ENGLISH NOTE: Aldi's "Weekly Specials" page (aldi.us/en/weekly-specials/)
 renders real product cards with a name, current price, and (for sale items)
-an original price and a percent-off badge — and unlike the other platform
-stores, it didn't need a ZIP-code/location confirmation step to load real
-data. Aldi updates this page every Wednesday, so — same reasoning as
-Seasons/Nutmeg/Kosher West/Kosher Village — deals are tagged with the real
-Wednesday-to-Tuesday sale week.
+an original price and a percent-off badge. Aldi updates this page every
+Wednesday, so — same reasoning as Seasons/Nutmeg/Kosher West/Kosher
+Village — deals are tagged with the real Wednesday-to-Tuesday sale week.
+
+CORRECTION (2026-08-07): an earlier version of this file claimed Aldi
+"didn't need a ZIP-code/location confirmation step to load real data,"
+unlike the platform behind Seasons/Nutmeg/Kosher West. That claim was
+never actually verified with a live browser — it was an assumption, and
+a risky one: Aldi is a national multi-location chain, exactly the kind of
+site where grocery_platform_scraper.py's docstring warns a generic URL
+can silently serve a different region's ad with no error at all. So this
+now confirms the Lakewood-area ZIP (08701) via a real browser before
+reading the specials page, the same way every other multi-location store
+in this codebase does — see get_page_live() below. UNVERIFIED CAVEAT:
+this sandbox has no browser installed (same limitation noted throughout
+this codebase), so the ZIP-confirmation selectors below are a best-effort
+guess, not yet confirmed against Aldi's real store-locator flow. The
+first live run (e.g. the scheduled task) needs to confirm or correct
+them, then save that output as a fresh sample_data/aldi_<date>_specials.txt
+snapshot — the current one predates this fix and was never confirmed to
+be Lakewood-area data either.
 
 IMPORTANT — Aldi is a general supermarket, not a dedicated kosher grocer
 like the other six stores. Per the founder's explicit instruction:
@@ -84,29 +100,74 @@ ALLOWED_EXCEPTION_KEYWORDS = ["salmon"]
 EXCLUDED_CATEGORIES_NO_EXCEPTION = {"Bakery"}
 
 
+ZIP_CODE = "08701"  # Lakewood, NJ
+
+
 def get_page_text_live() -> str | None:
+    """Confirm the Lakewood-area (08701) store via Aldi's store locator,
+    then read the weekly-specials page with a real browser.
+
+    UNVERIFIED — see the module docstring's 2026-08-07 correction. This
+    replaces a plain `requests.get()` that could only ever see whatever
+    Aldi serves with no location set at all (most likely a generic
+    default store, not necessarily Lakewood's), and had no way to detect
+    if the "wrong region" trap already documented in
+    grocery_platform_scraper.py was happening here too.
+    """
     try:
-        import requests
-    except ImportError:
+        from selenium import webdriver
+        from selenium.webdriver.chrome.options import Options
+        from selenium.webdriver.common.by import By
+        import time
+    except ImportError as e:
+        print(f"[aldi] Live mode unavailable, missing package: {e}")
         return None
+
+    options = Options()
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    driver = None
     try:
-        resp = requests.get(
-            SPECIALS_URL,
-            headers={"User-Agent": "Mozilla/5.0 (compatible; LakewoodDealsBot/1.0)"},
-            timeout=20,
-        )
-        resp.raise_for_status()
-        text = resp.text
-        # Aldi's page is JavaScript-rendered — a plain request usually just
-        # returns an empty page shell. If we don't see real product text,
-        # treat this as "live fetch not usable" so it falls back to the
-        # cached snapshot instead of saving zero deals.
+        driver = webdriver.Chrome(options=options)
+        driver.get(SPECIALS_URL)
+        time.sleep(2)
+
+        try:
+            accept_btn = driver.find_element(
+                By.XPATH, "//*[self::button or self::a][contains(translate(text(),'ACEPT','acept'),'accept')]"
+            )
+            accept_btn.click()
+            time.sleep(1)
+        except Exception:
+            pass  # no cookie banner present, fine
+
+        try:
+            zip_input = driver.find_element(By.XPATH, "//input[@type='text' or @type='tel' or @type='search']")
+            zip_input.send_keys(ZIP_CODE)
+            go_btn = driver.find_element(By.XPATH, "//button[not(@type='text')]")
+            go_btn.click()
+            time.sleep(2)
+            driver.get(SPECIALS_URL)  # reload specials with the ZIP now confirmed
+        except Exception as e:
+            print(
+                f"[aldi] Could not confirm the Lakewood, NJ (08701) store "
+                f"automatically ({e}); the specials below may be for the "
+                f"wrong region."
+            )
+
+        driver.implicitly_wait(5)
+        time.sleep(2)
+        text = driver.page_source
+
         if "Current price:" not in text:
             return None
         return text
     except Exception as e:
         print(f"[aldi] Live fetch failed ({e}); using cached snapshot.")
         return None
+    finally:
+        if driver:
+            driver.quit()
 
 
 def _extract_name(block_lines: list[str]) -> str | None:
