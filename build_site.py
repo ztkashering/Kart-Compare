@@ -131,6 +131,37 @@ STORE_META = {
             "post one."
         ),
     },
+    "aldi": {
+        "dates_confirmed": False,
+        "note": (
+            "Aldi doesn't publish an exact valid-through date online, but "
+            "updates its weekly ad every Wednesday. Dates below reflect that "
+            "real Wednesday-morning-to-Tuesday-night sale week, not a "
+            "store-published exact date."
+        ),
+        "kosher_note": (
+            "Aldi is a general supermarket, not a dedicated kosher grocer. "
+            "Meat and deli items are left off this page entirely (fish like "
+            "salmon is the one exception). For everything else shown here, "
+            "please check the package's own kosher certification (hechsher) "
+            "before buying — this site can't verify that automatically."
+        ),
+    },
+    "shoprite": {
+        "dates_confirmed": False,
+        "note": (
+            "ShopRite's weekly ad setup for the Jackson, NJ location "
+            "(the closest working store to Lakewood) is in progress — this "
+            "page will fill in with real deals once that's finished."
+        ),
+        "kosher_note": (
+            "ShopRite is a general supermarket, not a dedicated kosher "
+            "grocer. Meat and deli items will always be left off this page "
+            "entirely. For everything else, please check the package's own "
+            "kosher certification (hechsher) before buying — this site "
+            "can't verify that automatically."
+        ),
+    },
 }
 
 LOGO_SVG = """
@@ -981,6 +1012,12 @@ def render_date_banner(store_slug, deals):
 def build_store_page(store_slug, store_name, deals, stores):
     banner = render_date_banner(store_slug, deals)
     meta = STORE_META[store_slug]
+    if meta.get("kosher_note"):
+        banner += f"""
+    <div class="date-banner estimated">
+      <span class="big">Not a dedicated kosher grocer</span>
+      <span>{meta['kosher_note']}</span>
+    </div>"""
     date_note = "confirmed sale dates" if meta["dates_confirmed"] else "an estimated sale window"
     page_header = f"""
     <div class="page-header">

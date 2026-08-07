@@ -15,7 +15,7 @@ DB_DIR = Path(__file__).parent
 # cloud-mounted folders don't support the file-locking SQLite needs, which
 # shows up as "disk I/O error" — if you hit that, point DEALS_DB_PATH at a
 # plain local folder instead.
-DB_PATH = Path(os.environ.get("DEALS_DB_PATH", str(DB_DIR / "deals.db")))
+DB_PATH = Path(os.environ.get("DEALS_DB_PATH", str(DB_DIR / "deals_all_stores.db")))
 SCHEMA_PATH = DB_DIR / "schema.sql"
 
 

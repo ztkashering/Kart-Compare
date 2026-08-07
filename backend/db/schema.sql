@@ -68,11 +68,18 @@ INSERT OR IGNORE INTO categories (name) VALUES
     ('Produce'), ('Meat & Deli'), ('Dairy'), ('Bakery'), ('Beverages'),
     ('Frozen'), ('Candy & Snacks'), ('Household'), ('Health & Beauty'), ('Pantry');
 
--- Seed the six stores the founder wants tracked.
+-- Seed the stores the founder wants tracked.
+-- ShopRite and Aldi (added 2026-08-07) are general supermarkets, not
+-- dedicated kosher grocers like the other six — see build_site.py's
+-- STORE_META for the kosher-certification disclaimer shown on their
+-- pages, and base_scraper.py's NON_KOSHER_FRIENDLY_EXCLUDE handling for
+-- why meat is filtered out of their scraped deals entirely.
 INSERT OR IGNORE INTO stores (name, slug, source_type, source_url) VALUES
     ('Gourmet Glatt',   'gourmet-glatt',   'pdf',  'https://gourmetglatt.com/lakewood-njersey/specials'),
     ('Seasons',         'seasons',         'html', NULL),
     ('Nutmeg',          'nutmeg',          'html', NULL),
     ('Kosher West',     'kosher-west',     'html', NULL),
     ('Kosher Village',  'kosher-village',  'html', NULL),
-    ('Bingo',           'bingo',           'pdf',  NULL);
+    ('Bingo',           'bingo',           'pdf',  NULL),
+    ('ShopRite',        'shoprite',        'html', 'https://www.shoprite.com/circulars'),
+    ('Aldi',            'aldi',            'html', 'https://www.aldi.us/en/weekly-specials/');

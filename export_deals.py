@@ -10,11 +10,18 @@ Run order for a full refresh:
 """
 
 import json
+import os
 import sqlite3
 from pathlib import Path
 
 BASE_DIR = Path(__file__).parent
-DB_PATH = BASE_DIR / "backend" / "db" / "deals.db"
+# Match database.py's path logic exactly (same env var, same default
+# filename) — these used to disagree (this file pointed at a "deals.db"
+# that doesn't exist; the real file is "deals_all_stores.db"), which would
+# have silently exported zero deals the next time this ran standalone.
+DB_PATH = Path(
+    os.environ.get("DEALS_DB_PATH", str(BASE_DIR / "backend" / "db" / "deals_all_stores.db"))
+)
 OUT_PATH = BASE_DIR / "all_deals_export.json"
 
 
