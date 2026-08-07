@@ -187,6 +187,11 @@ a { color: inherit; }
 }
 .card .add-btn:hover { background: var(--brand-light); }
 .card .add-btn.added { background: var(--brand); color: white; }
+.card .report-link {
+  font-size: 11.5px; color: var(--muted); text-decoration: none; text-align: center;
+  padding: 2px 0;
+}
+.card .report-link:hover { color: var(--accent-dark); text-decoration: underline; }
 .empty { max-width: 1140px; margin: 60px auto; text-align: center; color: var(--muted); padding: 0 20px; line-height: 1.6; }
 
 /* ---------- Store cards (homepage browse section) ---------- */
@@ -418,6 +423,7 @@ a { color: inherit; }
 <script>
 const ICONS = {"Produce": "\ud83c\udf4e", "Meat & Deli": "\ud83c\udf57", "Dairy": "\ud83e\uddc0", "Bakery": "\ud83e\udd50", "Beverages": "\ud83e\udd64", "Frozen": "\ud83e\uddca", "Candy & Snacks": "\ud83c\udf6c", "Household": "\ud83e\uddfb", "Health & Beauty": "\ud83e\uddf4", "Pantry": "\ud83d\uded2"};
 const CURRENT_STORE_SLUG = "aldi"; // "" means show every store (homepage)
+const CONTACT_EMAIL = "practicer247@gmail.com";
 window.ALL_DEALS = [];
 let DEALS = [];
 
@@ -642,6 +648,13 @@ function populateCategoryPills(values) {
   });
 }
 
+function reportMailto(d) {
+  const subject = "Wrong price/info on Kart Compare: " + d.item_name + " (" + d.store + ")";
+  const body = "Store: " + d.store + "\nItem: " + d.item_name + "\nListed price: $" + d.sale_price.toFixed(2) +
+    "\n\nWhat's wrong: (tell us here \u2014 e.g. price changed, item gone, wrong category)";
+  return "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+}
+
 function render() {
   const q = searchInput.value.trim().toLowerCase();
   const store = storeSelect ? storeSelect.value : "";
@@ -679,6 +692,7 @@ function render() {
       </div>
       ${unitNote}
       <button class="add-btn ${already ? 'added' : ''}" data-id="${d.id}">${already ? '\u2713 Added' : '+ Add'}</button>
+      <a class="report-link" href="${reportMailto(d)}">\u26a0\ufe0f Report wrong price/info</a>
     `;
     card.querySelector(".add-btn").addEventListener("click", function() {
       const added = toggleListItem(d);

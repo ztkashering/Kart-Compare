@@ -404,6 +404,11 @@ a { color: inherit; }
 }
 .card .add-btn:hover { background: var(--brand-light); }
 .card .add-btn.added { background: var(--brand); color: white; }
+.card .report-link {
+  font-size: 11.5px; color: var(--muted); text-decoration: none; text-align: center;
+  padding: 2px 0;
+}
+.card .report-link:hover { color: var(--accent-dark); text-decoration: underline; }
 .empty { max-width: 1140px; margin: 60px auto; text-align: center; color: var(--muted); padding: 0 20px; line-height: 1.6; }
 
 /* ---------- Store cards (homepage browse section) ---------- */
@@ -839,6 +844,7 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
 <script>
 const ICONS = {icons_json};
 const CURRENT_STORE_SLUG = "{store_slug_js}"; // "" means show every store (homepage)
+const CONTACT_EMAIL = "{contact_email_js}";
 window.ALL_DEALS = [];
 let DEALS = [];
 
@@ -881,6 +887,13 @@ function populateCategoryPills(values) {{
   }});
 }}
 
+function reportMailto(d) {{
+  const subject = "Wrong price/info on Kart Compare: " + d.item_name + " (" + d.store + ")";
+  const body = "Store: " + d.store + "\\nItem: " + d.item_name + "\\nListed price: $" + d.sale_price.toFixed(2) +
+    "\\n\\nWhat's wrong: (tell us here \\u2014 e.g. price changed, item gone, wrong category)";
+  return "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+}}
+
 function render() {{
   const q = searchInput.value.trim().toLowerCase();
   const store = storeSelect ? storeSelect.value : "";
@@ -918,6 +931,7 @@ function render() {{
       </div>
       ${{unitNote}}
       <button class="add-btn ${{already ? 'added' : ''}}" data-id="${{d.id}}">${{already ? '\\u2713 Added' : '+ Add'}}</button>
+      <a class="report-link" href="${{reportMailto(d)}}">\\u26a0\\ufe0f Report wrong price/info</a>
     `;
     card.querySelector(".add-btn").addEventListener("click", function() {{
       const added = toggleListItem(d);
@@ -1070,6 +1084,7 @@ def build_store_page(store_slug, store_name, deals, stores):
         analytics=ANALYTICS_SNIPPET,
         icons_json=json.dumps(ICONS),
         store_slug_js=store_slug,
+        contact_email_js=CONTACT_EMAIL,
         toggle_list_js=SHOPPING_LIST_JS,
         smart_search_js=SMART_SEARCH_JS,
         pwa_register_js=PWA_REGISTER_JS,
@@ -1143,6 +1158,7 @@ def build_homepage(all_deals, stores):
         analytics=ANALYTICS_SNIPPET,
         icons_json=json.dumps(ICONS),
         store_slug_js="",
+        contact_email_js=CONTACT_EMAIL,
         toggle_list_js=SHOPPING_LIST_JS,
         smart_search_js=SMART_SEARCH_JS,
         pwa_register_js=PWA_REGISTER_JS,
