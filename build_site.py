@@ -134,10 +134,15 @@ STORE_META = {
     "aldi": {
         "dates_confirmed": False,
         "note": (
-            "Aldi doesn't publish an exact valid-through date online, but "
-            "updates its weekly ad every Wednesday. Dates below reflect that "
-            "real Wednesday-morning-to-Tuesday-night sale week, not a "
-            "store-published exact date."
+            "An earlier pass showed items here that turned out to just be "
+            "Aldi's regular everyday prices, not real markdowns — that's "
+            "been caught and fixed. This page now only counts an item if "
+            "there's real before/after pricing proof, which the general "
+            "product-list page doesn't reliably show. Aldi does publish a "
+            "real dated weekly sale flyer with clear \"Price Drops\" tags "
+            "(found 2026-08-07) — hooking the scraper up to that flyer "
+            "directly is the next step, so this page is honestly empty "
+            "until that's done rather than showing anything unverified."
         ),
         "kosher_note": (
             "Aldi is a general supermarket, not a dedicated kosher grocer. "

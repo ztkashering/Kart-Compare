@@ -134,8 +134,8 @@ CATEGORY_KEYWORDS = {
     ],
     "Beverages": [
         "juice", "soda", "seltzer", "water bottle", " tea", "coffee",
-        "cola", "gatorade", "snapple", "sprite", "lemonade", "smart water",
-        "fresca", "grape juice",
+        " cola", "gatorade", "snapple", "sprite", "lemonade", "smart water",
+        "fresca", "grape juice", "probiotic water",
     ],
     "Frozen": [
         "frozen", "ice pop", "popsicle", "gelato", "ice cream",

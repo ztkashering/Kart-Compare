@@ -81,6 +81,7 @@ SAMPLE_PATH = Path(__file__).parent / "sample_data" / "aldi_2026-08-07_specials.
 BLOCK_SPLIT_RE = re.compile(r"(?=Current price:)")
 
 PRICE_RE = re.compile(r"Current price:\s*\$(\d+(?:\.\d{2})?)")
+ORIGINAL_PRICE_RE = re.compile(r"Original Price:\s*\$(\d+(?:\.\d{2})?)")
 
 # Lines that are never the item name — used to skip past the price/
 # percent-off/label lines and land on the first real name line.
@@ -223,6 +224,21 @@ def parse_deals(raw_text: str) -> list[dict]:
             continue
         sale_price = float(price_match.group(1))
 
+        # HONESTY CHECK (added 2026-08-07, after the founder caught this):
+        # earlier passes included items that only ever showed a single
+        # "Current price" with no "Original Price" — those are just Aldi's
+        # regular everyday price, not a real markdown. This site is about
+        # deals, so an item only counts if there's real before/after
+        # pricing evidence. If a category ends up with zero qualifying
+        # items this week, it should show nothing rather than be padded
+        # with regular-price items.
+        original_match = ORIGINAL_PRICE_RE.search(block)
+        if not original_match:
+            continue
+        original_price = float(original_match.group(1))
+        if original_price <= sale_price:
+            continue  # not actually a markdown
+
         lines = block.splitlines()
         # Drop the first line (the "Current price: ..." line itself) before
         # hunting for the name, so SKIP_LINE_RE's "Current price:" check
@@ -259,7 +275,7 @@ def parse_deals(raw_text: str) -> list[dict]:
             {
                 "store_slug": STORE_SLUG,
                 "item_name": item_name,
-                "original_price": None,
+                "original_price": original_price,
                 "sale_price": sale_price,
                 "unit": None,
                 "category": category,
