@@ -71,6 +71,17 @@ CONTACT_EMAIL = "practicer247@gmail.com"
 # "YOURCODE" below with it. Until you do, this line simply does nothing.
 GOATCOUNTER_CODE = "YOURCODE"
 
+# Report-button "instant alert" wiring (2026-08-09): tapping the report
+# button on a deal card posts silently in the background to Web3Forms, a
+# free form-relay service, which forwards it straight to the founder's
+# inbox — no email app opens on the shopper's phone, no page navigation,
+# just a two-tap confirm. Get a free key at https://web3forms.com (enter
+# an email, get a key back instantly — no password, no signup form) and
+# paste it here. Until a real key is set, the button is still fully
+# honest: it falls back to the previous "open a pre-filled email" method
+# instead of silently pretending to send something it can't.
+WEB3FORMS_ACCESS_KEY = ""
+
 ICONS = {
     "Produce": "\U0001F34E",
     "Meat & Deli": "\U0001F357",
@@ -207,6 +218,20 @@ LOGO_SVG = """
 </svg>
 """
 
+# Same mark, inverted (white badge / brand-colored icon) so it reads clearly
+# against the hero's solid brand-colored background — the plain LOGO_SVG
+# above would nearly disappear there since its square is brand-colored too.
+HERO_LOGO_SVG = """
+<svg width="72" height="72" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="2" y="2" width="44" height="44" rx="13" fill="white"/>
+  <path d="M12 15h3l3.2 14.5a2 2 0 0 0 2 1.6h11a2 2 0 0 0 1.95-1.55L35.5 19H18" stroke="var(--brand)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="21" cy="35" r="2" fill="var(--brand)"/>
+  <circle cx="30" cy="35" r="2" fill="var(--brand)"/>
+  <circle cx="34" cy="14" r="7" fill="var(--accent)"/>
+  <path d="M31.6 14l1.6 1.6L36.6 12" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
+"""
+
 FONT_LINK = '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.min.css">'
 
 # --- Shared <head> tags: favicon, mobile viewport, SEO + share previews, PWA ---
@@ -313,20 +338,39 @@ a { color: inherit; }
 
 /* ---------- Hero (homepage only) ---------- */
 .hero {
+  position: relative;
+  overflow: hidden;
   background: linear-gradient(160deg, var(--brand) 0%, var(--brand-dark) 65%, var(--brand-darker) 100%);
   color: white;
-  padding: 40px 20px 34px;
+  padding: 52px 20px 44px;
 }
-.hero .wrap { text-align: center; }
-.hero h1 { margin: 0 0 10px; font-size: 32px; font-weight: 800; letter-spacing: -0.03em; }
-.hero p.sub { margin: 0 auto; max-width: 560px; font-size: 15px; opacity: 0.9; line-height: 1.5; }
-.stat-row { display: flex; justify-content: center; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
+.hero::before {
+  content: ""; position: absolute; top: -70px; right: -60px;
+  width: 260px; height: 260px; border-radius: 50%;
+  background: var(--accent); opacity: 0.22; pointer-events: none;
+}
+.hero::after {
+  content: ""; position: absolute; bottom: -90px; left: -50px;
+  width: 220px; height: 220px; border-radius: 50%;
+  background: white; opacity: 0.07; pointer-events: none;
+}
+.hero .wrap { text-align: center; position: relative; z-index: 1; }
+.hero-logo {
+  width: 64px; height: 64px; margin: 0 auto 18px;
+  filter: drop-shadow(0 8px 18px rgba(17,24,39,0.25));
+}
+.hero-logo svg { width: 100%; height: 100%; display: block; }
+.hero h1 { margin: 0 0 10px; font-size: 34px; font-weight: 800; letter-spacing: -0.03em; }
+.hero p.sub { margin: 0 auto; max-width: 560px; font-size: 15px; opacity: 0.92; line-height: 1.5; }
+.stat-row { display: flex; justify-content: center; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
 .stat-chip {
-  background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.22);
-  border-radius: 999px; padding: 8px 16px; font-size: 13px; font-weight: 600;
+  background: white; border: none; color: var(--brand-darker);
+  box-shadow: 0 6px 16px rgba(17,24,39,0.14);
+  border-radius: 14px; padding: 10px 18px; font-size: 13px; font-weight: 600;
 }
-.stat-chip strong { font-weight: 800; }
-.stat-chip.fresh { background: var(--accent); border-color: var(--accent); }
+.stat-chip strong { font-weight: 800; color: var(--brand); }
+.stat-chip.fresh { background: var(--accent); color: white; box-shadow: 0 6px 16px rgba(194,65,12,0.3); }
+.stat-chip.fresh strong { color: white; }
 
 /* ---------- Page header (store pages) ---------- */
 .page-header { background: var(--card-bg); border-bottom: 1px solid var(--border); padding: 22px 20px; }
@@ -422,8 +466,16 @@ a { color: inherit; }
   flex-shrink: 0; width: 40px; display: flex; align-items: center; justify-content: center;
   border: none; border-radius: 10px; background: rgba(255,255,255,0.85); color: var(--muted);
   font-size: 15px; text-decoration: none; cursor: pointer; transition: all .12s ease;
+  font-family: inherit; padding: 0;
 }
 .card .report-btn:hover { background: #ffffff; color: var(--amber-text); }
+.card .report-btn.confirming {
+  width: auto; padding: 0 12px; background: #ffffff; color: var(--amber-text);
+  font-size: 12px; font-weight: 700;
+}
+.card .report-btn.reported {
+  background: var(--success-light); color: var(--success);
+}
 .empty { max-width: 1140px; margin: 60px auto; text-align: center; color: var(--muted); padding: 0 20px; line-height: 1.6; }
 
 /* ---------- Store cards (homepage browse section) ---------- */
@@ -860,6 +912,7 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
 const ICONS = {icons_json};
 const CATEGORY_STYLES = {category_styles_json};
 const CONTACT_EMAIL = "{contact_email_js}";
+const WEB3FORMS_KEY = "{web3forms_key_js}"; // empty until a real key is added — see build_site.py
 const CURRENT_STORE_SLUG = "{store_slug_js}"; // "" means show every store (homepage)
 window.ALL_DEALS = [];
 let DEALS = [];
@@ -874,6 +927,60 @@ let activeCategory = "";
 {smart_search_js}
 
 {toggle_list_js}
+
+// Report button: first tap arms a quick "Sure?" confirm (auto-resets after
+// 4s if not confirmed), second tap actually sends it — no typing, no email
+// app. Sends silently to Web3Forms (a free form-relay service) so it lands
+// straight in the founder's inbox. If no Web3Forms key is configured yet,
+// or the request fails for any reason, it honestly falls back to opening a
+// pre-filled email instead of pretending the report went through.
+function reportDeal(deal, btn) {{
+  if (btn.dataset.state !== "confirm") {{
+    btn.dataset.state = "confirm";
+    btn.textContent = "Sure?";
+    btn.classList.add("confirming");
+    clearTimeout(btn._resetTimer);
+    btn._resetTimer = setTimeout(() => {{
+      if (btn.dataset.state === "confirm") {{
+        btn.dataset.state = "";
+        btn.innerHTML = "\\u26A0";
+        btn.classList.remove("confirming");
+      }}
+    }}, 4000);
+    return;
+  }}
+  clearTimeout(btn._resetTimer);
+  btn.dataset.state = "sent";
+  btn.disabled = true;
+  btn.classList.remove("confirming");
+  btn.textContent = "\\u2026";
+
+  const subject = "Wrong price on Kart Compare: " + deal.item_name;
+  const message = "Store: " + deal.store + "\\nItem: " + deal.item_name +
+    "\\nPrice shown: $" + deal.sale_price.toFixed(2) + "\\nPage: " + location.href;
+
+  function markDone() {{
+    btn.innerHTML = "\\u2713";
+    btn.classList.add("reported");
+  }}
+  function fallbackToEmail() {{
+    window.open(
+      `mailto:${{CONTACT_EMAIL}}?subject=${{encodeURIComponent(subject)}}&body=${{encodeURIComponent(message)}}`,
+      "_blank"
+    );
+    markDone();
+  }}
+
+  if (!WEB3FORMS_KEY) {{ fallbackToEmail(); return; }}
+
+  fetch("https://api.web3forms.com/submit", {{
+    method: "POST",
+    headers: {{ "Content-Type": "application/json", "Accept": "application/json" }},
+    body: JSON.stringify({{ access_key: WEB3FORMS_KEY, subject, message }}),
+  }})
+    .then(r => (r.ok ? markDone() : fallbackToEmail()))
+    .catch(fallbackToEmail);
+}}
 
 function populateSelect(select, values) {{
   if (!select) return;
@@ -928,12 +1035,6 @@ function render() {{
     const savingsBadge = pctOff ? `<span class="savings-badge">-${{pctOff}}%</span>` : "";
     const storeTag = {show_store_js} ? `<div class="store-tag">${{d.store}}</div>` : "";
     const already = isInList(d.id);
-    const reportSubject = encodeURIComponent("Wrong price on Kart Compare: " + d.item_name);
-    const reportBody = encodeURIComponent(
-      "Store: " + d.store + "\\nItem: " + d.item_name + "\\nListed price: $" + d.sale_price.toFixed(2) +
-      "\\n\\nWhat looks wrong: "
-    );
-    const reportHref = `mailto:${{CONTACT_EMAIL}}?subject=${{reportSubject}}&body=${{reportBody}}`;
     card.innerHTML = `
       <div class="icon-row">
         <span class="icon-badge">${{ICONS[d.category] || "\U0001F6D2"}}</span>
@@ -949,13 +1050,16 @@ function render() {{
       ${{unitNote}}
       <div class="card-actions">
         <button class="add-btn ${{already ? 'added' : ''}}" data-id="${{d.id}}">${{already ? '\\u2713 Added' : '+ Add'}}</button>
-        <a class="report-btn" href="${{reportHref}}" title="Report a wrong price for this item" target="_blank" rel="noopener">\\u26A0</a>
+        <button type="button" class="report-btn" title="Report a wrong price for this item">\\u26A0</button>
       </div>
     `;
     card.querySelector(".add-btn").addEventListener("click", function() {{
       const added = toggleListItem(d);
       this.classList.toggle("added", added);
       this.textContent = added ? "\\u2713 Added" : "+ Add";
+    }});
+    card.querySelector(".report-btn").addEventListener("click", function() {{
+      reportDeal(d, this);
     }});
     grid.appendChild(card);
   }});
@@ -1098,6 +1202,7 @@ def build_store_page(store_slug, store_name, deals, stores):
         icons_json=json.dumps(ICONS),
         category_styles_json=json.dumps(CATEGORY_STYLES),
         contact_email_js=CONTACT_EMAIL,
+        web3forms_key_js=WEB3FORMS_ACCESS_KEY,
         store_slug_js=store_slug,
         toggle_list_js=SHOPPING_LIST_JS,
         smart_search_js=SMART_SEARCH_JS,
@@ -1131,6 +1236,7 @@ def build_homepage(all_deals, stores):
     hero = f"""
     <div class="hero">
       <div class="wrap">
+        <div class="hero-logo">{HERO_LOGO_SVG}</div>
         <h1>{BRAND_NAME}</h1>
         <p class="sub">{BRAND_TAGLINE}</p>
         <div class="stat-row">
@@ -1173,6 +1279,7 @@ def build_homepage(all_deals, stores):
         icons_json=json.dumps(ICONS),
         category_styles_json=json.dumps(CATEGORY_STYLES),
         contact_email_js=CONTACT_EMAIL,
+        web3forms_key_js=WEB3FORMS_ACCESS_KEY,
         store_slug_js="",
         toggle_list_js=SHOPPING_LIST_JS,
         smart_search_js=SMART_SEARCH_JS,
