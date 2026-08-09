@@ -80,7 +80,7 @@ GOATCOUNTER_CODE = "YOURCODE"
 # paste it here. Until a real key is set, the button is still fully
 # honest: it falls back to the previous "open a pre-filled email" method
 # instead of silently pretending to send something it can't.
-WEB3FORMS_ACCESS_KEY = ""
+WEB3FORMS_ACCESS_KEY = "ee7324f0-5531-4d90-a85d-e1f2a4d10e44"
 
 ICONS = {
     "Produce": "\U0001F34E",
