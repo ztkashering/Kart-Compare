@@ -149,6 +149,20 @@ a { color: inherit; }
 .signup-result.ok { color: var(--success); }
 .signup-result.err { color: var(--accent-dark); }
 
+/* ---------- Community request card ---------- */
+.serving-badge {
+  display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.18);
+  color: white; font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 999px;
+  margin-bottom: 10px;
+}
+.serving-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: #4ADE80; display: inline-block; }
+.community-card {
+  max-width: 640px; margin: 28px auto 0; background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 18px; padding: 22px 26px;
+}
+.community-card h2 { margin: 0 0 6px; font-size: 17px; font-weight: 800; }
+.community-card > p { margin: 0 0 16px; font-size: 13.5px; color: var(--muted); }
+
 /* ---------- Page header (store pages) ---------- */
 .page-header { background: var(--card-bg); border-bottom: 1px solid var(--border); padding: 22px 20px; }
 .page-header h1 { margin: 0 0 6px; font-size: 24px; font-weight: 800; letter-spacing: -0.02em; }
@@ -457,7 +471,8 @@ a { color: inherit; }
     <div>Compare grocery deals across Lakewood — all in one cart.</div>
     <div class="footer-links">
       <a href="index.html">Home</a><a href="about.html" class="current">About</a><a href="aldi.html">Aldi</a><a href="bingo.html">Bingo</a><a href="gourmet-glatt.html">Gourmet Glatt</a><a href="kosher-village.html">Kosher Village</a><a href="kosher-west.html">Kosher West</a><a href="nutmeg.html">Nutmeg</a><a href="seasons.html">Seasons</a><a href="shoprite.html">ShopRite</a>
-      <a href="privacy.html">Privacy &amp; SMS policy</a>
+      <a href="privacy.html">Privacy policy</a>
+      <a href="terms.html">SMS terms</a>
       <a href="mailto:practicer247@gmail.com?subject=Wrong%20price%20on%20Kart%20Compare">Report a wrong price</a>
     </div>
     <div class="fine-print">Prices and sale dates are scraped from each store's own site and may change without notice. Always confirm at checkout. Kart Compare is an independent, unofficial project and is not affiliated with the stores listed.</div>

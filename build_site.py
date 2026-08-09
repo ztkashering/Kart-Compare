@@ -402,6 +402,20 @@ a { color: inherit; }
 .signup-result.ok { color: var(--success); }
 .signup-result.err { color: var(--accent-dark); }
 
+/* ---------- Community request card ---------- */
+.serving-badge {
+  display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.18);
+  color: white; font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 999px;
+  margin-bottom: 10px;
+}
+.serving-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: #4ADE80; display: inline-block; }
+.community-card {
+  max-width: 640px; margin: 28px auto 0; background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 18px; padding: 22px 26px;
+}
+.community-card h2 { margin: 0 0 6px; font-size: 17px; font-weight: 800; }
+.community-card > p { margin: 0 0 16px; font-size: 13.5px; color: var(--muted); }
+
 /* ---------- Page header (store pages) ---------- */
 .page-header { background: var(--card-bg); border-bottom: 1px solid var(--border); padding: 22px 20px; }
 .page-header h1 { margin: 0 0 6px; font-size: 24px; font-weight: 800; letter-spacing: -0.02em; }
@@ -889,7 +903,8 @@ def footer_html(stores, current_slug=None, about_current=False):
     <div>{BRAND_TAGLINE}</div>
     <div class="footer-links">
       {nav_block(stores, current_slug=current_slug, about_current=about_current)}
-      <a href="privacy.html">Privacy &amp; SMS policy</a>
+      <a href="privacy.html">Privacy policy</a>
+      <a href="terms.html">SMS terms</a>
       <a href="mailto:{CONTACT_EMAIL}?subject=Wrong%20price%20on%20Kart%20Compare">Report a wrong price</a>
     </div>
     <div class="fine-print">Prices and sale dates are scraped from each store's own site and may change without notice. Always confirm at checkout. {BRAND_NAME} is an independent, unofficial project and is not affiliated with the stores listed.</div>
@@ -1072,6 +1087,67 @@ if (signupForm) {{
         if (r.ok) {{
           showResult("You're signed up! Watch for deals soon.", true);
           signupForm.reset();
+        }} else {{
+          fallbackToEmail();
+        }}
+      }})
+      .catch(fallbackToEmail);
+  }});
+}}
+
+// Community request form (homepage only). Purely an intake mechanism —
+// it never adds a new town's stores automatically. It just relays the
+// request to the founder's inbox (same Web3Forms/mailto pattern as
+// everything else on this site) so real stores can be researched and
+// added by hand, the same honest way Lakewood's were.
+const communityForm = document.getElementById("communityForm");
+if (communityForm) {{
+  communityForm.addEventListener("submit", function (e) {{
+    e.preventDefault();
+    const fd = new FormData(communityForm);
+    const community = (fd.get("community") || "").trim();
+    const resultEl = document.getElementById("communityResult");
+    if (!community) {{
+      resultEl.textContent = "Enter your town or community first.";
+      resultEl.className = "signup-result err";
+      return;
+    }}
+    const zip = (fd.get("zip") || "").trim();
+    const email = (fd.get("email") || "").trim();
+    const btn = communityForm.querySelector(".signup-btn");
+    btn.disabled = true;
+    btn.textContent = "Sending\\u2026";
+
+    const subject = "Kart Compare community request: " + community;
+    const message = "Community: " + community + "\\nZip: " + (zip || "(not given)") +
+      "\\nEmail: " + (email || "(not given)") + "\\nRequested: " + new Date().toISOString();
+
+    function showResult(msg, ok) {{
+      resultEl.textContent = msg;
+      resultEl.className = "signup-result " + (ok ? "ok" : "err");
+      btn.disabled = false;
+      btn.textContent = "Request my community";
+    }}
+    function fallbackToEmail() {{
+      window.open(
+        `mailto:${{CONTACT_EMAIL}}?subject=${{encodeURIComponent(subject)}}&body=${{encodeURIComponent(message)}}`,
+        "_blank"
+      );
+      showResult("Opened your email app to finish sending your request.", true);
+      communityForm.reset();
+    }}
+
+    if (!WEB3FORMS_KEY) {{ fallbackToEmail(); return; }}
+
+    fetch("https://api.web3forms.com/submit", {{
+      method: "POST",
+      headers: {{ "Content-Type": "application/json", "Accept": "application/json" }},
+      body: JSON.stringify({{ access_key: WEB3FORMS_KEY, subject, message }}),
+    }})
+      .then(r => {{
+        if (r.ok) {{
+          showResult("Thanks! We'll look into " + community + ".", true);
+          communityForm.reset();
         }} else {{
           fallbackToEmail();
         }}
@@ -1266,9 +1342,10 @@ PRIVACY_TEMPLATE = """<!DOCTYPE html>
   </div>
 </div>
 <div class="about-body">
-  <h1>Privacy &amp; SMS policy</h1>
-  <p class="lead">What {brand_name} collects when you sign up for deal alerts, and exactly how texting and
-  email work.</p>
+  <h1>Privacy policy</h1>
+  <p class="lead">What {brand_name} collects when you sign up for deal alerts, and what we do with it.
+  Looking for the full text-message program terms instead? See the
+  <a href="terms.html">SMS Terms &amp; Conditions</a>.</p>
 
   <h2>What we collect</h2>
   <p>If you sign up for deal alerts, we collect whatever you enter into that form: your name (optional),
@@ -1277,25 +1354,12 @@ PRIVACY_TEMPLATE = """<!DOCTYPE html>
 
   <h2>How it's used</h2>
   <p>Your email and/or phone number are used only to let you know about new grocery deals on
-  {brand_name}. We don't sell, rent, or share your information with any third party, and we don't use it
-  for anything beyond sending you deal updates.</p>
+  {brand_name}. We don't sell, rent, share, or trade your information with any third party for any
+  purpose, marketing or otherwise, and we don't use it for anything beyond sending you deal updates.</p>
 
-  <h2>Text message (SMS) terms</h2>
-  <p>By checking the SMS box on the signup form, you agree to receive recurring automated marketing text
-  messages from {brand_name} at the phone number you provide. Consent to receive texts is not a condition
-  of any purchase or of using this site.</p>
-  <ul>
-    <li>Message frequency varies depending on how often new deals are posted.</li>
-    <li>Message and data rates may apply, depending on your phone plan.</li>
-    <li>Reply <strong>STOP</strong> to any text at any time to cancel &mdash; you'll be unsubscribed
-    immediately and won't receive another marketing text from us.</li>
-    <li>Reply <strong>HELP</strong> for help, or contact us directly (below).</li>
-    <li>Carriers are not liable for delayed or undelivered messages.</li>
-  </ul>
-
-  <h2>Email terms</h2>
-  <p>Checking the email box means you're opting in to occasional emails about new deals. Every email
-  includes a way to unsubscribe, or you can just email us directly (below) and we'll remove you.</p>
+  <h2>How long we keep it</h2>
+  <p>We keep your contact info only as long as you're subscribed. Ask us to delete it at any time (see
+  below) and we will, right away.</p>
 
   <h2>How to opt out or ask us to delete your info</h2>
   <p>Reply STOP to any text, use the unsubscribe link in any email, or email us directly and we'll take
@@ -1311,11 +1375,89 @@ PRIVACY_TEMPLATE = """<!DOCTYPE html>
 </html>
 """
 
+TERMS_TEMPLATE = """<!DOCTYPE html>
+<html lang="en">
+<head>
+{head_tags}
+<style>{css}</style>
+</head>
+<body>
+<div class="site-header">
+  <div class="header-top">
+    <a class="brand-row" href="index.html">
+      {logo}
+      <span class="wordmark">{brand_name}</span>
+    </a>
+    <div class="nav-links">
+      {nav}
+    </div>
+  </div>
+</div>
+<div class="about-body">
+  <h1>SMS terms &amp; conditions</h1>
+  <p class="lead">The full terms for the {brand_name} Deal Alerts text message program. See our
+  <a href="privacy.html">Privacy Policy</a> for how we handle your information.</p>
+
+  <h2>Program name</h2>
+  <p>{brand_name} Deal Alerts</p>
+
+  <h2>Program description</h2>
+  <p>{brand_name} Deal Alerts is a free text message program that notifies subscribers when new grocery
+  sales are posted for their community's stores on {brand_name}.</p>
+
+  <h2>How to opt in</h2>
+  <p>You opt in by checking the SMS box on the signup form at {brand_name} and providing your phone
+  number. By doing so, you agree to receive recurring automated marketing text messages from
+  {brand_name} at the number provided. Consent to receive these texts is not a condition of any purchase
+  or of using this site.</p>
+
+  <h2>Message frequency</h2>
+  <p>Message frequency varies depending on how often new deals are posted for your community &mdash;
+  typically a few messages per week at most.</p>
+
+  <h2>Message and data rates</h2>
+  <p>Message and data rates may apply, depending on your phone plan and carrier.</p>
+
+  <h2>How to opt out</h2>
+  <p>Reply <strong>STOP</strong> to any message at any time. You'll be unsubscribed immediately and won't
+  receive another marketing text from us. You can also email us (below) to be removed.</p>
+
+  <h2>Help</h2>
+  <p>Reply <strong>HELP</strong> to any message for assistance, or contact us directly.</p>
+  <a class="btn" href="mailto:{contact_email}?subject=Help%20with%20Kart%20Compare%20texts">Contact us</a>
+
+  <h2>Carrier liability</h2>
+  <p>Carriers are not liable for delayed or undelivered messages.</p>
+
+  <h2>Supported carriers</h2>
+  <p>Message delivery is subject to carrier network availability. Most major US carriers are supported.</p>
+</div>
+{footer}
+{analytics}
+</body>
+</html>
+"""
+
 
 def build_privacy_page(stores):
-    description = f"How {BRAND_NAME} handles your email and phone number, and the full SMS/text-message terms for deal alerts."
+    description = f"How {BRAND_NAME} handles your email and phone number when you sign up for deal alerts."
     html = PRIVACY_TEMPLATE.format(
-        head_tags=head_tags(f"Privacy & SMS Policy — {BRAND_NAME}", description, "privacy.html"),
+        head_tags=head_tags(f"Privacy Policy — {BRAND_NAME}", description, "privacy.html"),
+        css=BASE_CSS,
+        logo=LOGO_SVG,
+        brand_name=BRAND_NAME,
+        nav=nav_block(stores, current_slug=None),
+        footer=footer_html(stores, current_slug=None),
+        analytics=ANALYTICS_SNIPPET,
+        contact_email=CONTACT_EMAIL,
+    )
+    return html
+
+
+def build_terms_page(stores):
+    description = f"Full SMS Terms & Conditions for the {BRAND_NAME} Deal Alerts text message program."
+    html = TERMS_TEMPLATE.format(
+        head_tags=head_tags(f"SMS Terms & Conditions — {BRAND_NAME}", description, "terms.html"),
         css=BASE_CSS,
         logo=LOGO_SVG,
         brand_name=BRAND_NAME,
@@ -1415,6 +1557,7 @@ def build_homepage(all_deals, stores):
     <div class="hero">
       <div class="wrap">
         <div class="hero-logo">{HERO_LOGO_SVG}</div>
+        <span class="serving-badge"><span class="dot"></span>Now serving Lakewood, NJ</span>
         <h1>{BRAND_NAME}</h1>
         <p class="sub">{BRAND_TAGLINE}</p>
         <div class="stat-row">
@@ -1446,7 +1589,7 @@ def build_homepage(all_deals, stores):
             recurring automated marketing text messages from {BRAND_NAME} at the phone number
             provided. Consent is not a condition of any purchase. Message frequency varies.
             Message and data rates may apply. Reply STOP to cancel at any time, HELP for help.
-            See our <a href="privacy.html">Privacy &amp; SMS Policy</a>.</span>
+            See our <a href="terms.html">SMS Terms &amp; Conditions</a>.</span>
           </label>
           <button type="submit" class="signup-btn">Sign me up</button>
           <div id="signupResult" class="signup-result"></div>
@@ -1465,6 +1608,23 @@ def build_homepage(all_deals, stores):
     <div class="section-sub">Jump straight to a store's full list of specials.</div>
     <div class="store-grid">{''.join(store_cards)}</div>
     {ROADMAP_HTML}
+    <div class="community-card">
+      <h2>Bring {BRAND_NAME} to your town</h2>
+      <p>Right now {BRAND_NAME} only tracks real, verified deals for Lakewood, NJ — we don't
+      guess or show placeholder data for anywhere else. Want your community added next? Tell us
+      where and we'll look into it.</p>
+      <form id="communityForm">
+        <div class="signup-row">
+          <input type="text" name="community" placeholder="Your town or community" required>
+          <input type="text" name="zip" placeholder="Zip code">
+        </div>
+        <div class="signup-row">
+          <input type="email" name="email" placeholder="Email (optional, so we can let you know)">
+        </div>
+        <button type="submit" class="signup-btn">Request my community</button>
+        <div id="communityResult" class="signup-result"></div>
+      </form>
+    </div>
     <div class="section-title">All deals</div>
     <div class="section-sub">Search, filter by store or category, or build a shopping list below.</div>
     """
@@ -1595,6 +1755,10 @@ def main():
     privacy_html = build_privacy_page(stores)
     (SITE_DIR / "privacy.html").write_text(privacy_html)
     print("Built site/privacy.html")
+
+    terms_html = build_terms_page(stores)
+    (SITE_DIR / "terms.html").write_text(terms_html)
+    print("Built site/terms.html")
 
 
 if __name__ == "__main__":
