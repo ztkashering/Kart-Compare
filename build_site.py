@@ -372,6 +372,36 @@ a { color: inherit; }
 .stat-chip.fresh { background: var(--accent); color: white; box-shadow: 0 6px 16px rgba(194,65,12,0.3); }
 .stat-chip.fresh strong { color: white; }
 
+/* ---------- Deal-alert signup (homepage only) ---------- */
+.signup-section { padding: 0 20px; margin-top: -26px; position: relative; z-index: 2; }
+.signup-card {
+  max-width: 640px; margin: 0 auto; background: var(--card-bg);
+  border-radius: 18px; padding: 24px 26px; box-shadow: 0 10px 30px rgba(17,24,39,0.12);
+}
+.signup-card h2 { margin: 0 0 6px; font-size: 18px; font-weight: 800; }
+.signup-card > p { margin: 0 0 16px; font-size: 13.5px; color: var(--muted); }
+.signup-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+.signup-row input[type="text"], .signup-row input[type="email"], .signup-row input[type="tel"] {
+  flex: 1; min-width: 160px; padding: 10px 12px; border: 1px solid var(--border);
+  border-radius: 8px; font-size: 13.5px; font-family: inherit; background: white; color: var(--text);
+}
+.consent-row {
+  display: flex; align-items: flex-start; gap: 8px; margin: 10px 0;
+  font-size: 12.5px; color: var(--muted); line-height: 1.5; cursor: pointer;
+}
+.consent-row input[type="checkbox"] { margin-top: 3px; flex-shrink: 0; }
+.consent-row a { color: var(--brand); }
+.signup-btn {
+  border: none; background: var(--brand); color: white; border-radius: 8px;
+  padding: 11px 20px; font-size: 13.5px; font-weight: 700; cursor: pointer;
+  font-family: inherit; margin-top: 4px; transition: background .12s ease;
+}
+.signup-btn:hover { background: var(--brand-dark); }
+.signup-btn:disabled { opacity: 0.6; cursor: default; }
+.signup-result { margin-top: 10px; font-size: 13px; font-weight: 600; }
+.signup-result.ok { color: var(--success); }
+.signup-result.err { color: var(--accent-dark); }
+
 /* ---------- Page header (store pages) ---------- */
 .page-header { background: var(--card-bg); border-bottom: 1px solid var(--border); padding: 22px 20px; }
 .page-header h1 { margin: 0 0 6px; font-size: 24px; font-weight: 800; letter-spacing: -0.02em; }
@@ -859,6 +889,7 @@ def footer_html(stores, current_slug=None, about_current=False):
     <div>{BRAND_TAGLINE}</div>
     <div class="footer-links">
       {nav_block(stores, current_slug=current_slug, about_current=about_current)}
+      <a href="privacy.html">Privacy &amp; SMS policy</a>
       <a href="mailto:{CONTACT_EMAIL}?subject=Wrong%20price%20on%20Kart%20Compare">Report a wrong price</a>
     </div>
     <div class="fine-print">Prices and sale dates are scraped from each store's own site and may change without notice. Always confirm at checkout. {BRAND_NAME} is an independent, unofficial project and is not affiliated with the stores listed.</div>
@@ -980,6 +1011,73 @@ function reportDeal(deal, btn) {{
   }})
     .then(r => (r.ok ? markDone() : fallbackToEmail()))
     .catch(fallbackToEmail);
+}}
+
+// Deal-alert signup (homepage only — no-op elsewhere since #signupForm
+// won't exist). Collects name/email/phone plus two SEPARATE opt-in
+// checkboxes (email and SMS are consented to independently, never
+// bundled) and relays the signup the same way reportDeal() does: silent
+// POST to Web3Forms once a key is configured, honest mailto fallback
+// until then. This site never sends the messages itself — signups just
+// land in the founder's inbox to add manually wherever texts/emails
+// actually get sent from.
+const signupForm = document.getElementById("signupForm");
+if (signupForm) {{
+  signupForm.addEventListener("submit", function (e) {{
+    e.preventDefault();
+    const fd = new FormData(signupForm);
+    const email = (fd.get("email") || "").trim();
+    const phone = (fd.get("phone") || "").trim();
+    const resultEl = document.getElementById("signupResult");
+    if (!email && !phone) {{
+      resultEl.textContent = "Enter an email or phone number first.";
+      resultEl.className = "signup-result err";
+      return;
+    }}
+    const name = (fd.get("name") || "").trim() || "(not given)";
+    const emailOptin = fd.get("email_optin") ? "yes" : "no";
+    const smsOptin = fd.get("sms_optin") ? "yes" : "no";
+    const btn = signupForm.querySelector(".signup-btn");
+    btn.disabled = true;
+    btn.textContent = "Signing up\\u2026";
+
+    const subject = "New Kart Compare deal-alert signup";
+    const message = "Name: " + name + "\\nEmail: " + (email || "(not given)") +
+      "\\nPhone: " + (phone || "(not given)") + "\\nEmail opt-in: " + emailOptin +
+      "\\nSMS opt-in: " + smsOptin + "\\nSigned up: " + new Date().toISOString();
+
+    function showResult(msg, ok) {{
+      resultEl.textContent = msg;
+      resultEl.className = "signup-result " + (ok ? "ok" : "err");
+      btn.disabled = false;
+      btn.textContent = "Sign me up";
+    }}
+    function fallbackToEmail() {{
+      window.open(
+        `mailto:${{CONTACT_EMAIL}}?subject=${{encodeURIComponent(subject)}}&body=${{encodeURIComponent(message)}}`,
+        "_blank"
+      );
+      showResult("Opened your email app to finish signing up.", true);
+      signupForm.reset();
+    }}
+
+    if (!WEB3FORMS_KEY) {{ fallbackToEmail(); return; }}
+
+    fetch("https://api.web3forms.com/submit", {{
+      method: "POST",
+      headers: {{ "Content-Type": "application/json", "Accept": "application/json" }},
+      body: JSON.stringify({{ access_key: WEB3FORMS_KEY, subject, message }}),
+    }})
+      .then(r => {{
+        if (r.ok) {{
+          showResult("You're signed up! Watch for deals soon.", true);
+          signupForm.reset();
+        }} else {{
+          fallbackToEmail();
+        }}
+      }})
+      .catch(fallbackToEmail);
+  }});
 }}
 
 function populateSelect(select, values) {{
@@ -1149,6 +1247,86 @@ ABOUT_TEMPLATE = """<!DOCTYPE html>
 """
 
 
+PRIVACY_TEMPLATE = """<!DOCTYPE html>
+<html lang="en">
+<head>
+{head_tags}
+<style>{css}</style>
+</head>
+<body>
+<div class="site-header">
+  <div class="header-top">
+    <a class="brand-row" href="index.html">
+      {logo}
+      <span class="wordmark">{brand_name}</span>
+    </a>
+    <div class="nav-links">
+      {nav}
+    </div>
+  </div>
+</div>
+<div class="about-body">
+  <h1>Privacy &amp; SMS policy</h1>
+  <p class="lead">What {brand_name} collects when you sign up for deal alerts, and exactly how texting and
+  email work.</p>
+
+  <h2>What we collect</h2>
+  <p>If you sign up for deal alerts, we collect whatever you enter into that form: your name (optional),
+  email address, and phone number. That's it &mdash; we don't collect anything else about you, and this
+  site has no accounts, passwords, or tracking of what you personally browse.</p>
+
+  <h2>How it's used</h2>
+  <p>Your email and/or phone number are used only to let you know about new grocery deals on
+  {brand_name}. We don't sell, rent, or share your information with any third party, and we don't use it
+  for anything beyond sending you deal updates.</p>
+
+  <h2>Text message (SMS) terms</h2>
+  <p>By checking the SMS box on the signup form, you agree to receive recurring automated marketing text
+  messages from {brand_name} at the phone number you provide. Consent to receive texts is not a condition
+  of any purchase or of using this site.</p>
+  <ul>
+    <li>Message frequency varies depending on how often new deals are posted.</li>
+    <li>Message and data rates may apply, depending on your phone plan.</li>
+    <li>Reply <strong>STOP</strong> to any text at any time to cancel &mdash; you'll be unsubscribed
+    immediately and won't receive another marketing text from us.</li>
+    <li>Reply <strong>HELP</strong> for help, or contact us directly (below).</li>
+    <li>Carriers are not liable for delayed or undelivered messages.</li>
+  </ul>
+
+  <h2>Email terms</h2>
+  <p>Checking the email box means you're opting in to occasional emails about new deals. Every email
+  includes a way to unsubscribe, or you can just email us directly (below) and we'll remove you.</p>
+
+  <h2>How to opt out or ask us to delete your info</h2>
+  <p>Reply STOP to any text, use the unsubscribe link in any email, or email us directly and we'll take
+  care of it right away.</p>
+  <a class="btn" href="mailto:{contact_email}?subject=Unsubscribe%20from%20Kart%20Compare">Contact us</a>
+
+  <h2>Questions</h2>
+  <p>This is a small, independent project &mdash; if anything here is unclear, just ask.</p>
+</div>
+{footer}
+{analytics}
+</body>
+</html>
+"""
+
+
+def build_privacy_page(stores):
+    description = f"How {BRAND_NAME} handles your email and phone number, and the full SMS/text-message terms for deal alerts."
+    html = PRIVACY_TEMPLATE.format(
+        head_tags=head_tags(f"Privacy & SMS Policy — {BRAND_NAME}", description, "privacy.html"),
+        css=BASE_CSS,
+        logo=LOGO_SVG,
+        brand_name=BRAND_NAME,
+        nav=nav_block(stores, current_slug=None),
+        footer=footer_html(stores, current_slug=None),
+        analytics=ANALYTICS_SNIPPET,
+        contact_email=CONTACT_EMAIL,
+    )
+    return html
+
+
 def render_date_banner(store_slug, deals):
     meta = STORE_META[store_slug]
     if not deals:
@@ -1244,6 +1422,35 @@ def build_homepage(all_deals, stores):
           <span class="stat-chip"><strong>{len(stores)}</strong> Lakewood stores</span>
           <span class="stat-chip fresh">Data last checked <strong>{date.today().isoformat()}</strong></span>
         </div>
+      </div>
+    </div>
+    <div class="signup-section">
+      <div class="signup-card">
+        <h2>Get notified about new deals</h2>
+        <p>Get an email or text when fresh sales go up. No spam, cancel anytime.</p>
+        <form id="signupForm">
+          <div class="signup-row">
+            <input type="text" name="name" placeholder="Name (optional)">
+          </div>
+          <div class="signup-row">
+            <input type="email" name="email" placeholder="Email address">
+            <input type="tel" name="phone" placeholder="Phone number (optional)">
+          </div>
+          <label class="consent-row">
+            <input type="checkbox" name="email_optin" checked>
+            <span>Email me when new deals go up.</span>
+          </label>
+          <label class="consent-row">
+            <input type="checkbox" name="sms_optin">
+            <span>Text me when new deals go up. By checking this box, you agree to receive
+            recurring automated marketing text messages from {BRAND_NAME} at the phone number
+            provided. Consent is not a condition of any purchase. Message frequency varies.
+            Message and data rates may apply. Reply STOP to cancel at any time, HELP for help.
+            See our <a href="privacy.html">Privacy &amp; SMS Policy</a>.</span>
+          </label>
+          <button type="submit" class="signup-btn">Sign me up</button>
+          <div id="signupResult" class="signup-result"></div>
+        </form>
       </div>
     </div>"""
 
@@ -1384,6 +1591,10 @@ def main():
     about_html = build_about_page(stores)
     (SITE_DIR / "about.html").write_text(about_html)
     print("Built site/about.html")
+
+    privacy_html = build_privacy_page(stores)
+    (SITE_DIR / "privacy.html").write_text(privacy_html)
+    print("Built site/privacy.html")
 
 
 if __name__ == "__main__":

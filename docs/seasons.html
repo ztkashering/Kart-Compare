@@ -119,6 +119,36 @@ a { color: inherit; }
 .stat-chip.fresh { background: var(--accent); color: white; box-shadow: 0 6px 16px rgba(194,65,12,0.3); }
 .stat-chip.fresh strong { color: white; }
 
+/* ---------- Deal-alert signup (homepage only) ---------- */
+.signup-section { padding: 0 20px; margin-top: -26px; position: relative; z-index: 2; }
+.signup-card {
+  max-width: 640px; margin: 0 auto; background: var(--card-bg);
+  border-radius: 18px; padding: 24px 26px; box-shadow: 0 10px 30px rgba(17,24,39,0.12);
+}
+.signup-card h2 { margin: 0 0 6px; font-size: 18px; font-weight: 800; }
+.signup-card > p { margin: 0 0 16px; font-size: 13.5px; color: var(--muted); }
+.signup-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+.signup-row input[type="text"], .signup-row input[type="email"], .signup-row input[type="tel"] {
+  flex: 1; min-width: 160px; padding: 10px 12px; border: 1px solid var(--border);
+  border-radius: 8px; font-size: 13.5px; font-family: inherit; background: white; color: var(--text);
+}
+.consent-row {
+  display: flex; align-items: flex-start; gap: 8px; margin: 10px 0;
+  font-size: 12.5px; color: var(--muted); line-height: 1.5; cursor: pointer;
+}
+.consent-row input[type="checkbox"] { margin-top: 3px; flex-shrink: 0; }
+.consent-row a { color: var(--brand); }
+.signup-btn {
+  border: none; background: var(--brand); color: white; border-radius: 8px;
+  padding: 11px 20px; font-size: 13.5px; font-weight: 700; cursor: pointer;
+  font-family: inherit; margin-top: 4px; transition: background .12s ease;
+}
+.signup-btn:hover { background: var(--brand-dark); }
+.signup-btn:disabled { opacity: 0.6; cursor: default; }
+.signup-result { margin-top: 10px; font-size: 13px; font-weight: 600; }
+.signup-result.ok { color: var(--success); }
+.signup-result.err { color: var(--accent-dark); }
+
 /* ---------- Page header (store pages) ---------- */
 .page-header { background: var(--card-bg); border-bottom: 1px solid var(--border); padding: 22px 20px; }
 .page-header h1 { margin: 0 0 6px; font-size: 24px; font-weight: 800; letter-spacing: -0.02em; }
@@ -433,6 +463,7 @@ a { color: inherit; }
     <div>Compare grocery deals across Lakewood — all in one cart.</div>
     <div class="footer-links">
       <a href="index.html">Home</a><a href="about.html">About</a><a href="aldi.html">Aldi</a><a href="bingo.html">Bingo</a><a href="gourmet-glatt.html">Gourmet Glatt</a><a href="kosher-village.html">Kosher Village</a><a href="kosher-west.html">Kosher West</a><a href="nutmeg.html">Nutmeg</a><a href="seasons.html" class="current">Seasons</a><a href="shoprite.html">ShopRite</a>
+      <a href="privacy.html">Privacy &amp; SMS policy</a>
       <a href="mailto:practicer247@gmail.com?subject=Wrong%20price%20on%20Kart%20Compare">Report a wrong price</a>
     </div>
     <div class="fine-print">Prices and sale dates are scraped from each store's own site and may change without notice. Always confirm at checkout. Kart Compare is an independent, unofficial project and is not affiliated with the stores listed.</div>
@@ -697,6 +728,73 @@ function reportDeal(deal, btn) {
   })
     .then(r => (r.ok ? markDone() : fallbackToEmail()))
     .catch(fallbackToEmail);
+}
+
+// Deal-alert signup (homepage only — no-op elsewhere since #signupForm
+// won't exist). Collects name/email/phone plus two SEPARATE opt-in
+// checkboxes (email and SMS are consented to independently, never
+// bundled) and relays the signup the same way reportDeal() does: silent
+// POST to Web3Forms once a key is configured, honest mailto fallback
+// until then. This site never sends the messages itself — signups just
+// land in the founder's inbox to add manually wherever texts/emails
+// actually get sent from.
+const signupForm = document.getElementById("signupForm");
+if (signupForm) {
+  signupForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const fd = new FormData(signupForm);
+    const email = (fd.get("email") || "").trim();
+    const phone = (fd.get("phone") || "").trim();
+    const resultEl = document.getElementById("signupResult");
+    if (!email && !phone) {
+      resultEl.textContent = "Enter an email or phone number first.";
+      resultEl.className = "signup-result err";
+      return;
+    }
+    const name = (fd.get("name") || "").trim() || "(not given)";
+    const emailOptin = fd.get("email_optin") ? "yes" : "no";
+    const smsOptin = fd.get("sms_optin") ? "yes" : "no";
+    const btn = signupForm.querySelector(".signup-btn");
+    btn.disabled = true;
+    btn.textContent = "Signing up\u2026";
+
+    const subject = "New Kart Compare deal-alert signup";
+    const message = "Name: " + name + "\nEmail: " + (email || "(not given)") +
+      "\nPhone: " + (phone || "(not given)") + "\nEmail opt-in: " + emailOptin +
+      "\nSMS opt-in: " + smsOptin + "\nSigned up: " + new Date().toISOString();
+
+    function showResult(msg, ok) {
+      resultEl.textContent = msg;
+      resultEl.className = "signup-result " + (ok ? "ok" : "err");
+      btn.disabled = false;
+      btn.textContent = "Sign me up";
+    }
+    function fallbackToEmail() {
+      window.open(
+        `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`,
+        "_blank"
+      );
+      showResult("Opened your email app to finish signing up.", true);
+      signupForm.reset();
+    }
+
+    if (!WEB3FORMS_KEY) { fallbackToEmail(); return; }
+
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({ access_key: WEB3FORMS_KEY, subject, message }),
+    })
+      .then(r => {
+        if (r.ok) {
+          showResult("You're signed up! Watch for deals soon.", true);
+          signupForm.reset();
+        } else {
+          fallbackToEmail();
+        }
+      })
+      .catch(fallbackToEmail);
+  });
 }
 
 function populateSelect(select, values) {
