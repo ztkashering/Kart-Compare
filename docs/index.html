@@ -146,16 +146,19 @@ a { color: inherit; }
 }
 .card {
   background: var(--card-bg);
-  border: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  border-left: 4px solid var(--border);
   border-radius: 14px;
   padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 9px;
   position: relative;
-  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+  transition: transform .12s ease, box-shadow .12s ease, border-top-color .12s ease, border-right-color .12s ease, border-bottom-color .12s ease;
 }
-.card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(17,24,39,0.08); border-color: #d7d9e6; }
+.card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(17,24,39,0.08); border-top-color: #d7d9e6; border-right-color: #d7d9e6; border-bottom-color: #d7d9e6; }
 .card .icon-row { display: flex; align-items: center; justify-content: space-between; }
 .card .icon-badge {
   width: 40px; height: 40px; border-radius: 10px; background: var(--brand-light);
@@ -180,13 +183,20 @@ a { color: inherit; }
 .card .sale-price { font-size: 21px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; }
 .card .old-price { font-size: 13px; color: var(--muted); text-decoration: line-through; }
 .card .unit-note { font-size: 12px; color: var(--muted); margin-top: -4px; }
+.card .card-actions { display: flex; gap: 6px; margin-top: 4px; }
 .card .add-btn {
-  margin-top: 4px; border: 1.5px solid var(--brand); background: white; color: var(--brand);
+  flex: 1; margin-top: 0; border: 1.5px solid var(--brand); background: white; color: var(--brand);
   border-radius: 8px; padding: 10px 10px; font-size: 13px; cursor: pointer; font-weight: 700;
   font-family: inherit; transition: all .12s ease;
 }
 .card .add-btn:hover { background: var(--brand-light); }
 .card .add-btn.added { background: var(--brand); color: white; }
+.card .report-btn {
+  flex-shrink: 0; width: 40px; display: flex; align-items: center; justify-content: center;
+  border: 1.5px solid var(--border); border-radius: 8px; background: white; color: var(--muted);
+  font-size: 15px; text-decoration: none; cursor: pointer; transition: all .12s ease;
+}
+.card .report-btn:hover { border-color: var(--amber-border); background: var(--amber-bg); color: var(--amber-text); }
 .empty { max-width: 1140px; margin: 60px auto; text-align: center; color: var(--muted); padding: 0 20px; line-height: 1.6; }
 
 /* ---------- Store cards (homepage browse section) ---------- */
@@ -365,7 +375,7 @@ a { color: inherit; }
         <div class="stat-row">
           <span class="stat-chip"><strong>443</strong> deals tracked</span>
           <span class="stat-chip"><strong>8</strong> Lakewood stores</span>
-          <span class="stat-chip fresh">Data last checked <strong>2026-08-07</strong></span>
+          <span class="stat-chip fresh">Data last checked <strong>2026-08-09</strong></span>
         </div>
       </div>
     </div>
@@ -476,6 +486,8 @@ a { color: inherit; }
      with your own site code — until then this line quietly does nothing. -->
 <script>
 const ICONS = {"Produce": "\ud83c\udf4e", "Meat & Deli": "\ud83c\udf57", "Dairy": "\ud83e\uddc0", "Bakery": "\ud83e\udd50", "Beverages": "\ud83e\udd64", "Frozen": "\ud83e\uddca", "Candy & Snacks": "\ud83c\udf6c", "Household": "\ud83e\uddfb", "Health & Beauty": "\ud83e\uddf4", "Pantry": "\ud83d\uded2"};
+const CATEGORY_COLORS = {"Produce": "#16A34A", "Meat & Deli": "#DC2626", "Dairy": "#2563EB", "Bakery": "#D97706", "Beverages": "#7C3AED", "Frozen": "#0891B2", "Candy & Snacks": "#DB2777", "Household": "#6B7280", "Health & Beauty": "#0D9488", "Pantry": "#EA580C"};
+const CONTACT_EMAIL = "practicer247@gmail.com";
 const CURRENT_STORE_SLUG = ""; // "" means show every store (homepage)
 window.ALL_DEALS = [];
 let DEALS = [];
@@ -717,6 +729,7 @@ function render() {
   filtered.forEach(d => {
     const card = document.createElement("div");
     card.className = "card";
+    card.style.borderLeftColor = CATEGORY_COLORS[d.category] || "var(--border)";
     const unitNote = d.unit ? `<div class="unit-note">${d.unit}</div>` : "";
     const oldPrice = d.original_price ? `<span class="old-price">$${d.original_price.toFixed(2)}</span>` : "";
     const pctOff = d.original_price && d.original_price > d.sale_price
@@ -724,6 +737,12 @@ function render() {
     const savingsBadge = pctOff ? `<span class="savings-badge">-${pctOff}%</span>` : "";
     const storeTag = true ? `<div class="store-tag">${d.store}</div>` : "";
     const already = isInList(d.id);
+    const reportSubject = encodeURIComponent("Wrong price on Kart Compare: " + d.item_name);
+    const reportBody = encodeURIComponent(
+      "Store: " + d.store + "\nItem: " + d.item_name + "\nListed price: $" + d.sale_price.toFixed(2) +
+      "\n\nWhat looks wrong: "
+    );
+    const reportHref = `mailto:${CONTACT_EMAIL}?subject=${reportSubject}&body=${reportBody}`;
     card.innerHTML = `
       <div class="icon-row">
         <span class="icon-badge">${ICONS[d.category] || "🛒"}</span>
@@ -737,7 +756,10 @@ function render() {
         ${oldPrice}
       </div>
       ${unitNote}
-      <button class="add-btn ${already ? 'added' : ''}" data-id="${d.id}">${already ? '\u2713 Added' : '+ Add'}</button>
+      <div class="card-actions">
+        <button class="add-btn ${already ? 'added' : ''}" data-id="${d.id}">${already ? '\u2713 Added' : '+ Add'}</button>
+        <a class="report-btn" href="${reportHref}" title="Report a wrong price for this item" target="_blank" rel="noopener">\u26A0</a>
+      </div>
     `;
     card.querySelector(".add-btn").addEventListener("click", function() {
       const added = toggleListItem(d);

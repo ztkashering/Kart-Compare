@@ -84,6 +84,24 @@ ICONS = {
     "Pantry": "\U0001F6D2",
 }
 
+# A small color-coded accent per category, shown as a thin left-edge stripe
+# on every deal card so someone scanning a busy page (or scrolling fast on
+# a phone) can tell categories apart at a glance without reading every
+# label. Picked for readability against the light background, not just
+# looks — each one stays visually distinct from its neighbors.
+CATEGORY_COLORS = {
+    "Produce": "#16A34A",
+    "Meat & Deli": "#DC2626",
+    "Dairy": "#2563EB",
+    "Bakery": "#D97706",
+    "Beverages": "#7C3AED",
+    "Frozen": "#0891B2",
+    "Candy & Snacks": "#DB2777",
+    "Household": "#6B7280",
+    "Health & Beauty": "#0D9488",
+    "Pantry": "#EA580C",
+}
+
 STORE_META = {
     "gourmet-glatt": {
         "dates_confirmed": True,
@@ -353,16 +371,19 @@ a { color: inherit; }
 }
 .card {
   background: var(--card-bg);
-  border: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  border-left: 4px solid var(--border);
   border-radius: 14px;
   padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 9px;
   position: relative;
-  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+  transition: transform .12s ease, box-shadow .12s ease, border-top-color .12s ease, border-right-color .12s ease, border-bottom-color .12s ease;
 }
-.card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(17,24,39,0.08); border-color: #d7d9e6; }
+.card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(17,24,39,0.08); border-top-color: #d7d9e6; border-right-color: #d7d9e6; border-bottom-color: #d7d9e6; }
 .card .icon-row { display: flex; align-items: center; justify-content: space-between; }
 .card .icon-badge {
   width: 40px; height: 40px; border-radius: 10px; background: var(--brand-light);
@@ -387,13 +408,20 @@ a { color: inherit; }
 .card .sale-price { font-size: 21px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; }
 .card .old-price { font-size: 13px; color: var(--muted); text-decoration: line-through; }
 .card .unit-note { font-size: 12px; color: var(--muted); margin-top: -4px; }
+.card .card-actions { display: flex; gap: 6px; margin-top: 4px; }
 .card .add-btn {
-  margin-top: 4px; border: 1.5px solid var(--brand); background: white; color: var(--brand);
+  flex: 1; margin-top: 0; border: 1.5px solid var(--brand); background: white; color: var(--brand);
   border-radius: 8px; padding: 10px 10px; font-size: 13px; cursor: pointer; font-weight: 700;
   font-family: inherit; transition: all .12s ease;
 }
 .card .add-btn:hover { background: var(--brand-light); }
 .card .add-btn.added { background: var(--brand); color: white; }
+.card .report-btn {
+  flex-shrink: 0; width: 40px; display: flex; align-items: center; justify-content: center;
+  border: 1.5px solid var(--border); border-radius: 8px; background: white; color: var(--muted);
+  font-size: 15px; text-decoration: none; cursor: pointer; transition: all .12s ease;
+}
+.card .report-btn:hover { border-color: var(--amber-border); background: var(--amber-bg); color: var(--amber-text); }
 .empty { max-width: 1140px; margin: 60px auto; text-align: center; color: var(--muted); padding: 0 20px; line-height: 1.6; }
 
 /* ---------- Store cards (homepage browse section) ---------- */
@@ -828,6 +856,8 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
 {analytics}
 <script>
 const ICONS = {icons_json};
+const CATEGORY_COLORS = {category_colors_json};
+const CONTACT_EMAIL = "{contact_email_js}";
 const CURRENT_STORE_SLUG = "{store_slug_js}"; // "" means show every store (homepage)
 window.ALL_DEALS = [];
 let DEALS = [];
@@ -887,6 +917,7 @@ function render() {{
   filtered.forEach(d => {{
     const card = document.createElement("div");
     card.className = "card";
+    card.style.borderLeftColor = CATEGORY_COLORS[d.category] || "var(--border)";
     const unitNote = d.unit ? `<div class="unit-note">${{d.unit}}</div>` : "";
     const oldPrice = d.original_price ? `<span class="old-price">$${{d.original_price.toFixed(2)}}</span>` : "";
     const pctOff = d.original_price && d.original_price > d.sale_price
@@ -894,6 +925,12 @@ function render() {{
     const savingsBadge = pctOff ? `<span class="savings-badge">-${{pctOff}}%</span>` : "";
     const storeTag = {show_store_js} ? `<div class="store-tag">${{d.store}}</div>` : "";
     const already = isInList(d.id);
+    const reportSubject = encodeURIComponent("Wrong price on Kart Compare: " + d.item_name);
+    const reportBody = encodeURIComponent(
+      "Store: " + d.store + "\\nItem: " + d.item_name + "\\nListed price: $" + d.sale_price.toFixed(2) +
+      "\\n\\nWhat looks wrong: "
+    );
+    const reportHref = `mailto:${{CONTACT_EMAIL}}?subject=${{reportSubject}}&body=${{reportBody}}`;
     card.innerHTML = `
       <div class="icon-row">
         <span class="icon-badge">${{ICONS[d.category] || "\U0001F6D2"}}</span>
@@ -907,7 +944,10 @@ function render() {{
         ${{oldPrice}}
       </div>
       ${{unitNote}}
-      <button class="add-btn ${{already ? 'added' : ''}}" data-id="${{d.id}}">${{already ? '\\u2713 Added' : '+ Add'}}</button>
+      <div class="card-actions">
+        <button class="add-btn ${{already ? 'added' : ''}}" data-id="${{d.id}}">${{already ? '\\u2713 Added' : '+ Add'}}</button>
+        <a class="report-btn" href="${{reportHref}}" title="Report a wrong price for this item" target="_blank" rel="noopener">\\u26A0</a>
+      </div>
     `;
     card.querySelector(".add-btn").addEventListener("click", function() {{
       const added = toggleListItem(d);
@@ -1053,6 +1093,8 @@ def build_store_page(store_slug, store_name, deals, stores):
         footer=footer_html(stores, current_slug=store_slug),
         analytics=ANALYTICS_SNIPPET,
         icons_json=json.dumps(ICONS),
+        category_colors_json=json.dumps(CATEGORY_COLORS),
+        contact_email_js=CONTACT_EMAIL,
         store_slug_js=store_slug,
         toggle_list_js=SHOPPING_LIST_JS,
         smart_search_js=SMART_SEARCH_JS,
@@ -1126,6 +1168,8 @@ def build_homepage(all_deals, stores):
         footer=footer_html(stores, current_slug=None),
         analytics=ANALYTICS_SNIPPET,
         icons_json=json.dumps(ICONS),
+        category_colors_json=json.dumps(CATEGORY_COLORS),
+        contact_email_js=CONTACT_EMAIL,
         store_slug_js="",
         toggle_list_js=SHOPPING_LIST_JS,
         smart_search_js=SMART_SEARCH_JS,
