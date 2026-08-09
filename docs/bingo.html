@@ -146,57 +146,56 @@ a { color: inherit; }
 }
 .card {
   background: var(--card-bg);
-  border-top: 1px solid var(--border);
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  border-left: 4px solid var(--border);
-  border-radius: 14px;
-  padding: 16px;
+  border-radius: 18px;
+  padding: 18px;
   display: flex;
   flex-direction: column;
   gap: 9px;
   position: relative;
-  transition: transform .12s ease, box-shadow .12s ease, border-top-color .12s ease, border-right-color .12s ease, border-bottom-color .12s ease;
+  transition: transform .12s ease, box-shadow .12s ease;
 }
-.card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(17,24,39,0.08); border-top-color: #d7d9e6; border-right-color: #d7d9e6; border-bottom-color: #d7d9e6; }
+.card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(17,24,39,0.10); }
 .card .icon-row { display: flex; align-items: center; justify-content: space-between; }
 .card .icon-badge {
-  width: 40px; height: 40px; border-radius: 10px; background: var(--brand-light);
+  width: 40px; height: 40px; border-radius: 50%; background: #ffffff;
   display: flex; align-items: center; justify-content: center; font-size: 20px;
 }
 .card .savings-badge {
-  background: var(--success-light); color: var(--success);
+  background: rgba(255,255,255,0.7); color: var(--success);
   font-size: 11px; font-weight: 800; padding: 4px 8px; border-radius: 999px;
 }
 .card .cat-tag {
-  font-size: 11px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em;
+  font-size: 12px; font-weight: 700;
 }
 .card .name {
   font-size: 14.5px; font-weight: 700; line-height: 1.35; min-height: 40px;
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
 }
 .card .store-tag {
-  font-size: 12px; color: var(--brand); font-weight: 600; background: var(--brand-light);
+  font-size: 12px; color: var(--text); font-weight: 600; background: rgba(255,255,255,0.7);
   display: inline-block; padding: 2px 8px; border-radius: 6px; width: fit-content;
 }
-.card .price-row { display: flex; align-items: baseline; gap: 8px; margin-top: auto; }
-.card .sale-price { font-size: 21px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; }
+.card .price-row { display: flex; align-items: center; gap: 8px; margin-top: auto; }
+.card .price-pill {
+  display: inline-block; background: #ffffff; border-radius: 999px; padding: 5px 12px;
+}
+.card .sale-price { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
 .card .old-price { font-size: 13px; color: var(--muted); text-decoration: line-through; }
 .card .unit-note { font-size: 12px; color: var(--muted); margin-top: -4px; }
 .card .card-actions { display: flex; gap: 6px; margin-top: 4px; }
 .card .add-btn {
-  flex: 1; margin-top: 0; border: 1.5px solid var(--brand); background: white; color: var(--brand);
-  border-radius: 8px; padding: 10px 10px; font-size: 13px; cursor: pointer; font-weight: 700;
+  flex: 1; margin-top: 0; border: none; background: rgba(255,255,255,0.85); color: var(--text);
+  border-radius: 10px; padding: 10px 10px; font-size: 13px; cursor: pointer; font-weight: 700;
   font-family: inherit; transition: all .12s ease;
 }
-.card .add-btn:hover { background: var(--brand-light); }
+.card .add-btn:hover { background: #ffffff; }
 .card .add-btn.added { background: var(--brand); color: white; }
 .card .report-btn {
   flex-shrink: 0; width: 40px; display: flex; align-items: center; justify-content: center;
-  border: 1.5px solid var(--border); border-radius: 8px; background: white; color: var(--muted);
+  border: none; border-radius: 10px; background: rgba(255,255,255,0.85); color: var(--muted);
   font-size: 15px; text-decoration: none; cursor: pointer; transition: all .12s ease;
 }
-.card .report-btn:hover { border-color: var(--amber-border); background: var(--amber-bg); color: var(--amber-text); }
+.card .report-btn:hover { background: #ffffff; color: var(--amber-text); }
 .empty { max-width: 1140px; margin: 60px auto; text-align: center; color: var(--muted); padding: 0 20px; line-height: 1.6; }
 
 /* ---------- Store cards (homepage browse section) ---------- */
@@ -419,7 +418,7 @@ a { color: inherit; }
      with your own site code — until then this line quietly does nothing. -->
 <script>
 const ICONS = {"Produce": "\ud83c\udf4e", "Meat & Deli": "\ud83c\udf57", "Dairy": "\ud83e\uddc0", "Bakery": "\ud83e\udd50", "Beverages": "\ud83e\udd64", "Frozen": "\ud83e\uddca", "Candy & Snacks": "\ud83c\udf6c", "Household": "\ud83e\uddfb", "Health & Beauty": "\ud83e\uddf4", "Pantry": "\ud83d\uded2"};
-const CATEGORY_COLORS = {"Produce": "#16A34A", "Meat & Deli": "#DC2626", "Dairy": "#2563EB", "Bakery": "#D97706", "Beverages": "#7C3AED", "Frozen": "#0891B2", "Candy & Snacks": "#DB2777", "Household": "#6B7280", "Health & Beauty": "#0D9488", "Pantry": "#EA580C"};
+const CATEGORY_STYLES = {"Produce": {"bg": "#EAF3DE", "text": "#27500A"}, "Meat & Deli": {"bg": "#FCEBEB", "text": "#791F1F"}, "Dairy": {"bg": "#E6F1FB", "text": "#0C447C"}, "Bakery": {"bg": "#FAEEDA", "text": "#633806"}, "Beverages": {"bg": "#EEEDFE", "text": "#3C3489"}, "Frozen": {"bg": "#E1F5EE", "text": "#085041"}, "Candy & Snacks": {"bg": "#FBEAF0", "text": "#72243E"}, "Household": {"bg": "#F1EFE8", "text": "#444441"}, "Health & Beauty": {"bg": "#FAECE7", "text": "#712B13"}, "Pantry": {"bg": "#FFF1E6", "text": "#9A3412"}};
 const CONTACT_EMAIL = "practicer247@gmail.com";
 const CURRENT_STORE_SLUG = "bingo"; // "" means show every store (homepage)
 window.ALL_DEALS = [];
@@ -662,7 +661,8 @@ function render() {
   filtered.forEach(d => {
     const card = document.createElement("div");
     card.className = "card";
-    card.style.borderLeftColor = CATEGORY_COLORS[d.category] || "var(--border)";
+    const style = CATEGORY_STYLES[d.category] || { bg: "#F1EFE8", text: "#444441" };
+    card.style.background = style.bg;
     const unitNote = d.unit ? `<div class="unit-note">${d.unit}</div>` : "";
     const oldPrice = d.original_price ? `<span class="old-price">$${d.original_price.toFixed(2)}</span>` : "";
     const pctOff = d.original_price && d.original_price > d.sale_price
@@ -681,11 +681,11 @@ function render() {
         <span class="icon-badge">${ICONS[d.category] || "🛒"}</span>
         ${savingsBadge}
       </div>
-      <span class="cat-tag">${d.category}</span>
+      <span class="cat-tag" style="color:${style.text}">${d.category}</span>
       <div class="name">${d.item_name}</div>
       ${storeTag}
       <div class="price-row">
-        <span class="sale-price">$${d.sale_price.toFixed(2)}</span>
+        <span class="price-pill"><span class="sale-price" style="color:${style.text}">$${d.sale_price.toFixed(2)}</span></span>
         ${oldPrice}
       </div>
       ${unitNote}
