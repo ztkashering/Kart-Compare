@@ -205,6 +205,19 @@ STORE_META = {
             "can't verify that automatically."
         ),
     },
+    "aisle-9": {
+        "dates_confirmed": False,
+        "note": (
+            "Aisle 9 (951 Madison Ave, Lakewood) runs its own online-ordering "
+            "site, and unlike the other stores here, it hides its full "
+            "product catalog — including its Specials page — until a "
+            "delivery or pickup time is selected in their checkout flow. "
+            "That's a bigger, more involved step than the other stores need, "
+            "so real sale data for Aisle 9 isn't live here yet. This page "
+            "will fill in once that's worked out — see the founder for "
+            "status rather than assuming this means Aisle 9 has no sales."
+        ),
+    },
 }
 
 LOGO_SVG = """

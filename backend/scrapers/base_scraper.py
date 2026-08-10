@@ -92,35 +92,50 @@ def parse_multi_buy(token: str) -> tuple[int, float] | None:
 
 # --- Category guessing ---------------------------------------------------
 
-# PLAIN-ENGLISH NOTE on this list (expanded 2026-08-06): the real stores
-# organize their sites into 10-12 departments (Dairy, Meat, Beverages,
-# Household, Health & Beauty, etc.) but that department label isn't part
-# of the text we scrape from the "Specials" feed — it's only visible if
-# you browse each department page separately, which today's scraper
-# doesn't do. So this is still a best-effort guess from the item's name,
-# just with a much bigger, more specific keyword list than before (10
-# categories instead of 5) to get closer to the real store departments
-# without needing a bigger scraping rewrite. It won't be perfect — a
-# word like "pretzel" can mean a bakery item or a snack-aisle item — but
-# it's a real step up, and anything that doesn't match falls into
-# "Pantry" as a safe catch-all rather than a wrong guess.
-CATEGORY_KEYWORDS = {
-    "Produce": [
-        "avocado", "eggplant", "cucumber", "tomato", "onion", "carrot",
-        "mango", "strawberr", "produce", "lettuce", "pepper", "potato",
-        "fruit", "vegetable", "grape", "cherries", "cherry", "nectarine",
-        "orange ", "lemon", "lime", "scallion", "shallot", "turnip",
-        "cabbage", "celery", "squash", "parsley", "dill", "cauliflower",
-        "broccoli", "apple", "pineapple", "cantaloupe", "watermelon",
-        "berries", "berry", "plum", "peach", "banana", "kiwi",
-    ],
+# PLAIN-ENGLISH NOTE on this list (expanded 2026-08-06, restructured
+# 2026-08-10 into two tiers — see below): the real stores organize their
+# sites into 10-12 departments (Dairy, Meat, Beverages, Household, Health
+# & Beauty, etc.) but that department label isn't part of the text we
+# scrape from the "Specials" feed — it's only visible if you browse each
+# department page separately, which today's scraper doesn't do. So this
+# is still a best-effort guess from the item's name.
+#
+# 2026-08-10 bug fix: the original version checked categories in a fixed
+# order and returned on the FIRST keyword match anywhere in the name.
+# That silently broke on any product whose flavor/ingredient word
+# overlapped a produce word — e.g. "Strawberry Yogurt" matched Produce's
+# "strawberr" before ever reaching Dairy's "yogurt", so real dairy, candy,
+# beverage, and household items were landing in Produce. Concrete examples
+# caught in a full audit of the live site: yogurt cups tagged Produce
+# (strawberry/blueberry), grape juice tagged Produce instead of Beverages,
+# dish detergent tagged Produce (lemon/green-apple scent names), candy
+# (Twizzlers, Jolly Rancher, Fruit Riot, Bissli) tagged Produce because of
+# a fruit/veggie flavor name, and sushi RICE (a pantry/dry-goods item)
+# tagged Meat & Deli just because the word "sushi" appeared.
+#
+# The fix: two tiers, checked in order.
+#   1. STRONG_CATEGORY_KEYWORDS — product-TYPE words (yogurt, candy,
+#      detergent, juice, chips, chicken, etc.) that are basically never
+#      wrong regardless of what other words share the name. Checked
+#      first, across every category.
+#   2. WEAK_CATEGORY_KEYWORDS — plain ingredient/flavor words (apple,
+#      onion, cherry, grape...) that are only reliable when nothing more
+#      specific is present, since fruit/veggie names double as flavors on
+#      everything from yogurt to candy to cleaning spray. Only consulted
+#      if nothing in tier 1 matched. In practice this is just Produce.
+# Anything that matches neither tier falls into "Pantry" as a safe
+# catch-all rather than a wrong guess.
+STRONG_CATEGORY_KEYWORDS = {
     "Meat & Deli": [
         "chicken", "beef", "steak", "brisket", "pastrami", "salami",
         "franks", "patties", "nugget", "veal", "turkey", "meat", "rib",
         "flanken", "london broil", "wing", "sausage", "kishka", "arayes",
         "shoulder", "fillet", "fish", "salmon", "tuna", "flounder", "sole",
-        "lox", "tilapia", "gefilte", "sushi", "kielbasa", "hot dog",
-        "hotdog", "kugel", "cutlets", "ham", "bratwurst", "brisket",
+        "lox", "tilapia", "gefilte", "kielbasa", "hot dog",
+        "hotdog", "cutlets", "ham", "bratwurst",
+        # NOTE: "sushi" and "kugel" were removed from this list on
+        # 2026-08-10 — sushi RICE and prepared-food kugels aren't meat,
+        # and the old blanket "sushi"/"kugel" match was mislabeling them.
     ],
     "Dairy": [
         "cheese", "yogurt", "milk", "leben", "cream cheese", "butter",
@@ -145,7 +160,7 @@ CATEGORY_KEYWORDS = {
         "candy", "chocolate", "gummy", "gummies", "licorice", "taffy",
         "marshmallow", "chips", "cookie", "cracker", "wafer", "popcorn",
         "bissli", "sour stick", "fruit leather", "twizzlers", "pretzel",
-        "snack", "nosh",
+        "snack", "nosh", "dibbitz", "ropes", "fruit riot",
     ],
     "Household": [
         "paper plate", "plastic cup", "napkin", "tissue", "foil",
@@ -159,16 +174,57 @@ CATEGORY_KEYWORDS = {
     ],
 }
 
+# Ingredient/flavor words — only trusted once nothing in the strong tier
+# matched (see note above). This is effectively the Produce department.
+WEAK_CATEGORY_KEYWORDS = {
+    "Produce": [
+        "avocado", "eggplant", "cucumber", "tomato", "onion", "carrot",
+        "mango", "strawberr", "produce", "lettuce", "pepper", "potato",
+        "fruit", "vegetable", "grape", "cherries", "cherry", "nectarine",
+        "orange ", "lemon", "lime", "scallion", "shallot", "turnip",
+        "cabbage", "celery", "squash", "parsley", "dill", "cauliflower",
+        "broccoli", "apple", "pineapple", "cantaloupe", "watermelon",
+        "berries", "berry", "plum", "peach", "banana", "kiwi",
+    ],
+}
+
+# Kept for backwards compatibility with anything importing the old name.
+CATEGORY_KEYWORDS = {**STRONG_CATEGORY_KEYWORDS, **WEAK_CATEGORY_KEYWORDS}
+
+# A handful of strong keywords are also substrings of unrelated brand
+# names — "turkey" the meat vs. "Turkey Hill" the iced-tea/ice-cream
+# brand, "ham" the meat vs. "shampoo" the toiletry. Found during the
+# 2026-08-10 audit ("Turkey Hill Decaf Orange Tea" was landing in Meat &
+# Deli). This guard strips the colliding brand phrase out of the name
+# before testing the keyword, so the bare keyword doesn't fire just
+# because the brand name happens to contain it — every other keyword's
+# behavior is untouched.
+_KEYWORD_COLLISION_GUARDS = {
+    "turkey": ["turkey hill"],
+    "ham": ["shampoo"],
+}
+
+
+def _keyword_matches(name_lower: str, kw: str) -> bool:
+    guarded_phrases = _KEYWORD_COLLISION_GUARDS.get(kw)
+    if guarded_phrases:
+        for phrase in guarded_phrases:
+            name_lower = name_lower.replace(phrase, "")
+    return kw in name_lower
+
 
 def guess_category(item_name: str) -> str:
     """Best-effort keyword match against the item's name (see the note
-    above the keyword list for why this is name-based rather than pulled
-    from the store's real department tag). Falls back to 'Pantry' (the
-    catch-all for shelf-stable grocery/pantry staples) when nothing
-    matches."""
+    above the keyword lists for why this is name-based rather than pulled
+    from the store's real department tag, and why it's two tiers). Falls
+    back to 'Pantry' (the catch-all for shelf-stable grocery/pantry
+    staples) when nothing matches."""
     name_lower = item_name.lower()
-    for category, keywords in CATEGORY_KEYWORDS.items():
-        if any(kw in name_lower for kw in keywords):
+    for category, keywords in STRONG_CATEGORY_KEYWORDS.items():
+        if any(_keyword_matches(name_lower, kw) for kw in keywords):
+            return category
+    for category, keywords in WEAK_CATEGORY_KEYWORDS.items():
+        if any(_keyword_matches(name_lower, kw) for kw in keywords):
             return category
     return "Pantry"
 

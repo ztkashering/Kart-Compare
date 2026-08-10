@@ -82,4 +82,5 @@ INSERT OR IGNORE INTO stores (name, slug, source_type, source_url) VALUES
     ('Kosher Village',  'kosher-village',  'html', NULL),
     ('Bingo',           'bingo',           'pdf',  NULL),
     ('ShopRite',        'shoprite',        'html', 'https://www.shoprite.com/circulars'),
-    ('Aldi',            'aldi',            'html', 'https://www.aldi.us/en/weekly-specials/');
+    ('Aldi',            'aldi',            'html', 'https://www.aldi.us/en/weekly-specials/'),
+    ('Aisle 9',         'aisle-9',         'html', 'https://aisle9market.com/lakewood/category/specials');
