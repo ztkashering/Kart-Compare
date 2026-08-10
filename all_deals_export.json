@@ -1,7 +1,7 @@
 {
   "deals": [
     {
-      "id": 971,
+      "id": 974,
       "item_name": "Gefen Chicken Noodle Soup No Msg, 2.3 Oz",
       "sale_price": 1.42,
       "original_price": 1.49,
@@ -13,7 +13,7 @@
       "date_valid_to": "2026-08-11"
     },
     {
-      "id": 973,
+      "id": 976,
       "item_name": "Gefen Chunk Light Tuna In Water, 6 Oz",
       "sale_price": 1.67,
       "original_price": 1.99,
@@ -25,7 +25,19 @@
       "date_valid_to": "2026-08-11"
     },
     {
-      "id": 972,
+      "id": 977,
+      "item_name": "Laffy Taffy Ropes",
+      "sale_price": 0.4,
+      "original_price": 0.5,
+      "unit": "5 for $2.00",
+      "category": "Candy & Snacks",
+      "store": "Aisle 9",
+      "store_slug": "aisle-9",
+      "date_valid_from": "2026-08-05",
+      "date_valid_to": "2026-08-11"
+    },
+    {
+      "id": 975,
       "item_name": "Oat Chocolate & Peanut Butter Bar, 1.4 Oz",
       "sale_price": 1.0,
       "original_price": 2.69,

@@ -125,7 +125,7 @@ STORE_META = {
         "dates_confirmed": False,
         "note": (
             "This store's exact sale dates are shown on their site as part of "
-            "a flyer image, which today's scraper can't read automatically "
+            "a flyer image, which this site can't read automatically today "
             "(would need image OCR). Dates below reflect this store's real "
             "Wednesday-morning-to-Tuesday-night sale week, not a store-"
             "published exact date."
@@ -158,8 +158,8 @@ STORE_META = {
     "bingo": {
         "dates_confirmed": False,
         "note": (
-            "No current flyer was found on Bingo's site at the time of the "
-            "last scrape — this page will fill in automatically once they "
+            "No current flyer was found on Bingo's site as of the last "
+            "update — this page will fill in automatically once they "
             "post one."
         ),
     },
@@ -209,18 +209,18 @@ STORE_META = {
         "dates_confirmed": False,
         "note": (
             "Aisle 9 (951 Madison Ave, Lakewood) runs its own online-ordering "
-            "site, and unlike the other stores here, it hides its full "
-            "product catalog — including its Specials page — until a "
-            "delivery or pickup time is selected in their checkout flow. "
-            "That step hasn't been completed yet, so this page shows a "
-            "small, real sample instead of Aisle 9's full weekly specials: "
-            "a handful of genuinely marked-down items pulled from their "
-            "homepage, each one confirmed by an actual \"Special\" badge on "
-            "the item. There are certainly more real deals at Aisle 9 than "
-            "shown here — this list will grow once the full specials page "
-            "is reachable. Aisle 9 doesn't publish a sale end date anywhere "
-            "on their site, so the dates shown are an estimated weekly sale "
-            "window, not a store-confirmed date."
+            "site, and unlike the other stores here, every one of its "
+            "product pages — including its Specials page — is locked "
+            "behind a real account login, with no way to just browse by "
+            "zip code like the other stores here allow. So this page shows "
+            "a small, real sample instead of Aisle 9's full weekly "
+            "specials: a handful of genuinely marked-down items pulled "
+            "from their homepage, each one confirmed by an actual "
+            "\"Special\" badge on the item. There are certainly more real "
+            "deals at Aisle 9 than shown here — this list will grow if "
+            "that changes. Aisle 9 doesn't publish a sale end date "
+            "anywhere on their site, so the dates shown are an estimated "
+            "weekly sale window, not a store-confirmed date."
         ),
     },
 }
@@ -925,7 +925,7 @@ def footer_html(stores, current_slug=None, about_current=False):
       <a href="terms.html">SMS terms</a>
       <a href="mailto:{CONTACT_EMAIL}?subject=Wrong%20price%20on%20Kart%20Compare">Report a wrong price</a>
     </div>
-    <div class="fine-print">Prices and sale dates are scraped from each store's own site and may change without notice. Always confirm at checkout. {BRAND_NAME} is an independent, unofficial project and is not affiliated with the stores listed.</div>
+    <div class="fine-print">Prices and sale dates are pulled from each store's own site and updated regularly; they may change without notice. Always confirm at checkout. {BRAND_NAME} is an independent, unofficial project and is not affiliated with the stores listed.</div>
   </div>
 </div>"""
 
@@ -1489,6 +1489,23 @@ def build_terms_page(stores):
     return html
 
 
+def friendly_date(d) -> str:
+    """'Aug 10, 2026' instead of a bare ISO string — easier to scan at a glance."""
+    return f"{d.strftime('%b')} {d.day}, {d.year}"
+
+
+def friendly_date_range(d_from: str, d_to: str) -> str:
+    """Turns ISO dates like 2026-08-05 / 2026-08-11 into a day-of-week
+    range shoppers can actually use at a glance, e.g. 'Wed, Aug 5 – Tue,
+    Aug 11', instead of making them do date math on raw ISO strings."""
+    try:
+        f = date.fromisoformat(d_from)
+        t = date.fromisoformat(d_to)
+    except (ValueError, TypeError):
+        return f"{d_from} to {d_to}"
+    return f"{f.strftime('%a')}, {f.strftime('%b')} {f.day} – {t.strftime('%a')}, {t.strftime('%b')} {t.day}"
+
+
 def render_date_banner(store_slug, deals):
     meta = STORE_META[store_slug]
     if not deals:
@@ -1502,7 +1519,7 @@ def render_date_banner(store_slug, deals):
     label = "Confirmed sale dates" if meta["dates_confirmed"] else "Estimated sale window"
     return f"""
     <div class="date-banner {cls}">
-      <span class="big">Data last checked {date.today().isoformat()} &middot; {label}: {d_from} to {d_to}</span>
+      <span class="big">Updated {friendly_date(date.today())} &middot; {label}: {friendly_date_range(d_from, d_to)}</span>
       <span>{meta['note']}</span>
     </div>"""
 
@@ -1521,7 +1538,7 @@ def build_store_page(store_slug, store_name, deals, stores):
     <div class="page-header">
       <div class="wrap">
         <h1>{store_name} deals</h1>
-        <div class="sub">{len(deals)} current specials &middot; {date_note} &middot; <span class="muted-part">data last checked {date.today().isoformat()}</span></div>
+        <div class="sub">{len(deals)} current specials &middot; {date_note} &middot; <span class="muted-part">updated {friendly_date(date.today())}</span></div>
       </div>
     </div>"""
     description = f"{len(deals)} current sale prices at {store_name} in Lakewood, NJ, compared side by side on {BRAND_NAME}."
@@ -1562,7 +1579,7 @@ def build_homepage(all_deals, stores):
         if store_deals:
             d_from, d_to = store_deals[0]["date_valid_from"], store_deals[0]["date_valid_to"]
             cls = "confirmed" if meta["dates_confirmed"] else "estimated"
-            date_line = f'<span class="d {cls}">{d_from} &ndash; {d_to}</span>'
+            date_line = f'<span class="d {cls}">{friendly_date_range(d_from, d_to)}</span>'
         else:
             date_line = '<span class="d estimated">No current deals</span>'
         store_cards.append(f"""
@@ -1583,7 +1600,7 @@ def build_homepage(all_deals, stores):
         <div class="stat-row">
           <span class="stat-chip"><strong>{len(all_deals)}</strong> deals tracked</span>
           <span class="stat-chip"><strong>{len(stores)}</strong> Lakewood stores</span>
-          <span class="stat-chip fresh">Data last checked <strong>{date.today().isoformat()}</strong></span>
+          <span class="stat-chip fresh">Updated <strong>{friendly_date(date.today())}</strong></span>
         </div>
       </div>
     </div>
@@ -1619,7 +1636,7 @@ def build_homepage(all_deals, stores):
 
     banner = """
     <div class="date-banner confirmed">
-      <span class="big">Real deals, scraped directly from each store</span>
+      <span class="big">Real deals, updated directly from each store</span>
       <span>Some stores publish exact sale-valid dates; others don't — check each store's page for details.</span>
     </div>"""
 

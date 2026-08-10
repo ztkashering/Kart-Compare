@@ -5,6 +5,26 @@ STATUS AS OF 2026-08-10: real, verified deals — but a SMALL, PARTIAL set,
 not a comprehensive weekly specials list like the other stores. Read on
 for why, and what to do about it on the next rescrape.
 
+UPDATE 2026-08-10 (second pass, same day): re-checked whether the full
+catalog could be reached instead of just the homepage carousel. Confirmed
+it still can't, and confirmed it's not just the specials category that's
+gated — EVERY department category page is gated the same way (tested
+/lakewood/category/364/produce directly: 0 product cards, same as
+/lakewood/category/specials and /lakewood/category/510/instant-meals).
+Also checked the homepage DOM for any zip-only or address-only "browse as
+guest" flow like Aldi/ShopRite use — there isn't one. The only inputs on
+the page are a product search box and a real email+password LOGIN form.
+That means getting past this gate would require creating an account or
+signing in, which is off-limits (never create accounts or enter
+credentials on the founder's behalf). So the homepage's "Featured
+Products" carousel — filtered to genuinely `.product-item-special-lbl`
+"Special"-badged cards — really is the honest ceiling of what this
+scraper can reach until that platform limitation changes. On this pass
+the carousel had grown to 4 genuine specials (added "Laffy Taffy Ropes",
+5 for $2.00 vs. $0.50 regular — 20% off per unit, same real-discount
+pattern as the other 3). Re-check this count on every rescrape; it's a
+rotating homepage feature, not a fixed number.
+
 BACKGROUND: Aisle 9 runs on the "My Cloud Grocer" online-ordering
 platform. Its product-card HTML is the same shape grocery_platform_scraper.py
 already parses for Seasons/Nutmeg/Kosher West (`a.product-item-link` /
