@@ -104,8 +104,9 @@ You asked to hold off on actually doing this until the site/branding is settled,
 | Aldi | Real weekly ad via the Flipp flyer platform, filtered to genuine "Price Drops" only (Produce/Beverages/Pantry) | 6 |
 | Bingo | Now has an "Offers > Weekly Deals" nav item, but it's still empty — no flyer posted yet | 0 |
 | ShopRite (Jackson, NJ) | Not built yet — scraper doesn't exist in the repo | pending |
+| Aisle 9 (Lakewood) | Own online-ordering site; full catalog is gated behind a delivery/pickup step not yet completed, so this is a small real sample from their homepage's "Special"-badged items, not the full weekly specials | 3 |
 
-**439 real deals total.**
+**442 real deals total.**
 
 Seasons and Nutmeg both dropped from the prior snapshot (Seasons 139→109, Nutmeg 94→80) — re-verified live against 2-3 random pages each before trusting the lower numbers; the drop is real, not a scraping miss. Gourmet Glatt jumped 74→113 because the store's own website was redesigned with a bigger 2-page flyer this week.
 
@@ -115,6 +116,7 @@ Seasons and Nutmeg both dropped from the prior snapshot (Seasons 139→109, Nutm
 - **Seasons**: their site does show exact dates, but only baked into a flyer image, not real text — reading it needs image OCR, a separate feature. Amber "estimated" banner (7-day window) shown instead of a guessed exact date.
 - **Nutmeg, Kosher West, Kosher Village**: none publish an exact end date anywhere on their site. Same amber estimated banner.
 - **Bingo**: no flyer currently posted, so no dates to show.
+- **Aisle 9**: no end date published anywhere on their site either. Same amber estimated banner.
 
 I'd rather show an honest "estimated" label than quietly guess.
 

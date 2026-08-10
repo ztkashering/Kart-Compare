@@ -202,6 +202,10 @@ CATEGORY_KEYWORDS = {**STRONG_CATEGORY_KEYWORDS, **WEAK_CATEGORY_KEYWORDS}
 _KEYWORD_COLLISION_GUARDS = {
     "turkey": ["turkey hill"],
     "ham": ["shampoo"],
+    # "butter" the dairy product vs. "peanut butter" / "almond butter" /
+    # "cashew butter" the nut spread (not dairy at all) — found 2026-08-10
+    # via "Oat Chocolate & Peanut Butter Bar" landing in Dairy.
+    "butter": ["peanut butter", "almond butter", "cashew butter", "sunflower butter"],
 }
 
 
