@@ -92,18 +92,22 @@ You described three things: wine stores, wine-store-to-grocery-store proximity, 
 
 You asked to hold off on actually doing this until the site/branding is settled, so nothing's been pushed anywhere yet. When you're ready, here's the plain-English plan: I'll organize everything into a clean folder structure with a `.gitignore` (a file that tells git which files to ignore, like temporary junk) and a proper top-level README, then walk you through **GitHub Desktop** — a point-and-click app, no command line needed — to create the repository and upload it. Just say the word.
 
-## The six stores, honestly
+## The stores, honestly (updated 2026-08-10)
 
 | Store | What their site actually is | Deals found |
 |---|---|---|
-| Gourmet Glatt | PDF flyer only, no online catalog | 74 |
-| Seasons | Full online store, specials spread across many pages, multi-location (needs explicit ZIP confirmation to get the right store) | 139 |
-| Nutmeg | Full online store, specials spread across many pages | 94 |
-| Kosher West | Full online store, specials spread across many pages | 120 |
+| Gourmet Glatt | Now has a real "Specials" page (redesigned since launch) linking to a PDF flyer, 2 pages this week | 113 |
+| Seasons | Full online store, specials spread across many pages, multi-location (needs explicit ZIP confirmation to get the right store) | 109 |
+| Nutmeg | Full online store, specials spread across many pages | 80 |
+| Kosher West | Full online store, specials spread across many pages | 121 |
 | Kosher Village | Full online store, specials page has no pagination — genuinely just 10 right now | 10 |
-| Bingo | Membership sign-up page only, no online store | 0 |
+| Aldi | Real weekly ad via the Flipp flyer platform, filtered to genuine "Price Drops" only (Produce/Beverages/Pantry) | 6 |
+| Bingo | Now has an "Offers > Weekly Deals" nav item, but it's still empty — no flyer posted yet | 0 |
+| ShopRite (Jackson, NJ) | Not built yet — scraper doesn't exist in the repo | pending |
 
-**437 real deals total.**
+**439 real deals total.**
+
+Seasons and Nutmeg both dropped from the prior snapshot (Seasons 139→109, Nutmeg 94→80) — re-verified live against 2-3 random pages each before trusting the lower numbers; the drop is real, not a scraping miss. Gourmet Glatt jumped 74→113 because the store's own website was redesigned with a bigger 2-page flyer this week.
 
 ## About "when is the sale valid from/to"
 
