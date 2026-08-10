@@ -181,9 +181,16 @@ def get_page_cached(store_slug: str) -> list[tuple[str, str, str]]:
     Lakewood store via the ZIP flow (08701) and are the trustworthy ones —
     prefer those over any older "*_page1.txt" file for the same store.
     """
-    matches = sorted(SAMPLE_DATA_DIR.glob(f"{store_slug}_*_specials.txt"))
+    # Sort so the most-recently-dated snapshot (YYYY-MM-DD in the filename)
+    # comes first — filenames sort correctly by date lexicographically, so
+    # this just means newest-first. (Found 2026-08-10: this used to pick
+    # matches[0] off an ascending sort, which silently always loaded the
+    # OLDEST snapshot on disk instead of the newest — a real bug, fixed
+    # here rather than routing around it, same spirit as aldi_scraper.py
+    # always using the newest aldi_*_flipp.json by filename.)
+    matches = sorted(SAMPLE_DATA_DIR.glob(f"{store_slug}_*_specials.txt"), reverse=True)
     if not matches:
-        matches = sorted(SAMPLE_DATA_DIR.glob(f"{store_slug}_*_page1.txt"))
+        matches = sorted(SAMPLE_DATA_DIR.glob(f"{store_slug}_*_page1.txt"), reverse=True)
     if not matches:
         return []
     items = []
