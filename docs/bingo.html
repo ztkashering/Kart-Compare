@@ -441,7 +441,7 @@ a { color: inherit; }
     <div class="page-header">
       <div class="wrap">
         <h1>Bingo deals</h1>
-        <div class="sub">0 current specials &middot; an estimated sale window &middot; <span class="muted-part">data last checked 2026-08-09</span></div>
+        <div class="sub">0 current specials &middot; an estimated sale window &middot; <span class="muted-part">data last checked 2026-08-10</span></div>
       </div>
     </div>
 <div class="wrap">
@@ -700,13 +700,15 @@ document.addEventListener("DOMContentLoaded", renderShoppingListPanel);
 function reportDeal(deal, btn) {
   if (btn.dataset.state !== "confirm") {
     btn.dataset.state = "confirm";
-    btn.textContent = "Sure?";
+    btn.textContent = "Confirm";
+    btn.title = "Tap again to confirm this price is wrong";
     btn.classList.add("confirming");
     clearTimeout(btn._resetTimer);
     btn._resetTimer = setTimeout(() => {
       if (btn.dataset.state === "confirm") {
         btn.dataset.state = "";
         btn.innerHTML = "\u26A0";
+        btn.title = "Report a wrong price for this item";
         btn.classList.remove("confirming");
       }
     }, 4000);

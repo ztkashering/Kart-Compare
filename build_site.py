@@ -983,13 +983,15 @@ let activeCategory = "";
 function reportDeal(deal, btn) {{
   if (btn.dataset.state !== "confirm") {{
     btn.dataset.state = "confirm";
-    btn.textContent = "Sure?";
+    btn.textContent = "Confirm";
+    btn.title = "Tap again to confirm this price is wrong";
     btn.classList.add("confirming");
     clearTimeout(btn._resetTimer);
     btn._resetTimer = setTimeout(() => {{
       if (btn.dataset.state === "confirm") {{
         btn.dataset.state = "";
         btn.innerHTML = "\\u26A0";
+        btn.title = "Report a wrong price for this item";
         btn.classList.remove("confirming");
       }}
     }}, 4000);
