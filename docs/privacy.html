@@ -8,7 +8,7 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#4F46E5">
+<meta name="theme-color" content="#1D3FEB">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Privacy Policy — Kart Compare">
 <meta property="og:description" content="How Kart Compare handles your email and phone number when you sign up for deal alerts.">
@@ -18,15 +18,19 @@
 <meta name="twitter:title" content="Privacy Policy — Kart Compare">
 <meta name="twitter:description" content="How Kart Compare handles your email and phone number when you sign up for deal alerts.">
 <meta name="twitter:image" content="og-image.png">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.min.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
-  --brand: #4F46E5;
-  --brand-dark: #383096;
-  --brand-darker: #26205e;
-  --brand-light: #EEF2FF;
-  --accent: #F97316;
-  --accent-dark: #C2410C;
+  /* Bold electric-blue palette + pill shapes, inspired by Paze's checkout
+     branding (2026-08-11, at the founder's request) — swapped from the
+     original indigo/orange pairing. */
+  --brand: #1D3FEB;
+  --brand-dark: #1530B0;
+  --brand-darker: #0B1F7A;
+  --brand-light: #E9EDFF;
+  --accent: #06B6D4;
+  --accent-dark: #0891B2;
+  --error: #DC2626;
   --success: #059669;
   --success-light: #ECFDF5;
   --bg: #F7F7FB;
@@ -46,6 +50,10 @@ body {
   background: var(--bg);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, .wordmark, .hero h1, .signup-card h2, .mission-card h2, .community-card h2,
+.section-title, .page-header h1 {
+  font-family: "Poppins", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 }
 a { color: inherit; }
 .wrap { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
@@ -87,19 +95,22 @@ a { color: inherit; }
 .hero {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(160deg, var(--brand) 0%, var(--brand-dark) 65%, var(--brand-darker) 100%);
+  /* Flat, bold electric blue rather than the old heavy gradient — closer
+     to Paze's solid-color hero blocks. */
+  background: var(--brand);
+  background: linear-gradient(170deg, var(--brand) 0%, var(--brand) 70%, var(--brand-dark) 100%);
   color: white;
   padding: 52px 20px 44px;
 }
 .hero::before {
   content: ""; position: absolute; top: -70px; right: -60px;
   width: 260px; height: 260px; border-radius: 50%;
-  background: var(--accent); opacity: 0.22; pointer-events: none;
+  background: var(--accent); opacity: 0.28; pointer-events: none;
 }
 .hero::after {
   content: ""; position: absolute; bottom: -90px; left: -50px;
   width: 220px; height: 220px; border-radius: 50%;
-  background: white; opacity: 0.07; pointer-events: none;
+  background: white; opacity: 0.08; pointer-events: none;
 }
 .hero .wrap { text-align: center; position: relative; z-index: 1; }
 .hero-logo {
@@ -107,16 +118,16 @@ a { color: inherit; }
   filter: drop-shadow(0 8px 18px rgba(17,24,39,0.25));
 }
 .hero-logo svg { width: 100%; height: 100%; display: block; }
-.hero h1 { margin: 0 0 10px; font-size: 34px; font-weight: 800; letter-spacing: -0.03em; }
+.hero h1 { margin: 0 0 10px; font-size: 36px; font-weight: 800; letter-spacing: -0.02em; }
 .hero p.sub { margin: 0 auto; max-width: 560px; font-size: 15px; opacity: 0.92; line-height: 1.5; }
 .stat-row { display: flex; justify-content: center; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
 .stat-chip {
   background: white; border: none; color: var(--brand-darker);
   box-shadow: 0 6px 16px rgba(17,24,39,0.14);
-  border-radius: 14px; padding: 10px 18px; font-size: 13px; font-weight: 600;
+  border-radius: 999px; padding: 10px 18px; font-size: 13px; font-weight: 600;
 }
 .stat-chip strong { font-weight: 800; color: var(--brand); }
-.stat-chip.fresh { background: var(--accent); color: white; box-shadow: 0 6px 16px rgba(194,65,12,0.3); }
+.stat-chip.fresh { background: var(--accent); color: white; box-shadow: 0 6px 16px rgba(6,182,212,0.35); }
 .stat-chip.fresh strong { color: white; }
 
 /* ---------- Deal-alert signup (homepage only) ---------- */
@@ -139,15 +150,15 @@ a { color: inherit; }
 .consent-row input[type="checkbox"] { margin-top: 3px; flex-shrink: 0; }
 .consent-row a { color: var(--brand); }
 .signup-btn {
-  border: none; background: var(--brand); color: white; border-radius: 8px;
-  padding: 11px 20px; font-size: 13.5px; font-weight: 700; cursor: pointer;
+  border: none; background: var(--brand); color: white; border-radius: 999px;
+  padding: 12px 24px; font-size: 13.5px; font-weight: 700; cursor: pointer;
   font-family: inherit; margin-top: 4px; transition: background .12s ease;
 }
 .signup-btn:hover { background: var(--brand-dark); }
 .signup-btn:disabled { opacity: 0.6; cursor: default; }
 .signup-result { margin-top: 10px; font-size: 13px; font-weight: 600; }
 .signup-result.ok { color: var(--success); }
-.signup-result.err { color: var(--accent-dark); }
+.signup-result.err { color: var(--error); }
 
 /* ---------- Community request card ---------- */
 .serving-badge {
@@ -262,14 +273,14 @@ a { color: inherit; }
 .card .card-actions { display: flex; gap: 6px; margin-top: 4px; }
 .card .add-btn {
   flex: 1; margin-top: 0; border: none; background: rgba(255,255,255,0.85); color: var(--text);
-  border-radius: 10px; padding: 10px 10px; font-size: 13px; cursor: pointer; font-weight: 700;
+  border-radius: 999px; padding: 10px 10px; font-size: 13px; cursor: pointer; font-weight: 700;
   font-family: inherit; transition: all .12s ease;
 }
 .card .add-btn:hover { background: #ffffff; }
 .card .add-btn.added { background: var(--brand); color: white; }
 .card .report-btn {
   flex-shrink: 0; width: 40px; display: flex; align-items: center; justify-content: center;
-  border: none; border-radius: 10px; background: rgba(255,255,255,0.85); color: var(--muted);
+  border: none; border-radius: 999px; background: rgba(255,255,255,0.85); color: var(--muted);
   font-size: 15px; text-decoration: none; cursor: pointer; transition: all .12s ease;
   font-family: inherit; padding: 0;
 }
@@ -322,7 +333,7 @@ a { color: inherit; }
 .about-body .lead { color: var(--muted); font-size: 15px; margin-bottom: 28px; }
 .about-body a.btn {
   display: inline-block; margin-top: 6px; background: var(--brand); color: white;
-  text-decoration: none; padding: 10px 18px; border-radius: 8px; font-weight: 700; font-size: 14px;
+  text-decoration: none; padding: 11px 22px; border-radius: 999px; font-weight: 700; font-size: 14px;
 }
 .disclaimer-box {
   background: var(--amber-bg); border: 1px solid var(--amber-border); color: var(--amber-text);
@@ -349,7 +360,7 @@ a { color: inherit; }
   position: fixed; bottom: 20px; right: 20px; z-index: 45;
   background: var(--accent); color: white; border: none; border-radius: 999px;
   padding: 14px 22px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit;
-  box-shadow: 0 6px 18px rgba(194,65,12,0.35);
+  box-shadow: 0 6px 18px rgba(6,182,212,0.35);
 }
 .shopping-list-toggle:hover { background: var(--accent-dark); }
 .shopping-list-panel {
@@ -369,7 +380,7 @@ a { color: inherit; }
 }
 .shopping-list-panel .sl-empty { color: var(--muted); font-size: 13px; }
 .compare-btn {
-  width: 100%; margin-top: 14px; padding: 11px; border: none; border-radius: 10px;
+  width: 100%; margin-top: 14px; padding: 11px; border: none; border-radius: 999px;
   background: var(--accent); color: white; font-weight: 700; font-size: 13.5px; cursor: pointer;
   font-family: inherit;
 }

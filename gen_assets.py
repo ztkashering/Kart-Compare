@@ -17,9 +17,9 @@ from pathlib import Path
 OUT = Path(__file__).parent / "docs"
 OUT.mkdir(exist_ok=True)
 
-BRAND = (79, 70, 229)       # #4F46E5
-BRAND_DARK = (56, 48, 150)  # #383096
-ACCENT = (249, 115, 22)     # #F97316
+BRAND = (29, 63, 235)       # #1D3FEB
+BRAND_DARK = (21, 48, 176)  # #1530B0
+ACCENT = (6, 182, 212)      # #06B6D4
 WHITE = (255, 255, 255)
 
 
