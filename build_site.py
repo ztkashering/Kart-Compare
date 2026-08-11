@@ -1794,8 +1794,29 @@ MANIFEST_JSON = json.dumps({
 # Minimal service worker: caches the app shell so a second visit (and basic
 # offline access) is fast, without adding real complexity. It does NOT try
 # to cache deals.json, so prices are always fetched fresh over the network.
-SERVICE_WORKER_JS = """
-const CACHE_NAME = "kartcompare-shell-v1";
+#
+# BUG FOUND AND FIXED 2026-08-11: CACHE_NAME used to be the hardcoded
+# literal "kartcompare-shell-v1" on every single build, which means sw.js's
+# bytes were IDENTICAL across every deploy. Browsers only detect a service
+# worker update by diffing the new sw.js against the currently-registered
+# one byte-for-byte — since it never changed, returning visitors' browsers
+# never even noticed a new service worker existed, so they kept serving
+# the ORIGINAL cached index.html forever (nav links, hero, mission
+# statement, any HTML/CSS change) no matter how many times the site was
+# rebuilt and pushed. Only deals.json was ever actually fresh for them,
+# since that's explicitly excluded from caching below. Caught this by
+# screenshotting the live site right after a color/branding change and
+# seeing the OLD colors — a fresh cache-busted fetch() showed the new HTML
+# on the server, but the actual browser tab (which had visited before)
+# was still rendering what its service worker had cached on a much
+# earlier visit. Fix: stamp today's date into CACHE_NAME so every day's
+# rebuild is a genuinely different string, which makes the browser detect
+# the update, fire activate, and (since self.skipWaiting() and
+# self.clients.claim() were already correctly in place below) take over
+# and clear the old cache immediately instead of waiting for every open
+# tab to be closed first.
+_SERVICE_WORKER_JS_TEMPLATE = """
+const CACHE_NAME = "__CACHE_NAME__";
 const SHELL_FILES = ["index.html", "manifest.json", "icon-192.png", "icon-512.png"];
 
 self.addEventListener("install", (event) => {
@@ -1824,6 +1845,14 @@ self.addEventListener("fetch", (event) => {
 """
 
 
+def render_service_worker_js() -> str:
+    # Plain string .replace() rather than an f-string/.format() call on
+    # purpose — this template is full of literal JS braces ({}) that would
+    # otherwise have to be escaped everywhere and would be easy to break.
+    cache_name = f"kartcompare-shell-{date.today().isoformat()}"
+    return _SERVICE_WORKER_JS_TEMPLATE.replace("__CACHE_NAME__", cache_name)
+
+
 def main():
     data = json.loads(DATA_PATH.read_text())
     all_deals = data["deals"]
@@ -1838,7 +1867,7 @@ def main():
 
     (SITE_DIR / "manifest.json").write_text(MANIFEST_JSON)
     print("Built site/manifest.json")
-    (SITE_DIR / "sw.js").write_text(SERVICE_WORKER_JS)
+    (SITE_DIR / "sw.js").write_text(render_service_worker_js())
     print("Built site/sw.js")
 
     for s in stores:
