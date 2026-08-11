@@ -1832,7 +1832,18 @@ self.addEventListener("install", (event) => {
     caches.open(CACHE_NAME).then((cache) =>
       Promise.all(
         SHELL_FILES.map((url) =>
-          fetch(url, { cache: "reload" }).then((res) => cache.put(url, res))
+          fetch(url, { cache: "reload" }).then((res) => {
+            cache.put(url, res.clone());
+            // Also found 2026-08-11: a plain navigation to the site root
+            // ("/Kart-Compare/") is a DIFFERENT request URL than
+            // "index.html", so caches.match() in the fetch handler below
+            // was never actually finding this cached entry for real
+            // visits -- it silently fell through to a live (cacheable-
+            // by-the-browser) network fetch every time instead of using
+            // this cache at all. Storing the same response under the
+            // scope URL too fixes that.
+            if (url === "index.html") cache.put(self.registration.scope, res.clone());
+          })
         )
       )
     ).catch(() => {})
