@@ -165,7 +165,7 @@ STRONG_CATEGORY_KEYWORDS = {
     "Household": [
         "paper plate", "plastic cup", "napkin", "tissue", "foil",
         "detergent", "dish soap", "disposable", "cutlery", "aluminum",
-        "trash bag", "plates,", "plastic bowl", "forks", "spoons",
+        "trash bag", "plates,", "plate,", "plastic bowl", "forks", "spoons",
         "pans", "parchment",
     ],
     "Health & Beauty": [

@@ -25,6 +25,30 @@ the carousel had grown to 4 genuine specials (added "Laffy Taffy Ropes",
 pattern as the other 3). Re-check this count on every rescrape; it's a
 rotating homepage feature, not a fixed number.
 
+UPDATE 2026-08-10 (third pass, same day): the founder pushed back hard
+that "way more than 4" specials exist and pointed at the Specials page's
+own left-side category sidebar. Checked it directly — the sidebar itself
+is real (Appetizing/Bakery/Dairy/Deli/Fresh Fish/Fresh Meat/Frozen/Grab &
+Go/Grocery/Household & Beyond/Produce/Sushi checkboxes), but clicking any
+of them fires ZERO new network requests and reveals zero products — same
+login wall, just with a working-looking filter UI in front of it. BUT:
+loading the plain homepage (https://aisle9market.com/lakewood) in a few
+separate fresh browser tabs showed the "Featured Products" carousel does
+NOT show the same 24 items every time — it's session/cache dependent, so
+different tabs/visits reveal different genuinely-"Special"-badged items.
+Sampling it 3 separate times in fresh tabs turned up 11 unique real
+specials total instead of 4 (see the current aisle9_*_specials.txt file).
+This means the honest way to maximize this store's coverage on future
+rescrapes is: load https://aisle9market.com/lakewood in 2-3 SEPARATE
+fresh tabs (not just repeated reloads of the same tab, and don't hammer
+navigations back-to-back with no delay — one attempt at rapid repeated
+reloads triggered a chrome-error/connection failure, so space them out
+and use a few real seconds of wait after each navigation), pull every
+`.product-item-special-lbl`-badged card from each, and take the union
+by item name across all tabs before writing the sample file. There is
+still no way to reach their full catalog without logging in — this
+just widens the honest sample beyond a single page load.
+
 BACKGROUND: Aisle 9 runs on the "My Cloud Grocer" online-ordering
 platform. Its product-card HTML is the same shape grocery_platform_scraper.py
 already parses for Seasons/Nutmeg/Kosher West (`a.product-item-link` /
