@@ -35,7 +35,7 @@ def main():
             """
             select d.id, d.item_name, d.sale_price, d.original_price, d.unit,
                    c.name as category, s.name as store, s.slug as store_slug,
-                   d.date_valid_from, d.date_valid_to
+                   d.date_valid_from, d.date_valid_to, d.kosher_flag
             from deals d
             join categories c on c.id = d.category_id
             join stores s on s.id = d.store_id

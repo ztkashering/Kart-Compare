@@ -198,19 +198,27 @@ STORE_META = {
             "data, so there's no automatic way to pull this. Only items "
             "with the flyer's own stated \"SAVE $X\" amount are shown, so "
             "every price here is a confirmed markdown, not a guess — most "
-            "of the flyer's ~120 items either weren't fresh produce or "
-            "didn't show a comparable regular price, so they were left "
-            "off rather than included on a guess. The sale dates shown "
-            "are the flyer's own printed dates, not an estimate."
+            "of the flyer's ~120 items either weren't allowed under the "
+            "kosher policy below or didn't show a comparable regular "
+            "price, so they were left off rather than included on a "
+            "guess. The sale dates shown are the flyer's own printed "
+            "dates, not an estimate."
         ),
         "kosher_note": (
             "ShopRite is a general supermarket, not a dedicated kosher "
-            "grocer. This page only shows fresh, whole Produce — nothing "
-            "else from the flyer is included, no exceptions (not even "
-            "fish, since this site has no way to check an actual kosher "
-            "certification symbol on a package from a flyer page). Please "
-            "still use your own judgment on anything you buy there — this "
-            "site can't verify kosher certification automatically."
+            "grocer. This page shows fresh, whole Produce (always "
+            "allowed), plus a small, hand-picked list of packaged "
+            "drinks/snacks/cereal the founder personally confirmed are "
+            "kosher-certified brands — nothing is added automatically "
+            "just because it's popular or on sale. A couple of items are "
+            "marked with an on-card \"⚠️ Might be OU — not confirmed\" "
+            "badge instead of being left off entirely — that means it's "
+            "probably kosher-certified but hasn't been personally "
+            "confirmed, so check the actual package before buying. Meat, "
+            "dairy, fish/seafood, bakery, frozen, deli, and household "
+            "items are never included here, no exceptions. This site "
+            "still can't verify any kosher certification automatically — "
+            "please use your own judgment on anything you buy there."
         ),
     },
     "aisle-9": {
@@ -525,6 +533,11 @@ a { color: inherit; }
 .card .sale-price { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
 .card .old-price { font-size: 13px; color: var(--muted); text-decoration: line-through; }
 .card .unit-note { font-size: 12px; color: var(--muted); margin-top: -4px; }
+.card .kosher-flag {
+  font-size: 13px; font-weight: 800; color: #7A2E00; background: #FFD98E;
+  border: 1.5px solid #E08A00; border-radius: 8px; padding: 6px 9px;
+  line-height: 1.3;
+}
 .card .card-actions { display: flex; gap: 6px; margin-top: 4px; }
 .card .add-btn {
   flex: 1; margin-top: 0; border: none; background: rgba(255,255,255,0.85); color: var(--text);
@@ -1237,6 +1250,7 @@ function render() {{
       ? Math.round((1 - d.sale_price / d.original_price) * 100) : null;
     const savingsBadge = pctOff ? `<span class="savings-badge">-${{pctOff}}%</span>` : "";
     const storeTag = {show_store_js} ? `<div class="store-tag">${{d.store}}</div>` : "";
+    const kosherFlag = d.kosher_flag ? `<div class="kosher-flag">⚠️ ${{d.kosher_flag}}</div>` : "";
     const already = isInList(d.id);
     card.innerHTML = `
       <div class="icon-row">
@@ -1246,6 +1260,7 @@ function render() {{
       <span class="cat-tag" style="color:${{style.text}}">${{d.category}}</span>
       <div class="name">${{d.item_name}}</div>
       ${{storeTag}}
+      ${{kosherFlag}}
       <div class="price-row">
         <span class="price-pill"><span class="sale-price" style="color:${{style.text}}">$${{d.sale_price.toFixed(2)}}</span></span>
         ${{oldPrice}}

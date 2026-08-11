@@ -78,8 +78,8 @@ def insert_deal(conn: sqlite3.Connection, deal: dict) -> int:
         """
         INSERT INTO deals
             (store_id, item_name, original_price, sale_price, unit,
-             category_id, date_valid_from, date_valid_to, raw_text)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+             category_id, date_valid_from, date_valid_to, raw_text, kosher_flag)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """,
         (
             store_id,
@@ -91,6 +91,7 @@ def insert_deal(conn: sqlite3.Connection, deal: dict) -> int:
             deal["date_valid_from"],
             deal["date_valid_to"],
             deal.get("raw_text"),
+            deal.get("kosher_flag"),
         ),
     )
     conn.commit()

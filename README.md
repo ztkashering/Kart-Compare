@@ -103,10 +103,10 @@ You asked to hold off on actually doing this until the site/branding is settled,
 | Kosher Village | Full online store, specials page has no pagination — genuinely just 10 right now | 10 |
 | Aldi | Real weekly ad via the Flipp flyer platform, filtered to genuine "Price Drops" only (Produce/Beverages/Pantry) | 6 |
 | Bingo | Now has an "Offers > Weekly Deals" nav item, but it's still empty — no flyer posted yet | 0 |
-| ShopRite (Brick, NJ area) | No structured price feed exists (flyer platform is images only), so this is read directly off the founder's own printed weekly circular PDF — kosher policy is stricter than Aldi's: Produce only, no meat/dairy/fish/anything else, and only items with a stated "SAVE $X" amount count as a deal | 5 |
+| ShopRite (Brick, NJ area) | No structured price feed exists (flyer platform is images only), so this is read directly off the founder's own printed weekly circular PDF — Produce/water/toiletries are always allowed, everything else (drinks, snacks, cereal) is hand-picked only after the founder personally confirms the brand is kosher-certified; a couple of items are shown with an on-card "might be OU, not confirmed" badge instead of being fully confirmed or left off; only items with a stated "SAVE $X" amount count as a deal | 12 |
 | Aisle 9 (Lakewood) | Own online-ordering site; every category page (including Specials) is gated behind account login — no guest/zip browsing like the other stores — so this covers real, verified markdowns from their homepage carousel plus the Meat/Dairy/Grocery/Household & Beyond/Produce/Sushi departments of their Specials page, not yet every department | 92 |
 
-**536 real deals total.**
+**543 real deals total.**
 
 Seasons and Nutmeg both dropped from the prior snapshot (Seasons 139→109, Nutmeg 94→80) — re-verified live against 2-3 random pages each before trusting the lower numbers; the drop is real, not a scraping miss. Gourmet Glatt jumped 74→113 because the store's own website was redesigned with a bigger 2-page flyer this week.
 

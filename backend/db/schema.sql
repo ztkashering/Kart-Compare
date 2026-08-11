@@ -37,7 +37,17 @@ CREATE TABLE IF NOT EXISTS deals (
     date_valid_from TEXT NOT NULL,             -- ISO date the sale starts
     date_valid_to   TEXT NOT NULL,             -- ISO date the sale ends
     raw_text        TEXT,                      -- original scraped snippet, for debugging
-    scraped_at      TEXT NOT NULL DEFAULT (datetime('now'))
+    scraped_at      TEXT NOT NULL DEFAULT (datetime('now')),
+    kosher_flag     TEXT                       -- NULL = no caveat needed. Set when the
+                                                -- founder has personally confirmed a brand
+                                                -- is LIKELY kosher-certified (based on real-
+                                                -- world knowledge of the actual package) but
+                                                -- this site has no way to verify the exact
+                                                -- product/flavor's hechsher itself — shown as
+                                                -- a big, prominent on-card caveat rather than
+                                                -- silently treated as fully confirmed. E.g.
+                                                -- "Might be OU — not confirmed, check the
+                                                -- package."
 );
 
 CREATE INDEX IF NOT EXISTS idx_deals_store ON deals(store_id);

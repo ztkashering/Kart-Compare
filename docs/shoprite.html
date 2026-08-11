@@ -4,19 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ShopRite Deals — Kart Compare</title>
-<meta name="description" content="5 current sale prices at ShopRite in Lakewood, NJ, compared side by side on Kart Compare.">
+<meta name="description" content="12 current sale prices at ShopRite in Lakewood, NJ, compared side by side on Kart Compare.">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#4F46E5">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ShopRite Deals — Kart Compare">
-<meta property="og:description" content="5 current sale prices at ShopRite in Lakewood, NJ, compared side by side on Kart Compare.">
+<meta property="og:description" content="12 current sale prices at ShopRite in Lakewood, NJ, compared side by side on Kart Compare.">
 <meta property="og:image" content="og-image.png">
 <meta property="og:url" content="https://example.com/shoprite.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ShopRite Deals — Kart Compare">
-<meta name="twitter:description" content="5 current sale prices at ShopRite in Lakewood, NJ, compared side by side on Kart Compare.">
+<meta name="twitter:description" content="12 current sale prices at ShopRite in Lakewood, NJ, compared side by side on Kart Compare.">
 <meta name="twitter:image" content="og-image.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.min.css">
 <style>
@@ -245,6 +245,11 @@ a { color: inherit; }
 .card .sale-price { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
 .card .old-price { font-size: 13px; color: var(--muted); text-decoration: line-through; }
 .card .unit-note { font-size: 12px; color: var(--muted); margin-top: -4px; }
+.card .kosher-flag {
+  font-size: 13px; font-weight: 800; color: #7A2E00; background: #FFD98E;
+  border: 1.5px solid #E08A00; border-radius: 8px; padding: 6px 9px;
+  line-height: 1.3;
+}
 .card .card-actions { display: flex; gap: 6px; margin-top: 4px; }
 .card .add-btn {
   flex: 1; margin-top: 0; border: none; background: rgba(255,255,255,0.85); color: var(--text);
@@ -434,25 +439,25 @@ a { color: inherit; }
     </div>
   </div>
   <div class="header-bottom">
-    <div class="wrap"><span class="page-sub">5 deals at ShopRite</span></div>
+    <div class="wrap"><span class="page-sub">12 deals at ShopRite</span></div>
   </div>
 </div>
 
     <div class="page-header">
       <div class="wrap">
         <h1>ShopRite deals</h1>
-        <div class="sub">5 current specials &middot; confirmed sale dates &middot; <span class="muted-part">updated Aug 10, 2026</span></div>
+        <div class="sub">12 current specials &middot; confirmed sale dates &middot; <span class="muted-part">updated Aug 10, 2026</span></div>
       </div>
     </div>
 <div class="wrap">
 
     <div class="date-banner confirmed">
-      <span class="big">Updated Aug 10, 2026 &middot; Confirmed sale dates: Thu, Aug 13 – Sat, Aug 15</span>
-      <span>These prices are read directly off ShopRite's own printed weekly circular for the Brick, NJ area (covers Monmouth and Ocean County, NJ stores), not a live feed — ShopRite's flyer platform only publishes flyer images, no structured price data, so there's no automatic way to pull this. Only items with the flyer's own stated "SAVE $X" amount are shown, so every price here is a confirmed markdown, not a guess — most of the flyer's ~120 items either weren't fresh produce or didn't show a comparable regular price, so they were left off rather than included on a guess. The sale dates shown are the flyer's own printed dates, not an estimate.</span>
+      <span class="big">Updated Aug 10, 2026 &middot; Confirmed sale dates: Sun, Aug 9 – Sat, Aug 15</span>
+      <span>These prices are read directly off ShopRite's own printed weekly circular for the Brick, NJ area (covers Monmouth and Ocean County, NJ stores), not a live feed — ShopRite's flyer platform only publishes flyer images, no structured price data, so there's no automatic way to pull this. Only items with the flyer's own stated "SAVE $X" amount are shown, so every price here is a confirmed markdown, not a guess — most of the flyer's ~120 items either weren't allowed under the kosher policy below or didn't show a comparable regular price, so they were left off rather than included on a guess. The sale dates shown are the flyer's own printed dates, not an estimate.</span>
     </div>
     <div class="date-banner estimated">
       <span class="big">Not a dedicated kosher grocer</span>
-      <span>ShopRite is a general supermarket, not a dedicated kosher grocer. This page only shows fresh, whole Produce — nothing else from the flyer is included, no exceptions (not even fish, since this site has no way to check an actual kosher certification symbol on a package from a flyer page). Please still use your own judgment on anything you buy there — this site can't verify kosher certification automatically.</span>
+      <span>ShopRite is a general supermarket, not a dedicated kosher grocer. This page shows fresh, whole Produce (always allowed), plus a small, hand-picked list of packaged drinks/snacks/cereal the founder personally confirmed are kosher-certified brands — nothing is added automatically just because it's popular or on sale. A couple of items are marked with an on-card "⚠️ Might be OU — not confirmed" badge instead of being left off entirely — that means it's probably kosher-certified but hasn't been personally confirmed, so check the actual package before buying. Meat, dairy, fish/seafood, bakery, frozen, deli, and household items are never included here, no exceptions. This site still can't verify any kosher certification automatically — please use your own judgment on anything you buy there.</span>
     </div>
 
 <div class="toolbar">
@@ -931,6 +936,7 @@ function render() {
       ? Math.round((1 - d.sale_price / d.original_price) * 100) : null;
     const savingsBadge = pctOff ? `<span class="savings-badge">-${pctOff}%</span>` : "";
     const storeTag = false ? `<div class="store-tag">${d.store}</div>` : "";
+    const kosherFlag = d.kosher_flag ? `<div class="kosher-flag">⚠️ ${d.kosher_flag}</div>` : "";
     const already = isInList(d.id);
     card.innerHTML = `
       <div class="icon-row">
@@ -940,6 +946,7 @@ function render() {
       <span class="cat-tag" style="color:${style.text}">${d.category}</span>
       <div class="name">${d.item_name}</div>
       ${storeTag}
+      ${kosherFlag}
       <div class="price-row">
         <span class="price-pill"><span class="sale-price" style="color:${style.text}">$${d.sale_price.toFixed(2)}</span></span>
         ${oldPrice}

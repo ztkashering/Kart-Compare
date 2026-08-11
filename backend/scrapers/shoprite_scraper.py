@@ -20,20 +20,48 @@ following the same rule as every other store in this project — only a
 line with a clearly-stated regular price AND a real "SAVE $X" amount
 becomes a deal, never a guess.
 
-KOSHER POLICY — same rule as Aldi (see aldi_scraper.py and this store's
-own STORE_META note in build_site.py), applied even more strictly here
-since fresh flyer items don't carry any hechsher info at all:
-  ONLY Produce is included. No meat, poultry, fish/seafood, dairy,
-  bakery, frozen, deli, candy/snacks, household, or health & beauty —
-  no exceptions, regardless of brand. A fresh, whole, uncut fruit or
-  vegetable needs no certification to be kosher; virtually everything
-  else on a ShopRite flyer does, and this site has no way to check for
-  an actual hechsher symbol on a package from a flyer page. (An earlier
-  draft of this pass also considered including a fresh salmon fillet —
-  fish don't require ritual slaughter, only fins+scales — but that's
-  inconsistent with the Aldi precedent this project already committed
-  to ("this replaced an earlier 'salmon is OK' rule; salmon is excluded
-  now too"), so it was left out here too, for the same reason.)
+KOSHER POLICY — updated 2026-08-10 (second pass, same day) after the
+founder asked to expand beyond produce-only and specifically offered to
+weigh in on brands directly ("ask me and learn") rather than have this
+script guess silently. Current rules, all still in force:
+  - Fresh, whole, uncut Produce: always allowed, no brand check needed
+    (unchanged from the first pass).
+  - Plain bottled/seltzer water: founder confirmed this should be
+    treated the same as produce (no ingredients besides water). None of
+    this particular flyer's water listings had a clean, non-ambiguous
+    "SAVE $X" discount tag though, so none made it into this snapshot —
+    add some the next time the flyer has one.
+  - Toiletries (toothpaste, shampoo, soap, deodorant, mouthwash, lotion):
+    founder confirmed these can be included regardless of kosher status,
+    since they're not food. None of this flyer's toiletry deals were
+    included either, but for a DIFFERENT reason — every one of them was
+    gated behind a "Digital Coupon" clip-to-save mechanism (not a plain
+    shelf discount), which this project has been treating as unverified/
+    conditional rather than a guaranteed price. Worth re-asking the
+    founder whether digital-coupon prices should count as real deals —
+    if yes, several toiletry items would qualify.
+  - Vitamins/supplements/pills/gummies/capsules: founder wants to be
+    asked per item (gelatin-capsule kashrut concerns), so none are
+    included automatically — no exceptions without an explicit ask.
+  - Packaged snacks/drinks/cereal: founder reviewed a shortlist of this
+    flyer's items with a confirmed "SAVE $X" discount and either (a)
+    confirmed a brand is kosher outright, (b) asked for it to be
+    included but flagged with a visible "might be OU, not confirmed"
+    caveat (Pringles Snack Stacks, Hershey's Chocolates — see the
+    kosher_flag field below), or (c) didn't select it, meaning it's left
+    out for now (Boulder Canyon/Utz chips, Voortman cookies, Juicy
+    Juice, Ocean Spray, Langers, Kool-Aid Jammers, Eight O'Clock Coffee,
+    Mott's Clamato/Mr & Mrs T Mixers — none of these were confirmed, so
+    none are in this snapshot; they can be added later if confirmed).
+  - Meat, poultry, fish/seafood, dairy, bakery, frozen, deli, household,
+    and health-adjacent (not toiletry) items are still excluded outright
+    — that part of the original policy is unchanged.
+  A per-item optional `kosher_flag` field (7th pipe-delimited column in
+  the sample file) carries a caveat string shown as a big, prominent
+  on-card warning badge on the live site (see build_site.py's
+  `.kosher-flag` CSS class and the JS card renderer) — used for items
+  the founder wants included but flagged as unconfirmed, rather than a
+  blanket page-level disclaimer only.
 
 PRICE-VERIFICATION RULE (same as every other store here): this flyer
 shows plenty of items at a flat "sale" price with NO stated regular
@@ -71,10 +99,14 @@ STORE_SLUG = "shoprite"
 SAMPLE_DATA_DIR = Path(__file__).parent / "sample_data"
 
 # Only these categories are ever allowed onto the ShopRite page — see the
-# KOSHER POLICY note above. Produce only (even Aldi allows Eggs/Pantry/
-# Beverages too; this store is stricter since nothing here has been
-# checked against an actual package hechsher).
-ALLOWED_CATEGORIES = {"Produce"}
+# KOSHER POLICY note above. Produce is always safe by nature; Beverages,
+# Pantry, and Candy & Snacks are allowed too now, but ONLY because every
+# line in the sample file is individually hand-curated after the
+# founder's own confirmation (or an explicit "might be OU" flag) — this
+# is not a blanket "any item in these categories is fine" rule the way
+# it might read in isolation. Meat & Deli, Dairy, Bakery, Frozen,
+# Household, and Health & Beauty are still excluded no matter what.
+ALLOWED_CATEGORIES = {"Produce", "Beverages", "Pantry", "Candy & Snacks"}
 
 # Hard safety net, same pattern as aldi_scraper.py: independently checked
 # against the full Meat & Deli keyword list regardless of anything else,
@@ -99,9 +131,9 @@ def parse_deals(raw_text: str) -> list[dict]:
         if not line:
             continue
         parts = line.split("|||")
-        if len(parts) != 6:
+        if len(parts) != 7:
             continue
-        raw_name, sale_text, orig_text, unit_text, date_from, date_to = parts
+        raw_name, sale_text, orig_text, unit_text, date_from, date_to, kosher_flag_text = parts
         name = clean_item_name(raw_name)
         if not name:
             continue
@@ -124,6 +156,7 @@ def parse_deals(raw_text: str) -> list[dict]:
             continue  # kosher policy — Produce only, no exceptions
 
         unit = unit_text.strip() or None
+        kosher_flag = kosher_flag_text.strip() or None
 
         deals.append(
             {
@@ -136,6 +169,7 @@ def parse_deals(raw_text: str) -> list[dict]:
                 "date_valid_from": date_from.strip(),
                 "date_valid_to": date_to.strip(),
                 "raw_text": line,
+                "kosher_flag": kosher_flag,
             }
         )
     return deals
@@ -153,8 +187,10 @@ def run(save_to_db: bool = True, limit_preview: int = 8) -> list[dict]:
 
     print(f"[{STORE_SLUG}] Source mode: CACHED FLYER READ ({sample_path.name})")
     print(
-        f"[{STORE_SLUG}] KOSHER POLICY: Produce only, no exceptions. See "
-        f"this file's docstring for why (same rule as Aldi)."
+        f"[{STORE_SLUG}] KOSHER POLICY: Produce, water, toiletries (in "
+        f"principle), and specific founder-confirmed packaged brands only "
+        f"— never meat/dairy/fish/bakery/frozen/household/health & beauty. "
+        f"See this file's docstring for the full breakdown."
     )
 
     deals = parse_deals(sample_path.read_text())
