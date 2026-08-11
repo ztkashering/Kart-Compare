@@ -189,20 +189,28 @@ STORE_META = {
         ),
     },
     "shoprite": {
-        "dates_confirmed": False,
+        "dates_confirmed": True,
         "note": (
-            "ShopRite's weekly ad setup for the Jackson, NJ location "
-            "(the closest working store to Lakewood) is in progress — this "
-            "page will fill in with real deals once that's finished."
+            "These prices are read directly off ShopRite's own printed "
+            "weekly circular for the Brick, NJ area (covers Monmouth and "
+            "Ocean County, NJ stores), not a live feed — ShopRite's flyer "
+            "platform only publishes flyer images, no structured price "
+            "data, so there's no automatic way to pull this. Only items "
+            "with the flyer's own stated \"SAVE $X\" amount are shown, so "
+            "every price here is a confirmed markdown, not a guess — most "
+            "of the flyer's ~120 items either weren't fresh produce or "
+            "didn't show a comparable regular price, so they were left "
+            "off rather than included on a guess. The sale dates shown "
+            "are the flyer's own printed dates, not an estimate."
         ),
         "kosher_note": (
             "ShopRite is a general supermarket, not a dedicated kosher "
-            "grocer. Once live, this page will only show Produce, Eggs, "
-            "Pantry (including canned goods), and Beverages — meat, deli, "
-            "seafood, dairy, bakery, frozen, and snack items will be left "
-            "off entirely, no exceptions. Please still check the package's "
-            "own kosher certification (hechsher) before buying — this site "
-            "can't verify that automatically."
+            "grocer. This page only shows fresh, whole Produce — nothing "
+            "else from the flyer is included, no exceptions (not even "
+            "fish, since this site has no way to check an actual kosher "
+            "certification symbol on a package from a flyer page). Please "
+            "still use your own judgment on anything you buy there — this "
+            "site can't verify kosher certification automatically."
         ),
     },
     "aisle-9": {
