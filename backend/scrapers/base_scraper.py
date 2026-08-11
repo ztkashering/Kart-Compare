@@ -159,7 +159,7 @@ STRONG_CATEGORY_KEYWORDS = {
     "Candy & Snacks": [
         "candy", "chocolate", "gummy", "gummies", "licorice", "taffy",
         "marshmallow", "chips", "cookie", "cracker", "wafer", "popcorn",
-        "bissli", "sour stick", "fruit leather", "twizzlers", "pretzel",
+        "bissli", "sour stick", "fruit leather", "twizzler", "pretzel",
         "snack", "nosh", "dibbitz", "ropes", "fruit riot",
     ],
     "Household": [
@@ -206,6 +206,16 @@ _KEYWORD_COLLISION_GUARDS = {
     # "cashew butter" the nut spread (not dairy at all) — found 2026-08-10
     # via "Oat Chocolate & Peanut Butter Bar" landing in Dairy.
     "butter": ["peanut butter", "almond butter", "cashew butter", "sunflower butter"],
+    # Weak Produce keywords (plain fruit/flavor words) colliding with
+    # packaged snack/beverage products that just happen to have a fruit
+    # word in the name — found 2026-08-10 auditing a large batch of real
+    # Aisle 9 items. None of these are actually fresh produce.
+    "mango": ["dried mango"],
+    "lemon": ["lemon sparkling water"],
+    "berry": ["berry & cherry no color italia"],
+    "cherry": ["berry & cherry no color italia"],
+    "fruit": ["fruity pebbles", "fruit by the foot"],
+    "pepper": ["tortinkles spicy pepper"],
 }
 
 

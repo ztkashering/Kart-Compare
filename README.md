@@ -104,9 +104,9 @@ You asked to hold off on actually doing this until the site/branding is settled,
 | Aldi | Real weekly ad via the Flipp flyer platform, filtered to genuine "Price Drops" only (Produce/Beverages/Pantry) | 6 |
 | Bingo | Now has an "Offers > Weekly Deals" nav item, but it's still empty — no flyer posted yet | 0 |
 | ShopRite (Jackson, NJ) | Not built yet — scraper doesn't exist in the repo | pending |
-| Aisle 9 (Lakewood) | Own online-ordering site; every category page (including Specials) is gated behind account login — no guest/zip browsing like the other stores — so this is every genuinely marked-down item found on their public homepage across multiple checks, not the full weekly specials | 11 |
+| Aisle 9 (Lakewood) | Own online-ordering site; every category page (including Specials) is gated behind account login — no guest/zip browsing like the other stores — so this covers real, verified markdowns from their homepage carousel plus the Meat/Dairy/Grocery departments of their Specials page, not yet every department | 69 |
 
-**450 real deals total.**
+**508 real deals total.**
 
 Seasons and Nutmeg both dropped from the prior snapshot (Seasons 139→109, Nutmeg 94→80) — re-verified live against 2-3 random pages each before trusting the lower numbers; the drop is real, not a scraping miss. Gourmet Glatt jumped 74→113 because the store's own website was redesigned with a bigger 2-page flyer this week.
 
