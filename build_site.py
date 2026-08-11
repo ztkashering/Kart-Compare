@@ -214,14 +214,14 @@ STORE_META = {
             "browse by zip code like the other stores here allow. These "
             "prices are real, genuinely marked-down items — some pulled "
             "from their public homepage carousel, the rest confirmed "
-            "directly off their Specials page (Meat, Dairy, and Grocery "
-            "departments) — but it still isn't their complete weekly "
-            "specials list, since several departments (Bakery, Deli, "
-            "Fresh Fish, Sushi, Frozen, Household & Beyond, and others) "
-            "aren't covered yet. This list will keep growing as more of "
-            "it gets checked. Aisle 9 doesn't publish a sale end date "
-            "anywhere on their site, so the dates shown are an estimated "
-            "weekly sale window, not a store-confirmed date."
+            "directly off their Specials page (Meat, Dairy, Grocery, "
+            "Household & Beyond, Produce, and Sushi departments) — but it "
+            "still isn't their complete weekly specials list, since a few "
+            "departments (Bakery, Deli, Fresh Fish, and Frozen) aren't "
+            "covered yet. This list will keep growing as more of it gets "
+            "checked. Aisle 9 doesn't publish a sale end date anywhere on "
+            "their site, so the dates shown are an estimated weekly sale "
+            "window, not a store-confirmed date."
         ),
     },
 }

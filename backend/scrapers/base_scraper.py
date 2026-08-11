@@ -165,12 +165,13 @@ STRONG_CATEGORY_KEYWORDS = {
     "Household": [
         "paper plate", "plastic cup", "napkin", "tissue", "foil",
         "detergent", "dish soap", "disposable", "cutlery", "aluminum",
-        "trash bag", "plates,", "plate,", "plastic bowl", "forks", "spoons",
+        "trash bag", "garbage bag", "storage bag", "plates,", "plate,",
+        "plate", "cups", "plastic bowl", "forks", "spoons",
         "pans", "parchment",
     ],
     "Health & Beauty": [
         "toothpaste", "shampoo", "vitamin", "sunscreen", "deodorant",
-        "mouthwash", "floss", "scope", "lotion",
+        "mouthwash", "floss", "scope", "lotion", "body wash",
     ],
 }
 
@@ -185,6 +186,7 @@ WEAK_CATEGORY_KEYWORDS = {
         "cabbage", "celery", "squash", "parsley", "dill", "cauliflower",
         "broccoli", "apple", "pineapple", "cantaloupe", "watermelon",
         "berries", "berry", "plum", "peach", "banana", "kiwi",
+        "honeydew", "fresh corn",
     ],
 }
 
@@ -216,6 +218,13 @@ _KEYWORD_COLLISION_GUARDS = {
     "cherry": ["berry & cherry no color italia"],
     "fruit": ["fruity pebbles", "fruit by the foot"],
     "pepper": ["tortinkles spicy pepper"],
+    # " tea" the beverage vs. disposable "tea spoons" (cutlery, not a
+    # drink) — found 2026-08-10 via "Deluxe Clear Tea Spoons" landing
+    # in Beverages instead of Household.
+    " tea": ["tea spoon", "tea spoons", "teaspoon"],
+    # "onion" the fresh vegetable vs. prepared appetizers that happen to
+    # be onion-flavored (tempura, rings) — not fresh produce.
+    "onion": ["onion tempura", "onion ring"],
 }
 
 
