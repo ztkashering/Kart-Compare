@@ -453,6 +453,15 @@ a { color: inherit; }
 .community-card h2 { margin: 0 0 6px; font-size: 17px; font-weight: 800; }
 .community-card > p { margin: 0 0 16px; font-size: 13.5px; color: var(--muted); }
 
+.mission-card {
+  max-width: 640px; margin: 28px auto 0; background: var(--card-bg); border: 1px solid var(--border);
+  border-left: 4px solid var(--brand); border-radius: 18px; padding: 22px 26px;
+}
+.mission-card h2 { margin: 0 0 10px; font-size: 17px; font-weight: 800; }
+.mission-card p { margin: 0 0 10px; font-size: 14px; line-height: 1.65; color: var(--text); }
+.mission-card p:last-of-type { margin-bottom: 0; }
+.mission-card .signoff { margin-top: 14px; font-size: 13px; color: var(--muted); font-style: italic; }
+
 /* ---------- Page header (store pages) ---------- */
 .page-header { background: var(--card-bg); border-bottom: 1px solid var(--border); padding: 22px 20px; }
 .page-header h1 { margin: 0 0 6px; font-size: 24px; font-weight: 800; letter-spacing: -0.02em; }
@@ -1666,7 +1675,23 @@ def build_homepage(all_deals, stores):
       <span>Some stores publish exact sale-valid dates; others don't — check each store's page for details.</span>
     </div>"""
 
+    mission = """
+    <div class="mission-card">
+      <h2>Why I built this</h2>
+      <p>Lakewood has a lot of grocery options, but figuring out where things are
+      actually cheap this week means opening five different apps and flipping
+      through paper flyers before you've even left the house. I got tired of
+      doing that every week, so I started writing down the real sale prices
+      myself and putting them all in one place.</p>
+      <p>This isn't run by any of the stores, and nobody's paying to be featured
+      here. Every price comes straight from what the store itself is charging —
+      if I can't verify it, it doesn't go up, and if something's wrong, I'd
+      rather hear about it and fix it than leave it stale.</p>
+      <p class="signoff">— Ephraim, Lakewood</p>
+    </div>"""
+
     extra_body = f"""
+    {mission}
     <div class="section-title">Browse by store</div>
     <div class="section-sub">Jump straight to a store's full list of specials.</div>
     <div class="store-grid">{''.join(store_cards)}</div>
