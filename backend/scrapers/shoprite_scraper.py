@@ -31,15 +31,20 @@ script guess silently. Current rules, all still in force:
     this particular flyer's water listings had a clean, non-ambiguous
     "SAVE $X" discount tag though, so none made it into this snapshot —
     add some the next time the flyer has one.
-  - Toiletries (toothpaste, shampoo, soap, deodorant, mouthwash, lotion):
-    founder confirmed these can be included regardless of kosher status,
-    since they're not food. None of this flyer's toiletry deals were
-    included either, but for a DIFFERENT reason — every one of them was
-    gated behind a "Digital Coupon" clip-to-save mechanism (not a plain
-    shelf discount), which this project has been treating as unverified/
-    conditional rather than a guaranteed price. Worth re-asking the
-    founder whether digital-coupon prices should count as real deals —
-    if yes, several toiletry items would qualify.
+  - Toiletries (toothpaste, shampoo, soap, deodorant, mouthwash, lotion,
+    hair color): founder confirmed these can be included regardless of
+    kosher status, since they're not food. This flyer's toiletry deals
+    were ALL gated behind a "Digital Coupon" clip-to-save mechanism
+    (Sale Price -> Digital Coupon $X off -> Final Price), not a plain
+    shelf discount. First pass of this file treated that as unverified/
+    conditional and left them out; founder confirmed (2026-08-10, third
+    pass) that digital-coupon prices should count as real deals too, so
+    they're now allowed — original_price = the flyer's stated Sale
+    Price (pre-coupon), sale_price = the stated Final Price (post-
+    coupon), same "confirmed math, never guessed" standard as everywhere
+    else in this project. This does mean the site is now promising a
+    price that requires the shopper to have ShopRite's digital coupon
+    clipped first — worth keeping in mind if that ever causes confusion.
   - Vitamins/supplements/pills/gummies/capsules: founder wants to be
     asked per item (gelatin-capsule kashrut concerns), so none are
     included automatically — no exceptions without an explicit ask.
@@ -92,7 +97,7 @@ from pathlib import Path
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
-from scrapers.base_scraper import clean_item_name, guess_category, CATEGORY_KEYWORDS
+from scrapers.base_scraper import clean_item_name, guess_category, CATEGORY_KEYWORDS, _keyword_matches
 from db.database import get_connection, init_db, insert_deal
 
 STORE_SLUG = "shoprite"
@@ -106,17 +111,22 @@ SAMPLE_DATA_DIR = Path(__file__).parent / "sample_data"
 # is not a blanket "any item in these categories is fine" rule the way
 # it might read in isolation. Meat & Deli, Dairy, Bakery, Frozen,
 # Household, and Health & Beauty are still excluded no matter what.
-ALLOWED_CATEGORIES = {"Produce", "Beverages", "Pantry", "Candy & Snacks"}
+ALLOWED_CATEGORIES = {"Produce", "Beverages", "Pantry", "Candy & Snacks", "Health & Beauty"}
 
 # Hard safety net, same pattern as aldi_scraper.py: independently checked
 # against the full Meat & Deli keyword list regardless of anything else,
 # so a future bad line in the sample file can never sneak meat/fish onto
-# this page.
+# this page. Uses base_scraper's own collision-guard-aware matcher (fixed
+# 2026-08-10 — a plain substring check here was false-flagging "Garnier
+# Fructis Shampoo" and "L'Oreal Paris Elvive Shampoo" as meat, because
+# "shampoo" literally contains "ham". guess_category() already had a
+# collision guard for exactly this ("ham": ["shampoo"]), but this
+# separate safety-net check wasn't using it — now it is.)
 _MEAT_DELI_KEYWORDS = CATEGORY_KEYWORDS["Meat & Deli"]
 
 
 def _is_meat_or_deli(name_lower: str) -> bool:
-    return any(kw in name_lower for kw in _MEAT_DELI_KEYWORDS)
+    return any(_keyword_matches(name_lower, kw) for kw in _MEAT_DELI_KEYWORDS)
 
 
 def _latest_sample_path() -> Path | None:
@@ -187,10 +197,10 @@ def run(save_to_db: bool = True, limit_preview: int = 8) -> list[dict]:
 
     print(f"[{STORE_SLUG}] Source mode: CACHED FLYER READ ({sample_path.name})")
     print(
-        f"[{STORE_SLUG}] KOSHER POLICY: Produce, water, toiletries (in "
-        f"principle), and specific founder-confirmed packaged brands only "
-        f"— never meat/dairy/fish/bakery/frozen/household/health & beauty. "
-        f"See this file's docstring for the full breakdown."
+        f"[{STORE_SLUG}] KOSHER POLICY: Produce and toiletries always "
+        f"allowed; drinks/snacks/cereal only if founder-confirmed (some "
+        f"flagged 'might be OU, not confirmed'); never meat, dairy, fish, "
+        f"bakery, frozen, deli, or household. See this file's docstring."
     )
 
     deals = parse_deals(sample_path.read_text())

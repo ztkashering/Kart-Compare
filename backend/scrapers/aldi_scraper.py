@@ -88,7 +88,7 @@ from pathlib import Path
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
-from scrapers.base_scraper import clean_item_name, CATEGORY_KEYWORDS
+from scrapers.base_scraper import clean_item_name, CATEGORY_KEYWORDS, _keyword_matches
 from db.database import get_connection, init_db, insert_deal
 
 STORE_SLUG = "aldi"
@@ -119,12 +119,15 @@ FLIPP_CATEGORY_MAP = {
 # an independent name check against the full Meat & Deli keyword list and
 # excludes on any match, regardless of Aldi's own category tag. The
 # founder was explicit and repeated that meat must never appear on this
-# page — belt and suspenders.
+# page — belt and suspenders. Uses base_scraper's collision-guard-aware
+# matcher (fixed 2026-08-10 alongside the same bug in shoprite_scraper.py
+# — a plain substring check here would false-flag anything containing
+# "ham" as a substring, e.g. "shampoo", as meat/deli).
 _MEAT_DELI_KEYWORDS = CATEGORY_KEYWORDS["Meat & Deli"]
 
 
 def _is_meat_or_deli(item_name_lower: str) -> bool:
-    return any(kw in item_name_lower for kw in _MEAT_DELI_KEYWORDS)
+    return any(_keyword_matches(item_name_lower, kw) for kw in _MEAT_DELI_KEYWORDS)
 
 
 def _find_latest_sample_path() -> Path | None:

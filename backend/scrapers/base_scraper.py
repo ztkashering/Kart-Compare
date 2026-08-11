@@ -171,7 +171,7 @@ STRONG_CATEGORY_KEYWORDS = {
     ],
     "Health & Beauty": [
         "toothpaste", "shampoo", "vitamin", "sunscreen", "deodorant",
-        "mouthwash", "floss", "scope", "lotion", "body wash",
+        "mouthwash", "floss", "scope", "lotion", "body wash", "hair color",
     ],
 }
 
