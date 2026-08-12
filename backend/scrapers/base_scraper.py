@@ -145,7 +145,7 @@ STRONG_CATEGORY_KEYWORDS = {
     "Bakery": [
         "bread", "bagel", "cake", "cupcake", "roll", "danish",
         "babka", "challah", "donut", "kichel", "biscuit", "pita",
-        "farfel", "matzo", "mezonos", "pie crust", "pastry",
+        "farfel", "matzo", "mezonos", "pie crust", "pastry", "bun",
     ],
     "Beverages": [
         "juice", "soda", "seltzer", "water bottle", " tea", "coffee",
@@ -163,15 +163,16 @@ STRONG_CATEGORY_KEYWORDS = {
         "snack", "nosh", "dibbitz", "ropes", "fruit riot",
     ],
     "Household": [
-        "paper plate", "plastic cup", "napkin", "tissue", "foil",
-        "detergent", "dish soap", "disposable", "cutlery", "aluminum",
-        "trash bag", "garbage bag", "storage bag", "plates,", "plate,",
-        "plate", "cups", "plastic bowl", "forks", "spoons",
+        "paper plate", "plastic cup", "beverage cup", "napkin", "tissue",
+        "foil", "detergent", "dish soap", "disposable", "cutlery",
+        "aluminum", "trash bag", "garbage bag", "storage bag", "plates,",
+        "plate,", "plate", "plastic bowl", "forks", "spoons",
         "pans", "parchment",
     ],
     "Health & Beauty": [
         "toothpaste", "shampoo", "vitamin", "sunscreen", "deodorant",
         "mouthwash", "floss", "scope", "lotion", "body wash", "hair color",
+        "head & shoulder", "head&shoulder",
     ],
 }
 
@@ -203,11 +204,15 @@ CATEGORY_KEYWORDS = {**STRONG_CATEGORY_KEYWORDS, **WEAK_CATEGORY_KEYWORDS}
 # behavior is untouched.
 _KEYWORD_COLLISION_GUARDS = {
     "turkey": ["turkey hill"],
-    "ham": ["shampoo"],
+    "ham": ["shampoo", "hamburger", "graham"],
     # "butter" the dairy product vs. "peanut butter" / "almond butter" /
     # "cashew butter" the nut spread (not dairy at all) — found 2026-08-10
     # via "Oat Chocolate & Peanut Butter Bar" landing in Dairy.
     "butter": ["peanut butter", "almond butter", "cashew butter", "sunflower butter"],
+    # "milk" the dairy product vs. "milk chocolate" the candy descriptor —
+    # found 2026-08-12 via "Swiss Milk Chocolate" landing in Dairy instead
+    # of Candy & Snacks.
+    "milk": ["milk chocolate"],
     # Weak Produce keywords (plain fruit/flavor words) colliding with
     # packaged snack/beverage products that just happen to have a fruit
     # word in the name — found 2026-08-10 auditing a large batch of real
@@ -222,9 +227,39 @@ _KEYWORD_COLLISION_GUARDS = {
     # drink) — found 2026-08-10 via "Deluxe Clear Tea Spoons" landing
     # in Beverages instead of Household.
     " tea": ["tea spoon", "tea spoons", "teaspoon"],
-    # "onion" the fresh vegetable vs. prepared appetizers that happen to
-    # be onion-flavored (tempura, rings) — not fresh produce.
-    "onion": ["onion tempura", "onion ring"],
+    # "onion" the fresh vegetable vs. prepared appetizers/mixes/snacks
+    # that happen to be onion-flavored — not fresh produce. Expanded
+    # 2026-08-12 after a full-site audit found onion soup mix and
+    # onion-flavored corn snacks tagged Produce.
+    "onion": ["onion tempura", "onion ring", "onion soup", "onion garlic"],
+    # 2026-08-12 audit fixes below — a full pass over every category on
+    # the live site turned up real miscategorizations, not edge cases:
+    # "nugget" the chicken/meat product vs. corn/bread "nuggets" snacks.
+    "nugget": ["corn nugget", "sourdough nugget"],
+    # "shoulder" the cut of meat vs. the "Head & Shoulders" shampoo brand.
+    "shoulder": ["head & shoulder", "head&shoulder", "head and shoulder"],
+    # "hot dog"/"hotdog" the meat product vs. "hot dog buns" — the bread,
+    # not the frankfurter.
+    "hot dog": ["hot dog bun"],
+    "hotdog": ["hotdog bun"],
+    # "bread" the bakery product vs. "breaded" (a coating on a frozen/deli
+    # appetizer, not bread itself).
+    "bread": ["breaded"],
+    # "cake" the bakery product vs. "pancake" (a breakfast/pantry mix, not
+    # a cake).
+    "cake": ["pancake"],
+    # "chicken" the fresh/deli meat vs. packaged pantry items that are
+    # merely chicken-flavored (soup mixes, ramen).
+    "chicken": ["chicken noodle soup", "chicken flavor", "chicken bouillon"],
+    # "nosh" (a snack) vs. "Nish Nosh" — a salad dressing brand name that
+    # happens to contain the word.
+    "nosh": ["nish nosh"],
+    # Weak Produce "tomato"/"potato"/"dill" colliding with condiments,
+    # frozen sides, and pickled/jarred goods — none of these are fresh
+    # produce.
+    "tomato": ["tomato ketchup", "tomato sauce", "tomato flavor"],
+    "potato": ["crinkle cut potato", "potato triangles"],
+    "dill": ["kosher dill", "dill gherkin"],
 }
 
 
