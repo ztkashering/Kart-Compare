@@ -1094,15 +1094,29 @@ function reportProblem(deal, btn, reason) {{
     "\\nCategory shown: " + deal.category +
     "\\nPage: " + location.href;
 
+  // 2026-08-12 BUG FOUND AND FIXED: Web3Forms was silently rejecting
+  // submissions from this site's github.io address (a free-tier
+  // subdomain), so every report was falling through to the mailto
+  // fallback below — except window.open() was called from INSIDE the
+  // fetch's .then()/.catch() callback, which runs after the network
+  // round-trip completes. By then the browser no longer considers it
+  // part of the original tap's "user gesture," so most browsers
+  // silently block the popup — the button still showed a checkmark
+  // (markDone() ran fine either way) even though nothing actually
+  // opened. Fix: open a blank window SYNCHRONOUSLY, in direct response
+  // to the tap, before any network call — then just point that
+  // already-open window at the mailto: link if Web3Forms fails, or
+  // close it if Web3Forms succeeds. A window opened synchronously
+  // during the click handler is never blocked.
+  const mailWin = window.open("", "_blank");
+
   function markDone() {{
     btn.innerHTML = "\\u2713";
     btn.classList.add("reported");
   }}
   function fallbackToEmail() {{
-    window.open(
-      `mailto:${{CONTACT_EMAIL}}?subject=${{encodeURIComponent(subject)}}&body=${{encodeURIComponent(message)}}`,
-      "_blank"
-    );
+    const mailtoUrl = `mailto:${{CONTACT_EMAIL}}?subject=${{encodeURIComponent(subject)}}&body=${{encodeURIComponent(message)}}`;
+    if (mailWin) {{ mailWin.location.href = mailtoUrl; }} else {{ window.open(mailtoUrl, "_blank"); }}
     markDone();
   }}
 
@@ -1113,7 +1127,9 @@ function reportProblem(deal, btn, reason) {{
     headers: {{ "Content-Type": "application/json", "Accept": "application/json" }},
     body: JSON.stringify({{ access_key: WEB3FORMS_KEY, subject, message }}),
   }})
-    .then(r => (r.ok ? markDone() : fallbackToEmail()))
+    .then(r => {{
+      if (r.ok) {{ if (mailWin) mailWin.close(); markDone(); }} else {{ fallbackToEmail(); }}
+    }})
     .catch(fallbackToEmail);
 }}
 
@@ -1150,6 +1166,11 @@ if (signupForm) {{
       "\\nPhone: " + (phone || "(not given)") + "\\nEmail opt-in: " + emailOptin +
       "\\nSMS opt-in: " + smsOptin + "\\nSigned up: " + new Date().toISOString();
 
+    // See the matching note in reportProblem() above: this window must be
+    // opened synchronously, in direct response to the submit event, or
+    // the browser silently blocks it once the fetch below resolves.
+    const mailWin = window.open("", "_blank");
+
     function showResult(msg, ok) {{
       resultEl.textContent = msg;
       resultEl.className = "signup-result " + (ok ? "ok" : "err");
@@ -1157,10 +1178,8 @@ if (signupForm) {{
       btn.textContent = "Sign me up";
     }}
     function fallbackToEmail() {{
-      window.open(
-        `mailto:${{CONTACT_EMAIL}}?subject=${{encodeURIComponent(subject)}}&body=${{encodeURIComponent(message)}}`,
-        "_blank"
-      );
+      const mailtoUrl = `mailto:${{CONTACT_EMAIL}}?subject=${{encodeURIComponent(subject)}}&body=${{encodeURIComponent(message)}}`;
+      if (mailWin) {{ mailWin.location.href = mailtoUrl; }} else {{ window.open(mailtoUrl, "_blank"); }}
       showResult("Opened your email app to finish signing up.", true);
       signupForm.reset();
     }}
@@ -1174,6 +1193,7 @@ if (signupForm) {{
     }})
       .then(r => {{
         if (r.ok) {{
+          if (mailWin) mailWin.close();
           showResult("You're signed up! Watch for deals soon.", true);
           signupForm.reset();
         }} else {{
@@ -1211,6 +1231,11 @@ if (communityForm) {{
     const message = "Community: " + community + "\\nZip: " + (zip || "(not given)") +
       "\\nEmail: " + (email || "(not given)") + "\\nRequested: " + new Date().toISOString();
 
+    // See the matching note in reportProblem() above: this window must be
+    // opened synchronously, in direct response to the submit event, or
+    // the browser silently blocks it once the fetch below resolves.
+    const mailWin = window.open("", "_blank");
+
     function showResult(msg, ok) {{
       resultEl.textContent = msg;
       resultEl.className = "signup-result " + (ok ? "ok" : "err");
@@ -1218,10 +1243,8 @@ if (communityForm) {{
       btn.textContent = "Request my community";
     }}
     function fallbackToEmail() {{
-      window.open(
-        `mailto:${{CONTACT_EMAIL}}?subject=${{encodeURIComponent(subject)}}&body=${{encodeURIComponent(message)}}`,
-        "_blank"
-      );
+      const mailtoUrl = `mailto:${{CONTACT_EMAIL}}?subject=${{encodeURIComponent(subject)}}&body=${{encodeURIComponent(message)}}`;
+      if (mailWin) {{ mailWin.location.href = mailtoUrl; }} else {{ window.open(mailtoUrl, "_blank"); }}
       showResult("Opened your email app to finish sending your request.", true);
       communityForm.reset();
     }}
@@ -1235,6 +1258,7 @@ if (communityForm) {{
     }})
       .then(r => {{
         if (r.ok) {{
+          if (mailWin) mailWin.close();
           showResult("Thanks! We'll look into " + community + ".", true);
           communityForm.reset();
         }} else {{
