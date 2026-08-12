@@ -32,7 +32,7 @@ from db.database import get_connection, init_db, insert_deal
 
 STORE_SLUG = "kosher-village"
 SPECIALS_URL = "https://www.koshervillage.com/products/store-specials"
-SAMPLE_PATH = Path(__file__).parent / "sample_data" / "kosher_village_2026-08-10_specials.txt"
+SAMPLE_PATH = Path(__file__).parent / "sample_data" / "kosher_village_2026-08-12_specials.txt"
 
 # Matches: <name/size blob> $<original> $<sale> Add to cart
 ITEM_RE = re.compile(

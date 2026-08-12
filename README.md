@@ -92,23 +92,23 @@ You described three things: wine stores, wine-store-to-grocery-store proximity, 
 
 You asked to hold off on actually doing this until the site/branding is settled, so nothing's been pushed anywhere yet. When you're ready, here's the plain-English plan: I'll organize everything into a clean folder structure with a `.gitignore` (a file that tells git which files to ignore, like temporary junk) and a proper top-level README, then walk you through **GitHub Desktop** — a point-and-click app, no command line needed — to create the repository and upload it. Just say the word.
 
-## The stores, honestly (updated 2026-08-10)
+## The stores, honestly (updated 2026-08-12)
 
 | Store | What their site actually is | Deals found |
 |---|---|---|
 | Gourmet Glatt | Now has a real "Specials" page (redesigned since launch) linking to a PDF flyer, 2 pages this week | 113 |
-| Seasons | Full online store, specials spread across many pages, multi-location (needs explicit ZIP confirmation to get the right store) | 109 |
-| Nutmeg | Full online store, specials spread across many pages | 80 |
-| Kosher West | Full online store, specials spread across many pages | 121 |
-| Kosher Village | Full online store, specials page has no pagination — genuinely just 10 right now | 10 |
-| Aldi | Real weekly ad via the Flipp flyer platform, filtered to genuine "Price Drops" only (Produce/Beverages/Pantry) | 6 |
-| Bingo | Now has an "Offers > Weekly Deals" nav item, but it's still empty — no flyer posted yet | 0 |
-| ShopRite (Brick, NJ area) | No structured price feed exists (flyer platform is images only), so this is read directly off the founder's own printed weekly circular PDF — Produce and toiletries (toothpaste/shampoo/soap/deodorant, not food) are always allowed; drinks/snacks/cereal are hand-picked only after the founder personally confirms the brand is kosher-certified; a couple of items are shown with an on-card "might be OU, not confirmed" badge instead of being fully confirmed or left off; toiletry deals gated behind a "Digital Coupon" clip now count too, same math-verified standard as everywhere else | 21 |
-| Aisle 9 (Lakewood) | Own online-ordering site; every category page (including Specials) is gated behind account login — no guest/zip browsing like the other stores — so this covers real, verified markdowns from their homepage carousel plus the Meat/Dairy/Grocery/Household & Beyond/Produce/Sushi departments of their Specials page, not yet every department | 92 |
+| Seasons | Full online store, specials spread across many pages, multi-location (needs explicit ZIP confirmation to get the right store) | 129 |
+| Nutmeg | Full online store, specials spread across many pages | 101 |
+| Kosher West | Full online store, specials spread across many pages | 95 |
+| Kosher Village | Full online store, specials page has no pagination — now 24 items | 24 |
+| Aldi | Real weekly ad via the Flipp flyer platform, filtered to genuine "Price Drops" only (Produce/Beverages/Pantry) | 5 |
+| Bingo | Still has an "Offers > Weekly Deals" nav item, but it's still empty — no flyer posted yet | 0 |
+| ShopRite (Brick, NJ area) | No structured price feed exists (flyer platform is images only), so this is read directly off the founder's own printed weekly circular PDF — Produce and toiletries (toothpaste/shampoo/soap/deodorant, not food) are always allowed; drinks/snacks/cereal are hand-picked only after the founder personally confirms the brand is kosher-certified; a couple of items are shown with an on-card "might be OU, not confirmed" badge instead of being fully confirmed or left off; toiletry deals gated behind a "Digital Coupon" clip now count too, same math-verified standard as everywhere else. No new flyer was available this pass, so this is still the 2026-08-10 verified read, unchanged | 21 |
+| Aisle 9 (Lakewood) | Own online-ordering site; confirmed EVERY category page (including Specials and its department sidebar filters) is gated behind account login — there is no guest/zip browsing at all. The only reachable real data is the homepage's "Featured Products" carousel, filtered to genuinely `.product-item-special-lbl`-badged cards, sampled across 3 separate fresh tabs. This pass, all 3 tabs converged on the same 11 items (no rotation this time) | 11 |
 
-**552 real deals total.**
+**499 real deals total.**
 
-Seasons and Nutmeg both dropped from the prior snapshot (Seasons 139→109, Nutmeg 94→80) — re-verified live against 2-3 random pages each before trusting the lower numbers; the drop is real, not a scraping miss. Gourmet Glatt jumped 74→113 because the store's own website was redesigned with a bigger 2-page flyer this week.
+Kosher West dropped from the prior snapshot (121→95, -21%) — re-verified live twice (a full page reload reproduced the identical 95-item set both times), so the drop is real, not a scraping miss. Aisle 9 dropped sharply (92→11) because the prior snapshot's larger count was not reproducible through the current, confirmed-working technique (homepage carousel only — every category page, including Specials, is login-gated); 11 is the honest ceiling of what's reachable without signing in, and this README's Aisle 9 row above has been corrected to describe that limitation accurately. Seasons and Nutmeg both grew (109→129, 80→101) and Kosher Village grew (10→24) — real increases, not padding. Gourmet Glatt's flyer was unchanged this week (still dated August 9th–14th), so its count carried over exactly.
 
 ## About "when is the sale valid from/to"
 
