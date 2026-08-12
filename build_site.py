@@ -53,7 +53,7 @@ Pillow to draw the placeholder icons/share image.)
 """
 
 import json
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 
 BASE_DIR = Path(__file__).parent
@@ -1839,6 +1839,18 @@ MANIFEST_JSON = json.dumps({
 # self.clients.claim() were already correctly in place below) take over
 # and clear the old cache immediately instead of waiting for every open
 # tab to be closed first.
+#
+# BUG FOUND AND FIXED 2026-08-12: the date-only stamp above had the same
+# blind spot one level up — it only changes once every 24 hours, so two
+# rebuilds on the SAME day (which now happens routinely: a scheduled
+# re-scrape plus one or more same-day bug-fix redeploys) produce the
+# identical CACHE_NAME string, and the browser sees byte-identical sw.js
+# on the second deploy and never notices anything changed. A visitor who
+# loaded the site between the two deploys stays stuck on the first one's
+# HTML/JS indefinitely — this is exactly what happened today. Fix: stamp
+# the exact build timestamp (to the second) instead of just the date, so
+# every single rebuild is guaranteed to be a new cache name, same-day or
+# not.
 _SERVICE_WORKER_JS_TEMPLATE = """
 const CACHE_NAME = "__CACHE_NAME__";
 const SHELL_FILES = ["index.html", "manifest.json", "icon-192.png", "icon-512.png"];
@@ -1898,7 +1910,12 @@ def render_service_worker_js() -> str:
     # Plain string .replace() rather than an f-string/.format() call on
     # purpose — this template is full of literal JS braces ({}) that would
     # otherwise have to be escaped everywhere and would be easy to break.
-    cache_name = f"kartcompare-shell-{date.today().isoformat()}"
+    #
+    # Stamped to the second (not just the date — see the 2026-08-12 note
+    # above) so that same-day redeploys are still guaranteed to produce a
+    # different CACHE_NAME and actually bust returning visitors' caches.
+    build_stamp = datetime.now().strftime("%Y-%m-%d-%H%M%S")
+    cache_name = f"kartcompare-shell-{build_stamp}"
     return _SERVICE_WORKER_JS_TEMPLATE.replace("__CACHE_NAME__", cache_name)
 
 
