@@ -36,6 +36,7 @@ from scrapers.base_scraper import (
     parse_multi_buy,
     guess_category,
     clean_item_name,
+    CENTS_SYMBOL_RE,
 )
 from db.database import get_connection, init_db, insert_deal
 
@@ -59,16 +60,47 @@ PRICE_LINE_RE = re.compile(
     r"\$\d{2,5}(?:lb\.?|ea\.?)?"          # $199, $1999lb.
     r"|\d{1,2}\s*/\s*\$?\d+(?:\.\d{2})?(?:cents)?(?:lb\.?)?"  # 3/$4, 2/88cents
     r"|\d{2,3}\s*cents(?:lb\.?)?"          # 99cents, 99centslb
+    r"|\d{1,3}\s*¢(?:\s*(?:lb\.?|ea\.?))?"  # 89 ¢, 99¢, 99 ¢ lb. — found
+    # 2026-08-12: this flyer prints anything under a dollar with the "¢"
+    # glyph, not the word "cents". Missing this pattern was the root
+    # cause of a whole class of garbled/merged item names — see the note
+    # on CENTS_SYMBOL_RE in base_scraper.py.
     r")$",
     re.I,
 )
 
 # Lines that are just visual noise / boilerplate — ignore for item names.
+# NOTE 2026-08-12: the dot-leader pattern below was changed from `\.{3,}`
+# (three-plus CONSECUTIVE periods) to `(?:\.\s*){3,}` (three-plus periods
+# each optionally followed by whitespace) because this flyer's real
+# dot-leaders come out of PDF text extraction as SPACED dots
+# (". . . . . . ."), which the old pattern never matched — so the whole
+# dot-leader line was silently treated as item-name text and glued onto
+# whatever came before and after it, contributing to the same
+# merged-name problem as the missing "¢" price pattern above.
 NOISE_LINE_RE = re.compile(
-    r"^(\.{3,}|limit \d+.*|family pack|bulk size|large (bags|size)|"
+    r"^((?:\.\s*){3,}|limit \d+.*|family pack|bulk size|large (bags|size)|"
     r".*STORE HOURS.*|.*SUNDAY.*|.*MON.*TUES.*|.*THURS.*|.*FRIDAY.*|"
     r"\(\d{3}\) \d{3}-\d{4}.*|\d+ .*Ave.*|\d+ .*Rd.*|JACKSON LOCATION.*|"
-    r"with extended shopping hours!)$",
+    r"MADISON LOCATION.*|.*LOCATION ONLY.*|SEAGULL.*|"
+    r"order now with instacart!.*|Email\s+cakes@.*|cakes@\S+|FROM THE HOT TABLE.*|"
+    r"For All Your Special.*|.*Occasion Cakes(?:\s+Email)?.*|"
+    r".*BUY\s+\d+\s+GET.*FREE.*|Free\s+Item\s+Must\s+be.*|"
+    # 2026-08-12: this flyer's two-column layout causes PDF text
+    # extraction to interleave columns, which makes some section
+    # labels/descriptors ("imported beef", "tender & juicy", "seasoned
+    # ready to bake or grill", "shabbos special - friday only", "with
+    # extended shopping hours!") come out DOUBLED on one line (once per
+    # column) instead of appearing once. These are never real item
+    # names, so filter both the single and doubled forms.
+    r"(?:with extended shopping hours!\s*){1,2}|"
+    r"(?:imported beef\s*){1,2}|(?:american beef\s*){1,2}|(?:poultry\s*){1,2}|"
+    r"(?:tender\s*&\s*juicy\s*){1,2}|"
+    r"(?:seasoned ready to\s*){1,2}(?:bake or grill\s*){0,2}|"
+    r"(?:shabbos special - friday only\s*){1,2}|"
+    # Bare doubled section-label fragments with no other real words on
+    # the line — these are never item names by themselves.
+    r"(?:american\s*){1,2}|(?:jackson\s*){1,2}|(?:only\s*){1,2})$",
     re.I,
 )
 

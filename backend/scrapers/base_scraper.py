@@ -53,6 +53,18 @@ FLYER_DOLLAR_RE = re.compile(r"\$(\d{2,5})")
 # no trailing \b so a glued-on unit doesn't block the match.
 CENTS_RE = re.compile(r"\b(\d{2,3})\s*cents", re.I)
 
+# Matches cent-SYMBOL prices, e.g. "89 ¢", "99¢", "99 ¢ lb." — found
+# 2026-08-12 while auditing Gourmet Glatt: the flyer's own PDF text uses
+# the "¢" glyph for anything under a dollar (not the word "cents"), and
+# the old CENTS_RE never matched it. That silently broke the whole
+# name/price pairing logic downstream in gourmet_glatt_scraper.py's
+# parse_deals(): a "¢" price line wasn't recognized as a price line at
+# all, so the item name buffer never flushed there — it just kept
+# absorbing the NEXT unrelated item's name text too, and that next
+# item's real price got wrongly attached to the merged, garbled name
+# while the "¢" item's own real price was silently dropped.
+CENTS_SYMBOL_RE = re.compile(r"(\d{1,3})\s*¢")
+
 
 def parse_flyer_price(token: str) -> float | None:
     """Convert a raw flyer price token into a float dollar amount.
@@ -62,6 +74,7 @@ def parse_flyer_price(token: str) -> float | None:
         "$1999"  -> 19.99
         "$549"   -> 5.49
         "99cents"-> 0.99
+        "89 ¢"   -> 0.89
     Flyer prices always encode the last two digits as cents.
     """
     m = FLYER_DOLLAR_RE.search(token)
@@ -72,6 +85,10 @@ def parse_flyer_price(token: str) -> float | None:
         return float(f"{dollars}.{cents}")
 
     m = CENTS_RE.search(token)
+    if m:
+        return float(m.group(1)) / 100
+
+    m = CENTS_SYMBOL_RE.search(token)
     if m:
         return float(m.group(1)) / 100
 
@@ -151,16 +168,29 @@ STRONG_CATEGORY_KEYWORDS = {
         "juice", "soda", "seltzer", "water bottle", " tea", "coffee",
         " cola", "gatorade", "snapple", "sprite", "lemonade", "smart water",
         "fresca", "grape juice", "probiotic water", "ginger ale",
+        # "spring water"/"poland spring" added 2026-08-12: real bottled
+        # water was falling all the way through to Pantry because bare
+        # "water" isn't (and shouldn't be) a keyword here — a bare
+        # "water" would wrongly grab "watermelon" too. These specific
+        # phrases are unambiguous.
+        "spring water", "poland spring",
     ],
     "Frozen": [
         "frozen", "ice pop", "popsicle", "gelato", "ice cream",
         "italian ice", "freeze pop", "jonny pops",
+        # 2026-08-12 audit: these are packaged/frozen items that had no
+        # keyword to catch them and were defaulting to Pantry.
+        "fries", "potato triangle",
     ],
     "Candy & Snacks": [
         "candy", "chocolate", "gummy", "gummies", "licorice", "taffy",
         "marshmallow", "chips", "cookie", "cracker", "wafer", "popcorn",
         "bissli", "sour stick", "fruit leather", "twizzler", "pretzel",
         "snack", "nosh", "dibbitz", "ropes", "fruit riot",
+        # 2026-08-12 audit: brand/product names that are always a snack
+        # but don't contain any of the generic words above, so they were
+        # silently defaulting to Pantry.
+        "rice cake", "tortinkle", "cart wheel", "cartwheel", "sizgit",
     ],
     "Household": [
         "paper plate", "plastic cup", "beverage cup", "napkin", "tissue",
@@ -168,6 +198,11 @@ STRONG_CATEGORY_KEYWORDS = {
         "aluminum", "trash bag", "garbage bag", "storage bag", "plates,",
         "plate,", "plate", "plastic bowl", "forks", "spoons",
         "pans", "parchment",
+        # 2026-08-12 audit: disposable cups/bags/containers that don't
+        # use the word "cup"/"bag"/"container" the way the existing
+        # keywords expect (e.g. "Hot Cups" not "beverage cup").
+        "hot cup", "sandwich bag", "deli container", "container combo",
+        "plastico container",
     ],
     "Health & Beauty": [
         "toothpaste", "shampoo", "vitamin", "sunscreen", "deodorant",
@@ -260,6 +295,53 @@ _KEYWORD_COLLISION_GUARDS = {
     "tomato": ["tomato ketchup", "tomato sauce", "tomato flavor"],
     "potato": ["crinkle cut potato", "potato triangles"],
     "dill": ["kosher dill", "dill gherkin"],
+    # 2026-08-12 audit fixes below (second pass, prompted by the founder
+    # flagging categories were "still bad" after the first pass):
+    # "cake" the bakery product vs. "rice cake(s)" (a snack, not baked
+    # goods) and "birthday cake" used as a plain flavor/scent descriptor
+    # on candy/granola (not an actual cake).
+    "cake": ["pancake", "rice cake", "birthday cake"],
+    # "cheese" the dairy product vs. a shelf-stable jarred pasta sauce
+    # that merely has "cheese" in its name (Tuscanini's other jarred
+    # sauces — Alfredo, Vodka — correctly land in Pantry; this one
+    # shouldn't be treated differently just because of the word order).
+    "cheese": ["mac & cheese sauce", "mac and cheese sauce"],
+    # "roll" the bread product vs. sushi roll names from the Gourmet
+    # Glatt sushi counter (not bakery items at all).
+    "roll": ["dragon roll", "tropical roll", "vegetable platter"],
+}
+# "milk" the dairy product vs. "Milk Munch" — a candy bar name, not an
+# actual dairy product.
+_KEYWORD_COLLISION_GUARDS["milk"].append("milk munch")
+# " tea" the beverage vs. "tea light(s)" — a candle, not a drink.
+_KEYWORD_COLLISION_GUARDS[" tea"].extend(["tea light", "tea lights"])
+# "coffee" the beverage vs. disposable "coffee hot cups" — a party-supply
+# item (see the new "hot cup" Household keyword above), not a drink.
+_KEYWORD_COLLISION_GUARDS["coffee"] = ["coffee hot cup", "coffee hot cups"]
+
+# A few product names never contain any of the department-level keywords
+# above at all (the words are scattered non-contiguously through the
+# name, or the product is only identifiable by brand), so no per-keyword
+# guard can route them correctly. These are checked as a first pass,
+# before the tiered keyword matching below, and only fire on an
+# unambiguous brand/product signal.
+BRAND_OVERRIDES = {
+    # Bodek is exclusively a frozen produce brand (frozen vegetable/fruit
+    # cubes and purees) — both of its items in the 2026-08-12 audit had
+    # fallen into Pantry/Produce because "frozen" itself never appears
+    # in the product name.
+    "bodek": "Frozen",
+    # Broadway('s) J2 is a frozen kosher pizza brand; "pizza" itself is
+    # intentionally NOT a generic Frozen keyword (it would wrongly catch
+    # pizza sauce, pizza cheese, and pizza-flavored squares, which are
+    # correctly Pantry/Dairy), so this brand is matched specifically.
+    "broadway j2 pizza": "Frozen",
+    "broadway's j2": "Frozen",
+    # Fruit Riot is a candy brand whose flavor names mimic soda flavors
+    # ("Vanilla Cola", "Cherry Cola") — the word "cola" was outranking
+    # the existing "fruit riot" Candy & Snacks keyword because Beverages
+    # is checked earlier in the tier order.
+    "fruit riot": "Candy & Snacks",
 }
 
 
@@ -278,6 +360,9 @@ def guess_category(item_name: str) -> str:
     back to 'Pantry' (the catch-all for shelf-stable grocery/pantry
     staples) when nothing matches."""
     name_lower = item_name.lower()
+    for brand, category in BRAND_OVERRIDES.items():
+        if brand in name_lower:
+            return category
     for category, keywords in STRONG_CATEGORY_KEYWORDS.items():
         if any(_keyword_matches(name_lower, kw) for kw in keywords):
             return category
