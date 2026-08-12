@@ -85,6 +85,7 @@ WEB3FORMS_ACCESS_KEY = "ee7324f0-5531-4d90-a85d-e1f2a4d10e44"
 ICONS = {
     "Produce": "\U0001F34E",
     "Meat & Deli": "\U0001F357",
+    "Fish": "\U0001F41F",
     "Dairy": "\U0001F9C0",
     "Bakery": "\U0001F950",
     "Beverages": "\U0001F964",
@@ -106,6 +107,7 @@ ICONS = {
 CATEGORY_STYLES = {
     "Produce": {"bg": "#EAF3DE", "text": "#27500A"},
     "Meat & Deli": {"bg": "#FCEBEB", "text": "#791F1F"},
+    "Fish": {"bg": "#D6F5F5", "text": "#0E5A5A"},
     "Dairy": {"bg": "#E6F1FB", "text": "#0C447C"},
     "Bakery": {"bg": "#FAEEDA", "text": "#633806"},
     "Beverages": {"bg": "#EEEDFE", "text": "#3C3489"},

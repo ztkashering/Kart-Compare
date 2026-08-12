@@ -123,7 +123,14 @@ FLIPP_CATEGORY_MAP = {
 # matcher (fixed 2026-08-10 alongside the same bug in shoprite_scraper.py
 # — a plain substring check here would false-flag anything containing
 # "ham" as a substring, e.g. "shampoo", as meat/deli).
-_MEAT_DELI_KEYWORDS = CATEGORY_KEYWORDS["Meat & Deli"]
+#
+# 2026-08-12: "Fish" was split out of "Meat & Deli" into its own category
+# (per the founder's request — tuna/salmon/etc. shouldn't be buried under
+# "Meat & Deli"). This safety net must keep excluding fish too, so it now
+# checks BOTH keyword lists, not just "Meat & Deli" — otherwise a fish
+# item could have silently started slipping through here once its
+# keyword moved to a category this check wasn't looking at.
+_MEAT_DELI_KEYWORDS = CATEGORY_KEYWORDS["Meat & Deli"] + CATEGORY_KEYWORDS["Fish"]
 
 
 def _is_meat_or_deli(item_name_lower: str) -> bool:

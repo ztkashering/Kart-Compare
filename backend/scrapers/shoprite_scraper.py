@@ -122,7 +122,11 @@ ALLOWED_CATEGORIES = {"Produce", "Beverages", "Pantry", "Candy & Snacks", "Healt
 # "shampoo" literally contains "ham". guess_category() already had a
 # collision guard for exactly this ("ham": ["shampoo"]), but this
 # separate safety-net check wasn't using it — now it is.)
-_MEAT_DELI_KEYWORDS = CATEGORY_KEYWORDS["Meat & Deli"]
+#
+# 2026-08-12: same fix as aldi_scraper.py — "Fish" is now its own
+# category, split out of "Meat & Deli", so this net has to check both
+# lists or a fish item could silently start passing through here.
+_MEAT_DELI_KEYWORDS = CATEGORY_KEYWORDS["Meat & Deli"] + CATEGORY_KEYWORDS["Fish"]
 
 
 def _is_meat_or_deli(name_lower: str) -> bool:

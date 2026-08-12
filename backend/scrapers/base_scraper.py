@@ -147,12 +147,25 @@ STRONG_CATEGORY_KEYWORDS = {
         "chicken", "beef", "steak", "brisket", "pastrami", "salami",
         "franks", "patties", "nugget", "veal", "turkey", "meat", "rib",
         "flanken", "london broil", "wing", "sausage", "kishka", "arayes",
-        "shoulder", "fillet", "fish", "salmon", "tuna", "flounder", "sole",
-        "lox", "tilapia", "gefilte", "kielbasa", "hot dog",
+        "shoulder", "kielbasa", "hot dog",
         "hotdog", "cutlets", "ham", "bratwurst",
         # NOTE: "sushi" and "kugel" were removed from this list on
         # 2026-08-10 — sushi RICE and prepared-food kugels aren't meat,
         # and the old blanket "sushi"/"kugel" match was mislabeling them.
+        # NOTE 2026-08-12: "fish"/"salmon"/"tuna"/"flounder"/"sole"/"lox"/
+        # "tilapia"/"gefilte" moved OUT to their own new "Fish" category
+        # below, per the founder's explicit request — fish and meat were
+        # sharing one bucket, which buried fish products (tuna, salmon,
+        # etc.) inside "Meat & Deli" where they didn't belong. Also
+        # dropped the bare "fillet" keyword entirely: it was ambiguous
+        # (fish fillet vs. meat fillet) and every real item that used it
+        # already has a more specific word ("Salmon Fillet" has "salmon",
+        # "Boneless Fillet Steak" has "steak"), so it added risk without
+        # adding coverage.
+    ],
+    "Fish": [
+        "fish", "salmon", "tuna", "flounder", "sole", "lox", "tilapia",
+        "gefilte",
     ],
     "Dairy": [
         "cheese", "yogurt", "milk", "leben", "cream cheese", "butter",
