@@ -110,6 +110,34 @@ SECTION_HEADER_WORDS = {
     "fresh produce", "premium meat & poultry",
 }
 
+# 2026-08-12: exact item names confirmed, by hand, to be two unrelated
+# products glued together by this flyer's two-column PDF layout — one
+# item's name lost its own price and absorbed a nearby, unrelated
+# item's price instead. Concrete examples the founder flagged directly:
+# "Ahi Tuna Steak" (fish counter) merged with "Appetizing Bakery / Mini
+# Round Chocolate Babkas" (bakery counter), and a fish-counter promo
+# blurb ("Fish tuesday from...ossiesfish.com") merged with "(Mini
+# Brisket) Honey Mustard Legs" (a poultry item).
+#
+# IMPORTANT: this is intentionally a small, exact-match list, not a
+# keyword heuristic. An earlier attempt used a broader rule ("flag any
+# item matching keywords from 2+ different departments") and it looked
+# promising, but testing it against this same flyer text showed real
+# false positives — "Banner Bagel Cut Lox" (a totally normal single
+# product: sliced lox for bagels) and "KJ Chicken Nuggets, Chicken
+# Fries, Alef Beis Nuggets" (a real multi-item value pack) both got
+# wrongly deleted, because "bagel"+"lox" and "chicken"+"fries" are
+# perfectly normal words to share one real product name. Rather than
+# risk silently dropping real deals, only these hand-verified exact
+# matches are excluded. If a new garbled entry turns up in a future
+# week's flyer, add its exact name here after checking the raw
+# extracted text (see sample_data/) to confirm it's really a merge and
+# not a legitimately unusual product name.
+KNOWN_MERGED_ITEM_NAMES = {
+    "Ahi Tuna Steak Appetizing Bakery Mini Round Chocolate Babkas - 4 Pack",
+    "Fish tuesday from ossiesfish.com (Mini Brisket) Honey Mustard Legs",
+}
+
 
 def get_flyer_text_live() -> str | None:
     """Attempt to fetch this week's flyer live via Selenium + PyMuPDF.
@@ -240,6 +268,9 @@ def parse_deals(text: str) -> list[dict]:
             item_name = clean_item_name(" ".join(buffer))
             buffer = []
             if not item_name:
+                continue
+
+            if item_name in KNOWN_MERGED_ITEM_NAMES:
                 continue
 
             multi = parse_multi_buy(line)
