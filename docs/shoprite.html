@@ -720,24 +720,41 @@ function renderShoppingListPanel() {
 document.addEventListener("DOMContentLoaded", renderShoppingListPanel);
 
 
-// Report button: first tap arms a quick "Sure?" confirm (auto-resets after
-// 4s if not confirmed), second tap actually sends it — no typing, no email
-// app. Sends silently to Web3Forms (a free form-relay service) so it lands
-// straight in the founder's inbox. If no Web3Forms key is configured yet,
-// or the request fails for any reason, it honestly falls back to opening a
-// pre-filled email instead of pretending the report went through.
-function reportDeal(deal, btn) {
+// Report buttons: first tap arms a quick "Sure?" confirm (auto-resets
+// after 4s if not confirmed), second tap actually sends it — no typing,
+// no email app. Sends silently to Web3Forms (a free form-relay service)
+// so it lands straight in the founder's inbox. If no Web3Forms key is
+// configured yet, or the request fails for any reason, it honestly
+// falls back to opening a pre-filled email instead of pretending the
+// report went through.
+//
+// 2026-08-12: split into two report types (price vs. category) per the
+// founder's request — each button below calls this with a different
+// `reason` so the subject line makes it obvious at a glance which kind
+// of fix is needed, instead of every report just saying "wrong price"
+// even when the price was right and the category was the actual issue.
+function reportProblem(deal, btn, reason) {
+  const isPrice = reason === "price";
+  const confirmLabel = isPrice ? "Confirm" : "Confirm";
+  const armedTitle = isPrice
+    ? "Tap again to confirm the PRICE is wrong"
+    : "Tap again to confirm the CATEGORY is wrong";
+  const idleTitle = isPrice
+    ? "Report a wrong price for this item"
+    : "Report the wrong category for this item";
+  const idleIcon = isPrice ? "\u26A0" : "\u{1F3F7}\uFE0F";
+
   if (btn.dataset.state !== "confirm") {
     btn.dataset.state = "confirm";
-    btn.textContent = "Confirm";
-    btn.title = "Tap again to confirm this price is wrong";
+    btn.textContent = confirmLabel;
+    btn.title = armedTitle;
     btn.classList.add("confirming");
     clearTimeout(btn._resetTimer);
     btn._resetTimer = setTimeout(() => {
       if (btn.dataset.state === "confirm") {
         btn.dataset.state = "";
-        btn.innerHTML = "\u26A0";
-        btn.title = "Report a wrong price for this item";
+        btn.innerHTML = idleIcon;
+        btn.title = idleTitle;
         btn.classList.remove("confirming");
       }
     }, 4000);
@@ -749,9 +766,12 @@ function reportDeal(deal, btn) {
   btn.classList.remove("confirming");
   btn.textContent = "\u2026";
 
-  const subject = "Wrong price on Kart Compare: " + deal.item_name;
-  const message = "Store: " + deal.store + "\nItem: " + deal.item_name +
-    "\nPrice shown: $" + deal.sale_price.toFixed(2) + "\nPage: " + location.href;
+  const subject = (isPrice ? "Wrong PRICE on Kart Compare: " : "Wrong CATEGORY on Kart Compare: ") + deal.item_name;
+  const message = "Report type: " + (isPrice ? "Price" : "Category") +
+    "\nStore: " + deal.store + "\nItem: " + deal.item_name +
+    "\nPrice shown: $" + deal.sale_price.toFixed(2) +
+    "\nCategory shown: " + deal.category +
+    "\nPage: " + location.href;
 
   function markDone() {
     btn.innerHTML = "\u2713";
@@ -975,6 +995,7 @@ function render() {
       <div class="card-actions">
         <button class="add-btn ${already ? 'added' : ''}" data-id="${d.id}">${already ? '\u2713 Added' : '+ Add'}</button>
         <button type="button" class="report-btn" title="Report a wrong price for this item">\u26A0</button>
+        <button type="button" class="report-btn report-cat-btn" title="Report the wrong category for this item">\u{1F3F7}\uFE0F</button>
       </div>
     `;
     card.querySelector(".add-btn").addEventListener("click", function() {
@@ -983,7 +1004,10 @@ function render() {
       this.textContent = added ? "\u2713 Added" : "+ Add";
     });
     card.querySelector(".report-btn").addEventListener("click", function() {
-      reportDeal(d, this);
+      reportProblem(d, this, "price");
+    });
+    card.querySelector(".report-cat-btn").addEventListener("click", function() {
+      reportProblem(d, this, "category");
     });
     grid.appendChild(card);
   });

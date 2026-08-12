@@ -1,7 +1,7 @@
 {
   "deals": [
     {
-      "id": 2676,
+      "id": 53,
       "item_name": "Doritos Spicy Sour Family Pk , 10ct 1oz",
       "sale_price": 10.99,
       "original_price": 12.99,
@@ -14,7 +14,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2678,
+      "id": 55,
       "item_name": "Gevina Farms Light Greek Non Fat Yogurt Strawberry, 5 Oz",
       "sale_price": 1.5,
       "original_price": 1.65,
@@ -27,7 +27,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2683,
+      "id": 60,
       "item_name": "Haolam Slims Muenster, 6 Oz",
       "sale_price": 2.99,
       "original_price": 3.69,
@@ -40,7 +40,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2679,
+      "id": 56,
       "item_name": "Klien's Naturals Natural Dried Mango, 7 Oz",
       "sale_price": 7.99,
       "original_price": 8.49,
@@ -53,12 +53,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2682,
+      "id": 59,
       "item_name": "Lieber's Thin Rice Cake Sea Salt, 3.1 Oz",
       "sale_price": 1.5,
       "original_price": 1.69,
       "unit": "4 for $6.00",
-      "category": "Bakery",
+      "category": "Candy & Snacks",
       "store": "Aisle 9",
       "store_slug": "aisle-9",
       "date_valid_from": "2026-08-12",
@@ -66,7 +66,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2677,
+      "id": 54,
       "item_name": "Norman's Cream Cheese Whipped, 8 Oz",
       "sale_price": 3.29,
       "original_price": 4.39,
@@ -79,7 +79,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2684,
+      "id": 61,
       "item_name": "Oat Chocolate & Peanut Butter Bar, 1.4 Oz",
       "sale_price": 1.0,
       "original_price": 2.69,
@@ -92,7 +92,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2674,
+      "id": 51,
       "item_name": "Perfection 7In Plate, 100 Pk",
       "sale_price": 2.79,
       "original_price": 2.99,
@@ -105,12 +105,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2675,
+      "id": 52,
       "item_name": "Plastico Container Combo 16Oz, 24 Ct",
       "sale_price": 2.79,
       "original_price": 5.99,
       "unit": null,
-      "category": "Pantry",
+      "category": "Household",
       "store": "Aisle 9",
       "store_slug": "aisle-9",
       "date_valid_from": "2026-08-12",
@@ -118,7 +118,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2680,
+      "id": 57,
       "item_name": "Sensible Veggie Straws Light Salt, 1 Oz",
       "sale_price": 0.67,
       "original_price": 0.99,
@@ -131,7 +131,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2681,
+      "id": 58,
       "item_name": "Streit's Whole Wheat Matzah Everything, 11 Oz",
       "sale_price": 4.29,
       "original_price": 4.59,
@@ -144,7 +144,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2649,
+      "id": 26,
       "item_name": "Brussels Sprouts",
       "sale_price": 2.39,
       "original_price": null,
@@ -157,7 +157,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2648,
+      "id": 25,
       "item_name": "Golden Kiwi",
       "sale_price": 3.59,
       "original_price": null,
@@ -170,7 +170,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2650,
+      "id": 27,
       "item_name": "Mandarins",
       "sale_price": 2.89,
       "original_price": null,
@@ -183,7 +183,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2651,
+      "id": 28,
       "item_name": "Organic Baby Peeled Carrots",
       "sale_price": 1.49,
       "original_price": null,
@@ -196,7 +196,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2652,
+      "id": 29,
       "item_name": "Organic Blueberries",
       "sale_price": 3.69,
       "original_price": null,
@@ -209,7 +209,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2256,
+      "id": 133,
       "item_name": "& up Floral Arrangements",
       "sale_price": 24.99,
       "original_price": null,
@@ -222,8 +222,8 @@
       "kosher_flag": null
     },
     {
-      "id": 2257,
-      "item_name": "& up MADISON LOCATION ONLY ALL ROLLS & PLATTERS BUY 2 GET THIRD FREE! Free Item Must be of Equal or Lesser Value Spicy Tuna Roll",
+      "id": 134,
+      "item_name": "& up Spicy Tuna Roll",
       "sale_price": 8.95,
       "original_price": null,
       "unit": null,
@@ -235,7 +235,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2266,
+      "id": 143,
       "item_name": "2 lb Rye with Kimmel Seeds",
       "sale_price": 4.29,
       "original_price": null,
@@ -248,7 +248,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2260,
+      "id": 137,
       "item_name": "6 Roll Vegetable Platter",
       "sale_price": 43.95,
       "original_price": null,
@@ -261,12 +261,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2285,
-      "item_name": "99 \u00a2 lb",
-      "sale_price": 2.49,
+      "id": 157,
+      "item_name": "7th Heaven Chocolate Bars All Varieties - 6 oz",
+      "sale_price": 3.79,
       "original_price": null,
-      "unit": "lb",
-      "category": "Pantry",
+      "unit": null,
+      "category": "Candy & Snacks",
       "store": "Gourmet Glatt",
       "store_slug": "gourmet-glatt",
       "date_valid_from": "2026-08-09",
@@ -274,8 +274,8 @@
       "kosher_flag": null
     },
     {
-      "id": 2263,
-      "item_name": "Ahi Tuna Steak imported beef imported beef Appetizing Bakery Mini Round Chocolate Babkas - 4 Pack",
+      "id": 140,
+      "item_name": "Ahi Tuna Steak Appetizing Bakery Mini Round Chocolate Babkas - 4 Pack",
       "sale_price": 5.99,
       "original_price": null,
       "unit": "ea",
@@ -287,7 +287,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2272,
+      "id": 149,
       "item_name": "Assorted Color Extra Sour Mini Bricks",
       "sale_price": 8.99,
       "original_price": null,
@@ -300,7 +300,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2214,
+      "id": 92,
       "item_name": "Bakol Maple Syrup 8 oz",
       "sale_price": 7.29,
       "original_price": null,
@@ -313,7 +313,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2213,
+      "id": 91,
       "item_name": "Balabusta Original Ketchup 24 oz",
       "sale_price": 1.79,
       "original_price": null,
@@ -326,7 +326,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2223,
+      "id": 101,
       "item_name": "Banner Bagel Cut Lox 12 oz",
       "sale_price": 15.99,
       "original_price": null,
@@ -339,7 +339,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2253,
+      "id": 130,
       "item_name": "Beef Deckle Roast Whole or Cut-Up Chicken",
       "sale_price": 2.99,
       "original_price": null,
@@ -352,7 +352,20 @@
       "kosher_flag": null
     },
     {
-      "id": 2241,
+      "id": 161,
+      "item_name": "Beef Flanken",
+      "sale_price": 23.99,
+      "original_price": null,
+      "unit": "lb",
+      "category": "Meat & Deli",
+      "store": "Gourmet Glatt",
+      "store_slug": "gourmet-glatt",
+      "date_valid_from": "2026-08-09",
+      "date_valid_to": "2026-08-14",
+      "kosher_flag": null
+    },
+    {
+      "id": 119,
       "item_name": "Beleaves Chopped Broccoli 24 oz",
       "sale_price": 3.29,
       "original_price": null,
@@ -365,7 +378,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2227,
+      "id": 105,
       "item_name": "Beleaves Riced Broccoli or Cauliflower 14 oz",
       "sale_price": 1.79,
       "original_price": null,
@@ -378,12 +391,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2218,
+      "id": 96,
       "item_name": "Best Bev Insulated Sage Brown Coffee Hot Cups with Lids 12 oz - 16 oz 32 Pack - 40 Pack",
       "sale_price": 8.49,
       "original_price": null,
       "unit": null,
-      "category": "Beverages",
+      "category": "Household",
       "store": "Gourmet Glatt",
       "store_slug": "gourmet-glatt",
       "date_valid_from": "2026-08-09",
@@ -391,12 +404,25 @@
       "kosher_flag": null
     },
     {
-      "id": 2229,
+      "id": 144,
+      "item_name": "Blue Sprinkle Cookies",
+      "sale_price": 3.99,
+      "original_price": null,
+      "unit": null,
+      "category": "Candy & Snacks",
+      "store": "Gourmet Glatt",
+      "store_slug": "gourmet-glatt",
+      "date_valid_from": "2026-08-09",
+      "date_valid_to": "2026-08-14",
+      "kosher_flag": null
+    },
+    {
+      "id": 107,
       "item_name": "Bodek Acai Packets All Varieties - 4 Pack",
       "sale_price": 5.49,
       "original_price": null,
       "unit": null,
-      "category": "Pantry",
+      "category": "Frozen",
       "store": "Gourmet Glatt",
       "store_slug": "gourmet-glatt",
       "date_valid_from": "2026-08-09",
@@ -404,7 +430,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2251,
+      "id": 129,
       "item_name": "Boneless Fillet Steak",
       "sale_price": 19.99,
       "original_price": null,
@@ -417,7 +443,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2269,
+      "id": 146,
       "item_name": "Breaded Tilapia",
       "sale_price": 7.99,
       "original_price": null,
@@ -430,12 +456,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2243,
+      "id": 121,
       "item_name": "Broadway J2 Pizza Original Only 8 Slice",
       "sale_price": 7.99,
       "original_price": null,
       "unit": null,
-      "category": "Pantry",
+      "category": "Frozen",
       "store": "Gourmet Glatt",
       "store_slug": "gourmet-glatt",
       "date_valid_from": "2026-08-09",
@@ -443,7 +469,20 @@
       "kosher_flag": null
     },
     {
-      "id": 2297,
+      "id": 128,
+      "item_name": "CHICKEN LEGS",
+      "sale_price": 2.89,
+      "original_price": null,
+      "unit": "lb",
+      "category": "Meat & Deli",
+      "store": "Gourmet Glatt",
+      "store_slug": "gourmet-glatt",
+      "date_valid_from": "2026-08-09",
+      "date_valid_to": "2026-08-14",
+      "kosher_flag": null
+    },
+    {
+      "id": 172,
       "item_name": "Chicken",
       "sale_price": 11.99,
       "original_price": null,
@@ -456,7 +495,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2255,
+      "id": 132,
       "item_name": "Chicken Breast Floral Bouquets",
       "sale_price": 14.99,
       "original_price": null,
@@ -469,7 +508,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2254,
+      "id": 131,
       "item_name": "Chicken Wings SHOULDER LONDON BROIL",
       "sale_price": 13.49,
       "original_price": null,
@@ -482,7 +521,20 @@
       "kosher_flag": null
     },
     {
-      "id": 2262,
+      "id": 171,
+      "item_name": "Cholent Combo",
+      "sale_price": 9.99,
+      "original_price": null,
+      "unit": null,
+      "category": "Pantry",
+      "store": "Gourmet Glatt",
+      "store_slug": "gourmet-glatt",
+      "date_valid_from": "2026-08-09",
+      "date_valid_to": "2026-08-14",
+      "kosher_flag": null
+    },
+    {
+      "id": 139,
       "item_name": "Crunchy Tilapia Fingers",
       "sale_price": 10.99,
       "original_price": null,
@@ -495,8 +547,8 @@
       "kosher_flag": null
     },
     {
-      "id": 2265,
-      "item_name": "Crushed Tomato & Garlic Pre-Packaged Babaganoush Pre-Packaged MADISON LOCATION ONLY Marble Butter Cookies",
+      "id": 142,
+      "item_name": "Crushed Tomato & Garlic Pre-Packaged Babaganoush Pre-Packaged Marble Butter Cookies",
       "sale_price": 4.99,
       "original_price": null,
       "unit": null,
@@ -508,7 +560,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2290,
+      "id": 166,
       "item_name": "Essence Tortinkles Crunchy Tortilla Chips All Varieties 90 Grams",
       "sale_price": 2.49,
       "original_price": null,
@@ -521,20 +573,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2296,
-      "item_name": "FROM THE HOT TABLE",
-      "sale_price": 7.99,
-      "original_price": null,
-      "unit": "ea",
-      "category": "Pantry",
-      "store": "Gourmet Glatt",
-      "store_slug": "gourmet-glatt",
-      "date_valid_from": "2026-08-09",
-      "date_valid_to": "2026-08-14",
-      "kosher_flag": null
-    },
-    {
-      "id": 2298,
+      "id": 173,
       "item_name": "Fish tuesday from ossiesfish.com (Mini Brisket) Honey Mustard Legs",
       "sale_price": 3.79,
       "original_price": null,
@@ -547,7 +586,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2226,
+      "id": 104,
       "item_name": "Flaum's Tuna Salad All Varieties - 7 oz",
       "sale_price": 2.89,
       "original_price": null,
@@ -560,20 +599,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2267,
-      "item_name": "For All Your Special Occasion Cakes Email cakes@gourmetglatt.com Blue Sprinkle Cookies",
-      "sale_price": 3.99,
-      "original_price": null,
-      "unit": null,
-      "category": "Bakery",
-      "store": "Gourmet Glatt",
-      "store_slug": "gourmet-glatt",
-      "date_valid_from": "2026-08-09",
-      "date_valid_to": "2026-08-14",
-      "kosher_flag": null
-    },
-    {
-      "id": 2228,
+      "id": 106,
       "item_name": "Fruit Riot All Varieties - 8 oz",
       "sale_price": 5.99,
       "original_price": null,
@@ -586,7 +612,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2277,
+      "id": 153,
       "item_name": "GRAB N GO GRAB N GO Shabbos Meat",
       "sale_price": 14.49,
       "original_price": null,
@@ -599,7 +625,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2197,
+      "id": 74,
       "item_name": "Gefen BBQ Sauce All Varieties 18 oz",
       "sale_price": 2.99,
       "original_price": null,
@@ -612,7 +638,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2200,
+      "id": 77,
       "item_name": "Gefen Brown Rice Noodle Bowls All Varieties - 2.25 oz",
       "sale_price": 1.89,
       "original_price": null,
@@ -625,7 +651,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2201,
+      "id": 78,
       "item_name": "Gefen Canola Spray 14 oz",
       "sale_price": 4.19,
       "original_price": null,
@@ -638,7 +664,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2192,
+      "id": 68,
       "item_name": "Gefen Chunk Light Tuna in Water 6 oz",
       "sale_price": 1.4,
       "original_price": null,
@@ -651,7 +677,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2202,
+      "id": 79,
       "item_name": "Gefen Dry Yeast 16 oz",
       "sale_price": 4.99,
       "original_price": null,
@@ -664,7 +690,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2245,
+      "id": 123,
       "item_name": "Gefen Frozen Cubes Except Sauteed Onions 2.5 oz - 2.8 oz",
       "sale_price": 2.33,
       "original_price": null,
@@ -677,7 +703,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2186,
+      "id": 62,
       "item_name": "Gefen Honey 32 oz",
       "sale_price": 5.79,
       "original_price": null,
@@ -690,7 +716,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2199,
+      "id": 76,
       "item_name": "Gefen Israeli Couscous 8.8 oz 89 \u00a2 Gefen Applesauce Pouches All Varieties - 4 Pack",
       "sale_price": 3.59,
       "original_price": null,
@@ -703,7 +729,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2194,
+      "id": 71,
       "item_name": "Gefen Matzah Except Spelt 10.5 oz - 16 oz",
       "sale_price": 2.59,
       "original_price": null,
@@ -716,7 +742,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2188,
+      "id": 64,
       "item_name": "Gefen Preimum Dutch Cocoa 14 oz",
       "sale_price": 5.79,
       "original_price": null,
@@ -729,7 +755,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2231,
+      "id": 109,
       "item_name": "Gefen Puff Pastry Sheets 21 oz",
       "sale_price": 4.29,
       "original_price": null,
@@ -742,7 +768,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2203,
+      "id": 80,
       "item_name": "Gefen Ramen Noodles All Varieties - 3 oz",
       "sale_price": 0.6,
       "original_price": null,
@@ -755,7 +781,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2205,
+      "id": 82,
       "item_name": "Gefen Whole Kernal Corn 15 oz",
       "sale_price": 1.33,
       "original_price": null,
@@ -768,7 +794,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2191,
+      "id": 67,
       "item_name": "General Mills 10.6 oz Cookie Crisp or 11.5 oz Reese's Puffs",
       "sale_price": 2.99,
       "original_price": null,
@@ -781,7 +807,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2271,
+      "id": 148,
       "item_name": "Gourmet Glatt Candy Filled Strawberry Gummies",
       "sale_price": 8.99,
       "original_price": null,
@@ -794,12 +820,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2258,
+      "id": 135,
       "item_name": "Green Dragon Roll",
       "sale_price": 15.45,
       "original_price": null,
       "unit": null,
-      "category": "Bakery",
+      "category": "Pantry",
       "store": "Gourmet Glatt",
       "store_slug": "gourmet-glatt",
       "date_valid_from": "2026-08-09",
@@ -807,7 +833,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2225,
+      "id": 103,
       "item_name": "Ha'olam Shredded Fancy Cheddar Mozzarella Cheese 8 oz",
       "sale_price": 3.49,
       "original_price": null,
@@ -820,7 +846,20 @@
       "kosher_flag": null
     },
     {
-      "id": 2293,
+      "id": 97,
+      "item_name": "Ha'olam Slims Muenster, Mozzarella, Cheddar 6 oz",
+      "sale_price": 2.99,
+      "original_price": null,
+      "unit": null,
+      "category": "Dairy",
+      "store": "Gourmet Glatt",
+      "store_slug": "gourmet-glatt",
+      "date_valid_from": "2026-08-09",
+      "date_valid_to": "2026-08-14",
+      "kosher_flag": null
+    },
+    {
+      "id": 169,
       "item_name": "Heaven & Earth Crunchy Corn Snacks 12 oz",
       "sale_price": 4.99,
       "original_price": null,
@@ -833,7 +872,20 @@
       "kosher_flag": null
     },
     {
-      "id": 2292,
+      "id": 70,
+      "item_name": "Heaven & Earth Pure Avocado or Olive Oil Mayo 15 oz",
+      "sale_price": 5.49,
+      "original_price": null,
+      "unit": null,
+      "category": "Produce",
+      "store": "Gourmet Glatt",
+      "store_slug": "gourmet-glatt",
+      "date_valid_from": "2026-08-09",
+      "date_valid_to": "2026-08-14",
+      "kosher_flag": null
+    },
+    {
+      "id": 168,
       "item_name": "Heaven & Earth Sour Slides All Varieties 2.82 oz",
       "sale_price": 1.33,
       "original_price": null,
@@ -846,7 +898,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2196,
+      "id": 73,
       "item_name": "Heaven & Earth Tuna Salad All Varieties - 5.64 oz",
       "sale_price": 2.79,
       "original_price": null,
@@ -859,7 +911,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2221,
+      "id": 99,
       "item_name": "Holy Hummus All Varieties - 10 oz",
       "sale_price": 2.99,
       "original_price": null,
@@ -872,7 +924,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2270,
+      "id": 147,
       "item_name": "Honey Mustard Half Spatchcock Chicken Side Steak",
       "sale_price": 14.49,
       "original_price": null,
@@ -885,7 +937,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2238,
+      "id": 116,
       "item_name": "J & J Cappuccino All Varieties 11 oz",
       "sale_price": 1.79,
       "original_price": null,
@@ -898,7 +950,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2264,
+      "id": 141,
       "item_name": "Jalapeno Salad Pre-Packaged Spinach Dip Pre-Packaged",
       "sale_price": 8.99,
       "original_price": null,
@@ -911,7 +963,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2246,
+      "id": 124,
       "item_name": "KJ Chicken Nuggets, Chicken Fries, Alef Beis Nuggets 32 oz",
       "sale_price": 10.99,
       "original_price": null,
@@ -924,7 +976,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2289,
+      "id": 165,
       "item_name": "Keizer Dip Stix All Varieties - 6 oz",
       "sale_price": 2.79,
       "original_price": null,
@@ -937,12 +989,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2212,
+      "id": 90,
       "item_name": "Kitchen Collection Grip n Zip Sandwich Bags 150 Pack",
       "sale_price": 2.59,
       "original_price": null,
       "unit": null,
-      "category": "Pantry",
+      "category": "Household",
       "store": "Gourmet Glatt",
       "store_slug": "gourmet-glatt",
       "date_valid_from": "2026-08-09",
@@ -950,7 +1002,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2189,
+      "id": 65,
       "item_name": "Klik La Hit Original Bar 1.23 oz",
       "sale_price": 1.33,
       "original_price": null,
@@ -963,9 +1015,9 @@
       "kosher_flag": null
     },
     {
-      "id": 2280,
-      "item_name": "Lay's Potato Chips 1.8 oz 99 \u00a2 7th Heaven Chocolate Bars All Varieties - 6 oz",
-      "sale_price": 3.79,
+      "id": 156,
+      "item_name": "Lay's Potato Chips 1.8 oz",
+      "sale_price": 0.99,
       "original_price": null,
       "unit": null,
       "category": "Candy & Snacks",
@@ -976,7 +1028,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2209,
+      "id": 86,
       "item_name": "Lieber's Chick Peas 15.5 oz",
       "sale_price": 1.25,
       "original_price": null,
@@ -989,7 +1041,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2283,
+      "id": 160,
       "item_name": "Lieber's Dried Mango 7.05 oz",
       "sale_price": 3.49,
       "original_price": null,
@@ -1002,7 +1054,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2215,
+      "id": 93,
       "item_name": "Lieber's Israeli Style Tahini 17.8 oz",
       "sale_price": 4.29,
       "original_price": null,
@@ -1015,7 +1067,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2210,
+      "id": 87,
       "item_name": "Lieber's Mini or Tiny Dill Gherkins 24.3 oz",
       "sale_price": 2.49,
       "original_price": null,
@@ -1028,7 +1080,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2204,
+      "id": 81,
       "item_name": "Lieber's Sesame Seeds 7.5 oz",
       "sale_price": 1.79,
       "original_price": null,
@@ -1041,7 +1093,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2216,
+      "id": 94,
       "item_name": "Lieber's Smooth Peanut Butter 18 oz",
       "sale_price": 2.89,
       "original_price": null,
@@ -1054,7 +1106,20 @@
       "kosher_flag": null
     },
     {
-      "id": 2187,
+      "id": 89,
+      "item_name": "Lieber's Whole Hearts of Palm 14 oz",
+      "sale_price": 1.99,
+      "original_price": null,
+      "unit": null,
+      "category": "Pantry",
+      "store": "Gourmet Glatt",
+      "store_slug": "gourmet-glatt",
+      "date_valid_from": "2026-08-09",
+      "date_valid_to": "2026-08-14",
+      "kosher_flag": null
+    },
+    {
+      "id": 63,
       "item_name": "Lieber's Wylers Berry Cherry Italian Ices Except No Color - 40 Pack",
       "sale_price": 7.79,
       "original_price": null,
@@ -1067,7 +1132,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2239,
+      "id": 117,
       "item_name": "Meal Mart Classic Franks 16 oz",
       "sale_price": 4.99,
       "original_price": null,
@@ -1080,7 +1145,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2235,
+      "id": 113,
       "item_name": "Meal Mart Corned Beef 16 oz",
       "sale_price": 9.99,
       "original_price": null,
@@ -1093,7 +1158,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2237,
+      "id": 115,
       "item_name": "Mehadrin Cheese Snacks All Varieties - 3 oz",
       "sale_price": 2.5,
       "original_price": null,
@@ -1106,7 +1171,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2232,
+      "id": 110,
       "item_name": "Mehadrin Ice Pops All Varieties - 20 Pack",
       "sale_price": 8.99,
       "original_price": null,
@@ -1119,7 +1184,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2208,
+      "id": 85,
       "item_name": "Mon Appetit Robust BBQ, Cedar Plank, Supreme Steakhouse Seasoning 4.4 oz - 4.6 oz",
       "sale_price": 3.99,
       "original_price": null,
@@ -1132,7 +1197,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2230,
+      "id": 108,
       "item_name": "Mother's Whole Strawberries 16 oz",
       "sale_price": 3.89,
       "original_price": null,
@@ -1145,7 +1210,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2234,
+      "id": 112,
       "item_name": "Mount Ridge Garlic or Pizza Squares 11 oz",
       "sale_price": 3.99,
       "original_price": null,
@@ -1158,7 +1223,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2236,
+      "id": 114,
       "item_name": "Norman's Pro Greek Yogurts All Varieties 5.3 oz",
       "sale_price": 1.4,
       "original_price": null,
@@ -1171,7 +1236,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2294,
+      "id": 170,
       "item_name": "OPEN DAILY 7:30 AM - 7 PM TUNA BAGEL",
       "sale_price": 4.99,
       "original_price": null,
@@ -1184,7 +1249,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2195,
+      "id": 72,
       "item_name": "Old Williamsburg Beef Jerky All Varieties - 2 oz",
       "sale_price": 5.99,
       "original_price": null,
@@ -1197,7 +1262,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2242,
+      "id": 120,
       "item_name": "Old Williamsburg Mini Pizza Bagels 12 Pack",
       "sale_price": 4.99,
       "original_price": null,
@@ -1210,7 +1275,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2198,
+      "id": 75,
       "item_name": "Old Williamsburg Mustards All Varieties - 10 oz",
       "sale_price": 1.79,
       "original_price": null,
@@ -1223,7 +1288,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2291,
+      "id": 167,
       "item_name": "Paskesz Ooh Chews 1.41 oz Box",
       "sale_price": 0.7,
       "original_price": null,
@@ -1236,7 +1301,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2288,
+      "id": 164,
       "item_name": "Paskesz Sandwich Cookies All Varieties - 25 oz",
       "sale_price": 4.99,
       "original_price": null,
@@ -1249,12 +1314,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2282,
+      "id": 159,
       "item_name": "Paskesz Whip de Do or Milk Munch Bars 1.65 oz",
       "sale_price": 1.33,
       "original_price": null,
       "unit": "3 for $4.00",
-      "category": "Dairy",
+      "category": "Pantry",
       "store": "Gourmet Glatt",
       "store_slug": "gourmet-glatt",
       "date_valid_from": "2026-08-09",
@@ -1262,7 +1327,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2206,
+      "id": 83,
       "item_name": "Pereg Crumbs All Varieties 9 oz - 12 oz",
       "sale_price": 2.99,
       "original_price": null,
@@ -1275,7 +1340,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2276,
+      "id": 152,
       "item_name": "REGULAR PERSONAL PIE",
       "sale_price": 9.99,
       "original_price": null,
@@ -1288,7 +1353,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2268,
+      "id": 145,
       "item_name": "SCRAMBLED EGG SANDWICH",
       "sale_price": 5.99,
       "original_price": null,
@@ -1301,20 +1366,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2252,
-      "item_name": "SEAGULL & SEAGULL & JACKSON JACKSON ONLY ONLY",
-      "sale_price": 13.99,
-      "original_price": null,
-      "unit": "lb",
-      "category": "Pantry",
-      "store": "Gourmet Glatt",
-      "store_slug": "gourmet-glatt",
-      "date_valid_from": "2026-08-09",
-      "date_valid_to": "2026-08-14",
-      "kosher_flag": null
-    },
-    {
-      "id": 2261,
+      "id": 138,
       "item_name": "Salmon Fillet",
       "sale_price": 10.99,
       "original_price": null,
@@ -1327,7 +1379,20 @@
       "kosher_flag": null
     },
     {
-      "id": 2281,
+      "id": 154,
+      "item_name": "Seasoned Beef Arayes",
+      "sale_price": 8.99,
+      "original_price": null,
+      "unit": "lb",
+      "category": "Meat & Deli",
+      "store": "Gourmet Glatt",
+      "store_slug": "gourmet-glatt",
+      "date_valid_from": "2026-08-09",
+      "date_valid_to": "2026-08-14",
+      "kosher_flag": null
+    },
+    {
+      "id": 158,
       "item_name": "Shwartz Quacs Potato Snacks Original, BBQ, Honey BBQ - 4.94 oz",
       "sale_price": 2.33,
       "original_price": null,
@@ -1340,9 +1405,9 @@
       "kosher_flag": null
     },
     {
-      "id": 2211,
-      "item_name": "Simply Lev Chulent Mix 16 oz 99 \u00a2 Lieber's Whole Hearts of Palm 14 oz",
-      "sale_price": 1.99,
+      "id": 88,
+      "item_name": "Simply Lev Chulent Mix 16 oz",
+      "sale_price": 0.99,
       "original_price": null,
       "unit": null,
       "category": "Pantry",
@@ -1353,12 +1418,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2193,
-      "item_name": "Simply Lev Pasta All Varieties - 16 oz 89 \u00a2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . Heaven & Earth Pure Avocado or Olive Oil Mayo 15 oz",
-      "sale_price": 5.49,
+      "id": 69,
+      "item_name": "Simply Lev Pasta All Varieties - 16 oz",
+      "sale_price": 0.89,
       "original_price": null,
       "unit": null,
-      "category": "Produce",
+      "category": "Pantry",
       "store": "Gourmet Glatt",
       "store_slug": "gourmet-glatt",
       "date_valid_from": "2026-08-09",
@@ -1366,7 +1431,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2190,
+      "id": 66,
       "item_name": "Snapple Iced Teas All Varieties 12 Pack",
       "sale_price": 7.49,
       "original_price": null,
@@ -1379,7 +1444,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2240,
+      "id": 118,
       "item_name": "Solomon's Beef Pastrami 12 oz",
       "sale_price": 10.99,
       "original_price": null,
@@ -1392,7 +1457,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2224,
+      "id": 102,
       "item_name": "Solomon's Long Salami 32 oz",
       "sale_price": 15.99,
       "original_price": null,
@@ -1405,7 +1470,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2220,
+      "id": 98,
       "item_name": "Solomon's Reduced Fat Beef Franks 12 oz",
       "sale_price": 6.99,
       "original_price": null,
@@ -1418,8 +1483,8 @@
       "kosher_flag": null
     },
     {
-      "id": 2247,
-      "item_name": "String Beans . . . . . . . . . . . . . . . . . . . . . . . . . . Green Scallions Red Seedless Grapes . . . . . . . . . . . . . . . . . . . . . . . . . . Crispy Kirbies Gourmet Glatt ALL 3 LOCATIONS TO ORDER FOR YOUR KIDDUSH & SIMCHA - CALL 732-961-1700 EXT 214 Corn on the Cob",
+      "id": 125,
+      "item_name": "String Beans Green Scallions Red Seedless Grapes Crispy Kirbies Gourmet Glatt ALL 3 LOCATIONS TO ORDER FOR YOUR KIDDUSH & SIMCHA - CALL 732-961-1700 EXT 214 Corn on the Cob",
       "sale_price": 0.5,
       "original_price": null,
       "unit": "8 for $4.00",
@@ -1431,7 +1496,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2279,
+      "id": 155,
       "item_name": "Super Family Pack Snack & Nosh Specials! Lieber's Hot Sauce Potato Chips .75 oz",
       "sale_price": 0.4,
       "original_price": null,
@@ -1444,7 +1509,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2248,
+      "id": 126,
       "item_name": "Sweet Nectarines",
       "sale_price": 1.49,
       "original_price": null,
@@ -1457,7 +1522,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2222,
+      "id": 100,
       "item_name": "Tirat Z'vi Turkey Slices Assorted - 5 oz",
       "sale_price": 3.49,
       "original_price": null,
@@ -1470,7 +1535,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2275,
+      "id": 151,
       "item_name": "Top of the Rib",
       "sale_price": 12.99,
       "original_price": null,
@@ -1483,7 +1548,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2249,
+      "id": 127,
       "item_name": "Tropical Compote",
       "sale_price": 9.49,
       "original_price": null,
@@ -1496,24 +1561,11 @@
       "kosher_flag": null
     },
     {
-      "id": 2259,
+      "id": 136,
       "item_name": "Tropical Roll",
       "sale_price": 7.45,
       "original_price": null,
       "unit": null,
-      "category": "Bakery",
-      "store": "Gourmet Glatt",
-      "store_slug": "gourmet-glatt",
-      "date_valid_from": "2026-08-09",
-      "date_valid_to": "2026-08-14",
-      "kosher_flag": null
-    },
-    {
-      "id": 2244,
-      "item_name": "Tuscanini Fries All Varieties 24 oz - 32 oz",
-      "sale_price": 2.5,
-      "original_price": null,
-      "unit": "2 for $5.00",
       "category": "Pantry",
       "store": "Gourmet Glatt",
       "store_slug": "gourmet-glatt",
@@ -1522,7 +1574,20 @@
       "kosher_flag": null
     },
     {
-      "id": 2217,
+      "id": 122,
+      "item_name": "Tuscanini Fries All Varieties 24 oz - 32 oz",
+      "sale_price": 2.5,
+      "original_price": null,
+      "unit": "2 for $5.00",
+      "category": "Frozen",
+      "store": "Gourmet Glatt",
+      "store_slug": "gourmet-glatt",
+      "date_valid_from": "2026-08-09",
+      "date_valid_to": "2026-08-14",
+      "kosher_flag": null
+    },
+    {
+      "id": 95,
       "item_name": "Unger's Pretzel Crumbs 9 oz",
       "sale_price": 3.29,
       "original_price": null,
@@ -1535,8 +1600,8 @@
       "kosher_flag": null
     },
     {
-      "id": 2287,
-      "item_name": "Untrimmed Family Pack tender & juicy tender & juicy Boneless Rib Eye Roast",
+      "id": 163,
+      "item_name": "Untrimmed Family Pack Boneless Rib Eye Roast",
       "sale_price": 15.99,
       "original_price": null,
       "unit": "lb",
@@ -1548,7 +1613,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2286,
+      "id": 162,
       "item_name": "Whole Brisket",
       "sale_price": 9.49,
       "original_price": null,
@@ -1561,7 +1626,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2274,
+      "id": 150,
       "item_name": "Wing On Moroccan Salmon Marvid Chicken Bones YOGURT CUP WITH FRUIT & GRANOLA",
       "sale_price": 4.49,
       "original_price": null,
@@ -1574,7 +1639,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2207,
+      "id": 84,
       "item_name": "Wonder Mills Sifted High Gluten Flour 6 lb",
       "sale_price": 6.99,
       "original_price": null,
@@ -1587,7 +1652,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2233,
+      "id": 111,
       "item_name": "Yerek French or Cut Green Beans 16 oz",
       "sale_price": 1.99,
       "original_price": null,
@@ -1600,85 +1665,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2273,
-      "item_name": "american american",
-      "sale_price": 3.99,
-      "original_price": null,
-      "unit": "lb",
-      "category": "Pantry",
-      "store": "Gourmet Glatt",
-      "store_slug": "gourmet-glatt",
-      "date_valid_from": "2026-08-09",
-      "date_valid_to": "2026-08-14",
-      "kosher_flag": null
-    },
-    {
-      "id": 2284,
-      "item_name": "american beef american beef 99 \u00a2 lb. Beef Flanken",
-      "sale_price": 23.99,
-      "original_price": null,
-      "unit": "lb",
-      "category": "Meat & Deli",
-      "store": "Gourmet Glatt",
-      "store_slug": "gourmet-glatt",
-      "date_valid_from": "2026-08-09",
-      "date_valid_to": "2026-08-14",
-      "kosher_flag": null
-    },
-    {
-      "id": 2250,
-      "item_name": "imported beef imported beef american beef american beef poultry poultry CHICKEN LEGS",
-      "sale_price": 2.89,
-      "original_price": null,
-      "unit": "lb",
-      "category": "Meat & Deli",
-      "store": "Gourmet Glatt",
-      "store_slug": "gourmet-glatt",
-      "date_valid_from": "2026-08-09",
-      "date_valid_to": "2026-08-14",
-      "kosher_flag": null
-    },
-    {
-      "id": 2295,
-      "item_name": "order now with instacart! order now with instacart! Cholent Combo",
-      "sale_price": 9.99,
-      "original_price": null,
-      "unit": null,
-      "category": "Pantry",
-      "store": "Gourmet Glatt",
-      "store_slug": "gourmet-glatt",
-      "date_valid_from": "2026-08-09",
-      "date_valid_to": "2026-08-14",
-      "kosher_flag": null
-    },
-    {
-      "id": 2278,
-      "item_name": "seasoned ready to seasoned ready to bake or grill bake or grill Seasoned Beef Arayes",
-      "sale_price": 8.99,
-      "original_price": null,
-      "unit": "lb",
-      "category": "Meat & Deli",
-      "store": "Gourmet Glatt",
-      "store_slug": "gourmet-glatt",
-      "date_valid_from": "2026-08-09",
-      "date_valid_to": "2026-08-14",
-      "kosher_flag": null
-    },
-    {
-      "id": 2219,
-      "item_name": "with extended shopping hours! with extended shopping hours! Ha'olam Slims Muenster, Mozzarella, Cheddar 6 oz",
-      "sale_price": 2.99,
-      "original_price": null,
-      "unit": null,
-      "category": "Dairy",
-      "store": "Gourmet Glatt",
-      "store_slug": "gourmet-glatt",
-      "date_valid_from": "2026-08-09",
-      "date_valid_to": "2026-08-14",
-      "kosher_flag": null
-    },
-    {
-      "id": 2633,
+      "id": 10,
       "item_name": "ALMOND MELT AWAY COOKIES KV BAKERY",
       "sale_price": 5.99,
       "original_price": 7.99,
@@ -1691,7 +1678,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2630,
+      "id": 7,
       "item_name": "APPLE GRANNY SMITH",
       "sale_price": 0.74,
       "original_price": 1.34,
@@ -1704,7 +1691,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2638,
+      "id": 15,
       "item_name": "BALSAMIC VINAIGRETTE Beleaves",
       "sale_price": 3.99,
       "original_price": 5.89,
@@ -1717,7 +1704,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2631,
+      "id": 8,
       "item_name": "BLUEBERRIES",
       "sale_price": 3.99,
       "original_price": 4.99,
@@ -1730,7 +1717,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2643,
+      "id": 20,
       "item_name": "CESAR DRESSING Beleaves",
       "sale_price": 3.99,
       "original_price": 5.89,
@@ -1743,7 +1730,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2625,
+      "id": 2,
       "item_name": "FLAVOR BOMBS ON THE VINE CHERRY TOMATOES 12 oz Sunset",
       "sale_price": 3.99,
       "original_price": 6.99,
@@ -1756,7 +1743,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2627,
+      "id": 4,
       "item_name": "GRAPES GREEN",
       "sale_price": 4.49,
       "original_price": 5.99,
@@ -1769,7 +1756,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2639,
+      "id": 16,
       "item_name": "HONEY MUSTARD DRESSING Beleaves",
       "sale_price": 3.99,
       "original_price": 5.89,
@@ -1782,7 +1769,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2644,
+      "id": 21,
       "item_name": "JOY JOYS SOUR TROPICAL Mr Joy",
       "sale_price": 1.49,
       "original_price": 1.99,
@@ -1795,7 +1782,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2640,
+      "id": 17,
       "item_name": "LIGHT CESAR DRESSING Beleaves",
       "sale_price": 3.99,
       "original_price": 5.89,
@@ -1808,7 +1795,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2628,
+      "id": 5,
       "item_name": "MANGO",
       "sale_price": 1.29,
       "original_price": 1.99,
@@ -1821,7 +1808,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2635,
+      "id": 12,
       "item_name": "NISH NOSH DRESSING Beleaves",
       "sale_price": 3.99,
       "original_price": 5.89,
@@ -1834,7 +1821,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2629,
+      "id": 6,
       "item_name": "PEPPER ORANGE HOLLAND",
       "sale_price": 0.9,
       "original_price": 1.4,
@@ -1847,7 +1834,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2641,
+      "id": 18,
       "item_name": "POMEGRANATE VINAIGRETTE Beleaves",
       "sale_price": 3.99,
       "original_price": 5.89,
@@ -1860,7 +1847,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2645,
+      "id": 22,
       "item_name": "POPPY SEED DRESSING Beleaves",
       "sale_price": 3.99,
       "original_price": 5.89,
@@ -1873,12 +1860,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2636,
+      "id": 13,
       "item_name": "POTATO TRIANGLES JALAPENO Dvash",
       "sale_price": 0.79,
       "original_price": 1.09,
       "unit": null,
-      "category": "Pantry",
+      "category": "Frozen",
       "store": "Kosher Village",
       "store_slug": "kosher-village",
       "date_valid_from": "2026-08-12",
@@ -1886,7 +1873,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2637,
+      "id": 14,
       "item_name": "RANCH DRESSING Beleaves",
       "sale_price": 3.99,
       "original_price": 5.89,
@@ -1899,7 +1886,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2642,
+      "id": 19,
       "item_name": "RUSSIAN DRESSING Beleaves",
       "sale_price": 3.99,
       "original_price": 5.89,
@@ -1912,7 +1899,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2646,
+      "id": 23,
       "item_name": "SESAME SOY VINAIGRETTE Beleaves",
       "sale_price": 3.99,
       "original_price": 5.89,
@@ -1925,7 +1912,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2624,
+      "id": 1,
       "item_name": "SPRINKLES TEENY TINY TOMATOES",
       "sale_price": 1.99,
       "original_price": 5.99,
@@ -1938,7 +1925,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2626,
+      "id": 3,
       "item_name": "SQUASH GREEN",
       "sale_price": 0.93,
       "original_price": 1.34,
@@ -1951,7 +1938,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2647,
+      "id": 24,
       "item_name": "TOMATO CHERUBS 10OZ MIRON",
       "sale_price": 2.99,
       "original_price": 4.99,
@@ -1964,7 +1951,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2634,
+      "id": 11,
       "item_name": "TRAVADOS COOKIES Osem",
       "sale_price": 2.99,
       "original_price": 5.99,
@@ -1977,7 +1964,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2632,
+      "id": 9,
       "item_name": "WHOLE WATERMELON",
       "sale_price": 5.99,
       "original_price": 7.99,
@@ -1990,7 +1977,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2580,
+      "id": 455,
       "item_name": "Bakers Chc Choc Cake Mix, 16 Oz",
       "sale_price": 3.49,
       "original_price": 4.99,
@@ -2003,7 +1990,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2581,
+      "id": 456,
       "item_name": "Bakers Choice Vanilla Cake Mix, 16 Oz",
       "sale_price": 3.49,
       "original_price": 4.99,
@@ -2016,7 +2003,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2541,
+      "id": 416,
       "item_name": "Beleaf Broccoli Florets Frozen, 24 Oz",
       "sale_price": 6.99,
       "original_price": 8.99,
@@ -2029,7 +2016,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2539,
+      "id": 414,
       "item_name": "Beleaves Mini Cauliflower Florets, 24 Oz",
       "sale_price": 6.99,
       "original_price": 8.99,
@@ -2042,7 +2029,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2551,
+      "id": 426,
       "item_name": "Bloom's Pop' Mmm Cookies, 30 Pk",
       "sale_price": 9.99,
       "original_price": null,
@@ -2055,7 +2042,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2557,
+      "id": 432,
       "item_name": "Classic Coconut Cream",
       "sale_price": 3.49,
       "original_price": 3.99,
@@ -2068,7 +2055,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2603,
+      "id": 478,
       "item_name": "Craize Coconut Toasted Corn Crisps, 4 Oz",
       "sale_price": 2.99,
       "original_price": 4.49,
@@ -2081,7 +2068,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2613,
+      "id": 488,
       "item_name": "Craize Everything Toasted Corn Crackers, 4 Oz",
       "sale_price": 2.99,
       "original_price": 4.49,
@@ -2094,7 +2081,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2605,
+      "id": 480,
       "item_name": "Craize Guava Snack Crackers, 4 Oz",
       "sale_price": 2.99,
       "original_price": 4.49,
@@ -2107,7 +2094,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2606,
+      "id": 481,
       "item_name": "Craize Jalapeno Lime Snack Crackers, 4 Oz",
       "sale_price": 2.99,
       "original_price": 4.49,
@@ -2120,7 +2107,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2565,
+      "id": 440,
       "item_name": "Craize Sweet Corn Toasted Corn Crackers, 4 Oz",
       "sale_price": 2.99,
       "original_price": 4.49,
@@ -2133,7 +2120,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2530,
+      "id": 405,
       "item_name": "Dole Carrots Cello California, 16 Oz",
       "sale_price": 1.19,
       "original_price": null,
@@ -2146,7 +2133,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2544,
+      "id": 419,
       "item_name": "Dole Cole Slaw, 14 Oz",
       "sale_price": 3.49,
       "original_price": null,
@@ -2159,7 +2146,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2617,
+      "id": 492,
       "item_name": "Dots Sour Gummies Peg Bag, 8 Oz",
       "sale_price": 2.99,
       "original_price": 3.49,
@@ -2172,7 +2159,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2555,
+      "id": 430,
       "item_name": "Elite Turkish Coffee With Cardamom, 3.5 Oz",
       "sale_price": 2.49,
       "original_price": 3.99,
@@ -2185,7 +2172,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2597,
+      "id": 472,
       "item_name": "Flaum Tuna Celery, 7 Oz",
       "sale_price": 3.49,
       "original_price": 4.49,
@@ -2198,7 +2185,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2547,
+      "id": 422,
       "item_name": "Flaum's Sour Pickles Family Pack, 52 Oz",
       "sale_price": 6.99,
       "original_price": null,
@@ -2211,7 +2198,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2585,
+      "id": 460,
       "item_name": "Flaums Egg Salad Dip, 7.5 Oz",
       "sale_price": 3.49,
       "original_price": 4.49,
@@ -2224,7 +2211,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2590,
+      "id": 465,
       "item_name": "Flaums Garden Fresh Eggplant Dip, 7.5 Oz",
       "sale_price": 3.49,
       "original_price": 4.99,
@@ -2237,7 +2224,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2591,
+      "id": 466,
       "item_name": "Flaums Garden Fresh Garlic Dip, 7.5 Oz",
       "sale_price": 3.49,
       "original_price": 4.99,
@@ -2250,7 +2237,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2593,
+      "id": 468,
       "item_name": "Flaums Garden Fresh Jalapeno Dip, 7.5 Oz",
       "sale_price": 3.49,
       "original_price": 4.99,
@@ -2263,7 +2250,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2594,
+      "id": 469,
       "item_name": "Flaums Garden Fresh Olive Dip, 7.5 Oz",
       "sale_price": 3.49,
       "original_price": 4.99,
@@ -2276,7 +2263,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2595,
+      "id": 470,
       "item_name": "Flaums Garden Fresh Pickle Dip, 7.5 Oz",
       "sale_price": 3.49,
       "original_price": 4.99,
@@ -2289,7 +2276,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2586,
+      "id": 461,
       "item_name": "Flaums Horseradish Extra Spicy, 16 Oz",
       "sale_price": 3.49,
       "original_price": 4.49,
@@ -2302,7 +2289,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2587,
+      "id": 462,
       "item_name": "Flaums Horseradish Regular, 16 Oz",
       "sale_price": 3.49,
       "original_price": 4.49,
@@ -2315,7 +2302,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2588,
+      "id": 463,
       "item_name": "Flaums Horseradish Ts, 16 Oz",
       "sale_price": 3.49,
       "original_price": 4.49,
@@ -2328,7 +2315,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2596,
+      "id": 471,
       "item_name": "Flaums Spicy Tuna, 7 Oz",
       "sale_price": 3.49,
       "original_price": 4.49,
@@ -2341,7 +2328,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2592,
+      "id": 467,
       "item_name": "Flaums Tuna Salad, 7 Oz",
       "sale_price": 3.49,
       "original_price": 4.49,
@@ -2354,7 +2341,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2598,
+      "id": 473,
       "item_name": "Flaums Veggie Tuna, 7.5 Oz",
       "sale_price": 3.49,
       "original_price": 4.49,
@@ -2367,7 +2354,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2589,
+      "id": 464,
       "item_name": "Flaums White Fish Salad, 7.5 Oz",
       "sale_price": 5.99,
       "original_price": 6.99,
@@ -2380,7 +2367,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2548,
+      "id": 423,
       "item_name": "Gefen Hearts Of Palm Whole , 14.1 Oz",
       "sale_price": 3.49,
       "original_price": null,
@@ -2393,7 +2380,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2533,
+      "id": 408,
       "item_name": "Gevina Greek Whole Milk Vanilla Yogur, 5.3 Oz",
       "sale_price": 1.5,
       "original_price": null,
@@ -2406,7 +2393,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2549,
+      "id": 424,
       "item_name": "Green Giant Yukon Gold Potatoes 5 Lb",
       "sale_price": 5.99,
       "original_price": null,
@@ -2419,7 +2406,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2576,
+      "id": 451,
       "item_name": "H&e Crunchy Corn Snack Multipack, 0.7 Oz",
       "sale_price": 4.99,
       "original_price": 5.99,
@@ -2432,7 +2419,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2552,
+      "id": 427,
       "item_name": "Herr's Potato Chips Red Hot, 1 Oz",
       "sale_price": 0.67,
       "original_price": 0.75,
@@ -2445,7 +2432,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2543,
+      "id": 418,
       "item_name": "Jetfoil Muffin Aluminum Foil, 4 Ct",
       "sale_price": 1.79,
       "original_price": null,
@@ -2458,7 +2445,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2618,
+      "id": 493,
       "item_name": "Jolly Rancher Fruit Mango, 10 Oz",
       "sale_price": 3.99,
       "original_price": 5.99,
@@ -2471,7 +2458,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2554,
+      "id": 429,
       "item_name": "Jolly Rancher Ropes Blue Raspberry + Cherry Candy, 10 Oz",
       "sale_price": 3.99,
       "original_price": 4.99,
@@ -2484,7 +2471,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2621,
+      "id": 496,
       "item_name": "Jonny Pops Cotton Candy Cloud Ice Pop, 14.8 Oz",
       "sale_price": 5.99,
       "original_price": 7.99,
@@ -2497,7 +2484,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2610,
+      "id": 485,
       "item_name": "Jonny Pops Mini Pops Unicorn Fruit Punc, 6.72 Oz",
       "sale_price": 5.99,
       "original_price": 7.99,
@@ -2510,7 +2497,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2619,
+      "id": 494,
       "item_name": "Jonny Pops Organic Blue Wave Ice Pop, 14.8 Oz",
       "sale_price": 5.99,
       "original_price": 7.99,
@@ -2523,7 +2510,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2622,
+      "id": 497,
       "item_name": "Jonny Pops Organic Rainbow Fruit Stacks, 14.8 Oz",
       "sale_price": 5.99,
       "original_price": 7.99,
@@ -2536,7 +2523,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2620,
+      "id": 495,
       "item_name": "Jonny Pops Organic Summer Sunrise Pop 1.85 Oz, 8 Ct",
       "sale_price": 5.99,
       "original_price": 7.99,
@@ -2549,7 +2536,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2623,
+      "id": 498,
       "item_name": "Jonny Pops Organic Tropical Paradise Punch Ice Pop, 14.8 Oz",
       "sale_price": 5.99,
       "original_price": 7.99,
@@ -2562,7 +2549,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2611,
+      "id": 486,
       "item_name": "Jonny Pops Unicorn Twist Pink Punch, 6.72 Oz",
       "sale_price": 5.99,
       "original_price": 7.99,
@@ -2575,7 +2562,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2612,
+      "id": 487,
       "item_name": "Jonny Pops Unicorn Twist Red White Blue, 6.72 Oz",
       "sale_price": 5.99,
       "original_price": 7.99,
@@ -2588,7 +2575,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2556,
+      "id": 431,
       "item_name": "Kemach Pancake Mix 3 Pack, 15.9 Oz",
       "sale_price": 3.49,
       "original_price": 4.49,
@@ -2601,7 +2588,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2602,
+      "id": 477,
       "item_name": "Klein's Naturals Granola Cranberry Pecan, 12 Oz",
       "sale_price": 4.99,
       "original_price": 5.75,
@@ -2614,7 +2601,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2564,
+      "id": 439,
       "item_name": "L'hava 3 Day Memorial Candle Glass, 1 Ct",
       "sale_price": 1.99,
       "original_price": 3.49,
@@ -2627,7 +2614,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2615,
+      "id": 490,
       "item_name": "Lieber's Coconut Milk -Lite, 13.5 Oz",
       "sale_price": 2.49,
       "original_price": 3.49,
@@ -2640,7 +2627,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2568,
+      "id": 443,
       "item_name": "Lieber's Coconut Water Passionfruit, 33.8 Oz",
       "sale_price": 4.49,
       "original_price": 5.49,
@@ -2653,7 +2640,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2566,
+      "id": 441,
       "item_name": "Lieber's Tiny Dill Gherkins, 24 Oz",
       "sale_price": 2.99,
       "original_price": 3.99,
@@ -2666,7 +2653,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2570,
+      "id": 445,
       "item_name": "Lieber's Vanilla Supreme Almond Milk, 32 Oz",
       "sale_price": 2.99,
       "original_price": 3.99,
@@ -2679,7 +2666,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2540,
+      "id": 415,
       "item_name": "Mehadrin Krispy Yogurt Vanilla Crunch Flakes, 5.3 Oz",
       "sale_price": 1.67,
       "original_price": null,
@@ -2692,7 +2679,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2599,
+      "id": 474,
       "item_name": "Old Will Pizza Dough Balls, 48 Oz",
       "sale_price": 7.99,
       "original_price": 8.99,
@@ -2705,7 +2692,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2534,
+      "id": 409,
       "item_name": "Osem Bamba Snack Family Pk .7 Oz, 8 Pk",
       "sale_price": 7.99,
       "original_price": null,
@@ -2718,7 +2705,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2537,
+      "id": 412,
       "item_name": "Paskesz Chips A Plenty Soft & Chewy, 13 Oz",
       "sale_price": 7.49,
       "original_price": null,
@@ -2731,7 +2718,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2560,
+      "id": 435,
       "item_name": "Paskesz Clic Clak Fun Size, 5.3 Oz",
       "sale_price": 2.99,
       "original_price": 3.99,
@@ -2744,7 +2731,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2569,
+      "id": 444,
       "item_name": "Paskesz Marshmallow Creme, 12.3 Oz",
       "sale_price": 1.99,
       "original_price": 3.49,
@@ -2757,7 +2744,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2614,
+      "id": 489,
       "item_name": "Paskesz Nosh-Kes Grill Rings, 1.05 Oz",
       "sale_price": 0.57,
       "original_price": 0.65,
@@ -2770,7 +2757,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2601,
+      "id": 476,
       "item_name": "Paskesz Noshkes Extreme Hot, 1.05 Oz",
       "sale_price": 0.57,
       "original_price": 0.65,
@@ -2783,7 +2770,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2577,
+      "id": 452,
       "item_name": "Paskesz Pretzel Large Honey Mustard, 8 Oz",
       "sale_price": 2.99,
       "original_price": 3.99,
@@ -2796,7 +2783,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2578,
+      "id": 453,
       "item_name": "Paskesz Pretzel Large Jalapeno, 8 Oz",
       "sale_price": 2.99,
       "original_price": 3.99,
@@ -2809,7 +2796,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2579,
+      "id": 454,
       "item_name": "Paskesz Pretzel Large Smoky Bbq, 8 Oz",
       "sale_price": 2.99,
       "original_price": 3.99,
@@ -2822,7 +2809,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2616,
+      "id": 491,
       "item_name": "Paskesz Stack'n Snacks Candy Blocks, 5.3 Oz",
       "sale_price": 2.99,
       "original_price": 3.99,
@@ -2835,7 +2822,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2562,
+      "id": 437,
       "item_name": "Paskesz Twiggs Hot And Sour, 1 Oz",
       "sale_price": 0.57,
       "original_price": 0.65,
@@ -2848,12 +2835,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2550,
+      "id": 425,
       "item_name": "Plastic House Deli Containers, 32 Oz 15 Ct",
       "sale_price": 4.49,
       "original_price": null,
       "unit": null,
-      "category": "Pantry",
+      "category": "Household",
       "store": "Kosher West",
       "store_slug": "kosher-west",
       "date_valid_from": "2026-08-12",
@@ -2861,12 +2848,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2532,
+      "id": 407,
       "item_name": "Poland Spring Spring Water Gallon, 1 Gal",
       "sale_price": 2.29,
       "original_price": null,
       "unit": null,
-      "category": "Pantry",
+      "category": "Beverages",
       "store": "Kosher West",
       "store_slug": "kosher-west",
       "date_valid_from": "2026-08-12",
@@ -2874,7 +2861,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2536,
+      "id": 411,
       "item_name": "Polar Cranberry Lime Seltzer, 33.8 Oz",
       "sale_price": 1.0,
       "original_price": null,
@@ -2887,7 +2874,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2561,
+      "id": 436,
       "item_name": "Roland Lite Unsweetened Coconut Milk, 14 Oz",
       "sale_price": 1.99,
       "original_price": 2.99,
@@ -2900,7 +2887,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2538,
+      "id": 413,
       "item_name": "Shibolim Whole Wheat Knockers Everything, 6. Oz",
       "sale_price": 3.49,
       "original_price": null,
@@ -2913,7 +2900,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2571,
+      "id": 446,
       "item_name": "Shwartz Almond Bliss Vanilla, 32 Oz",
       "sale_price": 2.99,
       "original_price": 3.99,
@@ -2926,12 +2913,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2559,
+      "id": 434,
       "item_name": "Sizgit Gusto Corn Puffs, 0.7 Oz",
       "sale_price": 0.67,
       "original_price": 0.87,
       "unit": "3 for $2.00",
-      "category": "Pantry",
+      "category": "Candy & Snacks",
       "store": "Kosher West",
       "store_slug": "kosher-west",
       "date_valid_from": "2026-08-12",
@@ -2939,7 +2926,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2604,
+      "id": 479,
       "item_name": "Snapple Pink Lemoade, 16 Oz",
       "sale_price": 1.67,
       "original_price": 1.99,
@@ -2952,7 +2939,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2545,
+      "id": 420,
       "item_name": "String Beans Lb",
       "sale_price": 2.79,
       "original_price": null,
@@ -2965,7 +2952,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2546,
+      "id": 421,
       "item_name": "Tirat Zvi Oven Roasted Turkey Breast Thinnies, 6.5 Oz",
       "sale_price": 6.99,
       "original_price": null,
@@ -2978,7 +2965,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2542,
+      "id": 417,
       "item_name": "Tomato Plum",
       "sale_price": 1.99,
       "original_price": null,
@@ -2991,12 +2978,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2582,
+      "id": 457,
       "item_name": "Tortinkles Bbq, 90 G",
       "sale_price": 2.29,
       "original_price": 3.29,
       "unit": null,
-      "category": "Pantry",
+      "category": "Candy & Snacks",
       "store": "Kosher West",
       "store_slug": "kosher-west",
       "date_valid_from": "2026-08-12",
@@ -3004,12 +2991,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2583,
+      "id": 458,
       "item_name": "Tortinkles Italian Herbs, 90 G",
       "sale_price": 2.29,
       "original_price": 3.29,
       "unit": null,
-      "category": "Pantry",
+      "category": "Candy & Snacks",
       "store": "Kosher West",
       "store_slug": "kosher-west",
       "date_valid_from": "2026-08-12",
@@ -3017,12 +3004,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2584,
+      "id": 459,
       "item_name": "Tortinkles Salt, 90 G",
       "sale_price": 2.29,
       "original_price": 3.29,
       "unit": null,
-      "category": "Pantry",
+      "category": "Candy & Snacks",
       "store": "Kosher West",
       "store_slug": "kosher-west",
       "date_valid_from": "2026-08-12",
@@ -3030,7 +3017,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2572,
+      "id": 447,
       "item_name": "Tuscanini Alfredo Sauce, 14.5 Oz",
       "sale_price": 7.99,
       "original_price": 9.99,
@@ -3043,7 +3030,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2600,
+      "id": 475,
       "item_name": "Tuscanini Kalamata Olives Pitted Pouch, 1.06 Oz",
       "sale_price": 0.99,
       "original_price": 1.39,
@@ -3056,12 +3043,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2573,
+      "id": 448,
       "item_name": "Tuscanini Mac & Cheese Sauce, 14.5 Oz",
       "sale_price": 7.99,
       "original_price": 9.99,
       "unit": null,
-      "category": "Dairy",
+      "category": "Pantry",
       "store": "Kosher West",
       "store_slug": "kosher-west",
       "date_valid_from": "2026-08-12",
@@ -3069,7 +3056,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2574,
+      "id": 449,
       "item_name": "Tuscanini Mushroom Alfredo Sauce, 14.5 Oz",
       "sale_price": 7.99,
       "original_price": 9.99,
@@ -3082,7 +3069,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2607,
+      "id": 482,
       "item_name": "Tuscanini Pitted Olives Garlic Flavored in Pouch, 1 Oz",
       "sale_price": 0.99,
       "original_price": 1.39,
@@ -3095,7 +3082,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2608,
+      "id": 483,
       "item_name": "Tuscanini Pitted Olives Original Pouch x, 1 Oz",
       "sale_price": 0.99,
       "original_price": 1.39,
@@ -3108,7 +3095,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2609,
+      "id": 484,
       "item_name": "Tuscanini Spicy Pitted Olives Pouch, 1 Oz",
       "sale_price": 0.99,
       "original_price": 1.39,
@@ -3121,7 +3108,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2575,
+      "id": 450,
       "item_name": "Tuscanini Vodka Sauce, 14.5 Oz",
       "sale_price": 7.99,
       "original_price": 8.99,
@@ -3134,7 +3121,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2558,
+      "id": 433,
       "item_name": "Wise Dipsy Doodles Bbq Flavored Corn Chips, 0.75 Oz",
       "sale_price": 0.45,
       "original_price": 0.5,
@@ -3147,7 +3134,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2531,
+      "id": 406,
       "item_name": "Wise Dipsy Doodles Original, 0.875 Oz",
       "sale_price": 0.45,
       "original_price": 0.5,
@@ -3160,7 +3147,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2567,
+      "id": 442,
       "item_name": "Y&S Twizzlers Bits Cherry, 16 Oz",
       "sale_price": 3.99,
       "original_price": 6.49,
@@ -3173,7 +3160,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2529,
+      "id": 404,
       "item_name": "Yellow Potatoes, 5Lb Bag",
       "sale_price": 4.99,
       "original_price": null,
@@ -3186,12 +3173,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2535,
+      "id": 410,
       "item_name": "Zohar Cart Wheels Original, 0.5 Oz",
       "sale_price": 0.8,
       "original_price": 0.85,
       "unit": "5 for $3.99",
-      "category": "Pantry",
+      "category": "Candy & Snacks",
       "store": "Kosher West",
       "store_slug": "kosher-west",
       "date_valid_from": "2026-08-12",
@@ -3199,12 +3186,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2563,
+      "id": 438,
       "item_name": "Zohar Cart Wheels Tomato Flavor, 0.5 OZ",
       "sale_price": 0.8,
       "original_price": 0.85,
       "unit": "5 for $3.99",
-      "category": "Pantry",
+      "category": "Candy & Snacks",
       "store": "Kosher West",
       "store_slug": "kosher-west",
       "date_valid_from": "2026-08-12",
@@ -3212,12 +3199,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2553,
+      "id": 428,
       "item_name": "Zohar Onion Garlic Cartwheels, 0.5 OZ",
       "sale_price": 0.8,
       "original_price": 0.85,
       "unit": "5 for $3.99",
-      "category": "Pantry",
+      "category": "Candy & Snacks",
       "store": "Kosher West",
       "store_slug": "kosher-west",
       "date_valid_from": "2026-08-12",
@@ -3225,7 +3212,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2453,
+      "id": 328,
       "item_name": "20 Oz Beverage Cups + Lids",
       "sale_price": 5.99,
       "original_price": 8.69,
@@ -3238,7 +3225,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2528,
+      "id": 403,
       "item_name": "B'gan Breaded Onion Rings, 24 Oz",
       "sale_price": 6.99,
       "original_price": 8.19,
@@ -3251,7 +3238,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2446,
+      "id": 321,
       "item_name": "Bananas",
       "sale_price": 0.99,
       "original_price": null,
@@ -3264,7 +3251,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2507,
+      "id": 382,
       "item_name": "Beleaves Balsamic Vinaigrette",
       "sale_price": 4.49,
       "original_price": 6.29,
@@ -3277,7 +3264,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2489,
+      "id": 364,
       "item_name": "Beleaves Creamy Russian Dressing",
       "sale_price": 4.49,
       "original_price": 6.29,
@@ -3290,7 +3277,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2522,
+      "id": 397,
       "item_name": "Beleaves Nish Nosh Dressing",
       "sale_price": 4.49,
       "original_price": 6.79,
@@ -3303,7 +3290,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2511,
+      "id": 386,
       "item_name": "Beleaves Pomegranate Vinaigrette",
       "sale_price": 4.49,
       "original_price": 6.79,
@@ -3316,7 +3303,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2484,
+      "id": 359,
       "item_name": "Best Bev 16 Oz Beverage Cups & Lids, 32 Ct",
       "sale_price": 5.99,
       "original_price": 6.99,
@@ -3329,7 +3316,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2526,
+      "id": 401,
       "item_name": "Bloom's Captain Cool Breakaway Pop, 8 Pk",
       "sale_price": 1.49,
       "original_price": 1.79,
@@ -3342,7 +3329,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2440,
+      "id": 315,
       "item_name": "Bloom's Freeze A Pop Captain Cool, 100 Ct",
       "sale_price": 10.99,
       "original_price": 11.99,
@@ -3355,12 +3342,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2438,
+      "id": 313,
       "item_name": "Bodek Shredded Green Cabbage, 16 Oz",
       "sale_price": 4.79,
       "original_price": null,
       "unit": null,
-      "category": "Produce",
+      "category": "Frozen",
       "store": "Nutmeg",
       "store_slug": "nutmeg",
       "date_valid_from": "2026-08-12",
@@ -3368,12 +3355,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2450,
+      "id": 325,
       "item_name": "Broadway's J2 Gourmet Pizza, 8 Large Slices, 40 Oz",
       "sale_price": 14.29,
       "original_price": null,
       "unit": null,
-      "category": "Pantry",
+      "category": "Frozen",
       "store": "Nutmeg",
       "store_slug": "nutmeg",
       "date_valid_from": "2026-08-12",
@@ -3381,7 +3368,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2492,
+      "id": 367,
       "item_name": "Ca Red Pluot",
       "sale_price": 2.99,
       "original_price": 4.99,
@@ -3394,7 +3381,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2433,
+      "id": 308,
       "item_name": "Decorline 7 Oz Clear Heavy Plastic Cups, 100 Ct",
       "sale_price": 1.19,
       "original_price": null,
@@ -3407,12 +3394,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2465,
+      "id": 340,
       "item_name": "Drizzilicious Birthday Cake, Mini Rice Cakes With White Chocolate Drizzle, 10 Pk, 0.74 Oz",
       "sale_price": 6.99,
       "original_price": 9.99,
       "unit": null,
-      "category": "Bakery",
+      "category": "Candy & Snacks",
       "store": "Nutmeg",
       "store_slug": "nutmeg",
       "date_valid_from": "2026-08-12",
@@ -3420,7 +3407,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2508,
+      "id": 383,
       "item_name": "Drizzilicious Cookies & Cream Bites, 10 Pk",
       "sale_price": 6.99,
       "original_price": 9.99,
@@ -3433,7 +3420,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2457,
+      "id": 332,
       "item_name": "Drizzilicious S'mores Marshmallow Crisps Drizzled With Chocolate, 10 Pk",
       "sale_price": 6.99,
       "original_price": 9.99,
@@ -3446,7 +3433,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2443,
+      "id": 318,
       "item_name": "Extra Thin Trimmed Chicken Cutlets KJ",
       "sale_price": 11.99,
       "original_price": null,
@@ -3459,7 +3446,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2451,
+      "id": 326,
       "item_name": "First Cut Brisket - Weissmandl",
       "sale_price": 10.99,
       "original_price": 12.99,
@@ -3472,7 +3459,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2483,
+      "id": 358,
       "item_name": "Fleishman's Finest Sliced Corned Beef Brisket, 6 Oz",
       "sale_price": 7.49,
       "original_price": 8.19,
@@ -3485,12 +3472,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2476,
+      "id": 351,
       "item_name": "Fruit Riot Cherries Vanilla Cola, 8 Oz",
       "sale_price": 6.99,
       "original_price": 7.99,
       "unit": null,
-      "category": "Beverages",
+      "category": "Candy & Snacks",
       "store": "Nutmeg",
       "store_slug": "nutmeg",
       "date_valid_from": "2026-08-12",
@@ -3498,7 +3485,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2475,
+      "id": 350,
       "item_name": "Fruit Riot Sour Grapes Mix",
       "sale_price": 6.99,
       "original_price": 7.99,
@@ -3511,7 +3498,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2491,
+      "id": 366,
       "item_name": "Gefen Crunchy Ice Cream Cones 48 Ct, 6.8 Oz",
       "sale_price": 6.49,
       "original_price": 6.89,
@@ -3524,7 +3511,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2430,
+      "id": 305,
       "item_name": "Gefen Cucumbers In Brine, Small 13-17 Ct, 19 Oz",
       "sale_price": 3.99,
       "original_price": null,
@@ -3537,7 +3524,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2477,
+      "id": 352,
       "item_name": "Gefen Mandarin Oranges In Light Syrup, Whole Segments, 11 Oz",
       "sale_price": 0.99,
       "original_price": 1.69,
@@ -3550,7 +3537,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2431,
+      "id": 306,
       "item_name": "Gefen Pure Clover Honey, 32 Oz",
       "sale_price": 9.49,
       "original_price": null,
@@ -3563,7 +3550,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2506,
+      "id": 381,
       "item_name": "Givat Yummy Kids Berries Pouch, 3.5 Oz",
       "sale_price": 1.29,
       "original_price": 1.59,
@@ -3576,7 +3563,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2502,
+      "id": 377,
       "item_name": "Givat Yummy Kids Strawberry Banana Pouch, 3.5 Oz",
       "sale_price": 1.29,
       "original_price": 1.59,
@@ -3589,7 +3576,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2461,
+      "id": 336,
       "item_name": "Givat Yummy Kids Strawberry Pouch, 3.5 Oz",
       "sale_price": 1.25,
       "original_price": 1.59,
@@ -3602,7 +3589,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2509,
+      "id": 384,
       "item_name": "Glicks Apple Juice, 64 Oz",
       "sale_price": 3.19,
       "original_price": 4.19,
@@ -3615,7 +3602,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2494,
+      "id": 369,
       "item_name": "Glicks Canola Oil Cooking Spray, 5 Oz",
       "sale_price": 3.19,
       "original_price": 3.39,
@@ -3628,7 +3615,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2466,
+      "id": 341,
       "item_name": "Glicks Distilled White Vinegar, 32 Fl Oz",
       "sale_price": 1.49,
       "original_price": 1.99,
@@ -3641,7 +3628,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2516,
+      "id": 391,
       "item_name": "Glicks Graham Cracker Pie Crust, 6 Oz",
       "sale_price": 2.29,
       "original_price": 2.99,
@@ -3654,7 +3641,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2463,
+      "id": 338,
       "item_name": "Glicks Iodized Salt, 26 Oz",
       "sale_price": 0.99,
       "original_price": 1.19,
@@ -3667,7 +3654,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2499,
+      "id": 374,
       "item_name": "Glicks Lite Cherry Pie Filling, 20 Oz",
       "sale_price": 4.49,
       "original_price": 4.79,
@@ -3680,7 +3667,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2497,
+      "id": 372,
       "item_name": "Glicks Navy Beans, 16 Oz",
       "sale_price": 1.49,
       "original_price": 1.69,
@@ -3693,7 +3680,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2485,
+      "id": 360,
       "item_name": "Glicks Pearl Barley, 16 Oz",
       "sale_price": 0.99,
       "original_price": 1.59,
@@ -3706,7 +3693,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2473,
+      "id": 348,
       "item_name": "Glicks Sweet Baby Corn Nuggets, 15 Oz",
       "sale_price": 1.29,
       "original_price": 1.89,
@@ -3719,7 +3706,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2481,
+      "id": 356,
       "item_name": "Glicks Sweet Whole Baby Corn, 15 Oz",
       "sale_price": 1.69,
       "original_price": 1.95,
@@ -3732,7 +3719,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2504,
+      "id": 379,
       "item_name": "Glicks Teriyaki Sauce, 10 Oz",
       "sale_price": 2.99,
       "original_price": 3.19,
@@ -3745,7 +3732,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2458,
+      "id": 333,
       "item_name": "Glicks Unbleached All Purpose Flour, 5 Lb",
       "sale_price": 3.49,
       "original_price": 4.89,
@@ -3758,7 +3745,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2525,
+      "id": 400,
       "item_name": "Glicks Whole Hearts Of Palm, 14.1 Oz",
       "sale_price": 3.19,
       "original_price": 3.39,
@@ -3771,7 +3758,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2493,
+      "id": 368,
       "item_name": "Glicks Yellow Mustard, Easy Squeeze, 16 Oz",
       "sale_price": 1.49,
       "original_price": 1.89,
@@ -3784,7 +3771,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2428,
+      "id": 303,
       "item_name": "Golden Flow 1% Lowfat Milk, 64 0z",
       "sale_price": 3.79,
       "original_price": null,
@@ -3797,7 +3784,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2436,
+      "id": 311,
       "item_name": "Golden Fluff Barbecue Flavored Tortilla Chips Small, 1 Oz",
       "sale_price": 0.6,
       "original_price": null,
@@ -3810,7 +3797,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2510,
+      "id": 385,
       "item_name": "Golden Taste Creamy Sliced Olive, 7.5 Oz",
       "sale_price": 2.99,
       "original_price": 4.99,
@@ -3823,7 +3810,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2520,
+      "id": 395,
       "item_name": "Golden Taste Spicy Olives, 7.5 Oz",
       "sale_price": 2.99,
       "original_price": 4.59,
@@ -3836,7 +3823,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2449,
+      "id": 324,
       "item_name": "Haolam 100% Natural String Cheese Part Skim Low Moisture Mozzarella Cheese 18 Oz, 18 Ct",
       "sale_price": 11.89,
       "original_price": null,
@@ -3849,7 +3836,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2468,
+      "id": 343,
       "item_name": "Heaven & Earth Berries Fruit Pouches, 8 Oz",
       "sale_price": 4.99,
       "original_price": 5.99,
@@ -3862,7 +3849,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2474,
+      "id": 349,
       "item_name": "Heaven & Earth Gluten Free Brown Rice Pasta, 12 Oz",
       "sale_price": 3.49,
       "original_price": 4.49,
@@ -3875,7 +3862,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2518,
+      "id": 393,
       "item_name": "Heaven & Earth Lil Taffy Blue Raspberry, 7.05 Oz",
       "sale_price": 3.99,
       "original_price": 5.69,
@@ -3888,7 +3875,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2479,
+      "id": 354,
       "item_name": "Heaven & Earth Lil Taffy Summer Strawberry, 14.1 Oz",
       "sale_price": 3.99,
       "original_price": 5.69,
@@ -3901,7 +3888,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2435,
+      "id": 310,
       "item_name": "Jet Foil Aluminum Lids for 9X13 Pans, 10 Ct",
       "sale_price": 3.49,
       "original_price": null,
@@ -3914,7 +3901,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2432,
+      "id": 307,
       "item_name": "Kedem 100% Grape Juice Concord, 64 Oz",
       "sale_price": 5.99,
       "original_price": null,
@@ -3927,7 +3914,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2467,
+      "id": 342,
       "item_name": "Kedem Sparkling Blush Grape Juice, 25.4 Oz",
       "sale_price": 3.49,
       "original_price": 5.59,
@@ -3940,7 +3927,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2503,
+      "id": 378,
       "item_name": "Kedem Sparkling Light Concord Grape Juice, 25.4 Oz",
       "sale_price": 3.49,
       "original_price": 4.79,
@@ -3953,7 +3940,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2445,
+      "id": 320,
       "item_name": "Korn's Bakery Rye Bread, 32 Oz",
       "sale_price": 4.79,
       "original_price": null,
@@ -3966,7 +3953,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2471,
+      "id": 346,
       "item_name": "Lieber's Chips Wow Chewy Chocolate Chip Cookies, 15 Oz",
       "sale_price": 5.99,
       "original_price": 7.29,
@@ -3979,7 +3966,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2444,
+      "id": 319,
       "item_name": "Lieber's Honey Potato Chips, 0.74 Oz",
       "sale_price": 0.59,
       "original_price": null,
@@ -3992,7 +3979,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2464,
+      "id": 339,
       "item_name": "Lieber's Mini Stripes Cookies, 8 Oz",
       "sale_price": 2.99,
       "original_price": 3.39,
@@ -4005,7 +3992,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2434,
+      "id": 309,
       "item_name": "London Broil - Tevya's",
       "sale_price": 12.99,
       "original_price": null,
@@ -4018,12 +4005,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2478,
+      "id": 353,
       "item_name": "Made Good Chocolate Drizzled Granola Bars, Birthday Cake Flavor, 5 Ct, 4.2 Oz",
       "sale_price": 3.49,
       "original_price": 3.99,
       "unit": null,
-      "category": "Bakery",
+      "category": "Candy & Snacks",
       "store": "Nutmeg",
       "store_slug": "nutmeg",
       "date_valid_from": "2026-08-12",
@@ -4031,7 +4018,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2470,
+      "id": 345,
       "item_name": "Made Good Organic Chocolate Chip Granola Bars, 5.1 Oz",
       "sale_price": 3.49,
       "original_price": 3.99,
@@ -4044,7 +4031,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2456,
+      "id": 331,
       "item_name": "McCain Crinkle Cut Potatoes, 26 Oz",
       "sale_price": 3.99,
       "original_price": 4.99,
@@ -4057,7 +4044,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2448,
+      "id": 323,
       "item_name": "Mehadrin Lowfat Cottage Cheese Small Curd 1% Milkfat, 16 Oz",
       "sale_price": 6.49,
       "original_price": null,
@@ -4070,7 +4057,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2500,
+      "id": 375,
       "item_name": "Natural & Koshe Cheddar Sliced Cheese",
       "sale_price": 6.99,
       "original_price": 9.99,
@@ -4083,7 +4070,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2501,
+      "id": 376,
       "item_name": "Natural & Koshe Gouda Sliced Cheese",
       "sale_price": 6.99,
       "original_price": 9.99,
@@ -4096,7 +4083,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2462,
+      "id": 337,
       "item_name": "Natural & Kosher Crumbled Feta Cheese, 4 Oz",
       "sale_price": 2.99,
       "original_price": 3.89,
@@ -4109,7 +4096,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2512,
+      "id": 387,
       "item_name": "Natural & Kosher Pepper Jack Cheese Sliced, 6 Oz",
       "sale_price": 3.99,
       "original_price": 4.99,
@@ -4122,7 +4109,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2495,
+      "id": 370,
       "item_name": "Natural & Kosher Shredded Chef's Blend Pizza & Cheddar Cheese, 8 Oz",
       "sale_price": 3.49,
       "original_price": 4.99,
@@ -4135,7 +4122,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2498,
+      "id": 373,
       "item_name": "Natural & Kosher Shredded Mexican Blend Cheese, 8 Oz",
       "sale_price": 3.49,
       "original_price": 4.99,
@@ -4148,7 +4135,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2517,
+      "id": 392,
       "item_name": "Natural & Kosher Shredded Mozzarella Cheese, 8 Oz",
       "sale_price": 3.49,
       "original_price": 4.99,
@@ -4161,7 +4148,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2527,
+      "id": 402,
       "item_name": "Natural & Kosher Shredded Mozzarella Low Moisture Part-Skim Cheese, 8 Oz",
       "sale_price": 3.49,
       "original_price": 4.99,
@@ -4174,7 +4161,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2490,
+      "id": 365,
       "item_name": "Natural & Kosher Shredded Natural Mozzarella, 32 Oz",
       "sale_price": 12.99,
       "original_price": 13.99,
@@ -4187,7 +4174,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2486,
+      "id": 361,
       "item_name": "Natural & Kosher Shredded Pizza Cheese, 8 Oz",
       "sale_price": 3.49,
       "original_price": 4.99,
@@ -4200,7 +4187,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2455,
+      "id": 330,
       "item_name": "Natural & Kosher Sliced Muenster Cheese, 6 Oz",
       "sale_price": 3.99,
       "original_price": 4.99,
@@ -4213,7 +4200,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2487,
+      "id": 362,
       "item_name": "Natural&Kosher Sliced Gouda Cheese, 6 Oz",
       "sale_price": 3.99,
       "original_price": 4.99,
@@ -4226,7 +4213,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2472,
+      "id": 347,
       "item_name": "Nutmeg Oatmeal Cranberry Cookies",
       "sale_price": 4.99,
       "original_price": 5.99,
@@ -4239,7 +4226,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2515,
+      "id": 390,
       "item_name": "Old Williamsburg Beef Jerky Pepper Crusted, 2 Oz",
       "sale_price": 5.99,
       "original_price": 9.29,
@@ -4252,7 +4239,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2519,
+      "id": 394,
       "item_name": "Old Williamsburg Beef Jerky Smoky Barbeque, 2 Oz",
       "sale_price": 5.99,
       "original_price": 9.29,
@@ -4265,7 +4252,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2524,
+      "id": 399,
       "item_name": "Old Williamsburg Beef Jerky Sweet Chipotle, 2 Oz",
       "sale_price": 5.99,
       "original_price": 9.29,
@@ -4278,7 +4265,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2505,
+      "id": 380,
       "item_name": "Old Williamsburg Beef Jerky Teriyaki, 2 Oz",
       "sale_price": 5.99,
       "original_price": 8.99,
@@ -4291,7 +4278,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2441,
+      "id": 316,
       "item_name": "Osem Bamba Peanut Butter Puffs Snack, 2.1 Oz",
       "sale_price": 2.29,
       "original_price": null,
@@ -4304,7 +4291,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2437,
+      "id": 312,
       "item_name": "Ostreicher's Choco-Chip Cookies, 10 Oz",
       "sale_price": 4.59,
       "original_price": null,
@@ -4317,7 +4304,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2452,
+      "id": 327,
       "item_name": "Paskesz Crik Crak Spelt Crispy Cracker Thins, 6.5 Oz",
       "sale_price": 2.99,
       "original_price": 3.89,
@@ -4330,12 +4317,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2521,
+      "id": 396,
       "item_name": "Plastic House Deli Containers Combo, 48 Ct",
       "sale_price": 8.99,
       "original_price": 11.89,
       "unit": null,
-      "category": "Pantry",
+      "category": "Household",
       "store": "Nutmeg",
       "store_slug": "nutmeg",
       "date_valid_from": "2026-08-12",
@@ -4343,7 +4330,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2429,
+      "id": 304,
       "item_name": "Plastico Zip'N Close Storage Gallon Bag, 20 Pcs",
       "sale_price": 1.85,
       "original_price": null,
@@ -4356,7 +4343,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2439,
+      "id": 314,
       "item_name": "Proplast Disposable Vinyl Gloves Large, 100 Ct",
       "sale_price": 3.19,
       "original_price": null,
@@ -4369,7 +4356,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2459,
+      "id": 334,
       "item_name": "Schmerling's Almonds & Sea Salt Swiss Milk Chocolate, 3.5 Oz",
       "sale_price": 3.99,
       "original_price": 4.99,
@@ -4382,7 +4369,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2513,
+      "id": 388,
       "item_name": "Schmerling's Orange Noir Chocolate Bar, 3.5 Oz",
       "sale_price": 3.99,
       "original_price": 4.99,
@@ -4395,7 +4382,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2523,
+      "id": 398,
       "item_name": "Schtark Fancy Shredded Mozzarella Cheese, 8 Oz",
       "sale_price": 3.49,
       "original_price": 3.99,
@@ -4408,7 +4395,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2514,
+      "id": 389,
       "item_name": "Schtark Muenster Cheese Slices, 5 Oz",
       "sale_price": 2.99,
       "original_price": 3.99,
@@ -4421,7 +4408,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2460,
+      "id": 335,
       "item_name": "Schtark Oven Smoked Sliced Muenster Cheese, 5 Oz",
       "sale_price": 3.49,
       "original_price": 3.99,
@@ -4434,7 +4421,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2488,
+      "id": 363,
       "item_name": "Schtark Oven-Smoked Sliced Gouda Cheese, 5 Oz",
       "sale_price": 3.49,
       "original_price": 3.99,
@@ -4447,7 +4434,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2482,
+      "id": 357,
       "item_name": "Schtark Shredded Mozzarella Cheese, 32 Oz",
       "sale_price": 10.99,
       "original_price": 12.99,
@@ -4460,7 +4447,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2442,
+      "id": 317,
       "item_name": "Silktouch Lunch Napkin Family Pack, 500 Ct",
       "sale_price": 3.59,
       "original_price": null,
@@ -4473,7 +4460,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2447,
+      "id": 322,
       "item_name": "Snack Delite Marshmallow Crisp Rice Treats, 6.2 Oz",
       "sale_price": 4.29,
       "original_price": null,
@@ -4486,7 +4473,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2454,
+      "id": 329,
       "item_name": "Solomon's Beef Kielbasa, 16 Oz",
       "sale_price": 8.99,
       "original_price": 11.89,
@@ -4499,7 +4486,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2480,
+      "id": 355,
       "item_name": "Solomon's Sliced Beef Pastrami, 6 Oz",
       "sale_price": 7.99,
       "original_price": 8.99,
@@ -4512,7 +4499,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2496,
+      "id": 371,
       "item_name": "Williamsburgh Pickles Sour Pickles, 30 Oz",
       "sale_price": 3.99,
       "original_price": 5.19,
@@ -4525,7 +4512,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2469,
+      "id": 344,
       "item_name": "Wyler's Authentic Italian Ices Variety Pack Assorted Flavors, 70 Ct",
       "sale_price": 10.99,
       "original_price": 11.99,
@@ -4538,7 +4525,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2299,
+      "id": 174,
       "item_name": "6 Pk Hamburger Buns",
       "sale_price": 4.99,
       "original_price": null,
@@ -4551,7 +4538,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2401,
+      "id": 276,
       "item_name": "B&G Gherkins, Kosher Dill, 32 Oz",
       "sale_price": 4.49,
       "original_price": 4.99,
@@ -4564,7 +4551,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2412,
+      "id": 287,
       "item_name": "B&G Kosher Dill Chips, 32 Oz",
       "sale_price": 3.69,
       "original_price": 4.69,
@@ -4577,7 +4564,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2301,
+      "id": 176,
       "item_name": "Beef Sliders",
       "sale_price": 11.99,
       "original_price": null,
@@ -4590,7 +4577,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2310,
+      "id": 185,
       "item_name": "Beetology Whole Beets, 17.6 Oz",
       "sale_price": 2.49,
       "original_price": null,
@@ -4603,7 +4590,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2352,
+      "id": 227,
       "item_name": "Beleaves Chopped Spinach, 24 Oz",
       "sale_price": 8.99,
       "original_price": 11.49,
@@ -4616,7 +4603,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2398,
+      "id": 273,
       "item_name": "Blooms Snackers, 13.7 Lb",
       "sale_price": 3.99,
       "original_price": 5.49,
@@ -4629,7 +4616,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2345,
+      "id": 220,
       "item_name": "Brownie Bars",
       "sale_price": 6.99,
       "original_price": 7.99,
@@ -4642,7 +4629,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2338,
+      "id": 213,
       "item_name": "Bullseye Sweet Hickory Smoke, 18 Oz",
       "sale_price": 2.69,
       "original_price": 3.49,
@@ -4655,7 +4642,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2377,
+      "id": 252,
       "item_name": "Carbone Vodka Sauce, 24 Oz",
       "sale_price": 6.49,
       "original_price": 9.99,
@@ -4668,7 +4655,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2306,
+      "id": 181,
       "item_name": "Chuster Sourdough Nuggets Fp, 12 Oz",
       "sale_price": 5.99,
       "original_price": 7.29,
@@ -4681,7 +4668,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2399,
+      "id": 274,
       "item_name": "Cookie Bites Cookie Bite Chocolate Chip Cookies, 1.5 Oz",
       "sale_price": 0.99,
       "original_price": 1.19,
@@ -4694,7 +4681,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2328,
+      "id": 203,
       "item_name": "Dining Collection Tea Spoons Fam Pack, 400 Ct",
       "sale_price": 3.49,
       "original_price": 4.49,
@@ -4707,7 +4694,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2329,
+      "id": 204,
       "item_name": "Dinning Collection Soup Spoons, 400 Ct",
       "sale_price": 3.49,
       "original_price": 4.49,
@@ -4720,7 +4707,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2325,
+      "id": 200,
       "item_name": "Dip Dip Crackers Original, 6 Oz",
       "sale_price": 3.99,
       "original_price": 5.29,
@@ -4733,7 +4720,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2362,
+      "id": 237,
       "item_name": "Dove Body Wash W/Pmp Deep Moisture, 30.6 Oz",
       "sale_price": 9.99,
       "original_price": 12.49,
@@ -4746,7 +4733,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2363,
+      "id": 238,
       "item_name": "Dove Body Wash W/Pmp Sensitive, 30.6 Oz",
       "sale_price": 9.99,
       "original_price": 12.49,
@@ -4759,7 +4746,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2343,
+      "id": 218,
       "item_name": "Elite Choc Crunch Brownie, 3.5 Oz",
       "sale_price": 3.99,
       "original_price": 5.29,
@@ -4772,7 +4759,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2407,
+      "id": 282,
       "item_name": "Galil Pickles In Brine Large, 23 Oz",
       "sale_price": 2.29,
       "original_price": 3.29,
@@ -4785,7 +4772,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2314,
+      "id": 189,
       "item_name": "Gefen Chicken Noodle Soup No MSG, 2.3 Oz",
       "sale_price": 1.49,
       "original_price": null,
@@ -4798,7 +4785,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2400,
+      "id": 275,
       "item_name": "Gefen Corn Flake Crumbs, 12 Oz",
       "sale_price": 3.69,
       "original_price": 4.79,
@@ -4811,7 +4798,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2324,
+      "id": 199,
       "item_name": "Gefen Extra Light Olive Oil, 33.8 Oz",
       "sale_price": 13.99,
       "original_price": 14.99,
@@ -4824,7 +4811,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2397,
+      "id": 272,
       "item_name": "Gefen Oil Olive Extra Light Squeeze, 21 Oz",
       "sale_price": 7.99,
       "original_price": 10.49,
@@ -4837,7 +4824,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2356,
+      "id": 231,
       "item_name": "Gefen Ramen Toppers Onion Garlic, 10 Oz",
       "sale_price": 3.69,
       "original_price": 6.99,
@@ -4850,7 +4837,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2316,
+      "id": 191,
       "item_name": "Gefen Table Salt, 26 Oz",
       "sale_price": 1.49,
       "original_price": null,
@@ -4863,7 +4850,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2394,
+      "id": 269,
       "item_name": "Gefen Tacoroos Chili Lime, 1 Oz",
       "sale_price": 0.79,
       "original_price": 0.99,
@@ -4876,7 +4863,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2335,
+      "id": 210,
       "item_name": "Gefen Whole Hearts Of Palm, 14.1 Oz",
       "sale_price": 3.29,
       "original_price": 4.49,
@@ -4889,7 +4876,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2411,
+      "id": 286,
       "item_name": "Gen Mills Honey Nut Cheerios, 10.8 Oz",
       "sale_price": 4.49,
       "original_price": 6.99,
@@ -4902,7 +4889,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2304,
+      "id": 179,
       "item_name": "Golden Flow Milk Whole, 32 Oz",
       "sale_price": 2.19,
       "original_price": null,
@@ -4915,7 +4902,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2317,
+      "id": 192,
       "item_name": "Golden Fluff Tortilla Chips, Enchilada, 1.18 Oz",
       "sale_price": 0.69,
       "original_price": null,
@@ -4928,7 +4915,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2302,
+      "id": 177,
       "item_name": "Goodman's Onion Soup Mix, 2.75 Oz",
       "sale_price": 2.49,
       "original_price": null,
@@ -4941,7 +4928,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2406,
+      "id": 281,
       "item_name": "Hadar Jack & Jill Biscuits, 14 Oz",
       "sale_price": 2.29,
       "original_price": 2.79,
@@ -4954,7 +4941,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2303,
+      "id": 178,
       "item_name": "Haolam Shredded Pizza Cheese, 8 Oz",
       "sale_price": 3.99,
       "original_price": null,
@@ -4967,7 +4954,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2365,
+      "id": 240,
       "item_name": "Head&Shoulder Head & Shoulder Dry Scalp 2In1, 28.2 Oz",
       "sale_price": 10.99,
       "original_price": 13.99,
@@ -4980,7 +4967,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2364,
+      "id": 239,
       "item_name": "Head&Shoulder Head & Shoulder Dry Scalp Shampoo, 28.2 Oz",
       "sale_price": 10.99,
       "original_price": 13.99,
@@ -4993,7 +4980,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2392,
+      "id": 267,
       "item_name": "Heaven & Earth H&E Fruit Snacks Mixed Fruit, 5 Oz",
       "sale_price": 3.49,
       "original_price": 4.29,
@@ -5006,7 +4993,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2360,
+      "id": 235,
       "item_name": "Heaven&Earth Honey Bars Maple Nut, 7 Oz",
       "sale_price": 5.99,
       "original_price": 7.49,
@@ -5019,7 +5006,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2358,
+      "id": 233,
       "item_name": "Heaven&Earth Honey Bars Sweet & Salty, 7 Oz",
       "sale_price": 5.99,
       "original_price": 7.49,
@@ -5032,7 +5019,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2359,
+      "id": 234,
       "item_name": "Heaven&Earth Honey Bars Trail Mix, 7 Oz",
       "sale_price": 5.99,
       "original_price": 7.49,
@@ -5045,7 +5032,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2416,
+      "id": 291,
       "item_name": "Heinz Tomato Ketchup, 44 Oz",
       "sale_price": 5.49,
       "original_price": 6.49,
@@ -5058,7 +5045,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2396,
+      "id": 271,
       "item_name": "Hershey's Cocoa Powder Pouch, 6 Oz",
       "sale_price": 5.49,
       "original_price": 5.99,
@@ -5071,7 +5058,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2415,
+      "id": 290,
       "item_name": "Hershey's Cocoa Powder, 8 Oz",
       "sale_price": 6.99,
       "original_price": 8.99,
@@ -5084,7 +5071,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2342,
+      "id": 217,
       "item_name": "Holy Hummus Mediterranean Za'atar Oil, 10 Oz",
       "sale_price": 3.49,
       "original_price": 5.49,
@@ -5097,7 +5084,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2334,
+      "id": 209,
       "item_name": "Home Made Mini Chinese Cookie",
       "sale_price": 7.99,
       "original_price": 8.99,
@@ -5110,7 +5097,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2300,
+      "id": 175,
       "item_name": "Hot Dog Buns",
       "sale_price": 4.99,
       "original_price": null,
@@ -5123,7 +5110,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2425,
+      "id": 300,
       "item_name": "Hunt's Tomato Sauce, 15 Oz",
       "sale_price": 1.69,
       "original_price": 1.99,
@@ -5136,7 +5123,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2318,
+      "id": 193,
       "item_name": "Jet Foil 2 Lb Loaf Pan, 5 Ct",
       "sale_price": 1.89,
       "original_price": null,
@@ -5149,7 +5136,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2395,
+      "id": 270,
       "item_name": "Jolly Ranger Ropes Watermelon, 10 Oz",
       "sale_price": 3.99,
       "original_price": 5.99,
@@ -5162,7 +5149,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2370,
+      "id": 245,
       "item_name": "Jonny Pops Blue Wave, 14.8 Oz",
       "sale_price": 6.99,
       "original_price": 8.49,
@@ -5175,7 +5162,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2371,
+      "id": 246,
       "item_name": "Jonny Pops Cotton Candy, 14.8 Oz",
       "sale_price": 6.99,
       "original_price": 8.49,
@@ -5188,7 +5175,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2381,
+      "id": 256,
       "item_name": "Jonny Pops Jonny Pop Sour Blue Raspberry, 6 Ct",
       "sale_price": 6.99,
       "original_price": 8.49,
@@ -5201,7 +5188,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2373,
+      "id": 248,
       "item_name": "Jonny Pops Org Summer Sunrise, 14.8 Oz",
       "sale_price": 6.99,
       "original_price": 8.49,
@@ -5214,7 +5201,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2367,
+      "id": 242,
       "item_name": "Jonny Pops Pineapple Water Pops, 8 Ct",
       "sale_price": 6.99,
       "original_price": 8.49,
@@ -5227,7 +5214,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2378,
+      "id": 253,
       "item_name": "Jonny Pops Rainbow, 8 Ct",
       "sale_price": 6.99,
       "original_price": 8.49,
@@ -5240,7 +5227,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2379,
+      "id": 254,
       "item_name": "Jonny Pops Red White & Boom, 8 Ct",
       "sale_price": 6.99,
       "original_price": 8.49,
@@ -5253,7 +5240,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2382,
+      "id": 257,
       "item_name": "Jonny Pops Sour Green Apple Punch Mini Pops, 6.72 Oz",
       "sale_price": 6.99,
       "original_price": 8.49,
@@ -5266,7 +5253,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2368,
+      "id": 243,
       "item_name": "Jonny Pops Strwaberry Water Pops, 8 Ct",
       "sale_price": 6.99,
       "original_price": 8.49,
@@ -5279,7 +5266,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2380,
+      "id": 255,
       "item_name": "Jonny Pops Tropical Paradise Punch, 8 Ct",
       "sale_price": 6.99,
       "original_price": 8.49,
@@ -5292,7 +5279,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2369,
+      "id": 244,
       "item_name": "Jonny Pops Unicorn Twist Fruit Pnch, 6 Ct",
       "sale_price": 6.99,
       "original_price": 8.49,
@@ -5305,7 +5292,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2372,
+      "id": 247,
       "item_name": "Jonny Pops Watermelon, 14.8 Oz",
       "sale_price": 6.99,
       "original_price": 8.49,
@@ -5318,7 +5305,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2375,
+      "id": 250,
       "item_name": "Jonnypops Star Spngld",
       "sale_price": 6.99,
       "original_price": 8.49,
@@ -5331,7 +5318,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2322,
+      "id": 197,
       "item_name": "Kitov Corn Pops Lite, .5 oz",
       "sale_price": 0.59,
       "original_price": null,
@@ -5344,7 +5331,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2309,
+      "id": 184,
       "item_name": "Kitov Corn Pops, .5 Oz",
       "sale_price": 0.59,
       "original_price": null,
@@ -5357,12 +5344,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2420,
+      "id": 295,
       "item_name": "L'hava Tea Lights 4 Hr, 50 Ct",
       "sale_price": 3.49,
       "original_price": 4.99,
       "unit": null,
-      "category": "Beverages",
+      "category": "Pantry",
       "store": "Seasons",
       "store_slug": "seasons",
       "date_valid_from": "2026-08-12",
@@ -5370,7 +5357,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2353,
+      "id": 228,
       "item_name": "Lhava Shabbos Candles, 72 Ct",
       "sale_price": 11.99,
       "original_price": 18.99,
@@ -5383,7 +5370,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2350,
+      "id": 225,
       "item_name": "Lieber Marshmallows Twisted",
       "sale_price": 1.49,
       "original_price": 2.99,
@@ -5396,7 +5383,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2417,
+      "id": 292,
       "item_name": "Lieber's Baby Corn, 15 Oz",
       "sale_price": 1.69,
       "original_price": 2.69,
@@ -5409,7 +5396,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2351,
+      "id": 226,
       "item_name": "Lieber's Classic Marinara Pasta Sauce, 24 Oz",
       "sale_price": 2.69,
       "original_price": 3.99,
@@ -5422,7 +5409,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2409,
+      "id": 284,
       "item_name": "Lieber's Cookies, Striped Dainties, 13 Oz",
       "sale_price": 3.99,
       "original_price": 5.29,
@@ -5435,7 +5422,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2333,
+      "id": 208,
       "item_name": "Lieber's Corn Thinners Orig W/ Sea Salt, 3.7 Oz",
       "sale_price": 1.99,
       "original_price": 2.69,
@@ -5448,7 +5435,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2347,
+      "id": 222,
       "item_name": "Lieber's Mini Marshmallows White, 5 Oz",
       "sale_price": 1.49,
       "original_price": 2.99,
@@ -5461,7 +5448,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2349,
+      "id": 224,
       "item_name": "Liebers Olive Oil Extra Light, 34 Oz",
       "sale_price": 11.99,
       "original_price": 14.99,
@@ -5474,7 +5461,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2376,
+      "id": 251,
       "item_name": "Liebers Pizza Sauce, 24 Oz",
       "sale_price": 2.69,
       "original_price": 3.99,
@@ -5487,7 +5474,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2421,
+      "id": 296,
       "item_name": "Liebers Sandwich Peppers Hot 16Oz",
       "sale_price": 3.99,
       "original_price": 5.49,
@@ -5500,7 +5487,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2413,
+      "id": 288,
       "item_name": "Lundberg Brown Rice, Short Grain, 32 Oz",
       "sale_price": 6.99,
       "original_price": 8.29,
@@ -5513,7 +5500,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2330,
+      "id": 205,
       "item_name": "Made Good Chocolate Chip Granola Minis, 5 Ct",
       "sale_price": 3.69,
       "original_price": 3.99,
@@ -5526,7 +5513,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2321,
+      "id": 196,
       "item_name": "Made Good Cookies & Creme Granola Bars, 6 Ct",
       "sale_price": 4.49,
       "original_price": null,
@@ -5539,7 +5526,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2390,
+      "id": 265,
       "item_name": "Mary's Cracker Thin Sea Salt, 4 Oz",
       "sale_price": 3.99,
       "original_price": 5.49,
@@ -5552,7 +5539,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2389,
+      "id": 264,
       "item_name": "Mary's Gone Crackers Super Seed Classic, 4 Oz",
       "sale_price": 3.99,
       "original_price": 5.99,
@@ -5565,7 +5552,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2384,
+      "id": 259,
       "item_name": "Mary's Gone Crackers Super Seed Everything, 4 Oz",
       "sale_price": 3.99,
       "original_price": 5.99,
@@ -5578,7 +5565,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2383,
+      "id": 258,
       "item_name": "Mary's Organic Original Crackers 4 Oz",
       "sale_price": 3.99,
       "original_price": 5.49,
@@ -5591,7 +5578,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2391,
+      "id": 266,
       "item_name": "Marys Gon Mary's Gone Super Seed Jalapeno Cracker, 4 Oz",
       "sale_price": 3.99,
       "original_price": 5.99,
@@ -5604,7 +5591,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2308,
+      "id": 183,
       "item_name": "Meal Mart Chicken Nuggets, 26 Oz",
       "sale_price": 19.99,
       "original_price": null,
@@ -5617,7 +5604,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2385,
+      "id": 260,
       "item_name": "Med Life 7Inch Plastic Plates",
       "sale_price": 2.99,
       "original_price": 4.69,
@@ -5630,7 +5617,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2337,
+      "id": 212,
       "item_name": "Mehadrin Chocolate Leben, 6 Count",
       "sale_price": 6.99,
       "original_price": 8.99,
@@ -5643,7 +5630,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2311,
+      "id": 186,
       "item_name": "Mehadrin Cottage Cheese Fit 'N Free, 16 Oz",
       "sale_price": 6.49,
       "original_price": null,
@@ -5656,7 +5643,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2312,
+      "id": 187,
       "item_name": "Normans Greek Light Yogurt 100 Calories Lotus Cookie, 5.3 Oz",
       "sale_price": 1.79,
       "original_price": null,
@@ -5669,7 +5656,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2323,
+      "id": 198,
       "item_name": "Oppenheimer Zazers Belgium Wafer, 30 Pk",
       "sale_price": 5.99,
       "original_price": 6.99,
@@ -5682,7 +5669,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2423,
+      "id": 298,
       "item_name": "Osem Bamba Peanut Snack, Family Pk, 8 Pk",
       "sale_price": 6.99,
       "original_price": 8.79,
@@ -5695,7 +5682,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2424,
+      "id": 299,
       "item_name": "Osem Bamba Peanut Snack, With Hazelnut Cream Filling, 2.1 Oz, ,",
       "sale_price": 2.29,
       "original_price": 2.69,
@@ -5708,7 +5695,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2404,
+      "id": 279,
       "item_name": "Osem Bamba Peanuts Small, 1 Oz",
       "sale_price": 1.29,
       "original_price": 1.49,
@@ -5721,7 +5708,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2405,
+      "id": 280,
       "item_name": "Oxi Clean Trigger Stain Remover, 21.5 Oz",
       "sale_price": 3.99,
       "original_price": 5.49,
@@ -5734,7 +5721,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2422,
+      "id": 297,
       "item_name": "Oxi Clean Versatile Stain Remover Tub, 3 Lb",
       "sale_price": 8.49,
       "original_price": 13.99,
@@ -5747,7 +5734,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2319,
+      "id": 194,
       "item_name": "Pas Yisroel Frankfurter Hotdog Buns 8 Pk, 12 Oz",
       "sale_price": 5.99,
       "original_price": null,
@@ -5760,12 +5747,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2361,
+      "id": 236,
       "item_name": "Paskesz Rice Cakes Round, 4.9 Oz",
       "sale_price": 2.99,
       "original_price": 3.49,
       "unit": null,
-      "category": "Bakery",
+      "category": "Candy & Snacks",
       "store": "Seasons",
       "store_slug": "seasons",
       "date_valid_from": "2026-08-12",
@@ -5773,7 +5760,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2307,
+      "id": 182,
       "item_name": "Pepperidge Farm Puff Pastry Sheets, 17.3 Oz",
       "sale_price": 8.29,
       "original_price": null,
@@ -5786,7 +5773,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2426,
+      "id": 301,
       "item_name": "Plastic House 7 Oz Plastic Cups, 100 Ct",
       "sale_price": 1.29,
       "original_price": 1.49,
@@ -5799,12 +5786,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2320,
+      "id": 195,
       "item_name": "Poland Spring Water, 3 Ltr",
       "sale_price": 1.99,
       "original_price": null,
       "unit": null,
-      "category": "Pantry",
+      "category": "Beverages",
       "store": "Seasons",
       "store_slug": "seasons",
       "date_valid_from": "2026-08-12",
@@ -5812,7 +5799,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2419,
+      "id": 294,
       "item_name": "Post Hbo With Almonds, 12 Oz",
       "sale_price": 3.99,
       "original_price": 5.49,
@@ -5825,7 +5812,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2427,
+      "id": 302,
       "item_name": "Quakers Life, Original, 13 Oz",
       "sale_price": 3.99,
       "original_price": 6.49,
@@ -5838,7 +5825,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2315,
+      "id": 190,
       "item_name": "Sabra Guacamole Singles, 4 2 Oz Cups",
       "sale_price": 7.29,
       "original_price": null,
@@ -5851,7 +5838,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2357,
+      "id": 232,
       "item_name": "Sano Oxygen Color Safe Bleach, 25.4 Oz",
       "sale_price": 4.99,
       "original_price": 6.49,
@@ -5864,7 +5851,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2305,
+      "id": 180,
       "item_name": "Schmerling's Minor Chocolate Bar, 4 Ct",
       "sale_price": 8.29,
       "original_price": null,
@@ -5877,7 +5864,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2326,
+      "id": 201,
       "item_name": "Seasons Super Sour Lips, 8 Oz",
       "sale_price": 7.49,
       "original_price": 8.49,
@@ -5890,7 +5877,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2344,
+      "id": 219,
       "item_name": "Shufra Pretzels Mini, 1 Oz",
       "sale_price": 0.29,
       "original_price": 0.39,
@@ -5903,12 +5890,12 @@
       "kosher_flag": null
     },
     {
-      "id": 2355,
+      "id": 230,
       "item_name": "Sizgit Corn Puffs",
       "sale_price": 0.89,
       "original_price": 0.99,
       "unit": null,
-      "category": "Pantry",
+      "category": "Candy & Snacks",
       "store": "Seasons",
       "store_slug": "seasons",
       "date_valid_from": "2026-08-12",
@@ -5916,7 +5903,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2374,
+      "id": 249,
       "item_name": "Snack Delite Rice Treats Chocolate, 5.92 Oz",
       "sale_price": 4.49,
       "original_price": 5.89,
@@ -5929,7 +5916,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2410,
+      "id": 285,
       "item_name": "Snack Factory Pretzel Crisps Original, 6 Oz",
       "sale_price": 3.49,
       "original_price": 4.69,
@@ -5942,7 +5929,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2393,
+      "id": 268,
       "item_name": "Solomon's Kishka, 16 Oz",
       "sale_price": 4.49,
       "original_price": 7.99,
@@ -5955,7 +5942,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2313,
+      "id": 188,
       "item_name": "Sonny & Joe's Classic Hummus, 7 Oz",
       "sale_price": 4.99,
       "original_price": null,
@@ -5968,7 +5955,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2341,
+      "id": 216,
       "item_name": "Sweet Baby Ray's Barbecue Sauce Hickory & Brown Sugar, 18 Oz",
       "sale_price": 2.49,
       "original_price": 3.69,
@@ -5981,7 +5968,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2340,
+      "id": 215,
       "item_name": "Sweet Baby Ray's Bbq Sauce Sweet n Spicy, 18 Oz",
       "sale_price": 2.49,
       "original_price": 3.49,
@@ -5994,7 +5981,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2339,
+      "id": 214,
       "item_name": "Sweet Baby Ray's Honey Bbq Sauce, 18 Oz",
       "sale_price": 2.49,
       "original_price": 3.49,
@@ -6007,7 +5994,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2408,
+      "id": 283,
       "item_name": "Taster's Choice Coffee House Blend, 7 Oz",
       "sale_price": 13.99,
       "original_price": 15.99,
@@ -6020,7 +6007,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2336,
+      "id": 211,
       "item_name": "Tirat Zvi Mexican Style Turkey Breast, 6.5 Oz",
       "sale_price": 5.99,
       "original_price": 7.79,
@@ -6033,7 +6020,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2354,
+      "id": 229,
       "item_name": "Turkey Hill Mango Lemonade, 64 Oz",
       "sale_price": 2.49,
       "original_price": 2.79,
@@ -6046,7 +6033,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2331,
+      "id": 206,
       "item_name": "Tuscanini Mini Gnocchi, 16 Oz",
       "sale_price": 2.69,
       "original_price": 4.29,
@@ -6059,7 +6046,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2414,
+      "id": 289,
       "item_name": "Tuscanini Tomato Sauce Italian Passata, 17.6 Oz",
       "sale_price": 1.49,
       "original_price": 2.49,
@@ -6072,7 +6059,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2332,
+      "id": 207,
       "item_name": "Tuscanini Tuna In Water Can, 5.6 Oz",
       "sale_price": 3.49,
       "original_price": 4.29,
@@ -6085,7 +6072,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2348,
+      "id": 223,
       "item_name": "Unger Chick Peas, 16 Oz",
       "sale_price": 1.49,
       "original_price": 1.69,
@@ -6098,7 +6085,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2402,
+      "id": 277,
       "item_name": "Weinz Yummy Bites Mini Chocolate Sandwich, 2 Oz",
       "sale_price": 0.79,
       "original_price": 0.89,
@@ -6111,7 +6098,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2403,
+      "id": 278,
       "item_name": "Weinz Yummy Bites, Mini Sandwich Cookies, Vanilla, 2 Oz",
       "sale_price": 0.79,
       "original_price": 0.89,
@@ -6124,7 +6111,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2418,
+      "id": 293,
       "item_name": "Windex Powerized Trigger, 32 Oz",
       "sale_price": 4.99,
       "original_price": 5.99,
@@ -6137,7 +6124,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2327,
+      "id": 202,
       "item_name": "Wonder Mills High Gluten Flour, 80 Oz",
       "sale_price": 8.99,
       "original_price": 10.99,
@@ -6150,7 +6137,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2346,
+      "id": 221,
       "item_name": "Ziploc Freezer Quart Bag, 24 Ct",
       "sale_price": 4.49,
       "original_price": 4.99,
@@ -6163,7 +6150,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2366,
+      "id": 241,
       "item_name": "Ziploc Storage Quart Bags, 29 Ct",
       "sale_price": 4.49,
       "original_price": 4.99,
@@ -6176,7 +6163,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2388,
+      "id": 263,
       "item_name": "Zohar Crinkles Bbq",
       "sale_price": 0.79,
       "original_price": 0.99,
@@ -6189,7 +6176,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2386,
+      "id": 261,
       "item_name": "Zohar Crinkles Original",
       "sale_price": 0.79,
       "original_price": 0.99,
@@ -6202,7 +6189,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2387,
+      "id": 262,
       "item_name": "Zohar Crinkles Salt & Vinegar",
       "sale_price": 0.79,
       "original_price": 0.99,
@@ -6215,7 +6202,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2667,
+      "id": 44,
       "item_name": "ACT Mouthwash",
       "sale_price": 2.99,
       "original_price": 3.99,
@@ -6228,7 +6215,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2661,
+      "id": 38,
       "item_name": "Arizona Iced Tea 12-Pack",
       "sale_price": 4.99,
       "original_price": 6.49,
@@ -6241,7 +6228,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2672,
+      "id": 49,
       "item_name": "Axe Deodorant",
       "sale_price": 1.5,
       "original_price": 5.0,
@@ -6254,7 +6241,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2655,
+      "id": 32,
       "item_name": "Blueberries, 18-oz. pkg",
       "sale_price": 2.88,
       "original_price": 3.99,
@@ -6267,7 +6254,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2653,
+      "id": 30,
       "item_name": "Bowl & Basket Jumbo Avocados, 4-ct. bag",
       "sale_price": 4.99,
       "original_price": 5.99,
@@ -6280,7 +6267,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2659,
+      "id": 36,
       "item_name": "Canada Dry Ginger Ale Cans 24-Pack",
       "sale_price": 11.99,
       "original_price": 15.39,
@@ -6293,7 +6280,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2673,
+      "id": 50,
       "item_name": "Clairol Hair Color",
       "sale_price": 5.49,
       "original_price": 8.49,
@@ -6306,7 +6293,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2665,
+      "id": 42,
       "item_name": "Colgate Total Toothpaste",
       "sale_price": 2.0,
       "original_price": 4.0,
@@ -6319,7 +6306,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2666,
+      "id": 43,
       "item_name": "Crest Pro-Health Gum Detoxify Toothpaste",
       "sale_price": 4.99,
       "original_price": 8.99,
@@ -6332,7 +6319,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2670,
+      "id": 47,
       "item_name": "Garnier Fructis Shampoo",
       "sale_price": 3.0,
       "original_price": 4.5,
@@ -6345,7 +6332,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2664,
+      "id": 41,
       "item_name": "Hershey's Chocolates",
       "sale_price": 5.49,
       "original_price": 6.49,
@@ -6358,7 +6345,7 @@
       "kosher_flag": "Might be OU-certified, not confirmed \u2014 check the actual package."
     },
     {
-      "id": 2662,
+      "id": 39,
       "item_name": "Kellogg's Cereal Family Size",
       "sale_price": 4.99,
       "original_price": 6.39,
@@ -6371,7 +6358,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2671,
+      "id": 48,
       "item_name": "L'Oreal Paris Elvive Shampoo",
       "sale_price": 3.5,
       "original_price": 5.0,
@@ -6384,7 +6371,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2658,
+      "id": 35,
       "item_name": "Mott's 100% Apple Juice",
       "sale_price": 3.49,
       "original_price": 4.19,
@@ -6397,7 +6384,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2663,
+      "id": 40,
       "item_name": "Pringles Potato Crisps Snack Stacks Variety 18-Pack",
       "sale_price": 9.99,
       "original_price": 10.99,
@@ -6410,7 +6397,7 @@
       "kosher_flag": "Might be OU-certified, not confirmed \u2014 check the actual package."
     },
     {
-      "id": 2654,
+      "id": 31,
       "item_name": "Red & Black Seedless Grapes",
       "sale_price": 1.49,
       "original_price": 2.49,
@@ -6423,7 +6410,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2660,
+      "id": 37,
       "item_name": "Snapple Iced Tea 6-Pack",
       "sale_price": 5.99,
       "original_price": 7.63,
@@ -6436,7 +6423,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2669,
+      "id": 46,
       "item_name": "Softsoap or Irish Spring Body Wash",
       "sale_price": 3.24,
       "original_price": 4.99,
@@ -6449,7 +6436,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2668,
+      "id": 45,
       "item_name": "Suave Body Wash",
       "sale_price": 1.79,
       "original_price": 2.29,
@@ -6462,7 +6449,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2657,
+      "id": 34,
       "item_name": "Sweet Cantaloupes",
       "sale_price": 2.79,
       "original_price": 3.49,
@@ -6475,7 +6462,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2656,
+      "id": 33,
       "item_name": "Whole Seedless Watermelon",
       "sale_price": 4.99,
       "original_price": 5.99,
