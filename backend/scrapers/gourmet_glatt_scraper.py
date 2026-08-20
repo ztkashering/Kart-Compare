@@ -43,7 +43,7 @@ from db.database import get_connection, init_db, insert_deal
 STORE_SLUG = "gourmet-glatt"
 SPECIALS_PAGE_URL = "https://gourmetglatt.com/lakewood-njersey/specials"
 SAMPLE_TEXT_PATH = (
-    Path(__file__).parent / "sample_data" / "gourmet_glatt_2026-08-10_extracted.txt"
+    Path(__file__).parent / "sample_data" / "gourmet_glatt_2026-08-20_extracted.txt"
 )
 
 MONTHS = {

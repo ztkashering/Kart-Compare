@@ -216,6 +216,15 @@ STRONG_CATEGORY_KEYWORDS = {
         # keywords expect (e.g. "Hot Cups" not "beverage cup").
         "hot cup", "sandwich bag", "deli container", "container combo",
         "plastico container",
+        # 2026-08-20 audit: candles (tea lights, memorial/yahrzeit candles)
+        # had no keyword at all here and were silently falling all the way
+        # through to the Pantry catch-all — found via "L'hava Tea Lights"
+        # and "L'hava 3 Day Memorial Candle Glass" both landing in Pantry.
+        # "tea light" is listed explicitly (not just "candle") because the
+        # existing " tea" -> Beverages guard already strips "tea light(s)"
+        # out of the name before the Beverages check, but nothing was ever
+        # added to positively route it to Household afterward.
+        "candle", "tea light",
     ],
     "Health & Beauty": [
         "toothpaste", "shampoo", "vitamin", "sunscreen", "deodorant",
@@ -267,7 +276,12 @@ _KEYWORD_COLLISION_GUARDS = {
     # Aisle 9 items. None of these are actually fresh produce.
     "mango": ["dried mango"],
     "lemon": ["lemon sparkling water"],
-    "berry": ["berry & cherry no color italia"],
+    # "berry" (from weak Produce "berry"/"berries") vs. "cranberry" as a
+    # flavor descriptor on packaged granola — not fresh produce. Found
+    # 2026-08-20 via "Klein's Naturals Granola Cranberry Pecan" landing in
+    # Produce; falls back to Pantry once stripped, which is correct for a
+    # shelf-stable granola.
+    "berry": ["berry & cherry no color italia", "cranberry pecan"],
     "cherry": ["berry & cherry no color italia"],
     "fruit": ["fruity pebbles", "fruit by the foot"],
     "pepper": ["tortinkles spicy pepper"],
@@ -321,7 +335,22 @@ _KEYWORD_COLLISION_GUARDS = {
     "cheese": ["mac & cheese sauce", "mac and cheese sauce"],
     # "roll" the bread product vs. sushi roll names from the Gourmet
     # Glatt sushi counter (not bakery items at all).
-    "roll": ["dragon roll", "tropical roll", "vegetable platter"],
+    # 2026-08-20 audit: the guard only covered Gourmet Glatt's specific
+    # roll names — Seasons' "California Sushi Roll" and "Onion Tempura
+    # Sushi Roll" were still landing in Bakery via the same "roll" match,
+    # so a generic "sushi roll" phrase was added to catch any store's
+    # sushi counter. Also found Kosher Village's "Mini Rolls Winkie
+    # Candy" landing in Bakery instead of Candy & Snacks — "roll(s)"
+    # (Bakery) is checked before "candy" (Candy & Snacks) in keyword-tier
+    # order, so the literal word "Candy" in the name was losing to "Rolls".
+    "roll": [
+        "dragon roll", "tropical roll", "vegetable platter", "sushi roll",
+        "rolls winkie",
+    ],
+    # "pita" the bread (pita bread) vs. "pita chips" — a cracker/snack,
+    # not a bakery item. Found 2026-08-20 via "Stacy's Pita Chips, Simply
+    # Naked" landing in Bakery instead of Candy & Snacks.
+    "pita": ["pita chips"],
 }
 # "milk" the dairy product vs. "Milk Munch" — a candy bar name, not an
 # actual dairy product.
@@ -355,6 +384,13 @@ BRAND_OVERRIDES = {
     # the existing "fruit riot" Candy & Snacks keyword because Beverages
     # is checked earlier in the tier order.
     "fruit riot": "Candy & Snacks",
+    # Jolly Rancher is exclusively a candy brand, but its flavor names
+    # ("Fruit Mango") are plain weak-tier Produce words with no other
+    # Candy & Snacks keyword present in the name — found 2026-08-20 via
+    # "Jolly Rancher Fruit Mango, 10 Oz" landing in Produce. (Other Jolly
+    # Rancher items already land correctly when they also contain a strong
+    # keyword like "ropes".)
+    "jolly rancher": "Candy & Snacks",
 }
 
 

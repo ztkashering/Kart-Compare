@@ -92,23 +92,32 @@ You described three things: wine stores, wine-store-to-grocery-store proximity, 
 
 You asked to hold off on actually doing this until the site/branding is settled, so nothing's been pushed anywhere yet. When you're ready, here's the plain-English plan: I'll organize everything into a clean folder structure with a `.gitignore` (a file that tells git which files to ignore, like temporary junk) and a proper top-level README, then walk you through **GitHub Desktop** — a point-and-click app, no command line needed — to create the repository and upload it. Just say the word.
 
-## The stores, honestly (updated 2026-08-12)
+## The stores, honestly (updated 2026-08-20)
 
 | Store | What their site actually is | Deals found |
 |---|---|---|
-| Gourmet Glatt | Now has a real "Specials" page (redesigned since launch) linking to a PDF flyer, 2 pages this week | 112 |
-| Seasons | Full online store, specials spread across many pages, multi-location (needs explicit ZIP confirmation to get the right store) | 129 |
-| Nutmeg | Full online store, specials spread across many pages | 101 |
-| Kosher West | Full online store, specials spread across many pages | 95 |
-| Kosher Village | Full online store, specials page has no pagination — now 24 items | 24 |
-| Aldi | Real weekly ad via the Flipp flyer platform, filtered to genuine "Price Drops" only (Produce/Beverages/Pantry) | 5 |
+| Gourmet Glatt | Real "Specials" page linking to a PDF flyer — new flyer this week (Aug 16–21, was Aug 9–14) | 89 |
+| Seasons | Full online store, specials spread across many pages, multi-location (needs explicit ZIP confirmation to get the right store) | 174 |
+| Nutmeg | Full online store, specials spread across many pages — **live specials page returned zero products this pass** (see note below); last verified snapshot kept | 101 |
+| Kosher West | Full online store, specials spread across many pages — **live specials page returned zero products this pass** (see note below); last verified snapshot kept | 95 |
+| Kosher Village | Full online store, specials page has no pagination — genuinely volatile week to week (was 24, now 10) | 10 |
+| Aldi | Real weekly ad — **the Flipp flyer platform this scraper depends on could no longer be found anywhere on ALDI's site this pass** (see note below); last verified "Price Drops" snapshot kept | 5 |
 | Bingo | Still has an "Offers > Weekly Deals" nav item, but it's still empty — no flyer posted yet | 0 |
-| ShopRite (Brick, NJ area) | No structured price feed exists (flyer platform is images only), so this is read directly off the founder's own printed weekly circular PDF — Produce and toiletries (toothpaste/shampoo/soap/deodorant, not food) are always allowed; drinks/snacks/cereal are hand-picked only after the founder personally confirms the brand is kosher-certified; a couple of items are shown with an on-card "might be OU, not confirmed" badge instead of being fully confirmed or left off; toiletry deals gated behind a "Digital Coupon" clip now count too, same math-verified standard as everywhere else. No new flyer was available this pass, so this is still the 2026-08-10 verified read, unchanged | 21 |
-| Aisle 9 (Lakewood) | Own online-ordering site; confirmed EVERY category page (including Specials and its department sidebar filters) is gated behind account login — there is no guest/zip browsing at all. The only reachable real data is the homepage's "Featured Products" carousel, filtered to genuinely `.product-item-special-lbl`-badged cards, sampled across 3 separate fresh tabs. This pass, all 3 tabs converged on the same 11 items (no rotation this time) | 11 |
+| ShopRite (Brick, NJ area) | No structured price feed exists (flyer platform is images only), so this is read directly off a founder-provided printed weekly circular PDF. No new circular was available this pass (see note below); still the 2026-08-10 verified read, unchanged | 21 |
+| Aisle 9 (Lakewood) | Own online-ordering site; every category page is still login-gated, so the only reachable data is the homepage's "Featured Products" carousel, filtered to genuinely `.product-item-special-lbl`-badged cards, sampled across 3 separate fresh tabs. All 3 tabs converged on the same 7 items this pass | 7 |
 
-**498 real deals total.**
+**502 real deals total.**
 
-Kosher West dropped from the prior snapshot (121→95, -21%) — re-verified live twice (a full page reload reproduced the identical 95-item set both times), so the drop is real, not a scraping miss. Aisle 9 dropped sharply (92→11) because the prior snapshot's larger count was not reproducible through the current, confirmed-working technique (homepage carousel only — every category page, including Specials, is login-gated); 11 is the honest ceiling of what's reachable without signing in, and this README's Aisle 9 row above has been corrected to describe that limitation accurately. Seasons and Nutmeg both grew (109→129, 80→101) and Kosher Village grew (10→24) — real increases, not padding. Gourmet Glatt's flyer was unchanged this week (still dated August 9th–14th), so its item count carried over almost exactly — 113→112, after a parsing bug fix (below) correctly dropped two garbage rows that weren't real products.
+Seasons grew sharply (129→174) for two reasons: real organic growth in the specials grid itself (129→137), plus a methodology fix — the site's "Featured Products" widget (which sits directly below the paginated specials grid on every page and uses the exact same product-card markup the scraper already reads) turns out to already be part of the existing sample-file format, evidenced by non-discounted items already present in past snapshots; this pass captured it fully instead of partially. Gourmet Glatt dropped (112→89) because it's a genuinely different flyer (Aug 16–21 vs. the prior Aug 9–14 one) with a different item mix — verified directly against the PDF's own printed date, not just the specials page's summary text. Kosher Village (24→10) and Aisle 9 (11→7) both moved by more than the usual week-to-week wobble, but both are stores this project has already documented as genuinely volatile (Kosher Village's specials page is known to return a completely different item set within days; Aisle 9's homepage carousel is a small rotating sample) — Aisle 9's 7 items were reproduced identically across all 3 sampled tabs, so it's a real read, not a partial scrape.
+
+**Three stores hit real blockers this pass, and rather than paper over them, here's exactly what happened:**
+- **Nutmeg and Kosher West**: the live specials page (same "Rosie"/My Cloud Grocer-style platform behind Seasons too) loaded normally — correct store confirmed, pagination showed 3–4 real pages — but the product grid itself came back completely empty on every attempt (direct navigation, hard reloads, waiting up to 10 seconds, and inspecting the page's own network calls and DOM directly). A category with genuinely zero products shows an explicit "no products in this category" message on this platform; the Specials page never did, which is the tell that this was a live rendering/API problem on the store's end today, not a scraping miss. Last week's verified snapshots were kept rather than overwritten with a false zero.
+- **Aldi**: this scraper was rewritten 2026-08-07 specifically to read ALDI's real weekly ad through the Flipp flyer platform (`dam.flippenterprise.net`) rather than scraping aldi.us pages directly, because that direct approach had shown regular everyday prices as if they were sales. This pass, no Flipp iframe or network request could be found anywhere on ALDI's site (checked info.aldi.us's redirect target, the `/weekly` and `/weekly/print` views, and the full network log) — ALDI appears to have moved off Flipp entirely for their weekly ad. Per the standing rule against reverting to direct-page scraping, last week's verified "Price Drops" snapshot was kept instead. This is worth a human look next time — the whole Flipp integration may need to be rebuilt against whatever ALDI's site uses now.
+- **ShopRite**: no circular email arrived this week, and although the founder mentioned downloading this week's Brick, NJ circular, the file didn't show up anywhere this run has access to (inbox, uploads, or the connected folder) by the time this ran. **Please send over this week's ShopRite circular (PDF or photos) and it'll get folded in.** Last week's verified data was kept in the meantime.
+
+### Category audit (2026-08-20)
+
+Went through every category's full item list, store by store, per the standing "no shortcuts" rule. Found and fixed 5 real miscategorizations: two sushi rolls ("California Sushi Roll", "Onion Tempura Sushi Roll") and a candy item literally named "Mini Rolls Winkie Candy" were landing in Bakery because "roll(s)" matched before anything else could; "Stacy's Pita Chips" was landing in Bakery via "pita"; "Jolly Rancher Fruit Mango" was landing in Produce (no brand rule existed for Jolly Rancher, unlike Fruit Riot which already had one); a granola with "Cranberry" in the name was landing in Produce via the weak "berry" match; and tea-light candles and a memorial candle had no Household keyword to catch them at all, so they were falling into the Pantry catch-all. All five are now guarded in `base_scraper.py` with the same narrow, evidence-based pattern as every prior fix — the underlying keywords are untouched, only the specific colliding phrases are excluded.
 
 ### Category audit, round two (2026-08-12, same day)
 
@@ -121,7 +130,7 @@ The first category fix pass (word-collision bugs like "hamburger" matching "ham"
 - **Nutmeg, Kosher West, Kosher Village**: none publish an exact end date anywhere on their site. Same amber estimated banner.
 - **Bingo**: no flyer currently posted, so no dates to show.
 - **Aisle 9**: no end date published anywhere on their site either. Same amber estimated banner.
-- **ShopRite**: the flyer prints exact dates for each item (most run the full Sun 8/9–Sat 8/15 week; a couple are marked "3 Days Only," Thu 8/13–Sat 8/15, and are dated accordingly). Confirmed, not an estimate.
+- **ShopRite**: the flyer prints exact dates for each item (most run the full Sun 8/9–Sat 8/15 week; a couple are marked "3 Days Only," Thu 8/13–Sat 8/15, and are dated accordingly). Confirmed, not an estimate. This is still the 2026-08-10 flyer — see the note above about this week's circular.
 
 I'd rather show an honest "estimated" label than quietly guess.
 
