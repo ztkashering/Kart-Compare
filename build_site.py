@@ -124,13 +124,14 @@ STORE_META = {
         "note": "Dates confirmed directly from this week's real flyer text.",
     },
     "seasons": {
-        "dates_confirmed": False,
+        "dates_confirmed": True,
         "note": (
-            "This store's exact sale dates are shown on their site as part of "
-            "a flyer image, which this site can't read automatically today "
-            "(would need image OCR). Dates below reflect this store's real "
-            "Wednesday-morning-to-Tuesday-night sale week, not a store-"
-            "published exact date."
+            "Confirmed directly from this week's real flyer, which the "
+            "founder shared as images and were read by hand — this store's "
+            "flyer is a designed image this site can't OCR on its own. This "
+            "confirmed date is tied to that specific flyer (2026-08-30); "
+            "once a newer one replaces it, check that these dates were "
+            "refreshed too rather than left stale."
         ),
     },
     "nutmeg": {

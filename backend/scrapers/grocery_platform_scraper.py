@@ -212,6 +212,7 @@ def scrape_store(
     location_slug: str,
     store_slug: str,
     max_pages: int = 10,
+    confirmed_dates: tuple[str, str] | None = None,
 ) -> list[dict]:
     """Scrape all specials pages for one store on this shared platform."""
     is_live = False
@@ -239,11 +240,19 @@ def scrape_store(
         seen.add(key)
         deduped.append((name, price_text, old_text))
 
-    # Real weekly sale cycle for this platform (confirmed by the founder,
-    # who shops there): Wednesday morning through Tuesday night — see
-    # base_scraper.py's current_wed_to_tue_window() for why this replaced
-    # a generic "7 days from scrape date" estimate.
-    date_from, date_to = current_wed_to_tue_window()
+    if confirmed_dates:
+        # A real store-published date range, transcribed by hand from an
+        # actual flyer the founder shared directly (see the calling
+        # scraper's own comments for provenance) — use it as-is instead
+        # of guessing, same spirit as Gourmet Glatt's PDF flyer dates or
+        # ShopRite's hand-verified flyer reads.
+        date_from, date_to = confirmed_dates
+    else:
+        # Real weekly sale cycle for this platform (confirmed by the founder,
+        # who shops there): Wednesday morning through Tuesday night — see
+        # base_scraper.py's current_wed_to_tue_window() for why this replaced
+        # a generic "7 days from scrape date" estimate.
+        date_from, date_to = current_wed_to_tue_window()
 
     deals = []
     for name, price_text, old_text in deduped:
@@ -274,16 +283,25 @@ def run(
     store_slug: str,
     save_to_db: bool = True,
     limit_preview: int = 8,
+    confirmed_dates: tuple[str, str] | None = None,
 ) -> list[dict]:
-    deals = scrape_store(domain, location_slug, store_slug)
+    deals = scrape_store(domain, location_slug, store_slug, confirmed_dates=confirmed_dates)
     print(f"[{store_slug}] Parsed {len(deals)} candidate deals.")
-    print(
-        f"[{store_slug}] NOTE: this store doesn't publish an exact "
-        f"'valid through' date online, so dates shown are an ESTIMATED "
-        f"Wednesday-to-Tuesday sale week "
-        f"({deals[0]['date_valid_from'] if deals else 'n/a'} to "
-        f"{deals[0]['date_valid_to'] if deals else 'n/a'})."
-    )
+    if confirmed_dates:
+        print(
+            f"[{store_slug}] NOTE: dates below are CONFIRMED — transcribed "
+            f"directly from this store's own flyer text "
+            f"({deals[0]['date_valid_from'] if deals else 'n/a'} to "
+            f"{deals[0]['date_valid_to'] if deals else 'n/a'})."
+        )
+    else:
+        print(
+            f"[{store_slug}] NOTE: this store doesn't publish an exact "
+            f"'valid through' date online, so dates shown are an ESTIMATED "
+            f"Wednesday-to-Tuesday sale week "
+            f"({deals[0]['date_valid_from'] if deals else 'n/a'} to "
+            f"{deals[0]['date_valid_to'] if deals else 'n/a'})."
+        )
 
     print(f"\nFirst {min(limit_preview, len(deals))} scraped items:")
     for d in deals[:limit_preview]:

@@ -148,7 +148,13 @@ STRONG_CATEGORY_KEYWORDS = {
         "franks", "patties", "nugget", "veal", "turkey", "meat", "rib",
         "flanken", "london broil", "wing", "sausage", "kishka", "arayes",
         "shoulder", "kielbasa", "hot dog",
-        "hotdog", "cutlets", "ham", "bratwurst",
+        "hotdog", "cutlets", "ham", "bratwurst", "tongue", "poultry",
+        # "tongue"/"poultry" added 2026-08-30 auditing Seasons' real
+        # flyer data — "Tongue" (a real deli item, $64.99/lb on that
+        # flyer) had no keyword at all and was landing in Pantry;
+        # "KJ Poultry Pretzel Leg Tender" (frozen chicken) had no
+        # "chicken"/"turkey" match either and was landing in Candy &
+        # Snacks via "pretzel" instead.
         # NOTE: "sushi" and "kugel" were removed from this list on
         # 2026-08-10 — sushi RICE and prepared-food kugels aren't meat,
         # and the old blanket "sushi"/"kugel" match was mislabeling them.
@@ -187,6 +193,11 @@ STRONG_CATEGORY_KEYWORDS = {
         # "water" would wrongly grab "watermelon" too. These specific
         # phrases are unambiguous.
         "spring water", "poland spring",
+        # "drink" added 2026-08-30: "Prigat Drinks, ... Strawberry Mango
+        # or Grape" (a real Seasons juice-drink special) had no other
+        # Beverages keyword and was landing in Produce via the
+        # coincidental "grape" flavor word instead.
+        "drink",
     ],
     "Frozen": [
         "frozen", "ice pop", "popsicle", "gelato", "ice cream",
@@ -240,11 +251,19 @@ WEAK_CATEGORY_KEYWORDS = {
         "avocado", "eggplant", "cucumber", "tomato", "onion", "carrot",
         "mango", "strawberr", "produce", "lettuce", "pepper", "potato",
         "fruit", "vegetable", "grape", "cherries", "cherry", "nectarine",
-        "orange ", "lemon", "lime", "scallion", "shallot", "turnip",
+        "orange ", "oranges", "lemon", "lime", "scallion", "shallot", "turnip",
         "cabbage", "celery", "squash", "parsley", "dill", "cauliflower",
         "broccoli", "apple", "pineapple", "cantaloupe", "watermelon",
         "berries", "berry", "plum", "peach", "banana", "kiwi",
         "honeydew", "fresh corn",
+        # "pear", "garlic", "mushroom" added 2026-08-30 auditing Seasons'
+        # real flyer data — "Bosc Pears", "Fresh Peeled Garlic", and
+        # "Cello Mushrooms" all had no matching keyword at all and were
+        # landing in Pantry instead of Produce. Also added the plural
+        # "oranges" above (existing "orange " had a trailing space to
+        # avoid mid-word collisions, which meant it could never match the
+        # plural — "Extra Large Navel Oranges" was landing in Pantry too).
+        "pear", "garlic", "mushroom",
     ],
 }
 
