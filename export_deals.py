@@ -29,6 +29,14 @@ def main():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
 
+    # Deals whose own valid-through date has already passed are dropped
+    # here rather than exported — the founder asked that expired sales
+    # not keep showing on the site (2026-08-30). date('now') is today's
+    # UTC date as 'YYYY-MM-DD', which compares correctly against
+    # date_valid_to's same format. This only takes effect on days this
+    # script actually runs, though — see build_site.py's matching
+    # client-side filter for what covers the gap between rebuilds.
+    total_before = conn.execute("select count(*) from deals").fetchone()[0]
     deals = [
         dict(r)
         for r in conn.execute(
@@ -39,6 +47,7 @@ def main():
             from deals d
             join categories c on c.id = d.category_id
             join stores s on s.id = d.store_id
+            where d.date_valid_to >= date('now')
             order by s.name, d.item_name
             """
         )
@@ -51,7 +60,9 @@ def main():
     ]
 
     OUT_PATH.write_text(json.dumps({"deals": deals, "stores": stores}, indent=2))
-    print(f"Exported {len(deals)} deals across {len(stores)} stores to {OUT_PATH.name}")
+    expired = total_before - len(deals)
+    print(f"Exported {len(deals)} deals across {len(stores)} stores to {OUT_PATH.name}"
+          + (f" ({expired} expired deal(s) left out)" if expired else ""))
 
 
 if __name__ == "__main__":
