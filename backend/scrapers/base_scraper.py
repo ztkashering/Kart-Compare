@@ -109,10 +109,11 @@ CATEGORY_KEYWORDS = {
         "avocado", "eggplant", "cucumber", "tomato", "onion", "carrot",
         "mango", "strawberr", "produce", "lettuce", "pepper", "potato",
         "fruit", "vegetable", "grape", "cherries", "cherry", "nectarine",
-        "orange ", "lemon", "lime", "scallion", "shallot", "turnip",
+        "orange ", "oranges", "lemon", "lime", "scallion", "shallot", "turnip",
         "cabbage", "celery", "squash", "parsley", "dill", "cauliflower",
         "broccoli", "apple", "pineapple", "cantaloupe", "watermelon",
-        "berries", "berry", "plum", "peach", "banana", "kiwi",
+        "berries", "berry", "plum", "peach", "banana", "kiwi", "pear",
+        "garlic", "mushroom",
     ],
     "Meat & Deli": [
         "chicken", "beef", "steak", "brisket", "pastrami", "salami",
@@ -120,7 +121,7 @@ CATEGORY_KEYWORDS = {
         "flanken", "london broil", "wing", "sausage", "kishka", "arayes",
         "shoulder", "fillet", "fish", "salmon", "tuna", "flounder", "sole",
         "lox", "tilapia", "gefilte", "sushi", "kielbasa", "hot dog",
-        "hotdog", "kugel", "cutlets",
+        "hotdog", "kugel", "cutlets", "tongue", "poultry",
     ],
     "Dairy": [
         "cheese", "yogurt", "milk", "leben", "cream cheese", "butter",
@@ -135,7 +136,7 @@ CATEGORY_KEYWORDS = {
     "Beverages": [
         "juice", "soda", "seltzer", "water bottle", " tea", "coffee",
         " cola", "gatorade", "snapple", "sprite", "lemonade", "smart water",
-        "fresca", "grape juice",
+        "fresca", "grape juice", "drink",
     ],
     "Frozen": [
         "frozen", "ice pop", "popsicle", "gelato", "ice cream",

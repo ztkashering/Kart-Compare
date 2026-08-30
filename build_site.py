@@ -91,13 +91,14 @@ STORE_META = {
         "location_note": "Tracking Gourmet Glatt's own Lakewood, NJ store — a single-location retailer, so no store-locator step is needed.",
     },
     "seasons": {
-        "dates_confirmed": False,
+        "dates_confirmed": True,
         "note": (
-            "This store's exact sale dates are shown on their site as part of "
-            "a flyer image, which today's scraper can't read automatically "
-            "(would need image OCR). Dates below reflect this store's real "
-            "Wednesday-morning-to-Tuesday-night sale week, not a store-"
-            "published exact date."
+            "Confirmed directly from this week's real flyer, which the "
+            "founder shared as images — read by hand since this store's "
+            "flyer is a designed image its scraper can't OCR on its own. "
+            "This confirmed date is tied to that specific flyer; once a "
+            "newer one replaces it, check that these dates were refreshed "
+            "too rather than left stale."
         ),
         "location_note": "Tracking the Lakewood, NJ (08701) location — confirmed via this store's ZIP-code locator before reading specials, so a different branch's ad can't be shown by mistake.",
     },
