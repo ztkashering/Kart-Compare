@@ -135,11 +135,16 @@ STORE_META = {
         ),
     },
     "nutmeg": {
-        "dates_confirmed": False,
+        "dates_confirmed": True,
         "note": (
-            "This store doesn't publish an exact valid-through date online. "
-            "Dates below reflect this store's real Wednesday-morning-to-"
-            "Tuesday-night sale week, not a store-published exact date."
+            "Confirmed directly from this week's real flyer, which the "
+            "founder shared as images. Unlike some other stores' flyers, "
+            "Nutmeg's doesn't print a \"was\" price next to any item — just "
+            "the sale price — so no comparison price is shown here either, "
+            "rather than guessing one. This confirmed date is tied to that "
+            "specific flyer (2026-08-30); once a newer one replaces it, "
+            "check that these dates were refreshed too rather than left "
+            "stale."
         ),
     },
     "kosher-west": {

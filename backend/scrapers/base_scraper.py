@@ -149,12 +149,21 @@ STRONG_CATEGORY_KEYWORDS = {
         "flanken", "london broil", "wing", "sausage", "kishka", "arayes",
         "shoulder", "kielbasa", "hot dog",
         "hotdog", "cutlets", "ham", "bratwurst", "tongue", "poultry",
+        "roast", "flat iron", "cholent melt away",
         # "tongue"/"poultry" added 2026-08-30 auditing Seasons' real
         # flyer data — "Tongue" (a real deli item, $64.99/lb on that
         # flyer) had no keyword at all and was landing in Pantry;
         # "KJ Poultry Pretzel Leg Tender" (frozen chicken) had no
         # "chicken"/"turkey" match either and was landing in Candy &
         # Snacks via "pretzel" instead.
+        # "roast"/"flat iron"/"cholent melt away" added 2026-08-30
+        # auditing Nutmeg's real flyer — "Silver Tip Roast", "Minute
+        # Roast", "Flat Iron (Natural Pasture)", and "Cholent Melt Away
+        # (Natural Pasture)" (real butcher-counter cuts, no other
+        # qualifying word in the name) were landing in Pantry. Used the
+        # full "cholent melt away" phrase rather than a bare "cholent" —
+        # a bare match would wrongly flip "Gefen Cholent Mix/Navy Beans"
+        # (a real Pantry seasoning-packet item) over to Meat & Deli.
         # NOTE: "sushi" and "kugel" were removed from this list on
         # 2026-08-10 — sushi RICE and prepared-food kugels aren't meat,
         # and the old blanket "sushi"/"kugel" match was mislabeling them.
@@ -180,8 +189,12 @@ STRONG_CATEGORY_KEYWORDS = {
     ],
     "Bakery": [
         "bread", "bagel", "cake", "cupcake", "roll", "danish",
-        "babka", "challah", "donut", "kichel", "biscuit", "pita",
+        "babka", "babkelach", "challah", "donut", "kichel", "biscuit", "pita",
         "farfel", "matzo", "mezonos", "pie crust", "pastry", "bun",
+        # "babkelach" added 2026-08-30 (Nutmeg real-flyer audit): "Pas
+        # Yisroel Chocolate Babkelach" doesn't literally contain "babka"
+        # (different spelling), so it was landing in Candy & Snacks via
+        # "chocolate" instead of Bakery.
     ],
     "Beverages": [
         "juice", "soda", "seltzer", "water bottle", " tea", "coffee",
@@ -236,6 +249,10 @@ STRONG_CATEGORY_KEYWORDS = {
         # out of the name before the Beverages check, but nothing was ever
         # added to positively route it to Household afterward.
         "candle", "tea light",
+        # "cold cup" added 2026-08-30 (Nutmeg real-flyer audit): "Best Bev
+        # Cold Cups" didn't match "beverage cup" or "hot cup" literally
+        # and was falling through to Pantry.
+        "cold cup",
     ],
     "Health & Beauty": [
         "toothpaste", "shampoo", "vitamin", "sunscreen", "deodorant",
@@ -392,6 +409,14 @@ BRAND_OVERRIDES = {
     # fallen into Pantry/Produce because "frozen" itself never appears
     # in the product name.
     "bodek": "Frozen",
+    # B'Gan is also exclusively a frozen-foods brand (chopped vegetables,
+    # garlic/onion cubes) — same issue as Bodek above. Found 2026-08-30
+    # auditing Nutmeg's real flyer: "B'Gan Shoe String Fries" already
+    # landed correctly via the "fries" keyword, but "B'Gan Chopped
+    # Spinach" (no "frozen"/"fries" wording) fell to Pantry, and "B'Gan
+    # Garlic Cubes" fell to Produce via the weak "garlic" keyword even
+    # though it's a frozen item, not fresh produce.
+    "b'gan": "Frozen",
     # Broadway('s) J2 is a frozen kosher pizza brand; "pizza" itself is
     # intentionally NOT a generic Frozen keyword (it would wrongly catch
     # pizza sauce, pizza cheese, and pizza-flavored squares, which are
