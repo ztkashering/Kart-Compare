@@ -4,19 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ShopRite Deals — Kart Compare</title>
-<meta name="description" content="21 current sale prices at ShopRite in Lakewood, NJ, compared side by side on Kart Compare.">
+<meta name="description" content="0 current sale prices at ShopRite in Lakewood, NJ, compared side by side on Kart Compare.">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#1D3FEB">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ShopRite Deals — Kart Compare">
-<meta property="og:description" content="21 current sale prices at ShopRite in Lakewood, NJ, compared side by side on Kart Compare.">
+<meta property="og:description" content="0 current sale prices at ShopRite in Lakewood, NJ, compared side by side on Kart Compare.">
 <meta property="og:image" content="og-image.png">
 <meta property="og:url" content="https://example.com/shoprite.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ShopRite Deals — Kart Compare">
-<meta name="twitter:description" content="21 current sale prices at ShopRite in Lakewood, NJ, compared side by side on Kart Compare.">
+<meta name="twitter:description" content="0 current sale prices at ShopRite in Lakewood, NJ, compared side by side on Kart Compare.">
 <meta name="twitter:image" content="og-image.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.min.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -459,22 +459,22 @@ a { color: inherit; }
     </div>
   </div>
   <div class="header-bottom">
-    <div class="wrap"><span class="page-sub">21 deals at ShopRite</span></div>
+    <div class="wrap"><span class="page-sub">0 deals at ShopRite</span></div>
   </div>
 </div>
 
     <div class="page-header">
       <div class="wrap">
         <h1>ShopRite deals</h1>
-        <div class="sub">21 current specials &middot; confirmed sale dates &middot; <span class="muted-part">updated Aug 30, 2026</span></div>
+        <div class="sub">0 current specials &middot; confirmed sale dates &middot; <span class="muted-part">updated Aug 30, 2026</span></div>
       </div>
     </div>
 <div class="wrap">
 
-    <div class="date-banner confirmed">
-      <span class="big">Updated Aug 30, 2026 &middot; Confirmed sale dates: Sun, Aug 9 – Sat, Aug 15</span>
-      <span>These prices are read directly off ShopRite's own printed weekly circular for the Brick, NJ area (covers Monmouth and Ocean County, NJ stores), not a live feed — ShopRite's flyer platform only publishes flyer images, no structured price data, so there's no automatic way to pull this. Only items with the flyer's own stated "SAVE $X" amount are shown, so every price here is a confirmed markdown, not a guess — most of the flyer's ~120 items either weren't allowed under the kosher policy below or didn't show a comparable regular price, so they were left off rather than included on a guess. The sale dates shown are the flyer's own printed dates, not an estimate.</span>
-    </div>
+        <div class="date-banner estimated">
+          <span class="big">No deals currently available</span>
+          <span>These prices are read directly off ShopRite's own printed weekly circular for the Brick, NJ area (covers Monmouth and Ocean County, NJ stores), not a live feed — ShopRite's flyer platform only publishes flyer images, no structured price data, so there's no automatic way to pull this. Only items with the flyer's own stated "SAVE $X" amount are shown, so every price here is a confirmed markdown, not a guess — most of the flyer's ~120 items either weren't allowed under the kosher policy below or didn't show a comparable regular price, so they were left off rather than included on a guess. The sale dates shown are the flyer's own printed dates, not an estimate.</span>
+        </div>
     <div class="date-banner estimated">
       <span class="big">Not a dedicated kosher grocer</span>
       <span>ShopRite is a general supermarket, not a dedicated kosher grocer. This page shows fresh, whole Produce (always allowed), toiletries like toothpaste/shampoo/soap/deodorant (not food, so kosher status doesn't apply), plus a small, hand-picked list of packaged drinks/snacks/cereal the founder personally confirmed are kosher-certified brands — nothing is added automatically just because it's popular or on sale. A couple of items are marked with an on-card "⚠️ Might be OU — not confirmed" badge instead of being left off entirely — that means it's probably kosher-certified but hasn't been personally confirmed, so check the actual package before buying. Meat, dairy, fish/seafood, bakery, frozen, deli, and household items are never included here, no exceptions. This site still can't verify any kosher certification automatically — please use your own judgment on anything you buy there.</span>
@@ -1037,10 +1037,25 @@ function render() {
   });
 }
 
+// A deal whose own valid-through date has already passed shouldn't keep
+// showing, even if the site hasn't been rebuilt since that date rolled
+// by (export_deals.py already leaves expired deals out of deals.json on
+// each rebuild, but rebuilds don't happen every single day) — compares
+// plain "YYYY-MM-DD" strings against the viewer's own local today, which
+// sort/compare correctly as strings with no date-parsing needed.
+function isExpiredDeal(d) {
+  if (!d.date_valid_to) return false;
+  const today = new Date();
+  const todayStr = today.getFullYear() + "-" +
+    String(today.getMonth() + 1).padStart(2, "0") + "-" +
+    String(today.getDate()).padStart(2, "0");
+  return d.date_valid_to < todayStr;
+}
+
 fetch("deals.json")
   .then(r => { if (!r.ok) throw new Error("bad response " + r.status); return r.json(); })
   .then(data => {
-    window.ALL_DEALS = data.deals;
+    window.ALL_DEALS = data.deals.filter(d => !isExpiredDeal(d));
     DEALS = CURRENT_STORE_SLUG ? window.ALL_DEALS.filter(d => d.store_slug === CURRENT_STORE_SLUG) : window.ALL_DEALS;
     if (storeSelect) populateSelect(storeSelect, DEALS.map(d => d.store));
     populateCategoryPills(DEALS.map(d => d.category));
