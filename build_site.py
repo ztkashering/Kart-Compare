@@ -142,7 +142,7 @@ STORE_META = {
             "Nutmeg's doesn't print a \"was\" price next to any item — just "
             "the sale price — so no comparison price is shown here either, "
             "rather than guessing one. This confirmed date is tied to that "
-            "specific flyer (2026-08-30); once a newer one replaces it, "
+            "specific flyer (2026-09-02); once a newer one replaces it, "
             "check that these dates were refreshed too rather than left "
             "stale."
         ),
