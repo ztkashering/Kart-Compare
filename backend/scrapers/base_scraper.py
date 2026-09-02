@@ -149,7 +149,10 @@ STRONG_CATEGORY_KEYWORDS = {
         "flanken", "london broil", "wing", "sausage", "kishka", "arayes",
         "shoulder", "kielbasa", "hot dog",
         "hotdog", "cutlets", "ham", "bratwurst", "tongue", "poultry",
-        "roast", "flat iron", "cholent melt away",
+        "roast", "flat iron", "cholent melt away", "lamb",
+        # "lamb" added 2026-09-02 auditing Nutmeg's real flyer — "Lamb
+        # Stew" had no other qualifying word ("Shoulder Lamb Chops" was
+        # already caught via "shoulder") and was landing in Pantry.
         # "tongue"/"poultry" added 2026-08-30 auditing Seasons' real
         # flyer data — "Tongue" (a real deli item, $64.99/lb on that
         # flyer) had no keyword at all and was landing in Pantry;
@@ -387,6 +390,10 @@ _KEYWORD_COLLISION_GUARDS = {
     # not a bakery item. Found 2026-08-20 via "Stacy's Pita Chips, Simply
     # Naked" landing in Bakery instead of Candy & Snacks.
     "pita": ["pita chips"],
+    # "challah" the bread vs. "Challah Bags" — plastic storage bags for
+    # challah, a household item, not actual bread. Found 2026-09-02 via
+    # "Plastico Challah Bags, 15 Ct" landing in Bakery.
+    "challah": ["challah bag", "challah bags"],
 }
 # "milk" the dairy product vs. "Milk Munch" — a candy bar name, not an
 # actual dairy product.
