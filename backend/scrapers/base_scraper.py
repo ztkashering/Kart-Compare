@@ -149,10 +149,15 @@ STRONG_CATEGORY_KEYWORDS = {
         "flanken", "london broil", "wing", "sausage", "kishka", "arayes",
         "shoulder", "kielbasa", "hot dog",
         "hotdog", "cutlets", "ham", "bratwurst", "tongue", "poultry",
-        "roast", "flat iron", "cholent melt away", "lamb",
+        "roast", "flat iron", "cholent melt away", "lamb", "chuck", "neck bones",
         # "lamb" added 2026-09-02 auditing Nutmeg's real flyer — "Lamb
         # Stew" had no other qualifying word ("Shoulder Lamb Chops" was
         # already caught via "shoulder") and was landing in Pantry.
+        # "chuck"/"neck bones" added 2026-09-06 auditing Seasons' real
+        # flyer — "Chuck Kolichol Imported" and "Pickled Chuck Kolichol"
+        # had no qualifying word ("kolichol" is a store-specific term,
+        # not a keyword), and plain "Neck Bones" (no chicken/turkey word
+        # attached) had none either — both were landing in Pantry.
         # "tongue"/"poultry" added 2026-08-30 auditing Seasons' real
         # flyer data — "Tongue" (a real deli item, $64.99/lb on that
         # flyer) had no keyword at all and was landing in Pantry;

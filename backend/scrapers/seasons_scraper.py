@@ -25,6 +25,13 @@ range for this snapshot specifically (grocery_platform_scraper.py's
 scrape_store()/run() gained an optional confirmed_dates parameter for
 this; Nutmeg and Kosher West don't pass it, so they're unaffected).
 
+UPDATE (2026-09-06): refreshed again with the following week's flyer
+(Rosh Hashana week), same "designed image" format, three images this
+time. 73 items transcribed into sample_data/seasons_2026-09-06_specials.txt.
+Flyer prints "PRICES VALID 9/6/26 - 9/11/26" (Sunday through Erev Rosh
+Hashana Friday) — same Sunday-to-Friday shape as the Aug 30 flyer, so
+still not the Wednesday-to-Tuesday default.
+
 THIS OVERRIDE IS TIED TO THAT ONE SNAPSHOT, NOT PERMANENT: once this
 week's sale ends, CONFIRMED_DATES will be describing a stale flyer as if
 it were still current. Whoever refreshes Seasons next (a live scrape, or
@@ -32,7 +39,11 @@ another hand-transcribed flyer) should either update CONFIRMED_DATES to
 the new real range, or remove it to fall back to the honest Wednesday-
 to-Tuesday estimate — don't leave a past week's dates in place. Same
 applies to build_site.py's STORE_META["seasons"]["dates_confirmed"],
-which was flipped to True alongside this.
+which was flipped to True alongside this. Also note: as of 2026-08-30
+export_deals.py and build_site.py auto-drop/hide any deal once its own
+date_valid_to passes, so leaving a stale CONFIRMED_DATES here isn't just
+inaccurate — the whole page will actually go blank on its own once the
+date passes, which is a stronger incentive to keep this current.
 """
 
 import sys
@@ -45,10 +56,10 @@ DOMAIN = "seasonskosher.com"
 LOCATION_SLUG = "Lakewood-NJ"
 STORE_SLUG = "seasons"
 
-# See the "UPDATE (2026-08-30)" note above — real dates transcribed
+# See the "UPDATE (2026-09-06)" note above — real dates transcribed
 # directly from the store's own printed flyer, not guessed. Set to None
 # to go back to the estimated Wednesday-to-Tuesday window.
-CONFIRMED_DATES = ("2026-08-30", "2026-09-04")
+CONFIRMED_DATES = ("2026-09-06", "2026-09-11")
 
 if __name__ == "__main__":
     run(DOMAIN, LOCATION_SLUG, STORE_SLUG, confirmed_dates=CONFIRMED_DATES)
