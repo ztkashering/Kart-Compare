@@ -22,6 +22,17 @@ bucket. This scraper is written accordingly:
 
 Either way, once we have the flyer's plain text, `parse_deals()` below does
 the actual work of pulling out item names and prices.
+
+UPDATE (2026-09-06): the founder shared the actual current 3-page flyer
+as photos rather than the PDF itself, so there's no raw PDF text to run
+parse_deals() on this time. run() now checks for a hand-verified
+snapshot first (sample_data/gourmet_glatt_*_verified.txt, a clean
+name|||price|||old_price format — see parse_verified_snapshot() below)
+before falling back to the live/cached PDF-extraction path. 186 items
+transcribed into gourmet_glatt_2026-09-06_verified.txt; CONFIRMED_DATES
+below is tied to that specific flyer ("Sale Dates: September 6th - 11th
+2026", printed right on it) and needs updating (or removing, to fall
+back to the PDF-extraction path) once a newer snapshot replaces it.
 """
 
 import re
@@ -34,6 +45,7 @@ sys.path.append(str(Path(__file__).resolve().parents[1]))  # so "db" package res
 from scrapers.base_scraper import (
     parse_flyer_price,
     parse_multi_buy,
+    parse_standard_price,
     guess_category,
     clean_item_name,
     CENTS_SYMBOL_RE,
@@ -42,9 +54,18 @@ from db.database import get_connection, init_db, insert_deal
 
 STORE_SLUG = "gourmet-glatt"
 SPECIALS_PAGE_URL = "https://gourmetglatt.com/lakewood-njersey/specials"
-SAMPLE_TEXT_PATH = (
-    Path(__file__).parent / "sample_data" / "gourmet_glatt_2026-08-20_extracted.txt"
-)
+SAMPLE_DATA_DIR = Path(__file__).parent / "sample_data"
+SAMPLE_TEXT_PATH = SAMPLE_DATA_DIR / "gourmet_glatt_2026-08-20_extracted.txt"
+
+# UPDATE (2026-09-06): when the founder sends the actual flyer as photos
+# instead of a PDF, there's no raw PDF text to extract — so those weeks
+# use a separate, hand-verified snapshot format instead of the
+# squashed-price PDF-text parser below (same "*_verified.txt" pattern as
+# shoprite_scraper.py's hand-read flyers). See _latest_verified_path()
+# and parse_verified_snapshot(). This does NOT touch parse_deals() below
+# — bingo_scraper.py reuses that function directly for its own real PDF
+# extraction, so it needs to keep working on raw PDF text unchanged.
+CONFIRMED_DATES = ("2026-09-06", "2026-09-11")
 
 MONTHS = {
     "january": 1, "february": 2, "march": 3, "april": 4, "may": 5, "june": 6,
@@ -305,12 +326,65 @@ def parse_deals(text: str) -> list[dict]:
     return deals
 
 
-def run(save_to_db: bool = True, limit_preview: int = 8) -> list[dict]:
-    text, is_live = get_flyer_text()
-    mode = "LIVE" if is_live else "CACHED SNAPSHOT (dev fallback)"
-    print(f"[gourmet_glatt] Source mode: {mode}")
+def _latest_verified_path() -> Path | None:
+    matches = sorted(SAMPLE_DATA_DIR.glob("gourmet_glatt_*_verified.txt"))
+    return matches[-1] if matches else None
 
-    deals = parse_deals(text)
+
+def parse_verified_snapshot(raw_text: str, date_from: str, date_to: str) -> list[dict]:
+    """Parse a hand-verified flyer read (name|||price_text|||old_price_text
+    per line, same 3-column shape as grocery_platform_scraper.py) — used
+    when the founder sends the flyer as photos instead of a PDF, so there's
+    no raw extracted text for parse_deals() above to work with. This
+    flyer never shows a "was" price (confirmed across every real
+    snapshot so far), so old_price_text is always blank in practice, but
+    the column is still read in case a future flyer does show one."""
+    deals = []
+    for line in raw_text.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        parts = [p.strip() for p in line.split("|||")]
+        while len(parts) < 3:
+            parts.append("")
+        name, price_text, old_text = parts[0], parts[1], parts[2]
+        item_name = clean_item_name(name)
+        if not item_name:
+            continue
+
+        sale_price, unit = parse_standard_price(price_text)
+        if sale_price is None:
+            continue
+        original_price, _ = parse_standard_price(old_text) if old_text else (None, None)
+
+        deals.append(
+            {
+                "store_slug": STORE_SLUG,
+                "item_name": item_name,
+                "original_price": original_price,
+                "sale_price": sale_price,
+                "unit": unit,
+                "category": guess_category(item_name),
+                "date_valid_from": date_from,
+                "date_valid_to": date_to,
+                "raw_text": line[:300],
+            }
+        )
+    return deals
+
+
+def run(save_to_db: bool = True, limit_preview: int = 8) -> list[dict]:
+    verified_path = _latest_verified_path()
+    if verified_path is not None:
+        print(f"[gourmet_glatt] Source mode: HAND-VERIFIED SNAPSHOT ({verified_path.name})")
+        deals = parse_verified_snapshot(
+            verified_path.read_text(), CONFIRMED_DATES[0], CONFIRMED_DATES[1]
+        )
+    else:
+        text, is_live = get_flyer_text()
+        mode = "LIVE" if is_live else "CACHED SNAPSHOT (dev fallback)"
+        print(f"[gourmet_glatt] Source mode: {mode}")
+        deals = parse_deals(text)
     print(f"[gourmet_glatt] Parsed {len(deals)} candidate deals.")
 
     print(f"\nFirst {min(limit_preview, len(deals))} scraped items:")
