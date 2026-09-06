@@ -305,7 +305,9 @@ CATEGORY_KEYWORDS = {**STRONG_CATEGORY_KEYWORDS, **WEAK_CATEGORY_KEYWORDS}
 # behavior is untouched.
 _KEYWORD_COLLISION_GUARDS = {
     "turkey": ["turkey hill"],
-    "ham": ["shampoo", "hamburger", "graham"],
+    # "hammered" added 2026-09-06: a disposable-plate finish/texture
+    # ("13 Inch Chargers with Gold Rim, Except Hammered"), not meat.
+    "ham": ["shampoo", "hamburger", "graham", "hammered"],
     # "butter" the dairy product vs. "peanut butter" / "almond butter" /
     # "cashew butter" the nut spread (not dairy at all) — found 2026-08-10
     # via "Oat Chocolate & Peanut Butter Bar" landing in Dairy.
@@ -329,6 +331,12 @@ _KEYWORD_COLLISION_GUARDS = {
     "cherry": ["berry & cherry no color italia"],
     "fruit": ["fruity pebbles", "fruit by the foot"],
     "pepper": ["tortinkles spicy pepper"],
+    # "steak" (Meat & Deli) vs. "tuna steak"/"salmon steak" — Meat & Deli
+    # is checked before Fish, so without this, a real fish item would
+    # always lose to the word "steak" and land in the wrong category.
+    # Found 2026-09-06 via "BLU Fish Market Ahi Tuna Steaks, Family Pack"
+    # landing in Meat & Deli instead of Fish.
+    "steak": ["tuna steak", "salmon steak"],
     # " tea" the beverage vs. disposable "tea spoons" (cutlery, not a
     # drink) — found 2026-08-10 via "Deluxe Clear Tea Spoons" landing
     # in Beverages instead of Household.
