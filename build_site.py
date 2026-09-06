@@ -129,7 +129,7 @@ STORE_META = {
             "Confirmed directly from this week's real flyer, which the "
             "founder shared as images and were read by hand — this store's "
             "flyer is a designed image this site can't OCR on its own. This "
-            "confirmed date is tied to that specific flyer (2026-08-30); "
+            "confirmed date is tied to that specific flyer (2026-09-06); "
             "once a newer one replaces it, check that these dates were "
             "refreshed too rather than left stale."
         ),
@@ -1366,10 +1366,25 @@ function render() {{
   }});
 }}
 
+// A deal whose own valid-through date has already passed shouldn't keep
+// showing, even if the site hasn't been rebuilt since that date rolled
+// by (export_deals.py already leaves expired deals out of deals.json on
+// each rebuild, but rebuilds don't happen every single day) — compares
+// plain "YYYY-MM-DD" strings against the viewer's own local today, which
+// sort/compare correctly as strings with no date-parsing needed.
+function isExpiredDeal(d) {{
+  if (!d.date_valid_to) return false;
+  const today = new Date();
+  const todayStr = today.getFullYear() + "-" +
+    String(today.getMonth() + 1).padStart(2, "0") + "-" +
+    String(today.getDate()).padStart(2, "0");
+  return d.date_valid_to < todayStr;
+}}
+
 fetch("deals.json")
   .then(r => {{ if (!r.ok) throw new Error("bad response " + r.status); return r.json(); }})
   .then(data => {{
-    window.ALL_DEALS = data.deals;
+    window.ALL_DEALS = data.deals.filter(d => !isExpiredDeal(d));
     DEALS = CURRENT_STORE_SLUG ? window.ALL_DEALS.filter(d => d.store_slug === CURRENT_STORE_SLUG) : window.ALL_DEALS;
     if (storeSelect) populateSelect(storeSelect, DEALS.map(d => d.store));
     populateCategoryPills(DEALS.map(d => d.category));
