@@ -1,7 +1,7 @@
 {
   "deals": [
     {
-      "id": 2141,
+      "id": 2327,
       "item_name": "1st Cut Brisket, American Beef",
       "sale_price": 14.49,
       "original_price": null,
@@ -14,7 +14,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2146,
+      "id": 2333,
       "item_name": "1st Cut Brisket, Imported Beef",
       "sale_price": 11.49,
       "original_price": null,
@@ -27,7 +27,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2239,
+      "id": 2426,
       "item_name": "7th Heaven Chocolate Bars, 3.5 Oz",
       "sale_price": 3.79,
       "original_price": null,
@@ -40,7 +40,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2136,
+      "id": 2322,
       "item_name": "Abe's Yorgood Parve Frozen Yogurt, 32 Oz",
       "sale_price": 6.99,
       "original_price": null,
@@ -53,7 +53,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2113,
+      "id": 2299,
       "item_name": "Amnon's Pizza, Original Only, 8 Slice",
       "sale_price": 10.49,
       "original_price": null,
@@ -66,7 +66,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2131,
+      "id": 2317,
       "item_name": "B'gan Sliced Carrots, 32 Oz",
       "sale_price": 1.99,
       "original_price": null,
@@ -79,7 +79,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2191,
+      "id": 2378,
       "item_name": "BLU Fish Market Ahi Tuna Steaks, Family Pack (Madison Location Only)",
       "sale_price": 10.99,
       "original_price": null,
@@ -92,7 +92,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2193,
+      "id": 2380,
       "item_name": "BLU Fish Market Honey Maple Marinated Salmon, Ready to Bake (Madison Location Only)",
       "sale_price": 13.99,
       "original_price": null,
@@ -105,7 +105,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2190,
+      "id": 2377,
       "item_name": "BLU Fish Market Salmon Fillet, Family Pack (Madison Location Only)",
       "sale_price": 10.99,
       "original_price": null,
@@ -118,7 +118,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2192,
+      "id": 2379,
       "item_name": "BLU Fish Market Tilapia, Family Pack (Madison Location Only)",
       "sale_price": 6.99,
       "original_price": null,
@@ -131,7 +131,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2152,
+      "id": 2339,
       "item_name": "Babad White Turkey Roast",
       "sale_price": 8.49,
       "original_price": null,
@@ -144,7 +144,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2139,
+      "id": 2325,
       "item_name": "Beef Flanken, Imported",
       "sale_price": 21.99,
       "original_price": null,
@@ -157,7 +157,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2159,
+      "id": 2346,
       "item_name": "Beef Neck Bones, American (Seagull & Jackson Only)",
       "sale_price": 4.49,
       "original_price": null,
@@ -170,7 +170,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2132,
+      "id": 2318,
       "item_name": "Beleaves Diced Leeks, 16 Oz",
       "sale_price": 5.99,
       "original_price": null,
@@ -183,7 +183,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2163,
+      "id": 2350,
       "item_name": "Beleaves Medjool Dates, All Varieties, 9-12 Oz",
       "sale_price": 5.99,
       "original_price": null,
@@ -196,7 +196,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2207,
+      "id": 2394,
       "item_name": "Bloom's Potato Chips, All Varieties, 0.75 Oz",
       "sale_price": 0.3,
       "original_price": null,
@@ -209,7 +209,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2209,
+      "id": 2396,
       "item_name": "Bloom's Pretzels, 12 Oz, Large Size",
       "sale_price": 1.99,
       "original_price": null,
@@ -222,7 +222,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2075,
+      "id": 2261,
       "item_name": "Bloom's Real Chocolate Chips, 8 Oz",
       "sale_price": 2.49,
       "original_price": null,
@@ -235,7 +235,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2221,
+      "id": 2408,
       "item_name": "Bloomeos Sandwich Cookies, 20 Oz",
       "sale_price": 4.59,
       "original_price": null,
@@ -248,7 +248,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2137,
+      "id": 2323,
       "item_name": "Bodek Butternut Squash, 24 Oz",
       "sale_price": 3.29,
       "original_price": null,
@@ -261,7 +261,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2158,
+      "id": 2345,
       "item_name": "Boneless Flanken, American (Seagull & Jackson Only)",
       "sale_price": 19.49,
       "original_price": null,
@@ -274,7 +274,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2176,
+      "id": 2363,
       "item_name": "Bread & Butter Tuna Bagel Sandwich (Madison Location Only)",
       "sale_price": 3.99,
       "original_price": null,
@@ -287,7 +287,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2179,
+      "id": 2366,
       "item_name": "Cara Cara Oranges",
       "sale_price": 1.0,
       "original_price": null,
@@ -300,7 +300,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2180,
+      "id": 2367,
       "item_name": "Cello Carrots, 5 Lb",
       "sale_price": 1.99,
       "original_price": null,
@@ -313,7 +313,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2212,
+      "id": 2399,
       "item_name": "Chewzy Skinzies, 9 Oz",
       "sale_price": 2.79,
       "original_price": null,
@@ -326,7 +326,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2216,
+      "id": 2403,
       "item_name": "Chewzy Whimsies, All Varieties, 11.4 Oz",
       "sale_price": 3.99,
       "original_price": null,
@@ -339,7 +339,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2151,
+      "id": 2338,
       "item_name": "Chicken Legs, Super Family Pack",
       "sale_price": 2.89,
       "original_price": null,
@@ -352,7 +352,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2188,
+      "id": 2375,
       "item_name": "Chicken, Simanim Platter (Tuesday 12-6pm, 1 Main Dish + 2 Sides)",
       "sale_price": 8.99,
       "original_price": null,
@@ -365,7 +365,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2187,
+      "id": 2374,
       "item_name": "Cholent Combo (Thursday & Friday Only, From the Hot Table)",
       "sale_price": 9.99,
       "original_price": null,
@@ -378,7 +378,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2185,
+      "id": 2372,
       "item_name": "Cooked Salmon Slices",
       "sale_price": 7.49,
       "original_price": null,
@@ -391,21 +391,8 @@
       "kosher_flag": null
     },
     {
-      "id": 2243,
+      "id": 2430,
       "item_name": "Cuisine Soft Clear Plates, 7 Inch, 40 Pack",
-      "sale_price": 3.29,
-      "original_price": null,
-      "unit": null,
-      "category": "Household",
-      "store": "Gourmet Glatt",
-      "store_slug": "gourmet-glatt",
-      "date_valid_from": "2026-09-06",
-      "date_valid_to": "2026-09-11",
-      "kosher_flag": null
-    },
-    {
-      "id": 2244,
-      "item_name": "Cuisine Soft Clear Plates, 9 Inch, 40 Pack",
       "sale_price": 1.89,
       "original_price": null,
       "unit": null,
@@ -417,7 +404,20 @@
       "kosher_flag": null
     },
     {
-      "id": 2214,
+      "id": 2431,
+      "item_name": "Cuisine Soft Clear Plates, 9 Inch, 40 Pack",
+      "sale_price": 3.29,
+      "original_price": null,
+      "unit": null,
+      "category": "Household",
+      "store": "Gourmet Glatt",
+      "store_slug": "gourmet-glatt",
+      "date_valid_from": "2026-09-06",
+      "date_valid_to": "2026-09-11",
+      "kosher_flag": null
+    },
+    {
+      "id": 2401,
       "item_name": "D'vash Kettle Chips, All Varieties, 1 Oz",
       "sale_price": 0.5,
       "original_price": null,
@@ -430,7 +430,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2134,
+      "id": 2320,
       "item_name": "David's Chocolate Chip Cookies, All Varieties, 24 Pack",
       "sale_price": 5.29,
       "original_price": null,
@@ -443,7 +443,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2233,
+      "id": 2420,
       "item_name": "Dining Collection Fancy Napkins, 20 Count",
       "sale_price": 2.19,
       "original_price": null,
@@ -456,7 +456,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2149,
+      "id": 2336,
       "item_name": "Extra Lean Beef Stew, Imported Beef",
       "sale_price": 9.29,
       "original_price": null,
@@ -469,7 +469,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2189,
+      "id": 2376,
       "item_name": "Fish, Simanim Platter (Tuesday 12-6pm, 1 Main Dish + 2 Sides)",
       "sale_price": 11.99,
       "original_price": null,
@@ -482,7 +482,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2107,
+      "id": 2293,
       "item_name": "Flaum's Pickles, 52 Oz",
       "sale_price": 4.99,
       "original_price": null,
@@ -495,7 +495,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2153,
+      "id": 2340,
       "item_name": "Frozen Duck, Missing Wing",
       "sale_price": 8.79,
       "original_price": null,
@@ -508,7 +508,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2087,
+      "id": 2273,
       "item_name": "Gefen Canola Spray, 14 Oz",
       "sale_price": 3.99,
       "original_price": null,
@@ -521,7 +521,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2119,
+      "id": 2305,
       "item_name": "Gefen Frozen Cubes, Except Sauteed Onions, 2.5-2.8 Oz",
       "sale_price": 2.33,
       "original_price": null,
@@ -534,7 +534,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2162,
+      "id": 2349,
       "item_name": "Gefen Israeli Couscous, 8.8 Oz",
       "sale_price": 0.89,
       "original_price": null,
@@ -547,7 +547,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2074,
+      "id": 2260,
       "item_name": "Gefen Mayo, Original or Light, 30 Oz",
       "sale_price": 3.89,
       "original_price": null,
@@ -560,7 +560,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2081,
+      "id": 2267,
       "item_name": "Gefen Orzo or Small Egg Flakes, 16 Oz",
       "sale_price": 1.89,
       "original_price": null,
@@ -573,7 +573,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2090,
+      "id": 2276,
       "item_name": "Gefen Parchment Paper, 50 Square Feet",
       "sale_price": 3.29,
       "original_price": null,
@@ -586,7 +586,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2133,
+      "id": 2319,
       "item_name": "Gefen Puff Pastry Sheets or 5x5 Squares, 21.5 Oz, 10 Pack",
       "sale_price": 3.19,
       "original_price": null,
@@ -599,7 +599,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2084,
+      "id": 2270,
       "item_name": "Gefen Salad Croutons, All Varieties, 5.2 Oz",
       "sale_price": 1.79,
       "original_price": null,
@@ -612,7 +612,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2172,
+      "id": 2359,
       "item_name": "Gefen Sweet & Sour Duck Sauce, 40 Oz",
       "sale_price": 4.29,
       "original_price": null,
@@ -625,7 +625,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2247,
+      "id": 2434,
       "item_name": "Gefen Whip Topping, 16 Oz",
       "sale_price": 1.99,
       "original_price": null,
@@ -638,7 +638,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2173,
+      "id": 2360,
       "item_name": "Gefen Whole Hearts of Palm, 14 Oz",
       "sale_price": 2.49,
       "original_price": null,
@@ -651,7 +651,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2165,
+      "id": 2352,
       "item_name": "Gefen Whole Mandarins, 11 Oz",
       "sale_price": 1.11,
       "original_price": null,
@@ -664,7 +664,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2110,
+      "id": 2296,
       "item_name": "Gevina Greek n Crunch Yogurts, 4.5 Oz",
       "sale_price": 1.33,
       "original_price": null,
@@ -677,7 +677,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2076,
+      "id": 2262,
       "item_name": "Glick's Flour, All Purpose or High Gluten, 5 Lb",
       "sale_price": 2.5,
       "original_price": null,
@@ -690,7 +690,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2171,
+      "id": 2358,
       "item_name": "Glick's Ketchup, 64 Oz, Family Size",
       "sale_price": 3.69,
       "original_price": null,
@@ -703,7 +703,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2168,
+      "id": 2355,
       "item_name": "Gold's Sweet & Sour Duck Sauce, 40 Oz",
       "sale_price": 3.99,
       "original_price": null,
@@ -716,7 +716,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2111,
+      "id": 2297,
       "item_name": "Golden Taste Horseradish, 15 Oz Jars Only, No Vinegar",
       "sale_price": 3.29,
       "original_price": null,
@@ -729,7 +729,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2125,
+      "id": 2311,
       "item_name": "Golden Taste Onion Dips, Sweet, Spicy, Bella, 7 Oz",
       "sale_price": 2.99,
       "original_price": null,
@@ -742,7 +742,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2175,
+      "id": 2362,
       "item_name": "Gourmet Glatt 6 Section Round Chocolate Platter",
       "sale_price": 24.99,
       "original_price": null,
@@ -755,7 +755,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2174,
+      "id": 2361,
       "item_name": "Gourmet Glatt Assorted Flavor 3D Gleezies",
       "sale_price": 8.99,
       "original_price": null,
@@ -768,7 +768,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2114,
+      "id": 2300,
       "item_name": "Gourmet Glatt Gefilte Fish, 20 Oz, Premium",
       "sale_price": 5.49,
       "original_price": null,
@@ -781,7 +781,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2078,
+      "id": 2264,
       "item_name": "Grain Brain White Whole Wheat Flour, 5 Lb",
       "sale_price": 6.49,
       "original_price": null,
@@ -794,7 +794,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2157,
+      "id": 2344,
       "item_name": "Ground Chuck, Super Family Pack",
       "sale_price": 8.49,
       "original_price": null,
@@ -807,7 +807,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2105,
+      "id": 2291,
       "item_name": "Ha'olam American Cheese, 12 Oz, Individually Wrapped Slices",
       "sale_price": 4.49,
       "original_price": null,
@@ -820,7 +820,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2121,
+      "id": 2307,
       "item_name": "Ha'olam Slims, Original Muenster, Mozzarella, Cheddar, 6 Oz",
       "sale_price": 2.99,
       "original_price": null,
@@ -833,7 +833,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2220,
+      "id": 2407,
       "item_name": "Heaven & Earth Dig n Lik, All Varieties, 0.6 Oz",
       "sale_price": 0.3,
       "original_price": null,
@@ -846,7 +846,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2227,
+      "id": 2414,
       "item_name": "Heaven & Earth Taffy Ropes, All Varieties, 0.81 Oz",
       "sale_price": 0.28,
       "original_price": null,
@@ -859,7 +859,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2117,
+      "id": 2303,
       "item_name": "Hoffman's Pizza Balls, 18 Oz",
       "sale_price": 6.99,
       "original_price": null,
@@ -872,7 +872,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2124,
+      "id": 2310,
       "item_name": "J&J Deluxe Yogurts, All Varieties, 5.3 Oz",
       "sale_price": 1.33,
       "original_price": null,
@@ -885,7 +885,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2104,
+      "id": 2290,
       "item_name": "Jet Foil 8 Inch Round Deep Challah Pans, 10 Pack",
       "sale_price": 2.0,
       "original_price": null,
@@ -898,7 +898,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2170,
+      "id": 2357,
       "item_name": "Kedem Sparkling Grape Juice, 25.4 Oz",
       "sale_price": 3.49,
       "original_price": null,
@@ -911,7 +911,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2222,
+      "id": 2409,
       "item_name": "Kedem Tea Biscuits, Except Whole Wheat or Sugar-Free, 4.2 Oz",
       "sale_price": 0.5,
       "original_price": null,
@@ -924,7 +924,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2089,
+      "id": 2275,
       "item_name": "Kemach Noodles, Fine or Medium, 12 Oz",
       "sale_price": 2.29,
       "original_price": null,
@@ -937,7 +937,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2091,
+      "id": 2277,
       "item_name": "Kitchen Collection 2 Gallon Zip & Lock Challah Bags, 15 Pack",
       "sale_price": 1.5,
       "original_price": null,
@@ -950,7 +950,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2138,
+      "id": 2324,
       "item_name": "Klein's 4 in 1 Sorbet, 31.8 Oz",
       "sale_price": 9.49,
       "original_price": null,
@@ -963,7 +963,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2210,
+      "id": 2397,
       "item_name": "Knack n Co Wheelies Snacks, All Varieties, 0.53 Oz",
       "sale_price": 0.5,
       "original_price": null,
@@ -976,7 +976,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2098,
+      "id": 2284,
       "item_name": "KoSure Dairy Hot Cocoa, Original Only, 10 Oz",
       "sale_price": 4.99,
       "original_price": null,
@@ -989,7 +989,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2148,
+      "id": 2335,
       "item_name": "Large Kolichel, Imported Beef",
       "sale_price": 9.79,
       "original_price": null,
@@ -1002,7 +1002,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2099,
+      "id": 2285,
       "item_name": "Lieber's Applesauce, Original or Unsweetened, 46-48 Oz",
       "sale_price": 3.99,
       "original_price": null,
@@ -1015,7 +1015,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2092,
+      "id": 2278,
       "item_name": "Lieber's Bread or Panko Crumbs, 8-15 Oz",
       "sale_price": 1.99,
       "original_price": null,
@@ -1028,7 +1028,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2079,
+      "id": 2265,
       "item_name": "Lieber's Israeli Style Tahini, 17.8 Oz",
       "sale_price": 3.99,
       "original_price": null,
@@ -1041,7 +1041,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2237,
+      "id": 2424,
       "item_name": "Lieber's Striped Dainties Cookies, 10.2 Oz",
       "sale_price": 2.5,
       "original_price": null,
@@ -1054,7 +1054,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2240,
+      "id": 2427,
       "item_name": "Lieber's Toffee or Sour Juicy Chews, Fruit or Creamy Toffee, 12 Oz",
       "sale_price": 2.79,
       "original_price": null,
@@ -1067,7 +1067,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2083,
+      "id": 2269,
       "item_name": "Lotus Biscuits, 250 Gram",
       "sale_price": 2.79,
       "original_price": null,
@@ -1080,7 +1080,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2082,
+      "id": 2268,
       "item_name": "Lotus Spread, All Spreads, 250 Gram",
       "sale_price": 5.49,
       "original_price": null,
@@ -1093,7 +1093,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2115,
+      "id": 2301,
       "item_name": "Macbee Pizza Bagels, 18 Pack",
       "sale_price": 8.79,
       "original_price": null,
@@ -1106,7 +1106,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2150,
+      "id": 2337,
       "item_name": "Marvid Chicken Bones",
       "sale_price": 0.99,
       "original_price": null,
@@ -1119,7 +1119,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2120,
+      "id": 2306,
       "item_name": "Meal Mart 9x13 Kugel, Potato, Sweet Noodle, Apple Noodle",
       "sale_price": 24.99,
       "original_price": null,
@@ -1132,7 +1132,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2126,
+      "id": 2312,
       "item_name": "Meal Mart Beef Franks, 12 Oz",
       "sale_price": 6.59,
       "original_price": null,
@@ -1145,7 +1145,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2249,
+      "id": 2436,
       "item_name": "Meal Mart Chopped Liver, Beef or Chicken, 7-12 Oz",
       "sale_price": 5.49,
       "original_price": null,
@@ -1158,7 +1158,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2112,
+      "id": 2298,
       "item_name": "Meal Mart Corned Beef, 6 Oz",
       "sale_price": 5.49,
       "original_price": null,
@@ -1171,7 +1171,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2129,
+      "id": 2315,
       "item_name": "Meal Mart Honey Glazed Smoked Turkey Breast, 6 Oz",
       "sale_price": 5.29,
       "original_price": null,
@@ -1184,7 +1184,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2251,
+      "id": 2438,
       "item_name": "Meal Mart Kishka, Original Only, 16 Oz",
       "sale_price": 3.79,
       "original_price": null,
@@ -1197,7 +1197,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2248,
+      "id": 2435,
       "item_name": "Meal Mart Matzah Balls, 32 Oz, Parve",
       "sale_price": 9.49,
       "original_price": null,
@@ -1210,7 +1210,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2135,
+      "id": 2321,
       "item_name": "Mechel's 3x3 Mini Puff Pastry Squares, 36 Pack",
       "sale_price": 6.99,
       "original_price": null,
@@ -1223,7 +1223,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2155,
+      "id": 2342,
       "item_name": "Mehadrin 1st Cut Mini Pastrami, Cooked",
       "sale_price": 11.99,
       "original_price": null,
@@ -1236,7 +1236,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2106,
+      "id": 2292,
       "item_name": "Mehadrin Chocolate Leben, 12 Pack",
       "sale_price": 10.99,
       "original_price": null,
@@ -1249,7 +1249,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2122,
+      "id": 2308,
       "item_name": "Mehadrin Margarine Sticks, 16 Oz",
       "sale_price": 2.19,
       "original_price": null,
@@ -1262,7 +1262,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2156,
+      "id": 2343,
       "item_name": "Mehadrin Pickled 2nd Cut Brisket",
       "sale_price": 10.99,
       "original_price": null,
@@ -1275,7 +1275,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2154,
+      "id": 2341,
       "item_name": "Mehadrin Pickled Top of the Rib",
       "sale_price": 7.99,
       "original_price": null,
@@ -1288,7 +1288,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2164,
+      "id": 2351,
       "item_name": "Mikee Honey Sesame Teriyaki or Honey Garlic Sauce, 20 Oz",
       "sale_price": 5.99,
       "original_price": null,
@@ -1301,7 +1301,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2140,
+      "id": 2326,
       "item_name": "Minute Roast, Imported",
       "sale_price": 10.99,
       "original_price": null,
@@ -1314,7 +1314,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2145,
+      "id": 2332,
       "item_name": "Minute Steak, Family Pack, Imported Beef",
       "sale_price": 11.49,
       "original_price": null,
@@ -1327,7 +1327,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2101,
+      "id": 2287,
       "item_name": "Near East Rice Pilaf, Original Only, 6 Oz",
       "sale_price": 1.5,
       "original_price": null,
@@ -1340,7 +1340,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2097,
+      "id": 2283,
       "item_name": "Ner Mitzvah Beeswax Yaknehaz Tea Light, 3 Pack",
       "sale_price": 3.49,
       "original_price": null,
@@ -1353,7 +1353,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2085,
+      "id": 2271,
       "item_name": "Ner Mitzvah Neironim 4 Hour Candles, 72 Pack",
       "sale_price": 6.99,
       "original_price": null,
@@ -1366,7 +1366,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2108,
+      "id": 2294,
       "item_name": "Norman's Kiddie Yogurts, All Varieties, 3.5 Oz",
       "sale_price": 0.4,
       "original_price": null,
@@ -1379,7 +1379,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2071,
+      "id": 2257,
       "item_name": "Oberlander Honey Cookies, 16 Oz",
       "sale_price": 5.49,
       "original_price": null,
@@ -1392,7 +1392,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2102,
+      "id": 2288,
       "item_name": "Ohr 1 Day Candle",
       "sale_price": 0.3,
       "original_price": null,
@@ -1405,7 +1405,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2103,
+      "id": 2289,
       "item_name": "Ohr 2 Day Candle",
       "sale_price": 0.89,
       "original_price": null,
@@ -1418,7 +1418,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2096,
+      "id": 2282,
       "item_name": "Ohr Tea Lights, 50 Pack",
       "sale_price": 1.99,
       "original_price": null,
@@ -1431,7 +1431,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2072,
+      "id": 2258,
       "item_name": "Osem Mini Mandel, 14 Oz",
       "sale_price": 3.99,
       "original_price": null,
@@ -1444,7 +1444,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2195,
+      "id": 2382,
       "item_name": "Ossie's Gefilte Fish (Seagull & Jackson)",
       "sale_price": 7.99,
       "original_price": null,
@@ -1457,7 +1457,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2194,
+      "id": 2381,
       "item_name": "Ossie's Tilapia, Family Pack (Seagull & Jackson)",
       "sale_price": 7.99,
       "original_price": null,
@@ -1470,7 +1470,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2116,
+      "id": 2302,
       "item_name": "Pardes Broccoli Florets, 24 Oz",
       "sale_price": 4.79,
       "original_price": null,
@@ -1483,7 +1483,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2118,
+      "id": 2304,
       "item_name": "Pardes Chopped Spinach, 24 Oz",
       "sale_price": 4.79,
       "original_price": null,
@@ -1496,7 +1496,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2246,
+      "id": 2433,
       "item_name": "Pardes Strawberries, 16 Oz",
       "sale_price": 4.99,
       "original_price": null,
@@ -1509,7 +1509,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2242,
+      "id": 2429,
       "item_name": "Paskesz Chips-a-Plenty Cookies, Chewy or Premium, 13 Oz",
       "sale_price": 5.79,
       "original_price": null,
@@ -1522,7 +1522,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2217,
+      "id": 2404,
       "item_name": "Paskesz Cotton Candy Cups, All Varieties, 0.7 Oz",
       "sale_price": 0.8,
       "original_price": null,
@@ -1535,7 +1535,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2238,
+      "id": 2425,
       "item_name": "Paskesz Fruzips, All Varieties, 8.5-9 Oz",
       "sale_price": 2.49,
       "original_price": null,
@@ -1548,7 +1548,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2241,
+      "id": 2428,
       "item_name": "Paskesz Honey Candy, 12 Oz",
       "sale_price": 0.99,
       "original_price": null,
@@ -1561,7 +1561,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2235,
+      "id": 2422,
       "item_name": "Paskesz Lollypops, Original/Rainbow/Hearts/Cotton Candy, 12 Oz",
       "sale_price": 2.79,
       "original_price": null,
@@ -1574,7 +1574,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2229,
+      "id": 2416,
       "item_name": "Paskesz Noshkes or Twiggs, All Varieties, 10 Pack, Family Pack",
       "sale_price": 3.79,
       "original_price": null,
@@ -1587,7 +1587,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2231,
+      "id": 2418,
       "item_name": "Paskesz Whip de Do or Milk Munch Bars, 1.58-1.65 Oz",
       "sale_price": 1.33,
       "original_price": null,
@@ -1600,7 +1600,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2169,
+      "id": 2356,
       "item_name": "Pereg Quinoa, White or Tri-Color, 16 Oz",
       "sale_price": 4.49,
       "original_price": null,
@@ -1613,7 +1613,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2225,
+      "id": 2412,
       "item_name": "Plastic House Deli Containers, 16 Oz, 48 Pack",
       "sale_price": 6.49,
       "original_price": null,
@@ -1626,7 +1626,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2226,
+      "id": 2413,
       "item_name": "Plastic House Deli Containers, 32 Oz, 48 Pack",
       "sale_price": 9.49,
       "original_price": null,
@@ -1639,7 +1639,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2245,
+      "id": 2432,
       "item_name": "Plastico Table Covers, All 66 Inch Wide",
       "sale_price": 5.99,
       "original_price": null,
@@ -1652,7 +1652,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2067,
+      "id": 2253,
       "item_name": "Quaker Life Cereal, Original or Cinnamon, 13 Oz",
       "sale_price": 2.49,
       "original_price": null,
@@ -1665,7 +1665,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2167,
+      "id": 2354,
       "item_name": "Quality Choice Soup & Salad Croutons, Except Whole Wheat Caesar or Onion Garlic, 15 Oz",
       "sale_price": 5.99,
       "original_price": null,
@@ -1678,7 +1678,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2077,
+      "id": 2263,
       "item_name": "Quality Sifted High Gluten Flour, 6 Lb",
       "sale_price": 5.99,
       "original_price": null,
@@ -1691,7 +1691,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2181,
+      "id": 2368,
       "item_name": "Red Delicious Apples",
       "sale_price": 1.49,
       "original_price": null,
@@ -1704,7 +1704,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2183,
+      "id": 2370,
       "item_name": "Red Seedless Grapes",
       "sale_price": 1.99,
       "original_price": null,
@@ -1717,7 +1717,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2182,
+      "id": 2369,
       "item_name": "Red, Yellow & Orange Bell Peppers",
       "sale_price": 1.49,
       "original_price": null,
@@ -1730,7 +1730,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2147,
+      "id": 2334,
       "item_name": "Rib Steak, Family Pack, Imported Beef",
       "sale_price": 15.79,
       "original_price": null,
@@ -1743,7 +1743,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2123,
+      "id": 2309,
       "item_name": "Salad Mate Dressings, All Varieties, 12 Oz",
       "sale_price": 4.99,
       "original_price": null,
@@ -1756,7 +1756,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2206,
+      "id": 2393,
       "item_name": "Schwartz Gefilte Fish, 2 Slices",
       "sale_price": 3.99,
       "original_price": null,
@@ -1769,7 +1769,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2203,
+      "id": 2390,
       "item_name": "Schwartz Honey Mustard Onion Dip, Pre-Packaged",
       "sale_price": 4.49,
       "original_price": null,
@@ -1782,7 +1782,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2204,
+      "id": 2391,
       "item_name": "Schwartz Horseradish Dip, Pre-Packaged",
       "sale_price": 3.99,
       "original_price": null,
@@ -1795,7 +1795,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2205,
+      "id": 2392,
       "item_name": "Schwartz Matbucha, Pre-Packaged",
       "sale_price": 4.79,
       "original_price": null,
@@ -1808,7 +1808,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2215,
+      "id": 2402,
       "item_name": "Sensible Portions Veggie Straws, 1 Oz",
       "sale_price": 0.6,
       "original_price": null,
@@ -1821,7 +1821,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2142,
+      "id": 2328,
       "item_name": "Shabbos Meat, American Beef",
       "sale_price": 14.99,
       "original_price": null,
@@ -1834,7 +1834,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2128,
+      "id": 2314,
       "item_name": "Shloimy's Tomato Dip, No Vinegar, Original or Spicy, 7 Oz",
       "sale_price": 2.99,
       "original_price": null,
@@ -1847,7 +1847,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2143,
+      "id": 2329,
       "item_name": "Shoulder London Broil, American Beef",
       "sale_price": 13.29,
       "original_price": null,
@@ -1860,7 +1860,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2094,
+      "id": 2280,
       "item_name": "Shufra Premium Cocoa, 16 Oz",
       "sale_price": 9.49,
       "original_price": null,
@@ -1873,7 +1873,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2211,
+      "id": 2398,
       "item_name": "Shufra Two Tone Taffies, 10 Oz",
       "sale_price": 1.25,
       "original_price": null,
@@ -1886,7 +1886,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2095,
+      "id": 2281,
       "item_name": "Shwartz Baking Chocolate, 14 Oz",
       "sale_price": 3.99,
       "original_price": null,
@@ -1899,7 +1899,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2219,
+      "id": 2406,
       "item_name": "Shwartz Box Drinks, Kiwi Strawberry or Fruit Punch, 4 Pack",
       "sale_price": 1.5,
       "original_price": null,
@@ -1912,7 +1912,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2068,
+      "id": 2254,
       "item_name": "Shwartz Extra Light Olive Oil, 34 Oz",
       "sale_price": 5.99,
       "original_price": null,
@@ -1925,7 +1925,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2228,
+      "id": 2415,
       "item_name": "Shwartz Honey Wheat Pretzels, 1 Oz",
       "sale_price": 0.4,
       "original_price": null,
@@ -1938,7 +1938,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2236,
+      "id": 2423,
       "item_name": "Simcha Collection 13 Inch Chargers with Gold Rim, Except Hammered, 4 Pack",
       "sale_price": 3.99,
       "original_price": null,
@@ -1951,7 +1951,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2218,
+      "id": 2405,
       "item_name": "Simcha Collection 6 Oz Dessert Bowls, White or Clear, 100 Pack",
       "sale_price": 5.79,
       "original_price": null,
@@ -1964,8 +1964,8 @@
       "kosher_flag": null
     },
     {
-      "id": 2223,
-      "item_name": "Simcha Collection 7 Inch Round Clear Tumblers, 20 Pack",
+      "id": 2410,
+      "item_name": "Simcha Collection 7 Oz Round Clear Tumblers, 20 Pack",
       "sale_price": 0.99,
       "original_price": null,
       "unit": null,
@@ -1977,7 +1977,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2224,
+      "id": 2411,
       "item_name": "Simcha Collection 9 Oz 2 Tone Wine Glasses, 5 Pack",
       "sale_price": 5.49,
       "original_price": null,
@@ -1990,7 +1990,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2234,
+      "id": 2421,
       "item_name": "Simcha Collection Combo Plates, Assorted, 20-32 Pack",
       "sale_price": 3.49,
       "original_price": null,
@@ -2003,7 +2003,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2213,
+      "id": 2400,
       "item_name": "Simcha Collection Vintage Gold-Like Flatware, All Varieties, 64 Pack",
       "sale_price": 6.99,
       "original_price": null,
@@ -2016,7 +2016,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2166,
+      "id": 2353,
       "item_name": "Simply Lev Barley, 16 Oz",
       "sale_price": 0.79,
       "original_price": null,
@@ -2029,7 +2029,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2160,
+      "id": 2347,
       "item_name": "Skinless Chicken Legs (Seagull & Jackson Only)",
       "sale_price": 3.69,
       "original_price": null,
@@ -2042,7 +2042,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2186,
+      "id": 2373,
       "item_name": "Smoked Brisket",
       "sale_price": 21.99,
       "original_price": null,
@@ -2055,7 +2055,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2066,
+      "id": 2252,
       "item_name": "Snapple Iced Tea, All Varieties, 12 Pack",
       "sale_price": 7.99,
       "original_price": null,
@@ -2068,7 +2068,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2130,
+      "id": 2316,
       "item_name": "Solomon's Beef Kielbasa, 16 Oz",
       "sale_price": 8.99,
       "original_price": null,
@@ -2081,7 +2081,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2109,
+      "id": 2295,
       "item_name": "Solomon's Beef Pastrami, 6 Oz",
       "sale_price": 5.49,
       "original_price": null,
@@ -2094,7 +2094,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2127,
+      "id": 2313,
       "item_name": "Solomon's Salami Chub, 12 Oz",
       "sale_price": 6.99,
       "original_price": null,
@@ -2107,7 +2107,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2200,
+      "id": 2387,
       "item_name": "Steinberg's Honey Loaf Cake",
       "sale_price": 7.99,
       "original_price": null,
@@ -2120,7 +2120,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2202,
+      "id": 2389,
       "item_name": "Steinberg's Mini Apple Turnovers",
       "sale_price": 7.99,
       "original_price": null,
@@ -2133,11 +2133,11 @@
       "kosher_flag": null
     },
     {
-      "id": 2201,
+      "id": 2388,
       "item_name": "Steinberg's Tie Dye Cookies",
       "sale_price": 7.99,
       "original_price": null,
-      "unit": null,
+      "unit": "lb",
       "category": "Candy & Snacks",
       "store": "Gourmet Glatt",
       "store_slug": "gourmet-glatt",
@@ -2146,7 +2146,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2080,
+      "id": 2266,
       "item_name": "Streit's Whole Wheat Matzo, All Varieties, 11 Oz",
       "sale_price": 3.49,
       "original_price": null,
@@ -2159,7 +2159,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2199,
+      "id": 2386,
       "item_name": "Sushi Nation 6 Roll Platter",
       "sale_price": 51.95,
       "original_price": null,
@@ -2172,7 +2172,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2197,
+      "id": 2384,
       "item_name": "Sushi Nation Crunchy Dragon Roll",
       "sale_price": 15.45,
       "original_price": null,
@@ -2185,7 +2185,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2196,
+      "id": 2383,
       "item_name": "Sushi Nation Fried Sweet Onion Roll",
       "sale_price": 7.45,
       "original_price": null,
@@ -2198,7 +2198,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2198,
+      "id": 2385,
       "item_name": "Sushi Nation Tuna Avocado Roll",
       "sale_price": 8.95,
       "original_price": null,
@@ -2211,7 +2211,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2177,
+      "id": 2364,
       "item_name": "The Green Bowl Large Pizza (Jackson Location Only)",
       "sale_price": 19.99,
       "original_price": null,
@@ -2224,7 +2224,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2178,
+      "id": 2365,
       "item_name": "The Green Bowl Portabello Mushroom Salad, Grab N Go (Jackson Location Only)",
       "sale_price": 7.99,
       "original_price": null,
@@ -2237,8 +2237,8 @@
       "kosher_flag": null
     },
     {
-      "id": 2144,
-      "item_name": "Top of the Rib, Untrimmed Whole Brisket, American Beef",
+      "id": 2330,
+      "item_name": "Top of the Rib, American Beef",
       "sale_price": 13.49,
       "original_price": null,
       "unit": "lb",
@@ -2250,7 +2250,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2086,
+      "id": 2272,
       "item_name": "Tuscanini Gnocchi, Except Gluten-Free, 16 Oz",
       "sale_price": 2.19,
       "original_price": null,
@@ -2263,7 +2263,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2093,
+      "id": 2279,
       "item_name": "Tuscanini Preserves, 11.64 Oz",
       "sale_price": 2.99,
       "original_price": null,
@@ -2276,7 +2276,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2088,
+      "id": 2274,
       "item_name": "Tuscanini Tomato Sauce, 17.6 Oz Carton",
       "sale_price": 1.2,
       "original_price": null,
@@ -2289,7 +2289,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2100,
+      "id": 2286,
       "item_name": "Unger's Baking Spray with Flour, 5 Oz",
       "sale_price": 1.89,
       "original_price": null,
@@ -2302,7 +2302,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2073,
+      "id": 2259,
       "item_name": "Unger's Honey Buzzers, 30 Oz, Family Size Bag",
       "sale_price": 6.49,
       "original_price": null,
@@ -2315,7 +2315,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2069,
+      "id": 2255,
       "item_name": "Unger's Honey, 2 Lb",
       "sale_price": 3.49,
       "original_price": null,
@@ -2328,7 +2328,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2070,
+      "id": 2256,
       "item_name": "Unger's Honey, 5 Lb",
       "sale_price": 7.99,
       "original_price": null,
@@ -2341,7 +2341,20 @@
       "kosher_flag": null
     },
     {
-      "id": 2230,
+      "id": 2331,
+      "item_name": "Untrimmed Whole Brisket, American Beef",
+      "sale_price": 9.49,
+      "original_price": null,
+      "unit": "lb",
+      "category": "Meat & Deli",
+      "store": "Gourmet Glatt",
+      "store_slug": "gourmet-glatt",
+      "date_valid_from": "2026-09-06",
+      "date_valid_to": "2026-09-11",
+      "kosher_flag": null
+    },
+    {
+      "id": 2417,
       "item_name": "Upscale Silver-Like Combo Pack Flatware, 20 Pack",
       "sale_price": 0.99,
       "original_price": null,
@@ -2354,7 +2367,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2250,
+      "id": 2437,
       "item_name": "Upstream Premium Tilapia Fillet, 14 Oz",
       "sale_price": 3.99,
       "original_price": null,
@@ -2367,7 +2380,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2161,
+      "id": 2348,
       "item_name": "Whole or Cut-Up Chicken (Seagull & Jackson Only)",
       "sale_price": 3.19,
       "original_price": null,
@@ -2380,7 +2393,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2208,
+      "id": 2395,
       "item_name": "Wise Chips, Honey BBQ/Onion Rings/Original Dipsy Doodles/Kettle Jalapeno, 0.75 Oz",
       "sale_price": 0.3,
       "original_price": null,
@@ -2393,7 +2406,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2184,
+      "id": 2371,
       "item_name": "Yukon Potatoes, 5 Lb Bag",
       "sale_price": 4.49,
       "original_price": null,
@@ -2406,7 +2419,7 @@
       "kosher_flag": null
     },
     {
-      "id": 2232,
+      "id": 2419,
       "item_name": "Zaza Sour Apple, Chewy, Extra Sour Chews, 21.6 Oz",
       "sale_price": 4.99,
       "original_price": null,

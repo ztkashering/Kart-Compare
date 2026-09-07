@@ -76,7 +76,8 @@ Minute Roast, Imported ||| $10.99 / lb |||
 1st Cut Brisket, American Beef ||| $14.49 / lb |||
 Shabbos Meat, American Beef ||| $14.99 / lb |||
 Shoulder London Broil, American Beef ||| $13.29 / lb |||
-Top of the Rib, Untrimmed Whole Brisket, American Beef ||| $13.49 / lb |||
+Top of the Rib, American Beef ||| $13.49 / lb |||
+Untrimmed Whole Brisket, American Beef ||| $9.49 / lb |||
 Minute Steak, Family Pack, Imported Beef ||| $11.49 / lb |||
 1st Cut Brisket, Imported Beef ||| $11.49 / lb |||
 Rib Steak, Family Pack, Imported Beef ||| $15.79 / lb |||
@@ -133,7 +134,7 @@ Sushi Nation Crunchy Dragon Roll ||| $15.45 |||
 Sushi Nation Tuna Avocado Roll ||| $8.95 |||
 Sushi Nation 6 Roll Platter ||| $51.95 |||
 Steinberg's Honey Loaf Cake ||| $7.99 |||
-Steinberg's Tie Dye Cookies ||| $7.99 |||
+Steinberg's Tie Dye Cookies ||| $7.99 / lb |||
 Steinberg's Mini Apple Turnovers ||| $7.99 |||
 Schwartz Honey Mustard Onion Dip, Pre-Packaged ||| $4.49 |||
 Schwartz Horseradish Dip, Pre-Packaged ||| $3.99 |||
@@ -155,7 +156,7 @@ Shwartz Box Drinks, Kiwi Strawberry or Fruit Punch, 4 Pack ||| 2 for $3.00 |||
 Heaven & Earth Dig n Lik, All Varieties, 0.6 Oz ||| 10 for $3.00 |||
 Bloomeos Sandwich Cookies, 20 Oz ||| $4.59 |||
 Kedem Tea Biscuits, Except Whole Wheat or Sugar-Free, 4.2 Oz ||| 2 for $1.00 |||
-Simcha Collection 7 Inch Round Clear Tumblers, 20 Pack ||| $0.99 |||
+Simcha Collection 7 Oz Round Clear Tumblers, 20 Pack ||| $0.99 |||
 Simcha Collection 9 Oz 2 Tone Wine Glasses, 5 Pack ||| $5.49 |||
 Plastic House Deli Containers, 16 Oz, 48 Pack ||| $6.49 |||
 Plastic House Deli Containers, 32 Oz, 48 Pack ||| $9.49 |||
@@ -175,8 +176,8 @@ Paskesz Fruzips, All Varieties, 8.5-9 Oz ||| $2.49 |||
 Lieber's Toffee or Sour Juicy Chews, Fruit or Creamy Toffee, 12 Oz ||| $2.79 |||
 Paskesz Honey Candy, 12 Oz ||| $0.99 |||
 Paskesz Chips-a-Plenty Cookies, Chewy or Premium, 13 Oz ||| $5.79 |||
-Cuisine Soft Clear Plates, 7 Inch, 40 Pack ||| $3.29 |||
-Cuisine Soft Clear Plates, 9 Inch, 40 Pack ||| $1.89 |||
+Cuisine Soft Clear Plates, 7 Inch, 40 Pack ||| $1.89 |||
+Cuisine Soft Clear Plates, 9 Inch, 40 Pack ||| $3.29 |||
 Plastico Table Covers, All 66 Inch Wide ||| $5.99 |||
 Pardes Strawberries, 16 Oz ||| $4.99 |||
 Gefen Whip Topping, 16 Oz ||| $1.99 |||
