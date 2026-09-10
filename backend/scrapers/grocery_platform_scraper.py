@@ -168,7 +168,7 @@ def get_all_pages_live(domain: str, location_slug: str, max_pages: int = 10, zip
             driver.quit()
 
 
-def get_page_cached(store_slug: str) -> list[tuple[str, str, str]]:
+def get_page_cached(store_slug: str) -> list[tuple[str, str, str, str, str]]:
     """Load the cached real-data snapshot captured during development.
 
     PLAIN-ENGLISH NOTE (found 2026-08-06): this platform tracks which store
@@ -180,6 +180,19 @@ def get_page_cached(store_slug: str) -> list[tuple[str, str, str]]:
     named "*_specials.txt" were captured AFTER explicitly confirming the
     Lakewood store via the ZIP flow (08701) and are the trustworthy ones —
     prefer those over any older "*_page1.txt" file for the same store.
+
+    UPDATE (2026-09-10): a sample file line can now optionally carry two
+    more "|||"-delimited fields, date_from and date_to, e.g.
+    "Item Name ||| $5.99 / lb ||| ||| 2026-09-14 ||| 2026-09-15". This
+    exists for flyers like Nutmeg's that print more than one validity
+    window on the same page (see nutmeg_scraper.py's "UPDATE (2026-09-10)"
+    note for the real example that needed it: a "Two-Day Super Savings"
+    sub-section valid only Mon/Tue, printed alongside a main meat section
+    valid Wed-Fri). Lines that omit these two fields (or leave them blank)
+    fall back to whatever confirmed_dates/estimated window scrape_store()
+    uses for the rest of the file — this is the ShopRite scraper's
+    per-item-date pattern, adapted for this platform's simpler 3-column
+    format instead of copying ShopRite's full 7-column one wholesale.
     """
     # Sort so the most-recently-dated snapshot (YYYY-MM-DD in the filename)
     # comes first — filenames sort correctly by date lexicographically, so
@@ -199,11 +212,11 @@ def get_page_cached(store_slug: str) -> list[tuple[str, str, str]]:
         if not line:
             continue
         parts = [p.strip() for p in line.split("|||")]
-        while len(parts) < 3:
+        while len(parts) < 5:
             parts.append("")
-        name, price_text, old_text = parts[0], parts[1], parts[2]
+        name, price_text, old_text, date_from, date_to = parts[:5]
         if name:
-            items.append((name, price_text, old_text))
+            items.append((name, price_text, old_text, date_from, date_to))
     return items
 
 
@@ -228,17 +241,26 @@ def scrape_store(
     mode = "LIVE" if is_live else "CACHED SNAPSHOT (dev fallback)"
     print(f"[{store_slug}] Source mode: {mode}")
 
+    # Live-scraped items are plain 3-tuples (no per-item date support —
+    # the live pages don't expose per-item dates any more than they expose
+    # a whole-page one); normalize to the same 5-tuple shape the cached
+    # snapshot format uses, with blank date fields meaning "use the
+    # confirmed_dates/estimated default below".
+    normalized_items = [
+        item if len(item) == 5 else (item[0], item[1], item[2], "", "")
+        for item in all_items
+    ]
+
     # De-duplicate — this platform sometimes renders the same card twice
     # (once for desktop layout, once for mobile), which showed up during
     # testing as exact-duplicate rows.
     seen = set()
     deduped = []
-    for name, price_text, old_text in all_items:
-        key = (name, price_text, old_text)
-        if key in seen:
+    for item in normalized_items:
+        if item in seen:
             continue
-        seen.add(key)
-        deduped.append((name, price_text, old_text))
+        seen.add(item)
+        deduped.append(item)
 
     if confirmed_dates:
         # A real store-published date range, transcribed by hand from an
@@ -246,21 +268,26 @@ def scrape_store(
         # scraper's own comments for provenance) — use it as-is instead
         # of guessing, same spirit as Gourmet Glatt's PDF flyer dates or
         # ShopRite's hand-verified flyer reads.
-        date_from, date_to = confirmed_dates
+        default_date_from, default_date_to = confirmed_dates
     else:
         # Real weekly sale cycle for this platform (confirmed by the founder,
         # who shops there): Wednesday morning through Tuesday night — see
         # base_scraper.py's current_wed_to_tue_window() for why this replaced
         # a generic "7 days from scrape date" estimate.
-        date_from, date_to = current_wed_to_tue_window()
+        default_date_from, default_date_to = current_wed_to_tue_window()
 
     deals = []
-    for name, price_text, old_text in deduped:
+    for name, price_text, old_text, item_date_from, item_date_to in deduped:
         sale_price, unit = parse_standard_price(price_text)
         if sale_price is None:
             continue
         original_price, _ = parse_standard_price(old_text) if old_text else (None, None)
         clean_name = clean_item_name(name)
+        # A per-line date override (see get_page_cached()'s docstring) wins
+        # over the whole-file default — this is what lets one flyer with
+        # more than one validity window (e.g. Nutmeg's Two-Day Super
+        # Savings sub-section) be represented honestly instead of forcing
+        # every item onto a single compromise date range.
         deals.append(
             {
                 "store_slug": store_slug,
@@ -269,8 +296,8 @@ def scrape_store(
                 "sale_price": sale_price,
                 "unit": unit,
                 "category": guess_category(clean_name),
-                "date_valid_from": date_from,
-                "date_valid_to": date_to,
+                "date_valid_from": item_date_from or default_date_from,
+                "date_valid_to": item_date_to or default_date_to,
                 "raw_text": f"{name} | {price_text} | {old_text}",
             }
         )
@@ -287,6 +314,16 @@ def run(
 ) -> list[dict]:
     deals = scrape_store(domain, location_slug, store_slug, confirmed_dates=confirmed_dates)
     print(f"[{store_slug}] Parsed {len(deals)} candidate deals.")
+    # Note deals[0] is no longer a safe stand-in for "the" date range now
+    # that individual lines can override it (see get_page_cached()) — a
+    # few items may legitimately show a different window than the rest.
+    distinct_windows = sorted({(d["date_valid_from"], d["date_valid_to"]) for d in deals})
+    if len(distinct_windows) > 1:
+        print(
+            f"[{store_slug}] NOTE: {len(distinct_windows)} distinct date "
+            f"windows found across items (per-line overrides in the sample "
+            f"file) — {distinct_windows}."
+        )
     if confirmed_dates:
         print(
             f"[{store_slug}] NOTE: dates below are CONFIRMED — transcribed "

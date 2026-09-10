@@ -141,8 +141,16 @@ STORE_META = {
             "founder shared as images. Unlike some other stores' flyers, "
             "Nutmeg's doesn't print a \"was\" price next to any item — just "
             "the sale price — so no comparison price is shown here either, "
-            "rather than guessing one. This confirmed date is tied to that "
-            "specific flyer (2026-09-02); once a newer one replaces it, "
+            "rather than guessing one. This flyer prints three different "
+            "date windows at once — most meat items run 9/9-9/11, a "
+            "\"Two-Day Super Savings\" sub-section runs only Mon 9/14 & "
+            "Tue 9/15 (also marked in those items' own names, and they "
+            "won't even appear on this page until that Monday), and the "
+            "grocery/bakery/produce/household items are unchanged from the "
+            "prior flyer and still run 9/2-9/11 — behind the scenes each "
+            "item tracks its own real date range rather than one blanket "
+            "range for everything. This confirmed date is tied to that "
+            "specific flyer (2026-09-09); once a newer one replaces it, "
             "check that these dates were refreshed too rather than left "
             "stale."
         ),
@@ -1366,6 +1374,13 @@ function render() {{
   }});
 }}
 
+function todayISOString() {{
+  const today = new Date();
+  return today.getFullYear() + "-" +
+    String(today.getMonth() + 1).padStart(2, "0") + "-" +
+    String(today.getDate()).padStart(2, "0");
+}}
+
 // A deal whose own valid-through date has already passed shouldn't keep
 // showing, even if the site hasn't been rebuilt since that date rolled
 // by (export_deals.py already leaves expired deals out of deals.json on
@@ -1374,17 +1389,28 @@ function render() {{
 // sort/compare correctly as strings with no date-parsing needed.
 function isExpiredDeal(d) {{
   if (!d.date_valid_to) return false;
-  const today = new Date();
-  const todayStr = today.getFullYear() + "-" +
-    String(today.getMonth() + 1).padStart(2, "0") + "-" +
-    String(today.getDate()).padStart(2, "0");
-  return d.date_valid_to < todayStr;
+  return d.date_valid_to < todayISOString();
+}}
+
+// The mirror-image gap: a deal whose date_valid_from hasn't arrived yet
+// shouldn't show early either. This matters now that a single store's
+// data can mix items with different start dates on one page (e.g.
+// Nutmeg's "Two-Day Super Savings" sub-section, valid Mon/Tue only,
+// printed on the same flyer as items valid starting days earlier) —
+// export_deals.py intentionally does NOT filter this at export time
+// (see its own comment), so a future-dated deal stays in deals.json and
+// this client-side check is what actually hides it until its day comes,
+// the same way isExpiredDeal above hides it once its day has passed,
+// with no rebuild needed in between.
+function isNotYetStartedDeal(d) {{
+  if (!d.date_valid_from) return false;
+  return d.date_valid_from > todayISOString();
 }}
 
 fetch("deals.json")
   .then(r => {{ if (!r.ok) throw new Error("bad response " + r.status); return r.json(); }})
   .then(data => {{
-    window.ALL_DEALS = data.deals.filter(d => !isExpiredDeal(d));
+    window.ALL_DEALS = data.deals.filter(d => !isExpiredDeal(d) && !isNotYetStartedDeal(d));
     DEALS = CURRENT_STORE_SLUG ? window.ALL_DEALS.filter(d => d.store_slug === CURRENT_STORE_SLUG) : window.ALL_DEALS;
     if (storeSelect) populateSelect(storeSelect, DEALS.map(d => d.store));
     populateCategoryPills(DEALS.map(d => d.category));
@@ -1628,6 +1654,28 @@ def friendly_date_range(d_from: str, d_to: str) -> str:
     return f"{f.strftime('%a')}, {f.strftime('%b')} {f.day} – {t.strftime('%a')}, {t.strftime('%b')} {t.day}"
 
 
+def overall_date_span(deals) -> tuple[str, str, bool]:
+    """(earliest date_valid_from, latest date_valid_to, has_multiple_windows)
+    across a list of deals.
+
+    Added 2026-09-10 alongside per-item date overrides (see
+    grocery_platform_scraper.py) — before that, every deal for a given
+    store always carried the exact same date_valid_from/date_valid_to, so
+    just reading deals[0]'s dates was a safe stand-in for "the" store's
+    sale window. Now that one store's page can legitimately mix items
+    with different windows (e.g. Nutmeg's Two-Day Super Savings
+    sub-section), deals[0] is effectively an arbitrary pick — it happened
+    to show the wrong (grocery-page) window on Nutmeg's banner because
+    export_deals.py sorts by item_name, not by anything date-related. ISO
+    "YYYY-MM-DD" strings compare correctly with plain min()/max(), no
+    date-parsing needed.
+    """
+    froms = [d["date_valid_from"] for d in deals if d["date_valid_from"]]
+    tos = [d["date_valid_to"] for d in deals if d["date_valid_to"]]
+    has_multiple = len({(d["date_valid_from"], d["date_valid_to"]) for d in deals}) > 1
+    return min(froms), max(tos), has_multiple
+
+
 def render_date_banner(store_slug, deals):
     meta = STORE_META[store_slug]
     if not deals:
@@ -1636,12 +1684,17 @@ def render_date_banner(store_slug, deals):
           <span class="big">No deals currently available</span>
           <span>{meta['note']}</span>
         </div>"""
-    d_from, d_to = deals[0]["date_valid_from"], deals[0]["date_valid_to"]
+    d_from, d_to, has_multiple = overall_date_span(deals)
     cls = "confirmed" if meta["dates_confirmed"] else "estimated"
     label = "Confirmed sale dates" if meta["dates_confirmed"] else "Estimated sale window"
+    # When a store's items span more than one real window, the headline
+    # shows the full outer range (earliest start to latest end) and flags
+    # that it isn't one uniform window — the specific breakdown belongs in
+    # this store's own STORE_META note below, not duplicated here.
+    span_note = " (multiple date windows this week — see note below)" if has_multiple else ""
     return f"""
     <div class="date-banner {cls}">
-      <span class="big">Updated {friendly_date(date.today())} &middot; {label}: {friendly_date_range(d_from, d_to)}</span>
+      <span class="big">Updated {friendly_date(date.today())} &middot; {label}: {friendly_date_range(d_from, d_to)}{span_note}</span>
       <span>{meta['note']}</span>
     </div>"""
 
@@ -1699,7 +1752,7 @@ def build_homepage(all_deals, stores):
         meta = STORE_META[slug]
         initial = s["name"][0].upper()
         if store_deals:
-            d_from, d_to = store_deals[0]["date_valid_from"], store_deals[0]["date_valid_to"]
+            d_from, d_to, _has_multiple = overall_date_span(store_deals)
             cls = "confirmed" if meta["dates_confirmed"] else "estimated"
             date_line = f'<span class="d {cls}">{friendly_date_range(d_from, d_to)}</span>'
         else:
