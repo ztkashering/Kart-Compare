@@ -36,6 +36,15 @@ def main():
     # date_valid_to's same format. This only takes effect on days this
     # script actually runs, though — see build_site.py's matching
     # client-side filter for what covers the gap between rebuilds.
+    #
+    # Deliberately NOT filtering on date_valid_from here (added
+    # 2026-09-10, alongside the first sample data with a future start
+    # date — Nutmeg's Two-Day-only items, valid starting a few days after
+    # this could run): a not-yet-started deal needs to stay IN deals.json
+    # so it can appear automatically once its date arrives, without
+    # anyone having to remember to rerun this script on that exact day.
+    # build_site.py's client-side isNotYetStartedDeal() is what actually
+    # keeps it hidden in the meantime.
     total_before = conn.execute("select count(*) from deals").fetchone()[0]
     deals = [
         dict(r)

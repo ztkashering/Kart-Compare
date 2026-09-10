@@ -466,7 +466,7 @@ a { color: inherit; }
     <div class="page-header">
       <div class="wrap">
         <h1>Kosher West deals</h1>
-        <div class="sub">0 current specials &middot; an estimated sale window &middot; <span class="muted-part">updated Sep 7, 2026</span></div>
+        <div class="sub">0 current specials &middot; an estimated sale window &middot; <span class="muted-part">updated Sep 10, 2026</span></div>
       </div>
     </div>
 <div class="wrap">
@@ -1033,6 +1033,13 @@ function render() {
   });
 }
 
+function todayISOString() {
+  const today = new Date();
+  return today.getFullYear() + "-" +
+    String(today.getMonth() + 1).padStart(2, "0") + "-" +
+    String(today.getDate()).padStart(2, "0");
+}
+
 // A deal whose own valid-through date has already passed shouldn't keep
 // showing, even if the site hasn't been rebuilt since that date rolled
 // by (export_deals.py already leaves expired deals out of deals.json on
@@ -1041,17 +1048,28 @@ function render() {
 // sort/compare correctly as strings with no date-parsing needed.
 function isExpiredDeal(d) {
   if (!d.date_valid_to) return false;
-  const today = new Date();
-  const todayStr = today.getFullYear() + "-" +
-    String(today.getMonth() + 1).padStart(2, "0") + "-" +
-    String(today.getDate()).padStart(2, "0");
-  return d.date_valid_to < todayStr;
+  return d.date_valid_to < todayISOString();
+}
+
+// The mirror-image gap: a deal whose date_valid_from hasn't arrived yet
+// shouldn't show early either. This matters now that a single store's
+// data can mix items with different start dates on one page (e.g.
+// Nutmeg's "Two-Day Super Savings" sub-section, valid Mon/Tue only,
+// printed on the same flyer as items valid starting days earlier) —
+// export_deals.py intentionally does NOT filter this at export time
+// (see its own comment), so a future-dated deal stays in deals.json and
+// this client-side check is what actually hides it until its day comes,
+// the same way isExpiredDeal above hides it once its day has passed,
+// with no rebuild needed in between.
+function isNotYetStartedDeal(d) {
+  if (!d.date_valid_from) return false;
+  return d.date_valid_from > todayISOString();
 }
 
 fetch("deals.json")
   .then(r => { if (!r.ok) throw new Error("bad response " + r.status); return r.json(); })
   .then(data => {
-    window.ALL_DEALS = data.deals.filter(d => !isExpiredDeal(d));
+    window.ALL_DEALS = data.deals.filter(d => !isExpiredDeal(d) && !isNotYetStartedDeal(d));
     DEALS = CURRENT_STORE_SLUG ? window.ALL_DEALS.filter(d => d.store_slug === CURRENT_STORE_SLUG) : window.ALL_DEALS;
     if (storeSelect) populateSelect(storeSelect, DEALS.map(d => d.store));
     populateCategoryPills(DEALS.map(d => d.category));

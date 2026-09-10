@@ -261,6 +261,15 @@ STRONG_CATEGORY_KEYWORDS = {
         # Cold Cups" didn't match "beverage cup" or "hot cup" literally
         # and was falling through to Pantry.
         "cold cup",
+        # "tumbler"/"dixie cup" added 2026-09-10 (Nutmeg real-flyer
+        # audit): "Dining Collection 10 Oz Tumblers, 20 Ct" and
+        # "Sprinkles Dixie Cups, 12 Ct" are both disposable party
+        # cups/tumblers, same department as the other disposables above,
+        # but neither literally contains "cup" in a form the existing
+        # keywords catch. Also fixes "Simcha Collection 7 Oz Round Clear
+        # Tumblers, 20 Pack" (a Gourmet Glatt item transcribed earlier
+        # this session) — it had the same gap and was landing in Pantry.
+        "tumbler", "dixie cup",
     ],
     "Health & Beauty": [
         "toothpaste", "shampoo", "vitamin", "sunscreen", "deodorant",
@@ -455,6 +464,16 @@ BRAND_OVERRIDES = {
     # Rancher items already land correctly when they also contain a strong
     # keyword like "ropes".)
     "jolly rancher": "Candy & Snacks",
+    # Klik is exclusively a chocolate-coin/chocolate-bag candy brand —
+    # found 2026-09-10 auditing Nutmeg's real flyer: "Klik Bags, 2.64 Oz"
+    # doesn't literally say "chocolate" (unlike this brand's other two
+    # items already in the database, which do) and was landing in Pantry.
+    "klik": "Candy & Snacks",
+    # Elite Pesek Zman is a chocolate wafer candy bar — found 2026-09-10
+    # auditing Nutmeg's real flyer: "Elite Mini Pesek Zman/Mini Snap,
+    # 14.1 Oz" has no word this file's keywords recognize as candy
+    # ("snap"/"snack" don't literally appear) and was landing in Pantry.
+    "pesek zman": "Candy & Snacks",
 }
 
 
