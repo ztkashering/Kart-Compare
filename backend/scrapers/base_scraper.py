@@ -150,6 +150,10 @@ STRONG_CATEGORY_KEYWORDS = {
         "shoulder", "kielbasa", "hot dog",
         "hotdog", "cutlets", "ham", "bratwurst", "tongue", "poultry",
         "roast", "flat iron", "cholent melt away", "lamb", "chuck", "neck bones",
+        "cheek",
+        # "cheek" added 2026-09-14 auditing Seasons' real flyer — "Imitation
+        # Cheek" (a real butcher-counter cut, no other qualifying word in
+        # the name) was landing in Pantry.
         # "lamb" added 2026-09-02 auditing Nutmeg's real flyer — "Lamb
         # Stew" had no other qualifying word ("Shoulder Lamb Chops" was
         # already caught via "shoulder") and was landing in Pantry.
@@ -188,7 +192,10 @@ STRONG_CATEGORY_KEYWORDS = {
     ],
     "Fish": [
         "fish", "salmon", "tuna", "flounder", "sole", "lox", "tilapia",
-        "gefilte",
+        "gefilte", "herring",
+        # "herring" added 2026-09-14 auditing Seasons' real flyer —
+        # "Honey Mustard Herring, 8 Oz" had no matching keyword at all
+        # (herring isn't fish/salmon/tuna/etc.) and was landing in Pantry.
     ],
     "Dairy": [
         "cheese", "yogurt", "milk", "leben", "cream cheese", "butter",
@@ -338,7 +345,20 @@ _KEYWORD_COLLISION_GUARDS = {
     # shelf-stable granola.
     "berry": ["berry & cherry no color italia", "cranberry pecan"],
     "cherry": ["berry & cherry no color italia"],
-    "fruit": ["fruity pebbles", "fruit by the foot"],
+    "fruit": [
+        "fruity pebbles", "fruit by the foot",
+        # "fruity or cocoa pebbles" added 2026-09-14: this exact Seasons
+        # combo-flavor box name ("Post Fruity or Cocoa Pebbles, 11 Oz")
+        # doesn't contain the contiguous phrase "fruity pebbles" (the
+        # word "or" sits in between), so the existing guard above missed
+        # it and it was still landing in Produce via the bare "fruit"
+        # substring inside "Fruity".
+        "fruity or cocoa pebbles",
+        # "fruit spread" added 2026-09-14: a real Seasons item
+        # ("Tuscanini Apricot Fruit Spread, 11.64 Oz") is a jam, not
+        # fresh fruit.
+        "fruit spread",
+    ],
     "pepper": ["tortinkles spicy pepper"],
     # "steak" (Meat & Deli) vs. "tuna steak"/"salmon steak" — Meat & Deli
     # is checked before Fish, so without this, a real fish item would
@@ -346,6 +366,13 @@ _KEYWORD_COLLISION_GUARDS = {
     # Found 2026-09-06 via "BLU Fish Market Ahi Tuna Steaks, Family Pack"
     # landing in Meat & Deli instead of Fish.
     "steak": ["tuna steak", "salmon steak"],
+    # "roast" the butcher-counter cut (Meat & Deli) vs. "roasted" as a
+    # cooking-method descriptor on a real produce/deli side — found
+    # 2026-09-14 via "Roasted Sweet Potato" (a real Seasons deli item)
+    # landing in Meat & Deli off the bare "roast" substring inside
+    # "Roasted". Narrow phrases only — a real cut like "Premium Shoulder
+    # Roast" must keep matching normally.
+    "roast": ["roasted sweet potato", "roasted potato"],
     # " tea" the beverage vs. disposable "tea spoons" (cutlery, not a
     # drink) — found 2026-08-10 via "Deluxe Clear Tea Spoons" landing
     # in Beverages instead of Household.
@@ -380,8 +407,32 @@ _KEYWORD_COLLISION_GUARDS = {
     # Weak Produce "tomato"/"potato"/"dill" colliding with condiments,
     # frozen sides, and pickled/jarred goods — none of these are fresh
     # produce.
-    "tomato": ["tomato ketchup", "tomato sauce", "tomato flavor"],
-    "potato": ["crinkle cut potato", "potato triangles"],
+    "tomato": [
+        "tomato ketchup", "tomato sauce", "tomato flavor",
+        # "tomato paste" added 2026-09-14: a real Seasons item
+        # ("Tuscanini Tomato Paste Tube, 7.05 Oz") is a shelf-stable
+        # condiment, not fresh produce.
+        "tomato paste",
+    ],
+    "potato": [
+        "crinkle cut potato", "potato triangles",
+        # "roasted (sweet) potato" added 2026-09-14: a real Seasons deli
+        # item ("Roasted Sweet Potato", listed under that flyer's own
+        # "Deli" header alongside Sesame Chicken and Pasta Salad) is a
+        # prepared cooked side dish, not fresh produce — the weak "potato"
+        # keyword was wrongly routing it to Produce.
+        "roasted sweet potato", "roasted potato",
+        # "sweet potato roll" added 2026-09-14: a real Seasons sushi-
+        # counter item — see the "roll" guard below for the same fix on
+        # that keyword. Without this too, it still fell through to
+        # Produce via the bare "potato" substring even after the "roll"
+        # guard stopped it from landing in Bakery.
+        "sweet potato roll",
+    ],
+    # "sour cream & onion" the chip/cracker flavor descriptor vs. "sour
+    # cream" the actual dairy product — found 2026-09-14 via "B&B Sour
+    # Cream & Onion Cracker Crisps, 10.6 Oz" landing in Dairy.
+    "sour cream": ["sour cream & onion", "sour cream and onion"],
     "dill": ["kosher dill", "dill gherkin"],
     # 2026-08-12 audit fixes below (second pass, prompted by the founder
     # flagging categories were "still bad" after the first pass):
@@ -407,6 +458,14 @@ _KEYWORD_COLLISION_GUARDS = {
     "roll": [
         "dragon roll", "tropical roll", "vegetable platter", "sushi roll",
         "rolls winkie",
+        # "sweet potato roll" added 2026-09-14: a real Seasons sushi-counter
+        # item (listed under that flyer's own "Sushi" header) whose name
+        # doesn't literally contain "sushi", so the existing "sushi roll"
+        # guard didn't catch it and it was landing in Bakery via the bare
+        # "roll" keyword. Kept as the exact full phrase rather than a
+        # bare "potato roll", since a plain potato dinner roll IS a real
+        # bakery bread item and shouldn't be excluded.
+        "sweet potato roll",
     ],
     # "pita" the bread (pita bread) vs. "pita chips" — a cracker/snack,
     # not a bakery item. Found 2026-08-20 via "Stacy's Pita Chips, Simply
