@@ -128,10 +128,15 @@ STORE_META = {
         "note": (
             "Confirmed directly from this week's real flyer, which the "
             "founder shared as images and were read by hand — this store's "
-            "flyer is a designed image this site can't OCR on its own. This "
-            "confirmed date is tied to that specific flyer (2026-09-06); "
-            "once a newer one replaces it, check that these dates were "
-            "refreshed too rather than left stale."
+            "flyer is a designed image this site can't OCR on its own. "
+            "This flyer also has two small day-specific sections layered "
+            "on top of its main 9/13-9/18 window — \"Monday & Tuesday "
+            "Bakery Deals\" (valid only 9/14-9/15) and \"Shabbos Specials: "
+            "Thursday & Friday\" (valid only 9/17-9/18) — each tagged with "
+            "its own real dates behind the scenes and marked in its own "
+            "item names too. This confirmed date is tied to that specific "
+            "flyer (2026-09-13); once a newer one replaces it, check that "
+            "these dates were refreshed too rather than left stale."
         ),
     },
     "nutmeg": {

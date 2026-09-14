@@ -32,6 +32,26 @@ Flyer prints "PRICES VALID 9/6/26 - 9/11/26" (Sunday through Erev Rosh
 Hashana Friday) — same Sunday-to-Friday shape as the Aug 30 flyer, so
 still not the Wednesday-to-Tuesday default.
 
+UPDATE (2026-09-14): refreshed again with the following week's flyer
+(post-Rosh Hashana), two images this time. 70 items transcribed into
+sample_data/seasons_2026-09-13_specials.txt. Flyer prints "PRICES VALID
+9/13/26 - 9/18/26" (Sunday through Erev Shabbos Friday), same Sunday-to-
+Friday shape as the last two flyers.
+
+This flyer also has two small day-specific sub-boxes layered on top of
+the main week-long window, the same pattern Nutmeg's flyer needed a
+per-item date override for (see nutmeg_scraper.py's "UPDATE (2026-09-10)"
+note for the mechanism itself, reused here as-is):
+  - "Monday & Tuesday Bakery Deals" (4 items) — valid only Mon 9/14 &
+    Tue 9/15, tagged 2026-09-14/2026-09-15 in the sample file.
+  - "Shabbos Specials: Thursday & Friday" (4 items) — valid only Thu
+    9/17 & Fri 9/18, tagged 2026-09-17/2026-09-18 in the sample file.
+Both sets of items also carry a plain-language qualifier in their own
+name ("(Monday & Tuesday Bakery Deal)" / "(Shabbos Special, Thursday &
+Friday)") as a second, visible safeguard, same reasoning as Nutmeg's
+Two-Day items. Everything else on this flyer falls back to
+CONFIRMED_DATES below (the full 9/13-9/18 window).
+
 THIS OVERRIDE IS TIED TO THAT ONE SNAPSHOT, NOT PERMANENT: once this
 week's sale ends, CONFIRMED_DATES will be describing a stale flyer as if
 it were still current. Whoever refreshes Seasons next (a live scrape, or
@@ -56,10 +76,12 @@ DOMAIN = "seasonskosher.com"
 LOCATION_SLUG = "Lakewood-NJ"
 STORE_SLUG = "seasons"
 
-# See the "UPDATE (2026-09-06)" note above — real dates transcribed
-# directly from the store's own printed flyer, not guessed. Set to None
-# to go back to the estimated Wednesday-to-Tuesday window.
-CONFIRMED_DATES = ("2026-09-06", "2026-09-11")
+# See the "UPDATE (2026-09-14)" note above — real dates transcribed
+# directly from the store's own printed flyer, not guessed. This is the
+# default for any sample-file line without its own per-item date
+# override (the two day-specific sub-boxes override it individually).
+# Set to None to go back to the estimated Wednesday-to-Tuesday window.
+CONFIRMED_DATES = ("2026-09-13", "2026-09-18")
 
 if __name__ == "__main__":
     run(DOMAIN, LOCATION_SLUG, STORE_SLUG, confirmed_dates=CONFIRMED_DATES)
