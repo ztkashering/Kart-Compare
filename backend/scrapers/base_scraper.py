@@ -150,10 +150,18 @@ STRONG_CATEGORY_KEYWORDS = {
         "shoulder", "kielbasa", "hot dog",
         "hotdog", "cutlets", "ham", "bratwurst", "tongue", "poultry",
         "roast", "flat iron", "cholent melt away", "lamb", "chuck", "neck bones",
-        "cheek",
+        "cheek", "duck", "shank",
         # "cheek" added 2026-09-14 auditing Seasons' real flyer — "Imitation
         # Cheek" (a real butcher-counter cut, no other qualifying word in
         # the name) was landing in Pantry.
+        # "duck" added 2026-09-16 auditing Nutmeg's real flyer — "Whole
+        # Duck" (Marvid-Hisachdus) had no qualifying word and was landing
+        # in Pantry. Guarded below against "duck sauce" — three real
+        # Pantry condiment items already in the database (Gefen/Gold's
+        # Duck Sauce variants) would otherwise wrongly flip to Meat & Deli.
+        # "shank" added 2026-09-16 same audit — "Shank Kolichel" (a real
+        # butcher-counter cut, store-specific "kolichel" term isn't a
+        # keyword) was landing in Pantry.
         # "lamb" added 2026-09-02 auditing Nutmeg's real flyer — "Lamb
         # Stew" had no other qualifying word ("Shoulder Lamb Chops" was
         # already caught via "shoulder") and was landing in Pantry.
@@ -321,6 +329,12 @@ CATEGORY_KEYWORDS = {**STRONG_CATEGORY_KEYWORDS, **WEAK_CATEGORY_KEYWORDS}
 # behavior is untouched.
 _KEYWORD_COLLISION_GUARDS = {
     "turkey": ["turkey hill"],
+    # "duck" the real butcher-counter poultry item vs. "duck sauce" the
+    # condiment — found 2026-09-16 adding "duck" as a Meat & Deli keyword
+    # for Nutmeg's "Whole Duck"; without this, three existing Pantry
+    # items (Gefen Duck Sauce, Gefen/Gold's Sweet & Sour Duck Sauce)
+    # would wrongly flip to Meat & Deli.
+    "duck": ["duck sauce"],
     # "hammered" added 2026-09-06: a disposable-plate finish/texture
     # ("13 Inch Chargers with Gold Rim, Except Hammered"), not meat.
     "ham": ["shampoo", "hamburger", "graham", "hammered"],
@@ -338,13 +352,45 @@ _KEYWORD_COLLISION_GUARDS = {
     # Aisle 9 items. None of these are actually fresh produce.
     "mango": ["dried mango"],
     "lemon": ["lemon sparkling water"],
+    # "cookie" the snack (Candy & Snacks) vs. "cookie sheet" the baking
+    # pan (Household) — found 2026-09-16 via "Cookie Sheet, 2 Pk" landing
+    # in Candy & Snacks.
+    "cookie": ["cookie sheet"],
+    # "garlic"/"onion" the fresh produce vs. prepared dips, seasoning
+    # blends, and frozen convenience cubes that merely use them as a
+    # flavor name — found 2026-09-16 auditing Nutmeg's real flyer.
+    # "garlic cubes" (any brand) is a frozen convenience item, never
+    # fresh whole garlic — same category as the already-guarded B'Gan
+    # version (see BRAND_OVERRIDES below), just without a brand to key
+    # off of here.
+    "garlic": ["garlic cubes", "garlic/onion paprika"],
+    "onion": [
+        "onion tempura", "onion ring", "onion soup", "onion garlic",
+        "onion dip", "onion dips", "onion to go", "garlic/onion paprika",
+    ],
+    # "eggplant" the fresh vegetable vs. prepared eggplant dips/spreads.
+    "eggplant": ["eggplant dip", "eggplant/olive spread", "grilled eggplant"],
     # "berry" (from weak Produce "berry"/"berries") vs. "cranberry" as a
     # flavor descriptor on packaged granola — not fresh produce. Found
     # 2026-08-20 via "Klein's Naturals Granola Cranberry Pecan" landing in
     # Produce; falls back to Pantry once stripped, which is correct for a
     # shelf-stable granola.
-    "berry": ["berry & cherry no color italia", "cranberry pecan"],
-    "cherry": ["berry & cherry no color italia"],
+    "berry": [
+        "berry & cherry no color italia", "cranberry pecan",
+        # "strawberry dessert" added 2026-09-16 alongside the "strawberr"
+        # guard below — "berry" is a separate weak-tier keyword that also
+        # matches as a bare substring of "strawberry", so both keywords
+        # needed the same guard phrase or the item still fell through to
+        # Produce via whichever one wasn't guarded.
+        "strawberry dessert",
+    ],
+    "cherry": [
+        "berry & cherry no color italia",
+        # "cherry pie filling" added 2026-09-16: a real Nutmeg item
+        # ("Gefen Cherry Pie Filling, Reg/Light") is a canned condiment,
+        # not fresh cherries.
+        "cherry pie filling",
+    ],
     "fruit": [
         "fruity pebbles", "fruit by the foot",
         # "fruity or cocoa pebbles" added 2026-09-14: this exact Seasons
@@ -358,7 +404,14 @@ _KEYWORD_COLLISION_GUARDS = {
         # ("Tuscanini Apricot Fruit Spread, 11.64 Oz") is a jam, not
         # fresh fruit.
         "fruit spread",
+        # "fruit strip" added 2026-09-16: a real Nutmeg item ("Molly's
+        # Fruit Strip") is a fruit-rollup-style snack, not fresh fruit.
+        "fruit strip",
     ],
+    # "strawberr" (weak Produce) vs. a prepared bakery dessert that
+    # merely uses it as a flavor name — found 2026-09-16 via "Nutmeg
+    # Strawberry Dessert" (no other qualifying word) landing in Produce.
+    "strawberr": ["strawberry dessert"],
     "pepper": ["tortinkles spicy pepper"],
     # "steak" (Meat & Deli) vs. "tuna steak"/"salmon steak" — Meat & Deli
     # is checked before Fish, so without this, a real fish item would
@@ -377,11 +430,10 @@ _KEYWORD_COLLISION_GUARDS = {
     # drink) — found 2026-08-10 via "Deluxe Clear Tea Spoons" landing
     # in Beverages instead of Household.
     " tea": ["tea spoon", "tea spoons", "teaspoon"],
-    # "onion" the fresh vegetable vs. prepared appetizers/mixes/snacks
-    # that happen to be onion-flavored — not fresh produce. Expanded
-    # 2026-08-12 after a full-site audit found onion soup mix and
-    # onion-flavored corn snacks tagged Produce.
-    "onion": ["onion tempura", "onion ring", "onion soup", "onion garlic"],
+    # (the "onion" guard entry lives earlier in this dict now, merged
+    # with the 2026-09-16 additions — see there for the full list and
+    # both dated notes; a duplicate dict key here would have silently
+    # overwritten it.)
     # 2026-08-12 audit fixes below — a full pass over every category on
     # the live site turned up real miscategorizations, not edge cases:
     # "nugget" the chicken/meat product vs. corn/bread "nuggets" snacks.
@@ -428,6 +480,10 @@ _KEYWORD_COLLISION_GUARDS = {
         # Produce via the bare "potato" substring even after the "roll"
         # guard stopped it from landing in Bakery.
         "sweet potato roll",
+        # "potato knish(es)" added 2026-09-16: a real Nutmeg item ("Meal
+        # Mart Potato Knishes, 48 Oz") is a frozen/prepared item, not
+        # fresh potatoes.
+        "potato knish", "potato knishes",
     ],
     # "sour cream & onion" the chip/cracker flavor descriptor vs. "sour
     # cream" the actual dairy product — found 2026-09-14 via "B&B Sour
@@ -533,6 +589,10 @@ BRAND_OVERRIDES = {
     # 14.1 Oz" has no word this file's keywords recognize as candy
     # ("snap"/"snack" don't literally appear) and was landing in Pantry.
     "pesek zman": "Candy & Snacks",
+    # Mr Clean is exclusively a household cleaning brand — found
+    # 2026-09-16 auditing Nutmeg's real flyer: "Mr Clean 2X Lemon, 3 Qt"
+    # was landing in Produce off the "lemon" scent name.
+    "mr clean": "Household",
 }
 
 
