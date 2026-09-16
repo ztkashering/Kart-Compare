@@ -66,6 +66,28 @@ should be hidden automatically rather than showing early; the in-name
 qualifier stays anyway in case that ever needs to be double-checked at a
 glance.
 
+UPDATE (2026-09-16): refreshed with an entirely new flyer, four images
+again but a different layout this time — one Meat Specials page, then
+"Yom Tov Blitz" / produce-bakery-deli-household / "Yom Tov Specials"
+pages for the Sukkot holiday period. 126 items transcribed into
+sample_data/nutmeg_2026-09-16_specials.txt (33 meat, 93 everything else).
+Two date windows this time, not three:
+  1. The meat page prints "Weekly Specials 09.16.2026-09.20.2026"
+     (Wed-Sun) — this is CONFIRMED_DATES below, the default for any line
+     without its own override.
+  2. Every other page prints "9.13.26-9.25.26" (a 13-day Sukkot window)
+     — tagged per-line with that explicit range in the sample file.
+This flyer also repeats five identical items (same name, same price)
+across two different pages/sections of itself — Plush Tissues 10pk, Jet
+Foil 9x13 Pans 25ct, Kitchen Collection 400 Cutlery, Cookie Sheet 2pk,
+and "Combo, Starting At" — each was only entered once rather than as a
+duplicate row, same reasoning as the merged Two-Day items last time.
+Nearly the entire item list turned over from the previous flyer (this
+store doesn't repeat a specials list week to week), so the previous
+snapshot's items were NOT carried forward — they're simply not on this
+flyer, and carrying them forward would mean asserting they're still on
+sale when the store's own new flyer doesn't say so.
+
 THIS OVERRIDE IS TIED TO THAT ONE SNAPSHOT, NOT PERMANENT — see
 seasons_scraper.py's identical note for what to do once this week's sale
 ends. Same applies to build_site.py's STORE_META["nutmeg"].
@@ -81,13 +103,13 @@ DOMAIN = "nutmegkoshermarket.com"
 LOCATION_SLUG = "Lakewood-NJ"
 STORE_SLUG = "nutmeg"
 
-# See the "UPDATE (2026-09-10)" note above — real dates transcribed
+# See the "UPDATE (2026-09-16)" note above — real dates transcribed
 # directly from the store's own printed flyer. This is the default window
 # used for any sample-file line that doesn't specify its own per-item
-# dates (most of the meat page); the Two-Day and unchanged-grocery items
-# override this individually. Set to None to go back to the estimated
-# Wednesday-to-Tuesday window.
-CONFIRMED_DATES = ("2026-09-09", "2026-09-11")
+# dates (the meat page); the longer Sukkot-window items override this
+# individually. Set to None to go back to the estimated Wednesday-to-
+# Tuesday window.
+CONFIRMED_DATES = ("2026-09-16", "2026-09-20")
 
 if __name__ == "__main__":
     run(DOMAIN, LOCATION_SLUG, STORE_SLUG, confirmed_dates=CONFIRMED_DATES)
