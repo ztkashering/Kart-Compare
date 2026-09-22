@@ -52,6 +52,26 @@ Friday)") as a second, visible safeguard, same reasoning as Nutmeg's
 Two-Day items. Everything else on this flyer falls back to
 CONFIRMED_DATES below (the full 9/13-9/18 window).
 
+UPDATE (2026-09-22): refreshed with the following week's flyer (Yom
+Kippur week). This one is a genuine re-run, not a fresh transcription —
+compared line by line against the 9/13 flyer and every single item name,
+price, and savings amount is identical, just printed under a new "PRICES
+VALID 9/20/26 - 9/25/26" banner. So sample_data/seasons_2026-09-20_specials.txt
+is the same 70 items as the 9/13 file, with only the two day-specific
+sub-windows re-dated to fall inside this week: "Monday & Tuesday Bakery
+Deals" -> 2026-09-21/2026-09-22, "Shabbos Specials: Thursday & Friday" ->
+2026-09-24/2026-09-25.
+
+ONE REAL WRINKLE WORTH FLAGGING: this flyer's own printed hours table
+shows the store CLOSED all day Monday 9/21 for Yom Kippur (Sunday 9/20 is
+"Erev Yom Kippur," open only 7am-2pm) — yet the "Monday & Tuesday Bakery
+Deals" box is carried over unchanged from last week, still labeled
+"Monday & Tuesday." Rather than silently reinterpret that as "really just
+Tuesday," this transcribes the box's own printed range as-is (9/21-9/22)
+since that's what the flyer actually says; the founder should know Monday
+is a closure day, so in practice that box is only usable on Tuesday 9/22
+this particular week.
+
 THIS OVERRIDE IS TIED TO THAT ONE SNAPSHOT, NOT PERMANENT: once this
 week's sale ends, CONFIRMED_DATES will be describing a stale flyer as if
 it were still current. Whoever refreshes Seasons next (a live scrape, or
@@ -76,12 +96,12 @@ DOMAIN = "seasonskosher.com"
 LOCATION_SLUG = "Lakewood-NJ"
 STORE_SLUG = "seasons"
 
-# See the "UPDATE (2026-09-14)" note above — real dates transcribed
+# See the "UPDATE (2026-09-22)" note above — real dates transcribed
 # directly from the store's own printed flyer, not guessed. This is the
 # default for any sample-file line without its own per-item date
 # override (the two day-specific sub-boxes override it individually).
 # Set to None to go back to the estimated Wednesday-to-Tuesday window.
-CONFIRMED_DATES = ("2026-09-13", "2026-09-18")
+CONFIRMED_DATES = ("2026-09-20", "2026-09-25")
 
 if __name__ == "__main__":
     run(DOMAIN, LOCATION_SLUG, STORE_SLUG, confirmed_dates=CONFIRMED_DATES)
