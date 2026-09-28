@@ -150,7 +150,13 @@ STRONG_CATEGORY_KEYWORDS = {
         "shoulder", "kielbasa", "hot dog",
         "hotdog", "cutlets", "ham", "bratwurst", "tongue", "poultry",
         "roast", "flat iron", "cholent melt away", "lamb", "chuck", "neck bones",
-        "cheek", "duck", "shank",
+        "cheek", "duck", "shank", "liver",
+        # "liver" added 2026-09-28 auditing Seasons' real flyer — "Liver
+        # Combo" had no other qualifying word and was landing in Pantry.
+        # (The one existing DB item with "liver" — "Meal Mart Chopped
+        # Liver, Beef or Chicken" — already matched via "beef"/"chicken"
+        # anyway, so this doesn't change its category, just adds coverage
+        # for names that don't also say the animal.)
         # "cheek" added 2026-09-14 auditing Seasons' real flyer — "Imitation
         # Cheek" (a real butcher-counter cut, no other qualifying word in
         # the name) was landing in Pantry.
@@ -213,7 +219,10 @@ STRONG_CATEGORY_KEYWORDS = {
     "Bakery": [
         "bread", "bagel", "cake", "cupcake", "roll", "danish",
         "babka", "babkelach", "challah", "donut", "kichel", "biscuit", "pita",
-        "farfel", "matzo", "mezonos", "pie crust", "pastry", "bun",
+        "farfel", "matzo", "mezonos", "pie crust", "pastry", "bun", "baguette",
+        # "baguette" added 2026-09-28 auditing Seasons' real flyer —
+        # "22 Inch Italian Baguette" had no matching keyword ("bread"
+        # doesn't appear literally) and was landing in Pantry.
         # "babkelach" added 2026-08-30 (Nutmeg real-flyer audit): "Pas
         # Yisroel Chocolate Babkelach" doesn't literally contain "babka"
         # (different spelling), so it was landing in Candy & Snacks via
@@ -367,7 +376,19 @@ _KEYWORD_COLLISION_GUARDS = {
     "onion": [
         "onion tempura", "onion ring", "onion soup", "onion garlic",
         "onion dip", "onion dips", "onion to go", "garlic/onion paprika",
+        # "fried onions" added 2026-09-28: a real Seasons item ("Paskesz
+        # Crispy Fried Onions, 5.25 Oz") is a shelf-stable garnish, not
+        # fresh produce.
+        "fried onions",
     ],
+    # "avocado" the fresh fruit vs. "avocado oil" the cooking oil.
+    "avocado": ["avocado oil"],
+    # "mushroom" the fresh vegetable vs. a prepared soup that merely uses
+    # it as an ingredient name.
+    "mushroom": ["mushroom barley soup"],
+    # "biscuit" the Bakery product vs. a jarred spread (like peanut
+    # butter) that merely uses "biscuit" in its brand/flavor name.
+    "biscuit": ["biscuit spread"],
     # "eggplant" the fresh vegetable vs. prepared eggplant dips/spreads.
     "eggplant": ["eggplant dip", "eggplant/olive spread", "grilled eggplant"],
     # "berry" (from weak Produce "berry"/"berries") vs. "cranberry" as a
@@ -407,6 +428,9 @@ _KEYWORD_COLLISION_GUARDS = {
         # "fruit strip" added 2026-09-16: a real Nutmeg item ("Molly's
         # Fruit Strip") is a fruit-rollup-style snack, not fresh fruit.
         "fruit strip",
+        # "fruit gushers" added 2026-09-28: a real Seasons item ("Betty
+        # Crocker Fruit Gushers Value Pack") is a candy, not fresh fruit.
+        "fruit gushers",
     ],
     # "strawberr" (weak Produce) vs. a prepared bakery dessert that
     # merely uses it as a flavor name — found 2026-09-16 via "Nutmeg
@@ -484,6 +508,11 @@ _KEYWORD_COLLISION_GUARDS = {
         # Mart Potato Knishes, 48 Oz") is a frozen/prepared item, not
         # fresh potatoes.
         "potato knish", "potato knishes",
+        # "mashed potato" added 2026-09-28: a real Seasons deli item
+        # ("Mashed Potatoes", listed under that flyer's own "Deli" header)
+        # is a prepared cooked side dish, same pattern as "roasted sweet
+        # potato" above.
+        "mashed potato",
     ],
     # "sour cream & onion" the chip/cracker flavor descriptor vs. "sour
     # cream" the actual dairy product — found 2026-09-14 via "B&B Sour
@@ -522,7 +551,16 @@ _KEYWORD_COLLISION_GUARDS = {
         # bare "potato roll", since a plain potato dinner roll IS a real
         # bakery bread item and shouldn't be excluded.
         "sweet potato roll",
+        # "vegetable roll"/"tempura remix roll" added 2026-09-28: two more
+        # real Seasons sushi-counter items (same "Sushi" header pattern
+        # as "sweet potato roll" above) that don't contain "sushi" either.
+        "vegetable roll", "tempura remix roll",
     ],
+    # "vegetable" the weak Produce keyword vs. "Vegetable Roll" — once
+    # guarded off the strong "roll" keyword above, this fell straight
+    # through to Produce via the bare "vegetable" substring instead
+    # (a sushi roll is neither bakery bread nor fresh produce).
+    "vegetable": ["vegetable roll"],
     # "pita" the bread (pita bread) vs. "pita chips" — a cracker/snack,
     # not a bakery item. Found 2026-08-20 via "Stacy's Pita Chips, Simply
     # Naked" landing in Bakery instead of Candy & Snacks.
@@ -593,6 +631,11 @@ BRAND_OVERRIDES = {
     # 2026-09-16 auditing Nutmeg's real flyer: "Mr Clean 2X Lemon, 3 Qt"
     # was landing in Produce off the "lemon" scent name.
     "mr clean": "Household",
+    # Airheads is exclusively a candy brand (taffy bars) — found
+    # 2026-09-28 auditing Seasons' real flyer: "Airheads Minis Bag, 12
+    # Oz Assorted" has no word this file's keywords recognize as candy
+    # and was landing in Pantry.
+    "airheads": "Candy & Snacks",
 }
 
 
