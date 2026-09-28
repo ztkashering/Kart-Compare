@@ -72,6 +72,17 @@ since that's what the flyer actually says; the founder should know Monday
 is a closure day, so in practice that box is only usable on Tuesday 9/22
 this particular week.
 
+UPDATE (2026-09-28): refreshed with the following week's flyer (Sukkos
+week), a genuinely new item list this time (not a re-run like 9/20's
+was) — compared line by line against the 9/20 flyer and confirmed every
+item changed. 70 items transcribed into
+sample_data/seasons_2026-09-27_specials.txt. Flyer prints "PRICES VALID
+9/27/26 - 10/2/26" (closed Sunday for Sukkos, open Monday-Friday), same
+two day-specific sub-boxes as the last two flyers: "Monday & Tuesday
+Bakery Deals" (2026-09-28/2026-09-29 — store is open both days this
+week, no Yom-Kippur-style conflict like last time) and "Shabbos
+Specials: Thursday & Friday" (2026-10-01/2026-10-02).
+
 THIS OVERRIDE IS TIED TO THAT ONE SNAPSHOT, NOT PERMANENT: once this
 week's sale ends, CONFIRMED_DATES will be describing a stale flyer as if
 it were still current. Whoever refreshes Seasons next (a live scrape, or
@@ -96,12 +107,12 @@ DOMAIN = "seasonskosher.com"
 LOCATION_SLUG = "Lakewood-NJ"
 STORE_SLUG = "seasons"
 
-# See the "UPDATE (2026-09-22)" note above — real dates transcribed
+# See the "UPDATE (2026-09-28)" note above — real dates transcribed
 # directly from the store's own printed flyer, not guessed. This is the
 # default for any sample-file line without its own per-item date
 # override (the two day-specific sub-boxes override it individually).
 # Set to None to go back to the estimated Wednesday-to-Tuesday window.
-CONFIRMED_DATES = ("2026-09-20", "2026-09-25")
+CONFIRMED_DATES = ("2026-09-27", "2026-10-02")
 
 if __name__ == "__main__":
     run(DOMAIN, LOCATION_SLUG, STORE_SLUG, confirmed_dates=CONFIRMED_DATES)
