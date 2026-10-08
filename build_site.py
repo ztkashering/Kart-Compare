@@ -149,15 +149,10 @@ STORE_META = {
             "founder shared as images. Unlike some other stores' flyers, "
             "Nutmeg's doesn't print a \"was\" price next to any item — just "
             "the sale price — so no comparison price is shown here either, "
-            "rather than guessing one. This flyer prints two different "
-            "date windows — the meat page runs 9/16-9/20, while the Yom "
-            "Tov Blitz/Specials pages (grocery, freezer/fridge, nosh, "
-            "deli, bakery, produce, household) run the whole Sukkot "
-            "period, 9/13-9/25 — behind the scenes each item tracks its "
-            "own real date range rather than one blanket range for "
-            "everything. This confirmed date is tied to that specific "
-            "flyer (2026-09-16); once a newer one replaces it, check that "
-            "these dates were refreshed too rather than left stale."
+            "rather than guessing one. This confirmed date is tied to that "
+            "specific flyer (2026-10-07); once a newer one replaces it, "
+            "check that these dates were refreshed too rather than left "
+            "stale."
         ),
     },
     "kosher-west": {
