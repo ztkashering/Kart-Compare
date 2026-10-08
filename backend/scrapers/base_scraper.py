@@ -150,7 +150,13 @@ STRONG_CATEGORY_KEYWORDS = {
         "shoulder", "kielbasa", "hot dog",
         "hotdog", "cutlets", "ham", "bratwurst", "tongue", "poultry",
         "roast", "flat iron", "cholent melt away", "lamb", "chuck", "neck bones",
-        "cheek", "duck", "shank", "liver",
+        "cheek", "duck", "shank", "liver", "mix ground",
+        # "mix ground" added 2026-10-08 auditing Nutmeg's real flyer —
+        # "WOW Mix Ground" (a real butcher-counter item, store printed it
+        # without any further qualifier) had no matching keyword and was
+        # landing in Pantry. Kept as the exact two-word phrase rather than
+        # a bare "ground" — that alone risks catching unrelated products
+        # like ground coffee/spices.
         # "liver" added 2026-09-28 auditing Seasons' real flyer — "Liver
         # Combo" had no other qualifying word and was landing in Pantry.
         # (The one existing DB item with "liver" — "Meal Mart Chopped
@@ -294,6 +300,10 @@ STRONG_CATEGORY_KEYWORDS = {
         # Tumblers, 20 Pack" (a Gourmet Glatt item transcribed earlier
         # this session) — it had the same gap and was landing in Pantry.
         "tumbler", "dixie cup",
+        # "floor cleaner" added 2026-10-08 (Nutmeg real-flyer audit):
+        # "Mr. Sunshine Floor Cleaner, 128 Oz" didn't match "detergent"/
+        # "dish soap" and was landing in Pantry.
+        "floor cleaner",
     ],
     "Health & Beauty": [
         "toothpaste", "shampoo", "vitamin", "sunscreen", "deodorant",
@@ -361,6 +371,10 @@ _KEYWORD_COLLISION_GUARDS = {
     # Aisle 9 items. None of these are actually fresh produce.
     "mango": ["dried mango"],
     "lemon": ["lemon sparkling water"],
+    # "rib" the meat cut vs. "riblets" as a substring of a vegetarian
+    # snack name — found 2026-10-08 via "Beleaves Corn Riblets, 17.64
+    # Oz" landing in Meat & Deli ("riblets" literally starts with "rib").
+    "rib": ["corn riblets"],
     # "cookie" the snack (Candy & Snacks) vs. "cookie sheet" the baking
     # pan (Household) — found 2026-09-16 via "Cookie Sheet, 2 Pk" landing
     # in Candy & Snacks.
@@ -437,6 +451,10 @@ _KEYWORD_COLLISION_GUARDS = {
     # Strawberry Dessert" (no other qualifying word) landing in Produce.
     "strawberr": ["strawberry dessert"],
     "pepper": ["tortinkles spicy pepper"],
+    # "pear" the weak Produce keyword vs. "pearl" as a substring of an
+    # unrelated grain product — found 2026-10-08 via "Gefen Pearl Barley,
+    # 16 Oz" landing in Produce (bare "pear" matches inside "Pearl").
+    "pear": ["pearl barley", "pearl onion", "pearl sugar"],
     # "steak" (Meat & Deli) vs. "tuna steak"/"salmon steak" — Meat & Deli
     # is checked before Fish, so without this, a real fish item would
     # always lose to the word "steak" and land in the wrong category.
@@ -513,6 +531,11 @@ _KEYWORD_COLLISION_GUARDS = {
         # is a prepared cooked side dish, same pattern as "roasted sweet
         # potato" above.
         "mashed potato",
+        # "baked (sweet) potato"/"potato burekas" added 2026-10-08
+        # auditing Nutmeg's real flyer — "Baked Sweet Potatoes" (a Deli-
+        # section prepared side) and "Angel's Potato Burekas" (a frozen
+        # pastry) are both prepared items, not fresh potatoes.
+        "baked sweet potato", "baked potato", "potato burekas",
     ],
     # "sour cream & onion" the chip/cracker flavor descriptor vs. "sour
     # cream" the actual dairy product — found 2026-09-14 via "B&B Sour

@@ -91,6 +91,18 @@ sale when the store's own new flyer doesn't say so.
 THIS OVERRIDE IS TIED TO THAT ONE SNAPSHOT, NOT PERMANENT — see
 seasons_scraper.py's identical note for what to do once this week's sale
 ends. Same applies to build_site.py's STORE_META["nutmeg"].
+
+UPDATE (2026-10-08): refreshed with an entirely new flyer, four images
+again (Meat Specials / Blitz Deals / Weekly Specials layout, same shape
+as 9/16's). 105 items transcribed into
+sample_data/nutmeg_2026-10-07_specials.txt (28 meat, 77 everything
+else). For once, ALL THREE pages print the exact same date range —
+"10.07.2026-10.13.2026" on the meat page, "10.07.26 - 10.13.26" on
+Blitz Deals, "10.07.26-10.13.26" on Weekly Specials — so no per-item
+date overrides were needed this time, just one CONFIRMED_DATES tuple
+for the whole file (the per-item mechanism from the last two updates is
+still there in grocery_platform_scraper.py for whenever the next flyer
+needs it again).
 """
 
 import sys
@@ -103,13 +115,11 @@ DOMAIN = "nutmegkoshermarket.com"
 LOCATION_SLUG = "Lakewood-NJ"
 STORE_SLUG = "nutmeg"
 
-# See the "UPDATE (2026-09-16)" note above — real dates transcribed
-# directly from the store's own printed flyer. This is the default window
-# used for any sample-file line that doesn't specify its own per-item
-# dates (the meat page); the longer Sukkot-window items override this
-# individually. Set to None to go back to the estimated Wednesday-to-
-# Tuesday window.
-CONFIRMED_DATES = ("2026-09-16", "2026-09-20")
+# See the "UPDATE (2026-10-08)" note above — real dates transcribed
+# directly from the store's own printed flyer, the same single range
+# printed on every page this time. Set to None to go back to the
+# estimated Wednesday-to-Tuesday window.
+CONFIRMED_DATES = ("2026-10-07", "2026-10-13")
 
 if __name__ == "__main__":
     run(DOMAIN, LOCATION_SLUG, STORE_SLUG, confirmed_dates=CONFIRMED_DATES)
