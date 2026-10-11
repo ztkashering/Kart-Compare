@@ -95,6 +95,17 @@ export_deals.py and build_site.py auto-drop/hide any deal once its own
 date_valid_to passes, so leaving a stale CONFIRMED_DATES here isn't just
 inaccurate — the whole page will actually go blank on its own once the
 date passes, which is a stronger incentive to keep this current.
+
+UPDATE (2026-10-11): refreshed with the following week's flyer, a
+genuinely new item list. 73 items transcribed into
+sample_data/seasons_2026-10-11_specials.txt. Flyer prints "PRICES VALID
+10/11/26 - 10/16/26". Only one day-specific sub-box this time —
+"Shabbos Specials: Thursday & Friday" (4 items, tagged
+2026-10-15/2026-10-16) — no "Monday & Tuesday Bakery Deals" box on this
+particular flyer, so everything else falls back to CONFIRMED_DATES
+below. Also includes a new "Grab n' Go Meals" program the store is
+advertising (a single $14.99 line item, no further product detail
+printed), transcribed as-is.
 """
 
 import sys
@@ -107,12 +118,12 @@ DOMAIN = "seasonskosher.com"
 LOCATION_SLUG = "Lakewood-NJ"
 STORE_SLUG = "seasons"
 
-# See the "UPDATE (2026-09-28)" note above — real dates transcribed
+# See the "UPDATE (2026-10-11)" note above — real dates transcribed
 # directly from the store's own printed flyer, not guessed. This is the
 # default for any sample-file line without its own per-item date
-# override (the two day-specific sub-boxes override it individually).
+# override (the one day-specific sub-box overrides it individually).
 # Set to None to go back to the estimated Wednesday-to-Tuesday window.
-CONFIRMED_DATES = ("2026-09-27", "2026-10-02")
+CONFIRMED_DATES = ("2026-10-11", "2026-10-16")
 
 if __name__ == "__main__":
     run(DOMAIN, LOCATION_SLUG, STORE_SLUG, confirmed_dates=CONFIRMED_DATES)
