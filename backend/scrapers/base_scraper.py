@@ -150,7 +150,11 @@ STRONG_CATEGORY_KEYWORDS = {
         "shoulder", "kielbasa", "hot dog",
         "hotdog", "cutlets", "ham", "bratwurst", "tongue", "poultry",
         "roast", "flat iron", "cholent melt away", "lamb", "chuck", "neck bones",
-        "cheek", "duck", "shank", "liver", "mix ground",
+        "cheek", "duck", "shank", "liver", "mix ground", "schnitzel",
+        # "schnitzel" added 2026-10-11 auditing Seasons' real flyer —
+        # "Schnitzel" (a real breaded-cutlet deli item, no other
+        # qualifying word in the name) had no matching keyword and was
+        # landing in Pantry.
         # "mix ground" added 2026-10-08 auditing Nutmeg's real flyer —
         # "WOW Mix Ground" (a real butcher-counter item, store printed it
         # without any further qualifier) had no matching keyword and was
@@ -256,6 +260,12 @@ STRONG_CATEGORY_KEYWORDS = {
         # 2026-08-12 audit: these are packaged/frozen items that had no
         # keyword to catch them and were defaulting to Pantry.
         "fries", "potato triangle",
+        # "mango chunks" added 2026-10-11: a known frozen product type
+        # regardless of brand — "Bodek Mango Chunks" already lands here
+        # via the Bodek brand override, but "Kosher Taste Mango Chunks,
+        # 16 Oz" (a real Seasons item, different brand) had no override
+        # and was landing in Produce via the weak "mango" keyword.
+        "mango chunks",
     ],
     "Candy & Snacks": [
         "candy", "chocolate", "gummy", "gummies", "licorice", "taffy",
@@ -360,7 +370,13 @@ _KEYWORD_COLLISION_GUARDS = {
     # "butter" the dairy product vs. "peanut butter" / "almond butter" /
     # "cashew butter" the nut spread (not dairy at all) — found 2026-08-10
     # via "Oat Chocolate & Peanut Butter Bar" landing in Dairy.
-    "butter": ["peanut butter", "almond butter", "cashew butter", "sunflower butter"],
+    "butter": [
+        "peanut butter", "almond butter", "cashew butter", "sunflower butter",
+        # "butternut" added 2026-10-11: a real Seasons item ("Butternut
+        # Squash") was landing in Dairy because "butter" matches as a
+        # bare substring of "Butternut" — not the dairy product at all.
+        "butternut",
+    ],
     # "milk" the dairy product vs. "milk chocolate" the candy descriptor —
     # found 2026-08-12 via "Swiss Milk Chocolate" landing in Dairy instead
     # of Candy & Snacks.
@@ -394,6 +410,11 @@ _KEYWORD_COLLISION_GUARDS = {
         # Crispy Fried Onions, 5.25 Oz") is a shelf-stable garnish, not
         # fresh produce.
         "fried onions",
+        # "onions to go" (plural) added 2026-10-11: a real Seasons item
+        # ("Paskesz Onions To Go, 5.25 Oz") is the plural of the already-
+        # guarded "onion to go" — the extra "s" before the space meant
+        # the singular guard phrase wasn't a substring match.
+        "onions to go",
     ],
     # "avocado" the fresh fruit vs. "avocado oil" the cooking oil.
     "avocado": ["avocado oil"],
@@ -418,6 +439,12 @@ _KEYWORD_COLLISION_GUARDS = {
         # needed the same guard phrase or the item still fell through to
         # Produce via whichever one wasn't guarded.
         "strawberry dessert",
+        # "watermelon/strawberry sour slides" added 2026-10-11: same
+        # multi-keyword collision pattern as "strawberry dessert" above —
+        # a real Seasons candy item matches "berry" (inside "strawberry")
+        # AND the separate "strawberr"/"watermelon" keywords, so all
+        # three needed the same guard phrase.
+        "watermelon/strawberry sour slides", "watermelon sour slides",
     ],
     "cherry": [
         "berry & cherry no color italia",
@@ -449,12 +476,28 @@ _KEYWORD_COLLISION_GUARDS = {
     # "strawberr" (weak Produce) vs. a prepared bakery dessert that
     # merely uses it as a flavor name — found 2026-09-16 via "Nutmeg
     # Strawberry Dessert" (no other qualifying word) landing in Produce.
-    "strawberr": ["strawberry dessert"],
+    "strawberr": [
+        "strawberry dessert",
+        "watermelon/strawberry sour slides", "watermelon sour slides",
+    ],
     "pepper": ["tortinkles spicy pepper"],
     # "pear" the weak Produce keyword vs. "pearl" as a substring of an
     # unrelated grain product — found 2026-10-08 via "Gefen Pearl Barley,
     # 16 Oz" landing in Produce (bare "pear" matches inside "Pearl").
-    "pear": ["pearl barley", "pearl onion", "pearl sugar"],
+    "pear": [
+        "pearl barley", "pearl onion", "pearl sugar",
+        # "pearled barley" added 2026-10-11: a real Seasons item ("Simply
+        # Lev Pearled Barley, 16 Oz") uses "Pearled" rather than "Pearl",
+        # a different word that the "pearl barley" guard above doesn't
+        # match as a substring — same root "pear"-inside-"pearl(ed)"
+        # collision, needs its own exact phrase.
+        "pearled barley",
+    ],
+    # "watermelon"/"strawberr" the fresh fruit vs. a candy product that
+    # merely uses them as flavor names — found 2026-10-11 via "Heaven &
+    # Earth Watermelon/Strawberry Sour Slides, 2.82 Oz" landing in
+    # Produce.
+    "watermelon": ["watermelon/strawberry sour slides", "watermelon sour slides"],
     # "steak" (Meat & Deli) vs. "tuna steak"/"salmon steak" — Meat & Deli
     # is checked before Fish, so without this, a real fish item would
     # always lose to the word "steak" and land in the wrong category.
@@ -480,6 +523,10 @@ _KEYWORD_COLLISION_GUARDS = {
     # the live site turned up real miscategorizations, not edge cases:
     # "nugget" the chicken/meat product vs. corn/bread "nuggets" snacks.
     "nugget": ["corn nugget", "sourdough nugget"],
+    # "carrot" the fresh vegetable vs. a prepared baked kugel side dish
+    # that merely uses it as an ingredient name — found 2026-10-11 via
+    # "Carrot Kugel, 8 Oz" (a real Seasons deli item) landing in Produce.
+    "carrot": ["carrot kugel"],
     # "shoulder" the cut of meat vs. the "Head & Shoulders" shampoo brand.
     "shoulder": ["head & shoulder", "head&shoulder", "head and shoulder"],
     # "hot dog"/"hotdog" the meat product vs. "hot dog buns" — the bread,
@@ -578,6 +625,10 @@ _KEYWORD_COLLISION_GUARDS = {
         # real Seasons sushi-counter items (same "Sushi" header pattern
         # as "sweet potato roll" above) that don't contain "sushi" either.
         "vegetable roll", "tempura remix roll",
+        # "onion tempura roll"/"california roll" added 2026-10-11: two
+        # more real Seasons sushi-counter items — neither contains
+        # "sushi" literally, same gap as the other roll names above.
+        "onion tempura roll", "california roll",
     ],
     # "vegetable" the weak Produce keyword vs. "Vegetable Roll" — once
     # guarded off the strong "roll" keyword above, this fell straight
