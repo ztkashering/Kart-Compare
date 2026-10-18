@@ -314,6 +314,11 @@ STRONG_CATEGORY_KEYWORDS = {
         # "Mr. Sunshine Floor Cleaner, 128 Oz" didn't match "detergent"/
         # "dish soap" and was landing in Pantry.
         "floor cleaner",
+        # "oxi clean" added 2026-10-18 (Seasons real-flyer audit): "Arm &
+        # Hammer Liquid Oxi Clean, 45 Oz" didn't match "detergent"/"dish
+        # soap" and was landing in Pantry (after the "hammer" guard fix
+        # above stopped it from landing in Meat & Deli first).
+        "oxi clean",
     ],
     "Health & Beauty": [
         "toothpaste", "shampoo", "vitamin", "sunscreen", "deodorant",
@@ -342,6 +347,10 @@ WEAK_CATEGORY_KEYWORDS = {
         # avoid mid-word collisions, which meant it could never match the
         # plural — "Extra Large Navel Oranges" was landing in Pantry too).
         "pear", "garlic", "mushroom",
+        # "clementine" added 2026-10-18 auditing Seasons' real flyer —
+        # "Clementine Cuties" had no matching keyword and was landing in
+        # Pantry.
+        "clementine",
     ],
 }
 
@@ -366,7 +375,9 @@ _KEYWORD_COLLISION_GUARDS = {
     "duck": ["duck sauce"],
     # "hammered" added 2026-09-06: a disposable-plate finish/texture
     # ("13 Inch Chargers with Gold Rim, Except Hammered"), not meat.
-    "ham": ["shampoo", "hamburger", "graham", "hammered"],
+    # "hammer" added 2026-10-18: "Arm & Hammer Liquid Oxi Clean, 45 Oz"
+    # (a real Seasons cleaning item) was landing in Meat & Deli.
+    "ham": ["shampoo", "hamburger", "graham", "hammered", "hammer"],
     # "butter" the dairy product vs. "peanut butter" / "almond butter" /
     # "cashew butter" the nut spread (not dairy at all) — found 2026-08-10
     # via "Oat Chocolate & Peanut Butter Bar" landing in Dairy.
@@ -710,6 +721,18 @@ BRAND_OVERRIDES = {
     # Oz Assorted" has no word this file's keywords recognize as candy
     # and was landing in Pantry.
     "airheads": "Candy & Snacks",
+    # Doritos and Pringles are exclusively chip brands — found 2026-10-18
+    # auditing Seasons' real flyer: "Doritos Sour & Spicy Family Pack, 10
+    # Pack" and "Pringles Grab & Go, 12 Pack Starting At" neither says
+    # "chips" literally and were landing in Pantry.
+    "doritos": "Candy & Snacks",
+    "pringles": "Candy & Snacks",
+    # Windex and Palmolive are exclusively household cleaning brands —
+    # found 2026-10-18 auditing Seasons' real flyer: "Windex Trigger
+    # Blue, 32 Oz" and "Palmolive Ultra Strength, 20 Oz" didn't match
+    # "detergent"/"dish soap" and were landing in Pantry.
+    "windex": "Household",
+    "palmolive": "Household",
 }
 
 

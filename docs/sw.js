@@ -1,5 +1,5 @@
 
-const CACHE_NAME = "kartcompare-shell-2026-10-11-185521";
+const CACHE_NAME = "kartcompare-shell-2026-10-18-174845";
 const SHELL_FILES = ["index.html", "manifest.json", "icon-192.png", "icon-512.png"];
 
 self.addEventListener("install", (event) => {
