@@ -106,6 +106,14 @@ particular flyer, so everything else falls back to CONFIRMED_DATES
 below. Also includes a new "Grab n' Go Meals" program the store is
 advertising (a single $14.99 line item, no further product detail
 printed), transcribed as-is.
+
+UPDATE (2026-10-18): refreshed again with the following week's flyer, a
+genuinely new item list. 74 items transcribed into
+sample_data/seasons_2026-10-18_specials.txt. Flyer prints "PRICES VALID
+10/18/26 - 10/23/26". Same single day-specific sub-box pattern as last
+week — "Shabbos Specials: Thursday & Friday" (4 items, tagged
+2026-10-22/2026-10-23). The flyer's listed butcher contact changed from
+"Avrumi" to "Shia" (store staffing detail, not transcribed as a product).
 """
 
 import sys
@@ -118,12 +126,12 @@ DOMAIN = "seasonskosher.com"
 LOCATION_SLUG = "Lakewood-NJ"
 STORE_SLUG = "seasons"
 
-# See the "UPDATE (2026-10-11)" note above — real dates transcribed
+# See the "UPDATE (2026-10-18)" note above — real dates transcribed
 # directly from the store's own printed flyer, not guessed. This is the
 # default for any sample-file line without its own per-item date
 # override (the one day-specific sub-box overrides it individually).
 # Set to None to go back to the estimated Wednesday-to-Tuesday window.
-CONFIRMED_DATES = ("2026-10-11", "2026-10-16")
+CONFIRMED_DATES = ("2026-10-18", "2026-10-23")
 
 if __name__ == "__main__":
     run(DOMAIN, LOCATION_SLUG, STORE_SLUG, confirmed_dates=CONFIRMED_DATES)
